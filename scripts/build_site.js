@@ -40,6 +40,7 @@ function build() {
   tbody tr:last-child td { border-bottom: none; }
   .long { color: var(--long); font-weight: 600; } .short { color: var(--short); font-weight: 600; }
   .r-pos { color: var(--win); font-weight: 700; } .r-neg { color: var(--loss); font-weight: 700; } .r-pending { color: var(--text-faint); font-style: italic; }
+  .gap-badge { display: inline-block; padding: 1px 6px; border-radius: 999px; font-size: 9.5px; font-weight: 800; letter-spacing: 0.03em; background: color-mix(in srgb, var(--loss) 20%, transparent); color: var(--loss); vertical-align: middle; cursor: help; }
   .empty { padding: 32px 20px; text-align: center; color: var(--text-faint); font-size: 14px; }
   .empty b { display: block; color: var(--text-mute); font-size: 15px; margin-bottom: 4px; }
 
@@ -148,6 +149,7 @@ function render(dateStr) {
       resultHtml = '<span class="r-pending">LIVE</span><span class="' + cls + '">' + lrText + '</span>';
     } else {
       resultHtml = '<span class="' + (s.rMultiple >= 0 ? 'r-pos' : 'r-neg') + '">' + (s.rMultiple >= 0 ? '+' : '') + s.rMultiple.toFixed(2) + 'R</span>';
+      if (s.gapped) resultHtml += ' <span class="gap-badge" title="Exit price gapped past the stop -- filled at the actual open, not the idealized stop level">GAP</span>';
     }
     const tf = s.tf || '30m';
     const closeOffset = tf === '1h' ? 3600 : 1800;

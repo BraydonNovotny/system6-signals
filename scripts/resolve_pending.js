@@ -40,7 +40,7 @@ async function run() {
     for (const { trade } of pendingBySymbol[sym]) {
       const r = simulateExit(trade.side, trade.entryPrice, trade.stopPrice, trade.barTime, bars);
       trade.liveR = r.liveR;
-      if (r.resolved) { trade.resolved = true; trade.rMultiple = r.rMultiple; resolvedCount++; }
+      if (r.resolved) { trade.resolved = true; trade.rMultiple = r.rMultiple; trade.gapped = r.gapped || false; resolvedCount++; }
     }
   });
 

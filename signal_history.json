@@ -264,7 +264,8 @@
         "source": "CORE",
         "resolved": false,
         "rMultiple": null,
-        "liveR": 0.5
+        "liveR": 0.5,
+        "gapped": false
       },
       {
         "symbol": "SOFI",
@@ -277,7 +278,8 @@
         "source": "CORE",
         "resolved": false,
         "rMultiple": null,
-        "liveR": 0.46
+        "liveR": 0.46,
+        "gapped": false
       },
       {
         "symbol": "COIN",
@@ -290,7 +292,8 @@
         "source": "CORE",
         "resolved": false,
         "rMultiple": null,
-        "liveR": 1.39
+        "liveR": 1.39,
+        "gapped": false
       },
       {
         "symbol": "MSTR",
@@ -303,7 +306,8 @@
         "source": "CORE",
         "resolved": false,
         "rMultiple": null,
-        "liveR": -0.22
+        "liveR": -0.22,
+        "gapped": false
       },
       {
         "symbol": "OPEN",
@@ -316,7 +320,8 @@
         "source": "CORE",
         "resolved": false,
         "rMultiple": null,
-        "liveR": 0.08
+        "liveR": 0.08,
+        "gapped": false
       },
       {
         "symbol": "ACHR",
@@ -329,7 +334,8 @@
         "source": "CORE",
         "resolved": false,
         "rMultiple": null,
-        "liveR": 0
+        "liveR": 0,
+        "gapped": false
       },
       {
         "symbol": "SOUN",
@@ -342,7 +348,8 @@
         "source": "CORE",
         "resolved": false,
         "rMultiple": null,
-        "liveR": -0.19
+        "liveR": -0.19,
+        "gapped": false
       },
       {
         "symbol": "RDDT",
@@ -355,7 +362,8 @@
         "source": "CORE",
         "resolved": false,
         "rMultiple": null,
-        "liveR": -0.22
+        "liveR": -0.22,
+        "gapped": false
       },
       {
         "symbol": "PLTR",
@@ -368,7 +376,8 @@
         "source": "CORE",
         "resolved": false,
         "rMultiple": null,
-        "liveR": 0.89
+        "liveR": 0.89,
+        "gapped": false
       },
       {
         "symbol": "ORCL",
@@ -381,7 +390,8 @@
         "source": "CORE",
         "resolved": false,
         "rMultiple": null,
-        "liveR": 0.02
+        "liveR": 0.02,
+        "gapped": false
       }
     ]
   },

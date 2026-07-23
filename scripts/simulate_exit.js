@@ -19,7 +19,7 @@ function simulateHalf(bars, entryIdx, side, entryPrice, R, mode) {
     const hit = side === 'long' ? lows[j] <= stopPrice : highs[j] >= stopPrice;
     if (!hit) return null;
     const gapped = side === 'long' ? opens[j] <= stopPrice : opens[j] >= stopPrice;
-    return gapped ? opens[j] : stopPrice;
+    return { price: gapped ? opens[j] : stopPrice, gapped };
   }
 
   if (mode === 'fixed') {
@@ -27,10 +27,10 @@ function simulateHalf(bars, entryIdx, side, entryPrice, R, mode) {
     const targetPrice = side === 'long' ? entryPrice * (1 + targetR * R) : entryPrice * (1 - targetR * R);
     for (let j = entryIdx + 1; j <= scanEnd; j++) {
       lastJ = j;
-      const stopPx = stopHitPrice(j);
-      if (stopPx != null) { const ret = side === 'long' ? (stopPx - entryPrice) / entryPrice : (entryPrice - stopPx) / entryPrice; return { ret, resolved: true }; }
+      const stopHit = stopHitPrice(j);
+      if (stopHit) { const ret = side === 'long' ? (stopHit.price - entryPrice) / entryPrice : (entryPrice - stopHit.price) / entryPrice; return { ret, resolved: true, gapped: stopHit.gapped }; }
       const targetHit = side === 'long' ? highs[j] >= targetPrice : lows[j] <= targetPrice;
-      if (targetHit) return { ret: targetR * R, resolved: true };
+      if (targetHit) return { ret: targetR * R, resolved: true, gapped: false };
     }
     return { resolved: false }; // ran out of bars before resolving
   }
@@ -41,8 +41,8 @@ function simulateHalf(bars, entryIdx, side, entryPrice, R, mode) {
   let extreme = entryPrice; // highest close (long) or lowest close (short) since entry
   for (let j = entryIdx + 1; j <= scanEnd; j++) {
     lastJ = j;
-    const stopPx = stopHitPrice(j);
-    if (stopPx != null) { const ret = side === 'long' ? (stopPx - entryPrice) / entryPrice : (entryPrice - stopPx) / entryPrice; return { ret, resolved: true }; }
+    const stopHit = stopHitPrice(j);
+    if (stopHit) { const ret = side === 'long' ? (stopHit.price - entryPrice) / entryPrice : (entryPrice - stopHit.price) / entryPrice; return { ret, resolved: true, gapped: stopHit.gapped }; }
     if (side === 'long') { if (closes[j] > extreme) extreme = closes[j]; } else { if (closes[j] < extreme) extreme = closes[j]; }
     if (!armedTrail) {
       const armed = side === 'long' ? closes[j] >= entryPrice * (1 + armR * R) : closes[j] <= entryPrice * (1 - armR * R);
@@ -52,7 +52,7 @@ function simulateHalf(bars, entryIdx, side, entryPrice, R, mode) {
       const trailHit = side === 'long' ? closes[j] < extreme * (1 - trailR * R) : closes[j] > extreme * (1 + trailR * R);
       if (trailHit) {
         const ret = side === 'long' ? (closes[j] - entryPrice) / entryPrice : (entryPrice - closes[j]) / entryPrice;
-        return { ret, resolved: true };
+        return { ret, resolved: true, gapped: false };
       }
     }
   }
@@ -77,7 +77,7 @@ function simulateExit(side, entryPrice, stopPrice, entryTime, bars) {
   const half2 = simulateHalf(bars, entryIdx, side, entryPrice, R, 'chandelier');
   if (!half1.resolved || !half2.resolved) return { resolved: false, liveR };
   const ret = 0.25 * half1.ret + 0.75 * half2.ret;
-  return { resolved: true, rMultiple: +(ret / R).toFixed(2), liveR };
+  return { resolved: true, rMultiple: +(ret / R).toFixed(2), liveR, gapped: half1.gapped || half2.gapped };
 }
 
 module.exports = { simulateExit };

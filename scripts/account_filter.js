@@ -33,7 +33,7 @@ function runAccountFilter(candidates, barsBySymbol) {
 
     const pos = { exitTime: null };
     openPositions.push(pos);
-    taken.push({ ...sig, resolved: result.resolved, rMultiple: result.resolved ? result.rMultiple : null, liveR: result.liveR });
+    taken.push({ ...sig, resolved: result.resolved, rMultiple: result.resolved ? result.rMultiple : null, liveR: result.liveR, gapped: result.gapped || false });
     if (result.resolved) {
       pos.exitTime = sig.barTime + 1; // resolved essentially immediately in our coarse view; frees the slot for the next check
       if (result.rMultiple < 0) dayLossR += result.rMultiple;
