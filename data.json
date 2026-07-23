@@ -1,7 +1,8 @@
 {
   "qqq": {},
   "updated": {
-    "roster": "2026-07-22"
+    "roster": "2026-07-22",
+    "entries": "2026-07-23T02:37:07.819Z"
   },
   "tickers": {},
   "qqqBullish": false,
@@ -2363,5 +2364,6 @@
       "onLongRoster": false,
       "onShortRoster": true
     }
-  }
+  },
+  "liveSignals": []
 }

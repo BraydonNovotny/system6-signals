@@ -5,46 +5,66 @@ function build() {
   const data = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'data.json'), 'utf8'));
   const rosterLong = data.rosterLong || [];
   const rosterShort = data.rosterShort || [];
-  const updated = data.updated?.roster || 'never';
+  const liveSignals = data.liveSignals || [];
+  const rosterUpdated = data.updated?.roster || 'never';
+  const entriesUpdated = data.updated?.entries ? new Date(data.updated.entries).toLocaleString('en-US', { timeZone: 'America/Los_Angeles', dateStyle: 'medium', timeStyle: 'short' }) + ' PT' : 'never';
+
+  const sigRows = liveSignals.map(s => {
+    const t = new Date(s.barTime * 1000).toLocaleString('en-US', { timeZone: 'America/Los_Angeles', hour: '2-digit', minute: '2-digit' });
+    return `<tr><td>${t} PT</td><td class="mono" style="font-weight:600;">${s.symbol}</td><td class="${s.side}">${s.side}</td><td>${s.patternTier} (q${s.qual})</td><td class="mono">${s.entryPrice}</td><td class="mono">${s.stopPrice}</td></tr>`;
+  }).join('');
 
   const html = `<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>System 6 — Live Roster</title>
+<title>System 6 — Live Signals</title>
 <style>
   :root { --paper:#EEF1EE; --surface:#FFFFFF; --text:#171E1A; --text-mute:#4B564E; --text-faint:#7C877D; --rail:#C7CDC5; --rail-strong:#9AA398; --signal:#1B7A6C; --long:#2E7D4F; --short:#A8502E; }
   @media (prefers-color-scheme: dark) { :root { --paper:#0C1210; --surface:#101613; --text:#E9EDE8; --text-mute:#A3AEA1; --text-faint:#6C776B; --rail:#2B342F; --rail-strong:#3D4941; --signal:#3FD6BE; --long:#4FB47A; --short:#D97E5C; } }
   * { box-sizing: border-box; }
   body { background: var(--paper); color: var(--text); font-family: -apple-system, "Segoe UI", Roboto, sans-serif; margin: 0; padding: 40px 24px 80px; }
-  .wrap { max-width: 760px; margin: 0 auto; }
+  .wrap { max-width: 800px; margin: 0 auto; }
   .mono { font-family: ui-monospace, "SF Mono", Consolas, monospace; }
   h1 { font-size: 24px; font-weight: 600; margin: 0 0 6px; }
-  .sub { color: var(--text-mute); font-size: 13px; margin: 0 0 28px; }
-  .regime { display: inline-block; padding: 4px 12px; border-radius: 999px; font-size: 12px; font-weight: 700; margin-bottom: 24px; }
+  h2 { font-size: 15px; text-transform: uppercase; letter-spacing: 0.05em; margin: 32px 0 10px; color: var(--text-mute); }
+  .sub { color: var(--text-mute); font-size: 13px; margin: 0 0 4px; }
+  .regime { display: inline-block; padding: 4px 12px; border-radius: 999px; font-size: 12px; font-weight: 700; margin: 12px 0 0; }
   .regime.bull { background: color-mix(in srgb, var(--long) 18%, transparent); color: var(--long); }
   .regime.bear { background: color-mix(in srgb, var(--short) 18%, transparent); color: var(--short); }
-  .cols { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  table { border-collapse: collapse; width: 100%; font-size: 13.5px; background: var(--surface); border: 1px solid var(--rail); }
+  th, td { padding: 8px 12px; text-align: left; border-bottom: 1px solid var(--rail); }
+  th { font-size: 11px; text-transform: uppercase; color: var(--text-faint); background: var(--paper); }
+  .long { color: var(--long); font-weight: 600; }
+  .short { color: var(--short); font-weight: 600; }
+  .empty { padding: 24px; text-align: center; color: var(--text-faint); background: var(--surface); border: 1px solid var(--rail); font-size: 13.5px; }
+  .cols { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 10px; }
   @media (max-width: 600px) { .cols { grid-template-columns: 1fr; } }
-  .panel { border: 1px solid var(--rail); background: var(--surface); padding: 16px 18px; }
-  .panel h2 { font-size: 13px; text-transform: uppercase; letter-spacing: 0.06em; margin: 0 0 12px; }
-  .panel.long h2 { color: var(--long); } .panel.short h2 { color: var(--short); }
+  .panel { border: 1px solid var(--rail); background: var(--surface); padding: 14px 16px; }
+  .panel h3 { font-size: 12px; text-transform: uppercase; letter-spacing: 0.05em; margin: 0 0 10px; }
+  .panel.long h3 { color: var(--long); } .panel.short h3 { color: var(--short); }
   .ticker-list { display: flex; flex-wrap: wrap; gap: 6px; }
-  .ticker { font-size: 13px; padding: 3px 9px; border-radius: 4px; background: var(--paper); border: 1px solid var(--rail); }
-  footer { margin-top: 28px; font-size: 12px; color: var(--text-faint); }
+  .ticker { font-size: 12.5px; padding: 3px 8px; border-radius: 4px; background: var(--paper); border: 1px solid var(--rail); }
+  footer { margin-top: 32px; font-size: 12px; color: var(--text-faint); }
 </style>
 </head><body><div class="wrap">
-  <h1>System 6 — Live Roster</h1>
-  <p class="sub mono">Updated ${updated} (Pacific) &middot; EOD roster gate only, per the locked System 6 backtest thresholds</p>
-  <span class="regime ${data.qqqBullish ? 'bull' : 'bear'}">QQQ regime: ${data.qqqBullish ? 'BULLISH (8ema > 20ema)' : 'BEARISH (20ema > 8ema)'}</span>
+  <h1>System 6 — Live Signals</h1>
+  <p class="sub mono">Entries checked: ${entriesUpdated} &middot; Roster: ${rosterUpdated}</p>
+  <span class="regime ${data.qqqBullish ? 'bull' : 'bear'}">QQQ: ${data.qqqBullish ? 'BULLISH' : 'BEARISH'}</span>
+
+  <h2>Live entry signals (most recent 30m bar)</h2>
+  ${liveSignals.length ? `<table><thead><tr><th>Time</th><th>Ticker</th><th>Side</th><th>Pattern</th><th>Entry</th><th>Stop</th></tr></thead><tbody>${sigRows}</tbody></table>` : `<div class="empty">No signals on the latest completed bar. Check back at the next 30m interval.</div>`}
+
+  <h2>Roster (eligible universe)</h2>
   <div class="cols">
     <div class="panel long">
-      <h2>Long roster (${rosterLong.length})</h2>
-      <div class="ticker-list mono">${rosterLong.map(t => `<span class="ticker">${t}</span>`).join('') || '<span style="color:var(--text-faint)">none (QQQ not bullish)</span>'}</div>
+      <h3>Long (${rosterLong.length})</h3>
+      <div class="ticker-list mono">${rosterLong.map(t => `<span class="ticker">${t}</span>`).join('') || '<span style="color:var(--text-faint)">none</span>'}</div>
     </div>
     <div class="panel short">
-      <h2>Short roster (${rosterShort.length})</h2>
+      <h3>Short (${rosterShort.length})</h3>
       <div class="ticker-list mono">${rosterShort.map(t => `<span class="ticker">${t}</span>`).join('') || '<span style="color:var(--text-faint)">none</span>'}</div>
     </div>
   </div>
-  <footer>These are the tickers that pass System 6's roster gate (price/volume/ADR tiers + EMA50 trend + trailing-252-day qualifying-day count + QQQ regime) as of the latest daily close. This is the "in-play" universe, not a live intraday entry signal — a ticker showing here is eligible for a pattern signal, not necessarily firing one right now. Intraday 30m entry-trigger detection is a planned follow-up phase.</footer>
+
+  <footer>Core pattern signals only (dryUpBreakout3/reclaim/looseTier2/surfBase for longs, dryDownBreakdown3/rejection/looseTier2Short for shorts), same thresholds as the locked backtest. EP and Parabolic overlays are not included yet. This is directional guidance ported from a backtest, not investment advice -- verify before acting.</footer>
 </div></body></html>`;
 
   fs.writeFileSync(path.join(__dirname, '..', 'index.html'), html);
