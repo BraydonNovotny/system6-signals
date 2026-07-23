@@ -1,13 +1,14 @@
 // Entry point invoked by the GitHub Actions workflow (triggered every 30 min by an
 // external cron-job.org ping). Self-gates on real America/Los_Angeles time.
-const { ptNowDecimalHour, ptDateString, loadData, fetchChart, pool } = require('./lib');
+const { ptNowDecimalHour, ptDateString, loadData, saveData, fetchChart, pool } = require('./lib');
 const scanRoster = require('./scan_roster');
 const scanEntries = require('./scan_entries');
 const epScan = require('./ep_scan');
 const perScan = require('./per_scan');
-const { loadHistory, recordCandidates, recordTaken } = require('./history');
+const { loadHistory, saveHistory, recordCandidates, recordTaken } = require('./history');
 const { runAccountFilter } = require('./account_filter');
 const resolvePending = require('./resolve_pending');
+const eodAddWinners = require('./eod_add_winners');
 const { build } = require('./build_site.js');
 
 async function fetch30m(symbol) {
@@ -90,6 +91,16 @@ async function main() {
       didWork = true;
     } else {
       console.log(`Roster already updated today (${today}) - skipping roster scan.`);
+    }
+    if (data.updated?.addWinners !== today) {
+      const history = loadHistory();
+      const addWinners = await eodAddWinners.run(history).catch(e => { console.error('add-winners check failed:', e.message); return []; });
+      saveHistory(history);
+      data.updated = data.updated || {};
+      data.updated.addWinners = today;
+      saveData(data);
+      console.log(`Add-winners check: ${addWinners.length} qualifying position(s) today.`);
+      didWork = true;
     }
   }
 

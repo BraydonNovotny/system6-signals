@@ -14,11 +14,15 @@
   .regime.bull { background: color-mix(in srgb, var(--long) 18%, transparent); color: var(--long); }
   .regime.bear { background: color-mix(in srgb, var(--short) 18%, transparent); color: var(--short); }
 
-  .summary-strip { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--rail); border: 1px solid var(--rail); margin-top: 20px; }
-  .summary-cell { background: var(--surface); padding: 12px 14px; }
-  .summary-label { font-size: 10px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-faint); margin: 0 0 4px; }
-  .summary-value { font-size: 18px; font-weight: 700; color: var(--signal); }
-  @media (max-width: 600px) { .summary-strip { grid-template-columns: 1fr 1fr; } }
+  .perf-windows { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--rail); border: 1px solid var(--rail); margin-top: 20px; }
+  .perf-window { background: var(--surface); padding: 14px 16px; }
+  .perf-window h3 { font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-mute); margin: 0 0 10px; }
+  .perf-row { display: flex; align-items: baseline; justify-content: space-between; margin-top: 6px; }
+  .perf-row:first-of-type { margin-top: 0; }
+  .perf-label { font-size: 11.5px; color: var(--text-faint); }
+  .perf-value { font-size: 15px; font-weight: 700; color: var(--signal); font-family: ui-monospace, "SF Mono", Consolas, monospace; font-variant-numeric: tabular-nums; }
+  .perf-value.neg { color: var(--loss); }
+  @media (max-width: 600px) { .perf-windows { grid-template-columns: 1fr; } }
   .signals-block { margin-top: 20px; border: 2px solid var(--signal); background: var(--surface); }
   .signals-block .head { display: flex; align-items: center; justify-content: space-between; padding: 14px 18px; border-bottom: 1px solid var(--rail); flex-wrap: wrap; gap: 10px; }
   .signals-block .head h2 { margin: 0; color: var(--signal); font-size: 14px; }
@@ -58,7 +62,7 @@
   <p class="sub mono">Roster last checked: 2026-07-23</p>
   <span class="regime bear">QQQ: BEARISH</span>
 
-  <div class="summary-strip" id="summary-strip"></div>
+  <div class="perf-windows" id="perf-windows"></div>
 
   <div class="signals-block">
     <div class="head">
@@ -79,6 +83,12 @@
       <h2 style="margin:0 0 4px;">Triggered, not taken (blocked by capital)</h2>
       <p class="sub mono" style="margin:0 0 10px;">Same real pattern signal, but rejected because capital/slots were already full -- these would NOT have been actual trades. (Signals blocked by the daily loss cap are intentionally NOT shown here -- no reason to tempt overriding your own risk limit on a day you've already hit it.)</p>
       <div id="rejected-container"></div>
+    </div>
+    <div style="border-top:1px solid var(--rail); margin-top:4px;"></div>
+    <div style="padding:14px 18px;">
+      <h2 style="margin:0 0 4px;">Add to winners (checked at the close)</h2>
+      <p class="sub mono" style="margin:0 0 10px;">LOCKED rule: a position entered today that's still open at the close and already up &ge;0.5R gets sized up to 1.5x total. Informational -- you place the add manually.</p>
+      <div id="add-winners-container"></div>
     </div>
   </div>
 
@@ -105,25 +115,41 @@ const HISTORY = {"2026-07-22":{"candidates":[{"symbol":"CVNA","side":"short","qu
 const days = Object.keys(HISTORY).sort();
 const todayStr = "2026-07-23";
 
-// Overall true RR: avg winner / |avg loser|, on the net-rMultiple basis (a small win is
-// still a WIN, a small loss is still a LOSS -- not the looser "wasn't fully stopped out"
-// definition). Computed across every resolved trade in history.
-const allResolved = days.flatMap(d => (HISTORY[d].taken || []).filter(t => t.resolved));
-const allWins = allResolved.filter(t => t.rMultiple > 0);
-const allLosses = allResolved.filter(t => t.rMultiple <= 0);
-const avgWinAll = allWins.length ? allWins.reduce((a, t) => a + t.rMultiple, 0) / allWins.length : 0;
-const avgLossAll = allLosses.length ? allLosses.reduce((a, t) => a + t.rMultiple, 0) / allLosses.length : 0;
-const trueRR = avgLossAll !== 0 ? Math.abs(avgWinAll / avgLossAll) : 0;
-const overallWinRate = allResolved.length ? (allWins.length / allResolved.length * 100) : 0;
-document.getElementById('summary-strip').innerHTML =
-  '<div class="summary-cell"><p class="summary-label">Resolved Trades</p><p class="summary-value mono">' + allResolved.length + '</p></div>' +
-  '<div class="summary-cell"><p class="summary-label">Win Rate</p><p class="summary-value mono">' + overallWinRate.toFixed(1) + '%</p></div>' +
-  '<div class="summary-cell"><p class="summary-label">True Risk:Reward</p><p class="summary-value mono">' + trueRR.toFixed(2) + ' : 1</p></div>' +
-  '<div class="summary-cell"><p class="summary-label">Avg Win / Avg Loss</p><p class="summary-value mono" style="font-size:15px;">+' + avgWinAll.toFixed(2) + 'R / ' + avgLossAll.toFixed(2) + 'R</p></div>';
+// Recent-performance windows: trailing 5 / 21 / 63 TRADING days (not calendar days --
+// "days" here is already just the days this system actually ran and recorded, so weekends
+// and market holidays are naturally excluded). Each on the net-rMultiple basis (a small
+// win is still a WIN, a small loss is still a LOSS -- not the looser "wasn't fully
+// stopped out" definition).
+const tradingDaysWithData = days.filter(d => d <= todayStr);
+function windowStats(tradingDaysBack) {
+  const windowDays = new Set(tradingDaysWithData.slice(-tradingDaysBack));
+  const trades = [...windowDays].flatMap(d => (HISTORY[d].taken || []).filter(t => t.resolved));
+  const wins = trades.filter(t => t.rMultiple > 0);
+  const losses = trades.filter(t => t.rMultiple <= 0);
+  const netR = trades.reduce((a, t) => a + t.rMultiple, 0);
+  const avgWin = wins.length ? wins.reduce((a, t) => a + t.rMultiple, 0) / wins.length : 0;
+  const avgLoss = losses.length ? losses.reduce((a, t) => a + t.rMultiple, 0) / losses.length : 0;
+  const rr = avgLoss !== 0 ? Math.abs(avgWin / avgLoss) : 0;
+  const winRate = trades.length ? (wins.length / trades.length * 100) : 0;
+  return { n: trades.length, netR, winRate, rr, avgWin, avgLoss };
+}
+function windowHtml(label, s) {
+  const netCls = s.netR >= 0 ? 'perf-value' : 'perf-value neg';
+  return '<div class="perf-window"><h3>' + label + ' <span style="text-transform:none; color:var(--text-faint);">(' + s.n + ' trades)</span></h3>' +
+    '<div class="perf-row"><span class="perf-label">Net R</span><span class="' + netCls + '">' + (s.netR >= 0 ? '+' : '') + s.netR.toFixed(2) + 'R</span></div>' +
+    '<div class="perf-row"><span class="perf-label">Win Rate</span><span class="perf-value">' + s.winRate.toFixed(1) + '%</span></div>' +
+    '<div class="perf-row"><span class="perf-label">True RR</span><span class="perf-value">' + s.rr.toFixed(2) + ' : 1</span></div>' +
+    '<div class="perf-row"><span class="perf-label">Avg Win / Loss</span><span class="perf-value" style="font-size:13px;">+' + s.avgWin.toFixed(2) + 'R / ' + s.avgLoss.toFixed(2) + 'R</span></div></div>';
+}
+document.getElementById('perf-windows').innerHTML =
+  windowHtml('Past Week', windowStats(5)) +
+  windowHtml('Past Month', windowStats(21)) +
+  windowHtml('Past 3 Months', windowStats(63));
 
 const dateInput = document.getElementById('date-input');
 const container = document.getElementById('signal-container');
 const rejectedContainer = document.getElementById('rejected-container');
+const addWinnersContainer = document.getElementById('add-winners-container');
 const titleEl = document.getElementById('section-title');
 const dayStatsEl = document.getElementById('day-stats');
 const prevBtn = document.getElementById('prev-btn');
@@ -190,6 +216,21 @@ function render(dateStr) {
         '<td class="' + s.side + '">' + s.side.toUpperCase() + '</td><td style="color:var(--text-faint);">' + s.rejectReason + '</td></tr>';
     }).join('');
     rejectedContainer.innerHTML = '<table><thead><tr><th>Ticker</th><th>Time</th><th>Side</th><th>Reason</th></tr></thead><tbody>' + rrows + '</tbody></table>';
+  }
+
+  // Add-to-winners section -- populated once, near market close, by eod_add_winners.js.
+  const addWinners = (day && day.addWinners) ? day.addWinners : [];
+  if (!addWinners.length) {
+    addWinnersContainer.innerHTML = '<div class="empty" style="padding:16px;">None today -- either nothing was still open at the close, or nothing was up 0.5R+ yet.</div>';
+  } else {
+    const awrows = addWinners.slice().sort((a, b) => a.barTime - b.barTime).map(s => {
+      return '<tr><td class="mono" style="font-weight:600;">' + s.symbol + '</td>' +
+        '<td class="' + s.side + '">' + s.side.toUpperCase() + '</td>' +
+        '<td class="mono">$' + s.entryPrice.toFixed(2) + '</td>' +
+        '<td class="r-pos mono">+' + s.liveR.toFixed(2) + 'R</td>' +
+        '<td class="mono">' + s.addMult + 'x total</td></tr>';
+    }).join('');
+    addWinnersContainer.innerHTML = '<table><thead><tr><th>Ticker</th><th>Side</th><th>Entry</th><th>Live R</th><th>Size to</th></tr></thead><tbody>' + awrows + '</tbody></table>';
   }
 }
 
