@@ -8,63 +8,81 @@
   .wrap { max-width: 840px; margin: 0 auto; }
   .mono { font-family: ui-monospace, "SF Mono", Consolas, monospace; font-variant-numeric: tabular-nums; }
   h1 { font-size: 24px; font-weight: 600; margin: 0 0 6px; }
-  h2 { font-size: 15px; text-transform: uppercase; letter-spacing: 0.05em; margin: 28px 0 10px; color: var(--text-mute); }
+  h2 { font-size: 15px; text-transform: uppercase; letter-spacing: 0.05em; margin: 0 0 4px; color: var(--text-mute); }
   .sub { color: var(--text-mute); font-size: 13px; margin: 0 0 4px; }
   .regime { display: inline-block; padding: 4px 12px; border-radius: 999px; font-size: 12px; font-weight: 700; margin: 12px 0 0; }
   .regime.bull { background: color-mix(in srgb, var(--long) 18%, transparent); color: var(--long); }
   .regime.bear { background: color-mix(in srgb, var(--short) 18%, transparent); color: var(--short); }
-  .controls { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; background: var(--surface); border: 1px solid var(--rail); padding: 12px 16px; margin: 16px 0; }
-  .controls label { font-size: 12px; color: var(--text-faint); text-transform: uppercase; }
-  input[type="date"] { font-family: inherit; font-size: 14px; padding: 6px 9px; border-radius: 4px; border: 1px solid var(--rail-strong); background: var(--paper); color: var(--text); }
-  button.nav { appearance: none; border: 1px solid var(--rail-strong); background: var(--paper); color: var(--text); font-size: 13px; padding: 6px 11px; border-radius: 4px; cursor: pointer; font-family: inherit; }
+
+  .signals-block { margin-top: 28px; border: 2px solid var(--signal); background: var(--surface); }
+  .signals-block .head { display: flex; align-items: center; justify-content: space-between; padding: 14px 18px; border-bottom: 1px solid var(--rail); flex-wrap: wrap; gap: 10px; }
+  .signals-block .head h2 { margin: 0; color: var(--signal); font-size: 14px; }
+  .controls { display: flex; align-items: center; gap: 8px; }
+  input[type="date"] { font-family: inherit; font-size: 13px; padding: 5px 8px; border-radius: 4px; border: 1px solid var(--rail-strong); background: var(--paper); color: var(--text); }
+  button.nav { appearance: none; border: 1px solid var(--rail-strong); background: var(--paper); color: var(--text); font-size: 12.5px; padding: 5px 10px; border-radius: 4px; cursor: pointer; font-family: inherit; }
   button.nav:hover { background: var(--signal-soft); border-color: var(--signal); }
-  table { border-collapse: collapse; width: 100%; font-size: 13.5px; background: var(--surface); border: 1px solid var(--rail); }
-  th, td { padding: 8px 12px; text-align: left; border-bottom: 1px solid var(--rail); }
-  th { font-size: 11px; text-transform: uppercase; color: var(--text-faint); background: var(--paper); }
+
+  table { border-collapse: collapse; width: 100%; font-size: 13.5px; }
+  th, td { padding: 10px 16px; text-align: left; border-bottom: 1px solid var(--rail); }
+  th { font-size: 10.5px; text-transform: uppercase; color: var(--text-faint); }
+  tbody tr:last-child td { border-bottom: none; }
   .long { color: var(--long); font-weight: 600; } .short { color: var(--short); font-weight: 600; }
   .tag { display: inline-block; padding: 2px 7px; border-radius: 999px; font-size: 10.5px; font-weight: 700; }
   .tag-core { background: var(--signal-soft); color: var(--signal); }
   .tag-ep { background: color-mix(in srgb, var(--ep) 18%, transparent); color: var(--ep); }
   .tag-per { background: color-mix(in srgb, var(--per) 18%, transparent); color: var(--per); }
-  .empty { padding: 24px; text-align: center; color: var(--text-faint); background: var(--surface); border: 1px solid var(--rail); font-size: 13.5px; }
-  .cols { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 10px; }
+  .empty { padding: 32px 20px; text-align: center; color: var(--text-faint); font-size: 14px; }
+  .empty b { display: block; color: var(--text-mute); font-size: 15px; margin-bottom: 4px; }
+
+  details.roster { margin-top: 24px; border: 1px solid var(--rail); background: var(--surface); }
+  details.roster summary { padding: 12px 16px; cursor: pointer; font-size: 13px; color: var(--text-mute); list-style: none; display: flex; align-items: center; gap: 8px; }
+  details.roster summary::-webkit-details-marker { display: none; }
+  details.roster summary::before { content: '▸'; color: var(--text-faint); transition: transform 0.15s; }
+  details.roster[open] summary::before { transform: rotate(90deg); }
+  details.roster .note { font-size: 12px; color: var(--text-faint); padding: 0 16px 12px; margin: 0; }
+  .cols { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; padding: 0 16px 16px; }
   @media (max-width: 600px) { .cols { grid-template-columns: 1fr; } }
-  .panel { border: 1px solid var(--rail); background: var(--surface); padding: 14px 16px; }
-  .panel h3 { font-size: 12px; text-transform: uppercase; letter-spacing: 0.05em; margin: 0 0 10px; }
+  .panel h3 { font-size: 11.5px; text-transform: uppercase; letter-spacing: 0.05em; margin: 0 0 8px; }
   .panel.long h3 { color: var(--long); } .panel.short h3 { color: var(--short); }
-  .ticker-list { display: flex; flex-wrap: wrap; gap: 6px; }
-  .ticker { font-size: 12.5px; padding: 3px 8px; border-radius: 4px; background: var(--paper); border: 1px solid var(--rail); }
-  footer { margin-top: 32px; font-size: 12px; color: var(--text-faint); }
+  .ticker-list { display: flex; flex-wrap: wrap; gap: 5px; }
+  .ticker { font-size: 12px; padding: 2px 7px; border-radius: 4px; background: var(--paper); border: 1px solid var(--rail); }
+
+  footer { margin-top: 28px; font-size: 12px; color: var(--text-faint); }
 </style>
 </head><body><div class="wrap">
   <h1>System 6 — Live Signals</h1>
-  <p class="sub mono">Roster last updated: 2026-07-22</p>
+  <p class="sub mono">Roster last checked: 2026-07-22</p>
   <span class="regime bear">QQQ: BEARISH</span>
 
-  <div class="controls">
-    <label for="date-input">Date</label>
-    <input type="date" id="date-input" />
-    <button class="nav" id="prev-btn">&larr; Prev</button>
-    <button class="nav" id="next-btn">Next &rarr;</button>
-    <button class="nav" id="today-btn">Today</button>
+  <div class="signals-block">
+    <div class="head">
+      <h2 id="section-title">Triggered signals</h2>
+      <div class="controls">
+        <input type="date" id="date-input" />
+        <button class="nav" id="prev-btn">&larr;</button>
+        <button class="nav" id="next-btn">&rarr;</button>
+        <button class="nav" id="today-btn">Today</button>
+      </div>
+    </div>
+    <div id="signal-container"></div>
   </div>
 
-  <h2>Signals</h2>
-  <div id="signal-container"></div>
-
-  <h2>Roster (eligible universe, as of last EOD scan)</h2>
-  <div class="cols">
-    <div class="panel long">
-      <h3>Long (0)</h3>
-      <div class="ticker-list mono"><span style="color:var(--text-faint)">none</span></div>
+  <details class="roster">
+    <summary>Eligible universe (roster) — 0 long / 44 short — not signals, just what qualifies to be watched</summary>
+    <p class="note">Passing the roster gate means a ticker is in-play for a pattern to fire — it is NOT a buy/sell signal by itself. Most roster tickers never trigger on a given day.</p>
+    <div class="cols">
+      <div class="panel long">
+        <h3>Long roster</h3>
+        <div class="ticker-list mono"><span style="color:var(--text-faint)">none</span></div>
+      </div>
+      <div class="panel short">
+        <h3>Short roster</h3>
+        <div class="ticker-list mono"><span class="ticker">ACHR</span><span class="ticker">APLD</span><span class="ticker">APP</span><span class="ticker">ASTS</span><span class="ticker">BE</span><span class="ticker">CCL</span><span class="ticker">CDE</span><span class="ticker">CMCSA</span><span class="ticker">CMG</span><span class="ticker">COIN</span><span class="ticker">CRM</span><span class="ticker">CRWV</span><span class="ticker">CVNA</span><span class="ticker">DKNG</span><span class="ticker">GOOG</span><span class="ticker">GOOGL</span><span class="ticker">IBM</span><span class="ticker">INTC</span><span class="ticker">IONQ</span><span class="ticker">JOBY</span><span class="ticker">MARA</span><span class="ticker">MRVL</span><span class="ticker">MSFT</span><span class="ticker">MSTR</span><span class="ticker">NFLX</span><span class="ticker">NKE</span><span class="ticker">NOW</span><span class="ticker">OKLO</span><span class="ticker">ONDS</span><span class="ticker">OPEN</span><span class="ticker">ORCL</span><span class="ticker">PATH</span><span class="ticker">PLTR</span><span class="ticker">QBTS</span><span class="ticker">QCOM</span><span class="ticker">QS</span><span class="ticker">RDDT</span><span class="ticker">RGTI</span><span class="ticker">RKLB</span><span class="ticker">SMR</span><span class="ticker">SOFI</span><span class="ticker">SOUN</span><span class="ticker">TSLA</span><span class="ticker">WULF</span></div>
+      </div>
     </div>
-    <div class="panel short">
-      <h3>Short (44)</h3>
-      <div class="ticker-list mono"><span class="ticker">ACHR</span><span class="ticker">APLD</span><span class="ticker">APP</span><span class="ticker">ASTS</span><span class="ticker">BE</span><span class="ticker">CCL</span><span class="ticker">CDE</span><span class="ticker">CMCSA</span><span class="ticker">CMG</span><span class="ticker">COIN</span><span class="ticker">CRM</span><span class="ticker">CRWV</span><span class="ticker">CVNA</span><span class="ticker">DKNG</span><span class="ticker">GOOG</span><span class="ticker">GOOGL</span><span class="ticker">IBM</span><span class="ticker">INTC</span><span class="ticker">IONQ</span><span class="ticker">JOBY</span><span class="ticker">MARA</span><span class="ticker">MRVL</span><span class="ticker">MSFT</span><span class="ticker">MSTR</span><span class="ticker">NFLX</span><span class="ticker">NKE</span><span class="ticker">NOW</span><span class="ticker">OKLO</span><span class="ticker">ONDS</span><span class="ticker">OPEN</span><span class="ticker">ORCL</span><span class="ticker">PATH</span><span class="ticker">PLTR</span><span class="ticker">QBTS</span><span class="ticker">QCOM</span><span class="ticker">QS</span><span class="ticker">RDDT</span><span class="ticker">RGTI</span><span class="ticker">RKLB</span><span class="ticker">SMR</span><span class="ticker">SOFI</span><span class="ticker">SOUN</span><span class="ticker">TSLA</span><span class="ticker">WULF</span></div>
-    </div>
-  </div>
+  </details>
 
-  <footer>MAX + EP + Parabolic, same thresholds as the locked backtest (~206% OOS CAGR under realistic gap pricing). History only goes back to whenever this system first ran -- not retroactive to the full 2019-2026 backtest. This is directional guidance ported from a backtest, not investment advice -- verify before acting.</footer>
+  <footer>MAX + EP + Parabolic, same thresholds as the locked backtest (~206% OOS CAGR under realistic gap pricing). Signal history only goes back to whenever this system first ran -- not retroactive to the full 2019-2026 backtest. This is directional guidance ported from a backtest, not investment advice -- verify before acting.</footer>
 </div>
 
 <script>
@@ -74,13 +92,18 @@ const todayStr = "2026-07-22";
 
 const dateInput = document.getElementById('date-input');
 const container = document.getElementById('signal-container');
+const titleEl = document.getElementById('section-title');
 if (days.length) { dateInput.min = days[0]; dateInput.max = days[days.length - 1] > todayStr ? days[days.length - 1] : todayStr; }
 
 function fmtTime(barTime) {
   return new Intl.DateTimeFormat('en-US', { timeZone: 'America/Los_Angeles', hour: '2-digit', minute: '2-digit' }).format(new Date(barTime * 1000));
 }
+function humanDate(dateStr) {
+  return new Intl.DateTimeFormat('en-US', { timeZone: 'America/Los_Angeles', weekday: 'long', month: 'long', day: 'numeric' }).format(new Date(dateStr + 'T12:00:00'));
+}
 function render(dateStr) {
   dateInput.value = dateStr;
+  titleEl.textContent = (dateStr === todayStr ? "Today's" : humanDate(dateStr)) + ' triggered signals';
   const day = HISTORY[dateStr];
   const all = day ? [
     ...day.core.map(s => ({ ...s, tag: 'CORE', cls: 'tag-core' })),
@@ -89,15 +112,15 @@ function render(dateStr) {
   ].sort((a, b) => a.barTime - b.barTime) : [];
 
   if (!all.length) {
-    container.innerHTML = '<div class="empty">No signals recorded for ' + dateStr + (day ? '' : ' (no data for this day yet)') + '.</div>';
+    container.innerHTML = '<div class="empty"><b>No signals triggered</b>' + (day ? 'Checked, nothing fired ' + humanDate(dateStr) + '.' : 'No data recorded for this day yet.') + '</div>';
     return;
   }
   const rows = all.map(s =>
     '<tr><td>' + fmtTime(s.barTime) + ' PT</td><td class="mono" style="font-weight:600;">' + s.symbol + '</td>' +
-    '<td class="' + s.side + '">' + s.side + '</td><td><span class="tag ' + s.cls + '">' + s.tag + '</span></td>' +
+    '<td class="' + s.side + '">' + s.side.toUpperCase() + '</td><td><span class="tag ' + s.cls + '">' + s.tag + '</span></td>' +
     '<td class="mono">' + s.entryPrice + '</td><td class="mono">' + s.stopPrice + '</td></tr>'
   ).join('');
-  container.innerHTML = '<table><thead><tr><th>Time</th><th>Ticker</th><th>Side</th><th>Source</th><th>Entry</th><th>Stop</th></tr></thead><tbody>' + rows + '</tbody></table>';
+  container.innerHTML = '<table><thead><tr><th>Time</th><th>Ticker</th><th>Action</th><th>Source</th><th>Entry</th><th>Stop</th></tr></thead><tbody>' + rows + '</tbody></table>';
 }
 
 function goTo(dir) {
