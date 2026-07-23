@@ -406,7 +406,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 0.918,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "AMD",
@@ -417,7 +418,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 0.499,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "CVNA",
@@ -428,7 +430,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 1.012,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "OPEN",
@@ -439,7 +442,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 1.533,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "SNDK",
@@ -450,7 +454,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": -0.165,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "SNDK",
@@ -461,7 +466,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": -0.281,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "WDC",
@@ -472,7 +478,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 0.256,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "CLSK",
@@ -483,7 +490,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": -0.5,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       }
     ],
     "taken": [
@@ -496,7 +504,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 0.918,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "AMD",
@@ -507,7 +516,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 0.499,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "CVNA",
@@ -518,7 +528,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 1.012,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "OPEN",
@@ -529,7 +540,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 1.533,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "SNDK",
@@ -540,7 +552,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": -0.165,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "SNDK",
@@ -551,7 +564,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": -0.281,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "WDC",
@@ -562,7 +576,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 0.256,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "CLSK",
@@ -573,7 +588,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": -0.5,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       }
     ]
   },
@@ -588,7 +604,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 0.883,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "AMD",
@@ -599,7 +616,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 1.314,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "INTC",
@@ -610,7 +628,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": -0.138,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "RKLB",
@@ -621,7 +640,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": -0.5,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "SHOP",
@@ -632,7 +652,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": -0.5,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       }
     ],
     "taken": [
@@ -645,7 +666,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 0.883,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "AMD",
@@ -656,7 +678,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 1.314,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "INTC",
@@ -667,7 +690,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": -0.138,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "RKLB",
@@ -678,7 +702,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": -0.5,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "SHOP",
@@ -689,7 +714,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": -0.5,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       }
     ]
   },
@@ -704,7 +730,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 0.183,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "SNDK",
@@ -715,7 +742,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 0.976,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "WULF",
@@ -726,7 +754,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 1.13,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "CVNA",
@@ -737,7 +766,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": -0.22,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "HPE",
@@ -748,7 +778,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": -0.5,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "IONQ",
@@ -759,7 +790,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": -0.5,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       }
     ],
     "taken": [
@@ -772,7 +804,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 0.183,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "SNDK",
@@ -783,7 +816,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 0.976,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "WULF",
@@ -794,7 +828,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 1.13,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "CVNA",
@@ -805,7 +840,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": -0.22,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "HPE",
@@ -816,7 +852,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": -0.5,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "IONQ",
@@ -827,7 +864,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": -0.5,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       }
     ]
   },
@@ -842,7 +880,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": -0.5,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "INTC",
@@ -853,7 +892,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 4.034,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "MU",
@@ -864,7 +904,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 1.134,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "SNDK",
@@ -875,7 +916,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": -0.5,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "VRT",
@@ -886,7 +928,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": -0.5,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       }
     ],
     "taken": [
@@ -899,7 +942,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": -0.5,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "INTC",
@@ -910,7 +954,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 4.034,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "MU",
@@ -921,7 +966,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 1.134,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "SNDK",
@@ -932,7 +978,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": -0.5,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "VRT",
@@ -943,7 +990,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": -0.5,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       }
     ]
   },
@@ -958,7 +1006,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": -0.5,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "MU",
@@ -969,7 +1018,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 0.794,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "OPEN",
@@ -980,7 +1030,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 0.965,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "VRT",
@@ -991,7 +1042,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": -0.5,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "WDC",
@@ -1002,7 +1054,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": -0.5,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       }
     ],
     "taken": [
@@ -1015,7 +1068,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": -0.5,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "MU",
@@ -1026,7 +1080,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 0.794,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "OPEN",
@@ -1037,7 +1092,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 0.965,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "VRT",
@@ -1048,7 +1104,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": -0.5,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "WDC",
@@ -1059,7 +1116,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": -0.5,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       }
     ]
   },
@@ -1074,7 +1132,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": -0.5,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "MU",
@@ -1084,8 +1143,9 @@
         "qual": 1,
         "tf": "30m",
         "resolved": true,
-        "rMultiple": -0.5,
-        "liveR": null
+        "rMultiple": -0.637,
+        "liveR": null,
+        "gapped": false
       }
     ],
     "taken": [
@@ -1098,7 +1158,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": -0.5,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "MU",
@@ -1108,8 +1169,9 @@
         "qual": 1,
         "tf": "30m",
         "resolved": true,
-        "rMultiple": -0.5,
-        "liveR": null
+        "rMultiple": -0.637,
+        "liveR": null,
+        "gapped": false
       }
     ]
   },
@@ -1124,7 +1186,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": -0.5,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "IONQ",
@@ -1135,7 +1198,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": -0.5,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "ONDS",
@@ -1146,7 +1210,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": -0.5,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       }
     ],
     "taken": [
@@ -1159,7 +1224,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": -0.5,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "IONQ",
@@ -1170,7 +1236,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": -0.5,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "ONDS",
@@ -1181,7 +1248,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": -0.5,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       }
     ]
   },
@@ -1196,7 +1264,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": -1,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       }
     ],
     "taken": [
@@ -1209,7 +1278,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": -1,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       }
     ]
   },
@@ -1223,8 +1293,9 @@
         "qual": 3,
         "tf": "30m",
         "resolved": true,
-        "rMultiple": -0.5,
-        "liveR": null
+        "rMultiple": -0.925,
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "AMD",
@@ -1235,7 +1306,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 0.755,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "HPE",
@@ -1246,7 +1318,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 0.519,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "INTC",
@@ -1257,7 +1330,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 1.58,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "MRVL",
@@ -1268,7 +1342,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 0.774,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "WDC",
@@ -1278,8 +1353,9 @@
         "qual": 4,
         "tf": "30m",
         "resolved": true,
-        "rMultiple": -0.5,
-        "liveR": null
+        "rMultiple": -1.488,
+        "liveR": null,
+        "gapped": true
       }
     ],
     "taken": [
@@ -1291,8 +1367,9 @@
         "qual": 3,
         "tf": "30m",
         "resolved": true,
-        "rMultiple": -0.5,
-        "liveR": null
+        "rMultiple": -0.925,
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "AMD",
@@ -1303,7 +1380,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 0.755,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "HPE",
@@ -1314,7 +1392,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 0.519,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "INTC",
@@ -1325,7 +1404,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 1.58,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "MRVL",
@@ -1336,7 +1416,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 0.774,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "WDC",
@@ -1346,8 +1427,9 @@
         "qual": 4,
         "tf": "30m",
         "resolved": true,
-        "rMultiple": -0.5,
-        "liveR": null
+        "rMultiple": -1.488,
+        "liveR": null,
+        "gapped": true
       }
     ]
   },
@@ -1362,7 +1444,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": -0.5,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "AVGO",
@@ -1373,7 +1456,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": -0.427,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "HPE",
@@ -1384,7 +1468,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 0.187,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "MRVL",
@@ -1395,7 +1480,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": -0.077,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       }
     ],
     "taken": [
@@ -1408,7 +1494,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": -0.5,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "AVGO",
@@ -1419,7 +1506,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": -0.427,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "HPE",
@@ -1430,7 +1518,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 0.187,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "MRVL",
@@ -1441,7 +1530,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": -0.077,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       }
     ]
   },
@@ -1456,7 +1546,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": -0.5,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "RIOT",
@@ -1467,7 +1558,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 1.261,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "BE",
@@ -1478,7 +1570,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": -0.5,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "APLD",
@@ -1489,7 +1582,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 1.289,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "CIFR",
@@ -1500,7 +1594,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 1.574,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "WULF",
@@ -1511,7 +1606,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 1.049,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "INTC",
@@ -1522,7 +1618,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": -0.5,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       }
     ],
     "taken": [
@@ -1535,7 +1632,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": -0.5,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "RIOT",
@@ -1546,7 +1644,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 1.261,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "BE",
@@ -1557,7 +1656,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": -0.5,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "APLD",
@@ -1568,7 +1668,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 1.289,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "CIFR",
@@ -1579,7 +1680,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 1.574,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "WULF",
@@ -1590,7 +1692,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 1.049,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "INTC",
@@ -1601,7 +1704,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": -0.5,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       }
     ]
   },
@@ -1616,7 +1720,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 1.21,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "QBTS",
@@ -1627,7 +1732,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 1.261,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "NVTS",
@@ -1638,7 +1744,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": -0.5,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "AMD",
@@ -1649,7 +1756,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 3.018,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "AVGO",
@@ -1660,7 +1768,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 0.142,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "MRVL",
@@ -1671,7 +1780,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": -0.5,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "IONQ",
@@ -1682,7 +1792,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 1.156,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "QBTS",
@@ -1693,7 +1804,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 1.161,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       }
     ],
     "taken": [
@@ -1706,7 +1818,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 1.21,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "QBTS",
@@ -1717,7 +1830,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 1.261,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "NVTS",
@@ -1728,7 +1842,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": -0.5,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "AMD",
@@ -1739,7 +1854,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 3.018,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "AVGO",
@@ -1750,7 +1866,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 0.142,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "MRVL",
@@ -1761,7 +1878,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": -0.5,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "IONQ",
@@ -1772,7 +1890,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 1.156,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "QBTS",
@@ -1783,7 +1902,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 1.161,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       }
     ]
   },
@@ -1798,7 +1918,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 1.334,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "OPEN",
@@ -1809,7 +1930,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": -0.016,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "RKLB",
@@ -1820,7 +1942,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 0.104,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "TSLA",
@@ -1831,7 +1954,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 1.238,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "VRT",
@@ -1842,7 +1966,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 0.201,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "OPEN",
@@ -1853,7 +1978,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 0.081,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "ARM",
@@ -1864,7 +1990,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": -1,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       }
     ],
     "taken": [
@@ -1877,7 +2004,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 1.334,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "OPEN",
@@ -1888,7 +2016,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": -0.016,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "RKLB",
@@ -1899,7 +2028,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 0.104,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "TSLA",
@@ -1910,7 +2040,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 1.238,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "VRT",
@@ -1921,7 +2052,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 0.201,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "OPEN",
@@ -1932,7 +2064,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 0.081,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "ARM",
@@ -1943,7 +2076,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": -1,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       }
     ]
   },
@@ -1958,7 +2092,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": -0.5,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "RKLB",
@@ -1969,7 +2104,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": -0.5,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "VRT",
@@ -1980,7 +2116,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": -0.5,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       }
     ],
     "taken": [
@@ -1993,7 +2130,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": -0.5,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "RKLB",
@@ -2004,7 +2142,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": -0.5,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "VRT",
@@ -2015,7 +2154,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": -0.5,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       }
     ]
   },
@@ -2030,7 +2170,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 0.383,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "CVNA",
@@ -2041,7 +2182,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": -0.5,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "HPE",
@@ -2052,7 +2194,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 1.081,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "LRCX",
@@ -2063,7 +2206,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 0.377,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "MRVL",
@@ -2074,7 +2218,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 0.23,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "AVGO",
@@ -2085,7 +2230,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 0.495,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "HPE",
@@ -2096,7 +2242,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 1.052,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "INTC",
@@ -2107,7 +2254,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 1.742,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "LRCX",
@@ -2118,7 +2266,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 0.428,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       }
     ],
     "taken": [
@@ -2131,7 +2280,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 0.383,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "CVNA",
@@ -2142,7 +2292,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": -0.5,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "HPE",
@@ -2153,7 +2304,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 1.081,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "LRCX",
@@ -2164,7 +2316,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 0.377,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "MRVL",
@@ -2175,7 +2328,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 0.23,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "AVGO",
@@ -2186,7 +2340,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 0.495,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "HPE",
@@ -2197,7 +2352,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 1.052,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "INTC",
@@ -2208,7 +2364,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 1.742,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "LRCX",
@@ -2219,7 +2376,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 0.428,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       }
     ]
   },
@@ -2234,7 +2392,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": -0.5,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "CRWV",
@@ -2245,7 +2404,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": -0.5,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "AMD",
@@ -2256,7 +2416,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": -0.307,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       }
     ],
     "taken": [
@@ -2269,7 +2430,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": -0.5,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "CRWV",
@@ -2280,7 +2442,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": -0.5,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "AMD",
@@ -2291,7 +2454,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": -0.307,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       }
     ]
   },
@@ -2306,7 +2470,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": -0.5,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "NVDA",
@@ -2317,7 +2482,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": -0.5,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       }
     ],
     "taken": [
@@ -2330,7 +2496,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": -0.5,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "NVDA",
@@ -2341,7 +2508,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": -0.5,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       }
     ]
   },
@@ -2356,7 +2524,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 0.324,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "MARA",
@@ -2367,7 +2536,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": -0.5,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "IONQ",
@@ -2378,7 +2548,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 0.383,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "BE",
@@ -2389,7 +2560,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 0.627,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "LRCX",
@@ -2400,7 +2572,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 0.382,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "IONQ",
@@ -2411,7 +2584,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 0.632,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "NVDA",
@@ -2422,7 +2596,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 1.096,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "BE",
@@ -2433,7 +2608,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": -0.5,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       }
     ],
     "taken": [
@@ -2446,7 +2622,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 0.324,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "MARA",
@@ -2457,7 +2634,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": -0.5,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "IONQ",
@@ -2468,7 +2646,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 0.383,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "BE",
@@ -2479,7 +2658,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 0.627,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "LRCX",
@@ -2490,7 +2670,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 0.382,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "IONQ",
@@ -2501,7 +2682,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 0.632,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "NVDA",
@@ -2512,7 +2694,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 1.096,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "BE",
@@ -2523,7 +2706,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": -0.5,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       }
     ]
   },
@@ -2537,8 +2721,9 @@
         "qual": 3,
         "tf": "30m",
         "resolved": true,
-        "rMultiple": -0.5,
-        "liveR": null
+        "rMultiple": -0.636,
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "MARA",
@@ -2549,7 +2734,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": -0.125,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "IONQ",
@@ -2560,7 +2746,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": -0.5,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       }
     ],
     "taken": [
@@ -2572,8 +2759,9 @@
         "qual": 3,
         "tf": "30m",
         "resolved": true,
-        "rMultiple": -0.5,
-        "liveR": null
+        "rMultiple": -0.636,
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "MARA",
@@ -2584,7 +2772,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": -0.125,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "IONQ",
@@ -2595,7 +2784,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": -0.5,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       }
     ]
   },
@@ -2610,7 +2800,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 0.78,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "APP",
@@ -2621,7 +2812,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 0.772,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "ORCL",
@@ -2632,7 +2824,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": -0.5,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "APP",
@@ -2643,7 +2836,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 0.193,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "ONDS",
@@ -2654,7 +2848,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": -0.5,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "WDC",
@@ -2665,7 +2860,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": -0.5,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       }
     ],
     "taken": [
@@ -2678,7 +2874,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 0.78,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "APP",
@@ -2689,7 +2886,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 0.772,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "ORCL",
@@ -2700,7 +2898,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": -0.5,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "APP",
@@ -2711,7 +2910,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 0.193,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "ONDS",
@@ -2722,7 +2922,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": -0.5,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "WDC",
@@ -2733,7 +2934,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": -0.5,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       }
     ]
   },
@@ -2748,7 +2950,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": -0.5,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "INTC",
@@ -2759,7 +2962,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": -0.347,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "MU",
@@ -2770,7 +2974,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 0.588,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "APP",
@@ -2781,7 +2986,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": -0.5,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       }
     ],
     "taken": [
@@ -2794,7 +3000,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": -0.5,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "INTC",
@@ -2805,7 +3012,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": -0.347,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "MU",
@@ -2816,7 +3024,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 0.588,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "APP",
@@ -2827,7 +3036,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": -0.5,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       }
     ]
   },
@@ -2842,7 +3052,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 3.272,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "MU",
@@ -2853,7 +3064,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 1.73,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "SNDK",
@@ -2864,7 +3076,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 2.007,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "MARA",
@@ -2875,7 +3088,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 3.35,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "SNDK",
@@ -2886,7 +3100,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 1.038,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "IONQ",
@@ -2897,7 +3112,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 2.687,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       }
     ],
     "taken": [
@@ -2910,7 +3126,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 3.272,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "MU",
@@ -2921,7 +3138,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 1.73,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "SNDK",
@@ -2932,7 +3150,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 2.007,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "MARA",
@@ -2943,7 +3162,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 3.35,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "SNDK",
@@ -2954,7 +3174,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 1.038,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "IONQ",
@@ -2965,7 +3186,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 2.687,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       }
     ]
   },
@@ -2980,7 +3202,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": -0.708,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "NVDA",
@@ -2991,7 +3214,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": -1,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       }
     ],
     "taken": [
@@ -3004,7 +3228,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": -0.708,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "NVDA",
@@ -3015,7 +3240,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": -1,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       }
     ]
   },
@@ -3030,7 +3256,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 1.503,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "LRCX",
@@ -3041,7 +3268,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 1.674,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "MRVL",
@@ -3052,7 +3280,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 0.771,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "MU",
@@ -3063,7 +3292,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 0.102,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "ORCL",
@@ -3074,7 +3304,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 1.098,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       }
     ],
     "taken": [
@@ -3087,7 +3318,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 1.503,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "LRCX",
@@ -3098,7 +3330,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 1.674,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "MRVL",
@@ -3109,7 +3342,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 0.771,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "MU",
@@ -3120,7 +3354,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 0.102,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "ORCL",
@@ -3131,7 +3366,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 1.098,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       }
     ]
   },
@@ -3146,7 +3382,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": -0.5,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "LRCX",
@@ -3157,7 +3394,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 0.853,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "MRVL",
@@ -3168,7 +3406,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 1.277,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "MU",
@@ -3179,7 +3418,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 2.536,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "ORCL",
@@ -3190,7 +3430,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 0.343,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       }
     ],
     "taken": [
@@ -3203,7 +3444,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": -0.5,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "LRCX",
@@ -3214,7 +3456,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 0.853,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "MRVL",
@@ -3225,7 +3468,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 1.277,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "MU",
@@ -3236,7 +3480,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 2.536,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "ORCL",
@@ -3247,7 +3492,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 0.343,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       }
     ]
   },
@@ -3262,7 +3508,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": -0.5,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "HPE",
@@ -3273,7 +3520,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": -0.5,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "INTC",
@@ -3284,7 +3532,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": -0.5,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       }
     ],
     "taken": [
@@ -3297,7 +3546,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": -0.5,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "HPE",
@@ -3308,7 +3558,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": -0.5,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "INTC",
@@ -3319,7 +3570,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": -0.5,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       }
     ]
   },
@@ -3334,7 +3586,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 1.162,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "TSLA",
@@ -3345,7 +3598,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 0.228,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "WDC",
@@ -3356,7 +3610,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 0.73,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "RIOT",
@@ -3367,7 +3622,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 1.57,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "CLSK",
@@ -3378,7 +3634,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 0.954,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "MARA",
@@ -3389,7 +3646,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": -0.5,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       }
     ],
     "taken": [
@@ -3402,7 +3660,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 1.162,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "TSLA",
@@ -3413,7 +3672,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 0.228,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "WDC",
@@ -3424,7 +3684,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 0.73,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "RIOT",
@@ -3435,7 +3696,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 1.57,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "CLSK",
@@ -3446,7 +3708,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 0.954,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "MARA",
@@ -3457,7 +3720,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": -0.5,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       }
     ]
   },
@@ -3472,7 +3736,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 1.838,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "AMD",
@@ -3483,7 +3748,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 0.318,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "CVNA",
@@ -3494,7 +3760,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": -0.5,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "MU",
@@ -3505,7 +3772,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 0.821,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "ORCL",
@@ -3516,7 +3784,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 2.004,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       }
     ],
     "taken": [
@@ -3529,7 +3798,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 1.838,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "AMD",
@@ -3540,7 +3810,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 0.318,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "CVNA",
@@ -3551,7 +3822,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": -0.5,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "MU",
@@ -3562,7 +3834,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 0.821,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "ORCL",
@@ -3573,7 +3846,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 2.004,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       }
     ]
   },
@@ -3588,7 +3862,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 2.061,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "NOW",
@@ -3599,7 +3874,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 4.134,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "CCL",
@@ -3610,7 +3886,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": -0.5,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       }
     ],
     "taken": [
@@ -3623,7 +3900,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 2.061,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "NOW",
@@ -3634,7 +3912,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 4.134,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "CCL",
@@ -3645,7 +3924,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": -0.5,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       }
     ]
   },
@@ -3660,7 +3940,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": -1,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       }
     ],
     "taken": [
@@ -3673,7 +3954,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": -1,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       }
     ]
   },
@@ -3688,7 +3970,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": -0.125,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "ONDS",
@@ -3699,7 +3982,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": -0.5,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "ALAB",
@@ -3710,7 +3994,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 1.043,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "LRCX",
@@ -3721,7 +4006,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 1.02,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "NVDA",
@@ -3732,7 +4018,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": -0.5,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       }
     ],
     "taken": [
@@ -3745,7 +4032,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": -0.125,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "ONDS",
@@ -3756,7 +4044,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": -0.5,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "ALAB",
@@ -3767,7 +4056,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 1.043,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "LRCX",
@@ -3778,7 +4068,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 1.02,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "NVDA",
@@ -3789,7 +4080,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": -0.5,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       }
     ]
   },
@@ -3804,7 +4096,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 0.648,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "CLSK",
@@ -3815,7 +4108,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": -0.5,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "BE",
@@ -3826,7 +4120,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": -0.5,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "NVTS",
@@ -3836,8 +4131,9 @@
         "qual": 4,
         "tf": "30m",
         "resolved": true,
-        "rMultiple": -1,
-        "liveR": null
+        "rMultiple": -1.258,
+        "liveR": null,
+        "gapped": true
       }
     ],
     "taken": [
@@ -3850,7 +4146,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 0.648,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "CLSK",
@@ -3861,7 +4158,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": -0.5,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "BE",
@@ -3872,7 +4170,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": -0.5,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "NVTS",
@@ -3882,8 +4181,9 @@
         "qual": 4,
         "tf": "30m",
         "resolved": true,
-        "rMultiple": -1,
-        "liveR": null
+        "rMultiple": -1.258,
+        "liveR": null,
+        "gapped": true
       }
     ]
   },
@@ -3898,7 +4198,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": -0.059,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "ALAB",
@@ -3908,8 +4209,9 @@
         "qual": 3,
         "tf": "30m",
         "resolved": true,
-        "rMultiple": -0.5,
-        "liveR": null
+        "rMultiple": -0.64,
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "ORCL",
@@ -3919,8 +4221,9 @@
         "qual": 3,
         "tf": "30m",
         "resolved": true,
-        "rMultiple": -0.5,
-        "liveR": null
+        "rMultiple": -0.543,
+        "liveR": null,
+        "gapped": false
       }
     ],
     "taken": [
@@ -3933,7 +4236,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": -0.059,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "ALAB",
@@ -3943,8 +4247,9 @@
         "qual": 3,
         "tf": "30m",
         "resolved": true,
-        "rMultiple": -0.5,
-        "liveR": null
+        "rMultiple": -0.64,
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "ORCL",
@@ -3954,8 +4259,9 @@
         "qual": 3,
         "tf": "30m",
         "resolved": true,
-        "rMultiple": -0.5,
-        "liveR": null
+        "rMultiple": -0.543,
+        "liveR": null,
+        "gapped": false
       }
     ]
   },
@@ -3970,7 +4276,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": -0.5,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "U",
@@ -3981,7 +4288,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": -0.5,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       }
     ],
     "taken": [
@@ -3994,7 +4302,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": -0.5,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "U",
@@ -4005,7 +4314,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": -0.5,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       }
     ]
   },
@@ -4020,7 +4330,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 2.274,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "INTC",
@@ -4031,7 +4342,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 1.651,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "MARA",
@@ -4042,7 +4354,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 3.496,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "WULF",
@@ -4053,7 +4366,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 3.162,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "INTC",
@@ -4064,7 +4378,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": -0.089,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       }
     ],
     "taken": [
@@ -4077,7 +4392,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 2.274,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "INTC",
@@ -4088,7 +4404,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 1.651,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "MARA",
@@ -4099,7 +4416,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 3.496,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "WULF",
@@ -4110,7 +4428,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 3.162,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "INTC",
@@ -4121,7 +4440,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": -0.089,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       }
     ]
   },
@@ -4136,7 +4456,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": -1,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "ON",
@@ -4147,7 +4468,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": -1,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       }
     ],
     "taken": [
@@ -4160,7 +4482,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": -1,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "ON",
@@ -4171,7 +4494,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": -1,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       }
     ]
   },
@@ -4186,7 +4510,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": -1,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "APLD",
@@ -4197,7 +4522,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": -1,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       }
     ],
     "taken": [
@@ -4210,7 +4536,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": -1,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "APLD",
@@ -4221,7 +4548,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": -1,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       }
     ]
   },
@@ -4236,7 +4564,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": -1,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       }
     ],
     "taken": [
@@ -4249,7 +4578,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": -1,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       }
     ]
   },
@@ -4264,7 +4594,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": -1,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       }
     ],
     "taken": [
@@ -4277,7 +4608,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": -1,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       }
     ]
   },
@@ -4292,7 +4624,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": -1,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "ANET",
@@ -4303,7 +4636,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 1.216,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "FCX",
@@ -4314,7 +4648,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 0.161,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "HPE",
@@ -4325,7 +4660,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 0.423,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "TSLA",
@@ -4336,7 +4672,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": -1,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       }
     ],
     "taken": [
@@ -4349,7 +4686,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": -1,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "ANET",
@@ -4360,7 +4698,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 1.216,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "FCX",
@@ -4371,7 +4710,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 0.161,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "HPE",
@@ -4382,7 +4722,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 0.423,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "TSLA",
@@ -4393,7 +4734,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": -1,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       }
     ]
   },
@@ -4408,7 +4750,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": -1,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       }
     ],
     "taken": [
@@ -4421,7 +4764,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": -1,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       }
     ]
   },
@@ -4436,7 +4780,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": -1,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       }
     ],
     "taken": [
@@ -4449,7 +4794,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": -1,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       }
     ]
   },
@@ -4464,7 +4810,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 2.767,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "AMD",
@@ -4475,7 +4822,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 2.056,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "ANET",
@@ -4486,7 +4834,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 0.762,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "CCL",
@@ -4497,7 +4846,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": -1,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       }
     ],
     "taken": [
@@ -4510,7 +4860,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 2.767,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "AMD",
@@ -4521,7 +4872,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 2.056,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "ANET",
@@ -4532,7 +4884,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 0.762,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "CCL",
@@ -4543,7 +4896,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": -1,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       }
     ]
   },
@@ -4558,7 +4912,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": -1,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "LRCX",
@@ -4568,8 +4923,9 @@
         "qual": 3,
         "tf": "30m",
         "resolved": true,
-        "rMultiple": -1,
-        "liveR": null
+        "rMultiple": -2.804,
+        "liveR": null,
+        "gapped": true
       }
     ],
     "taken": [
@@ -4582,7 +4938,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": -1,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "LRCX",
@@ -4592,8 +4949,9 @@
         "qual": 3,
         "tf": "30m",
         "resolved": true,
-        "rMultiple": -1,
-        "liveR": null
+        "rMultiple": -2.804,
+        "liveR": null,
+        "gapped": true
       }
     ]
   },
@@ -4608,7 +4966,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": -1,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       }
     ],
     "taken": [
@@ -4621,7 +4980,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": -1,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       }
     ]
   },
@@ -4636,7 +4996,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 0.344,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "HPE",
@@ -4647,7 +5008,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": -1,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "CCL",
@@ -4658,7 +5020,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 0.361,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "NCLH",
@@ -4669,7 +5032,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 0.777,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "CRDO",
@@ -4679,8 +5043,9 @@
         "qual": 1,
         "tf": "30m",
         "resolved": true,
-        "rMultiple": -1,
-        "liveR": null
+        "rMultiple": -1.281,
+        "liveR": null,
+        "gapped": true
       }
     ],
     "taken": [
@@ -4693,7 +5058,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 0.344,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "HPE",
@@ -4704,7 +5070,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": -1,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "CCL",
@@ -4715,7 +5082,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 0.361,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "NCLH",
@@ -4726,7 +5094,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 0.777,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "CRDO",
@@ -4736,8 +5105,9 @@
         "qual": 1,
         "tf": "30m",
         "resolved": true,
-        "rMultiple": -1,
-        "liveR": null
+        "rMultiple": -1.281,
+        "liveR": null,
+        "gapped": true
       }
     ]
   },
@@ -4752,7 +5122,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": -1,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "CRDO",
@@ -4763,7 +5134,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": -1,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       }
     ],
     "taken": [
@@ -4776,7 +5148,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": -1,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "CRDO",
@@ -4787,7 +5160,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": -1,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       }
     ]
   },
@@ -4802,7 +5176,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": -1,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       }
     ],
     "taken": [
@@ -4815,7 +5190,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": -1,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       }
     ]
   },
@@ -4829,19 +5205,9 @@
         "qual": 3,
         "tf": "30m",
         "resolved": true,
-        "rMultiple": -1,
-        "liveR": null
-      },
-      {
-        "symbol": "FIG",
-        "side": "short",
-        "barTime": 1782829800,
-        "source": "CORE",
-        "qual": 3,
-        "tf": "30m",
-        "resolved": true,
-        "rMultiple": -1,
-        "liveR": null
+        "rMultiple": -2.571,
+        "liveR": null,
+        "gapped": true
       }
     ],
     "taken": [
@@ -4853,19 +5219,9 @@
         "qual": 3,
         "tf": "30m",
         "resolved": true,
-        "rMultiple": -1,
-        "liveR": null
-      },
-      {
-        "symbol": "FIG",
-        "side": "short",
-        "barTime": 1782829800,
-        "source": "CORE",
-        "qual": 3,
-        "tf": "30m",
-        "resolved": true,
-        "rMultiple": -1,
-        "liveR": null
+        "rMultiple": -2.571,
+        "liveR": null,
+        "gapped": true
       }
     ]
   },
@@ -4880,7 +5236,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 2.385,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "BSX",
@@ -4891,7 +5248,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": -1,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       }
     ],
     "taken": [
@@ -4904,7 +5262,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 2.385,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "BSX",
@@ -4915,7 +5274,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": -1,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       }
     ]
   },
@@ -4930,7 +5290,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 1.505,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "HIMS",
@@ -4941,7 +5302,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 1.737,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "U",
@@ -4952,7 +5314,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": -1,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       }
     ],
     "taken": [
@@ -4965,7 +5328,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 1.505,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "HIMS",
@@ -4976,7 +5340,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 1.737,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "U",
@@ -4987,7 +5352,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": -1,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       }
     ]
   },
@@ -5001,8 +5367,9 @@
         "qual": 3,
         "tf": "30m",
         "resolved": true,
-        "rMultiple": -1,
-        "liveR": null
+        "rMultiple": -2.505,
+        "liveR": null,
+        "gapped": true
       }
     ],
     "taken": [
@@ -5014,8 +5381,9 @@
         "qual": 3,
         "tf": "30m",
         "resolved": true,
-        "rMultiple": -1,
-        "liveR": null
+        "rMultiple": -2.505,
+        "liveR": null,
+        "gapped": true
       }
     ]
   },
@@ -5030,7 +5398,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 0.445,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "HIMS",
@@ -5041,7 +5410,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": -1,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "HPE",
@@ -5052,7 +5422,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 0.332,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "HOOD",
@@ -5062,8 +5433,9 @@
         "qual": 1,
         "tf": "30m",
         "resolved": true,
-        "rMultiple": -1,
-        "liveR": null
+        "rMultiple": -1.303,
+        "liveR": null,
+        "gapped": true
       }
     ],
     "taken": [
@@ -5076,7 +5448,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 0.445,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "HIMS",
@@ -5087,7 +5460,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": -1,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "HPE",
@@ -5098,7 +5472,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 0.332,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "HOOD",
@@ -5108,8 +5483,9 @@
         "qual": 1,
         "tf": "30m",
         "resolved": true,
-        "rMultiple": -1,
-        "liveR": null
+        "rMultiple": -1.303,
+        "liveR": null,
+        "gapped": true
       }
     ]
   },
@@ -5123,8 +5499,9 @@
         "qual": 2,
         "tf": "30m",
         "resolved": true,
-        "rMultiple": -1,
-        "liveR": null
+        "rMultiple": -1.32,
+        "liveR": null,
+        "gapped": true
       }
     ],
     "taken": [
@@ -5136,8 +5513,9 @@
         "qual": 2,
         "tf": "30m",
         "resolved": true,
-        "rMultiple": -1,
-        "liveR": null
+        "rMultiple": -1.32,
+        "liveR": null,
+        "gapped": true
       }
     ]
   },
@@ -5152,7 +5530,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": -1,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "MSTR",
@@ -5163,7 +5542,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 0.794,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "MSTR",
@@ -5174,7 +5554,8 @@
         "tf": "1h",
         "resolved": true,
         "rMultiple": 0.563,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "NFLX",
@@ -5185,7 +5566,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": -1,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       }
     ],
     "taken": [
@@ -5198,7 +5580,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": -1,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "MSTR",
@@ -5209,7 +5592,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 0.794,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "MSTR",
@@ -5220,7 +5604,8 @@
         "tf": "1h",
         "resolved": true,
         "rMultiple": 0.563,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "NFLX",
@@ -5231,7 +5616,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": -1,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       }
     ]
   },
@@ -5246,7 +5632,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 2.177,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "SMCI",
@@ -5257,7 +5644,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": -0.013,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "COIN",
@@ -5268,7 +5656,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": -1,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       }
     ],
     "taken": [
@@ -5281,7 +5670,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 2.177,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "SMCI",
@@ -5292,7 +5682,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": -0.013,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "COIN",
@@ -5303,7 +5694,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": -1,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       }
     ]
   },
@@ -5318,7 +5710,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 1.601,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "AMD",
@@ -5329,7 +5722,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 1.12,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "MU",
@@ -5340,7 +5734,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 2.317,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "SNDK",
@@ -5351,7 +5746,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 2.974,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "WDC",
@@ -5362,7 +5758,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 4.012,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       }
     ],
     "taken": [
@@ -5375,7 +5772,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 1.601,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "AMD",
@@ -5386,7 +5784,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 1.12,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "MU",
@@ -5397,7 +5796,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 2.317,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "SNDK",
@@ -5408,7 +5808,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 2.974,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "WDC",
@@ -5419,7 +5820,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 4.012,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       }
     ]
   },
@@ -5434,7 +5836,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 1.377,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "TSLA",
@@ -5445,7 +5848,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 0.191,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "CMCSA",
@@ -5456,7 +5860,20 @@
         "tf": "1h",
         "resolved": true,
         "rMultiple": -0.977,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
+      },
+      {
+        "symbol": "CMCSA",
+        "side": "short",
+        "barTime": 1784127600,
+        "source": "CORE",
+        "qual": 2,
+        "tf": "30m",
+        "resolved": true,
+        "rMultiple": -0.977,
+        "liveR": null,
+        "gapped": false
       }
     ],
     "taken": [
@@ -5469,7 +5886,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 1.377,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "TSLA",
@@ -5480,7 +5898,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 0.191,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "CMCSA",
@@ -5491,7 +5910,20 @@
         "tf": "1h",
         "resolved": true,
         "rMultiple": -0.977,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
+      },
+      {
+        "symbol": "CMCSA",
+        "side": "short",
+        "barTime": 1784127600,
+        "source": "CORE",
+        "qual": 2,
+        "tf": "30m",
+        "resolved": true,
+        "rMultiple": -0.977,
+        "liveR": null,
+        "gapped": false
       }
     ]
   },
@@ -5506,7 +5938,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 0.445,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "COIN",
@@ -5517,7 +5950,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 1.822,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "CCL",
@@ -5528,7 +5962,8 @@
         "tf": "1h",
         "resolved": true,
         "rMultiple": 0.139,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "NFLX",
@@ -5539,7 +5974,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 3.612,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "UBER",
@@ -5550,7 +5986,8 @@
         "tf": "1h",
         "resolved": true,
         "rMultiple": 1.053,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "UBER",
@@ -5561,7 +5998,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": -0.618,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "BSX",
@@ -5571,8 +6009,9 @@
         "qual": 1,
         "tf": "30m",
         "resolved": true,
-        "rMultiple": -1,
-        "liveR": null
+        "rMultiple": -1.024,
+        "liveR": null,
+        "gapped": true
       }
     ],
     "taken": [
@@ -5585,7 +6024,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 0.445,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "COIN",
@@ -5596,7 +6036,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 1.822,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "CCL",
@@ -5607,7 +6048,8 @@
         "tf": "1h",
         "resolved": true,
         "rMultiple": 0.139,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "NFLX",
@@ -5618,7 +6060,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 3.612,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "UBER",
@@ -5629,7 +6072,8 @@
         "tf": "1h",
         "resolved": true,
         "rMultiple": 1.053,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "UBER",
@@ -5640,7 +6084,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": -0.618,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "BSX",
@@ -5650,8 +6095,9 @@
         "qual": 1,
         "tf": "30m",
         "resolved": true,
-        "rMultiple": -1,
-        "liveR": null
+        "rMultiple": -1.024,
+        "liveR": null,
+        "gapped": true
       }
     ]
   },
@@ -5666,7 +6112,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 0.045,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "CMCSA",
@@ -5677,7 +6124,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 0.354,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "CMCSA",
@@ -5688,7 +6136,8 @@
         "tf": "1h",
         "resolved": true,
         "rMultiple": 0.118,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "CMCSA",
@@ -5699,7 +6148,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 0.118,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "RKLB",
@@ -5710,7 +6160,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 0.688,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "CCL",
@@ -5721,7 +6172,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 0.229,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       }
     ],
     "taken": [
@@ -5734,7 +6186,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 0.045,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "CMCSA",
@@ -5745,7 +6198,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 0.354,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "CMCSA",
@@ -5756,7 +6210,8 @@
         "tf": "1h",
         "resolved": true,
         "rMultiple": 0.118,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "CMCSA",
@@ -5767,7 +6222,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 0.118,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "RKLB",
@@ -5778,7 +6234,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 0.688,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       },
       {
         "symbol": "CCL",
@@ -5789,7 +6246,8 @@
         "tf": "30m",
         "resolved": true,
         "rMultiple": 0.229,
-        "liveR": null
+        "liveR": null,
+        "gapped": false
       }
     ]
   }

@@ -25,7 +25,12 @@ function build() {
   .regime.bull { background: color-mix(in srgb, var(--long) 18%, transparent); color: var(--long); }
   .regime.bear { background: color-mix(in srgb, var(--short) 18%, transparent); color: var(--short); }
 
-  .signals-block { margin-top: 28px; border: 2px solid var(--signal); background: var(--surface); }
+  .summary-strip { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--rail); border: 1px solid var(--rail); margin-top: 20px; }
+  .summary-cell { background: var(--surface); padding: 12px 14px; }
+  .summary-label { font-size: 10px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-faint); margin: 0 0 4px; }
+  .summary-value { font-size: 18px; font-weight: 700; color: var(--signal); }
+  @media (max-width: 600px) { .summary-strip { grid-template-columns: 1fr 1fr; } }
+  .signals-block { margin-top: 20px; border: 2px solid var(--signal); background: var(--surface); }
   .signals-block .head { display: flex; align-items: center; justify-content: space-between; padding: 14px 18px; border-bottom: 1px solid var(--rail); flex-wrap: wrap; gap: 10px; }
   .signals-block .head h2 { margin: 0; color: var(--signal); font-size: 14px; }
   .controls { display: flex; align-items: center; gap: 8px; }
@@ -63,6 +68,8 @@ function build() {
   <h1>System 6 — Live Signals</h1>
   <p class="sub mono">Roster last checked: ${rosterUpdated}</p>
   <span class="regime ${data.qqqBullish ? 'bull' : 'bear'}">QQQ: ${data.qqqBullish ? 'BULLISH' : 'BEARISH'}</span>
+
+  <div class="summary-strip" id="summary-strip"></div>
 
   <div class="signals-block">
     <div class="head">
@@ -102,6 +109,22 @@ function build() {
 const HISTORY = ${JSON.stringify(history)};
 const days = Object.keys(HISTORY).sort();
 const todayStr = ${JSON.stringify(new Intl.DateTimeFormat('en-CA', { timeZone: 'America/Los_Angeles' }).format(new Date()))};
+
+// Overall true RR: avg winner / |avg loser|, on the net-rMultiple basis (a small win is
+// still a WIN, a small loss is still a LOSS -- not the looser "wasn't fully stopped out"
+// definition). Computed across every resolved trade in history.
+const allResolved = days.flatMap(d => (HISTORY[d].taken || []).filter(t => t.resolved));
+const allWins = allResolved.filter(t => t.rMultiple > 0);
+const allLosses = allResolved.filter(t => t.rMultiple <= 0);
+const avgWinAll = allWins.length ? allWins.reduce((a, t) => a + t.rMultiple, 0) / allWins.length : 0;
+const avgLossAll = allLosses.length ? allLosses.reduce((a, t) => a + t.rMultiple, 0) / allLosses.length : 0;
+const trueRR = avgLossAll !== 0 ? Math.abs(avgWinAll / avgLossAll) : 0;
+const overallWinRate = allResolved.length ? (allWins.length / allResolved.length * 100) : 0;
+document.getElementById('summary-strip').innerHTML =
+  '<div class="summary-cell"><p class="summary-label">Resolved Trades</p><p class="summary-value mono">' + allResolved.length + '</p></div>' +
+  '<div class="summary-cell"><p class="summary-label">Win Rate</p><p class="summary-value mono">' + overallWinRate.toFixed(1) + '%</p></div>' +
+  '<div class="summary-cell"><p class="summary-label">True Risk:Reward</p><p class="summary-value mono">' + trueRR.toFixed(2) + ' : 1</p></div>' +
+  '<div class="summary-cell"><p class="summary-label">Avg Win / Avg Loss</p><p class="summary-value mono" style="font-size:15px;">+' + avgWinAll.toFixed(2) + 'R / ' + avgLossAll.toFixed(2) + 'R</p></div>';
 
 const dateInput = document.getElementById('date-input');
 const container = document.getElementById('signal-container');
