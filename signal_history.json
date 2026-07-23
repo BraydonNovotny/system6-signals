@@ -1,6 +1,6 @@
 {
   "2026-07-22": {
-    "core": [
+    "candidates": [
       {
         "symbol": "CVNA",
         "side": "short",
@@ -252,7 +252,137 @@
         "source": "CORE"
       }
     ],
-    "ep": [],
-    "per": []
+    "taken": [
+      {
+        "symbol": "CVNA",
+        "side": "short",
+        "qual": 2,
+        "entryPrice": 63.5,
+        "stopPrice": 65.01,
+        "barTime": 1784727000,
+        "patternTier": "rejection",
+        "source": "CORE",
+        "resolved": false,
+        "rMultiple": null,
+        "liveR": 0.5
+      },
+      {
+        "symbol": "SOFI",
+        "side": "short",
+        "qual": 2,
+        "entryPrice": 17.26,
+        "stopPrice": 17.67,
+        "barTime": 1784727000,
+        "patternTier": "rejection",
+        "source": "CORE",
+        "resolved": false,
+        "rMultiple": null,
+        "liveR": 0.46
+      },
+      {
+        "symbol": "COIN",
+        "side": "short",
+        "qual": 2,
+        "entryPrice": 171.56,
+        "stopPrice": 175.46,
+        "barTime": 1784728800,
+        "patternTier": "rejection",
+        "source": "CORE",
+        "resolved": false,
+        "rMultiple": null,
+        "liveR": 1.39
+      },
+      {
+        "symbol": "MSTR",
+        "side": "short",
+        "qual": 2,
+        "entryPrice": 99.51,
+        "stopPrice": 101.83,
+        "barTime": 1784728800,
+        "patternTier": "rejection",
+        "source": "CORE",
+        "resolved": false,
+        "rMultiple": null,
+        "liveR": -0.22
+      },
+      {
+        "symbol": "OPEN",
+        "side": "short",
+        "qual": 2,
+        "entryPrice": 4.39,
+        "stopPrice": 4.52,
+        "barTime": 1784728800,
+        "patternTier": "rejection",
+        "source": "CORE",
+        "resolved": false,
+        "rMultiple": null,
+        "liveR": 0.08
+      },
+      {
+        "symbol": "ACHR",
+        "side": "short",
+        "qual": 2,
+        "entryPrice": 5.18,
+        "stopPrice": 5.33,
+        "barTime": 1784730600,
+        "patternTier": "rejection",
+        "source": "CORE",
+        "resolved": false,
+        "rMultiple": null,
+        "liveR": 0
+      },
+      {
+        "symbol": "SOUN",
+        "side": "short",
+        "qual": 2,
+        "entryPrice": 6.43,
+        "stopPrice": 6.59,
+        "barTime": 1784730600,
+        "patternTier": "rejection",
+        "source": "CORE",
+        "resolved": false,
+        "rMultiple": null,
+        "liveR": -0.19
+      },
+      {
+        "symbol": "RDDT",
+        "side": "short",
+        "qual": 3,
+        "entryPrice": 169.38,
+        "stopPrice": 173.94,
+        "barTime": 1784732400,
+        "patternTier": "dryDownBreakdown3",
+        "source": "CORE",
+        "resolved": false,
+        "rMultiple": null,
+        "liveR": -0.22
+      },
+      {
+        "symbol": "PLTR",
+        "side": "short",
+        "qual": 3,
+        "entryPrice": 127.12,
+        "stopPrice": 130,
+        "barTime": 1784734200,
+        "patternTier": "dryDownBreakdown3",
+        "source": "CORE",
+        "resolved": false,
+        "rMultiple": null,
+        "liveR": 0.89
+      },
+      {
+        "symbol": "ORCL",
+        "side": "short",
+        "qual": 2,
+        "entryPrice": 125.9,
+        "stopPrice": 128.73,
+        "barTime": 1784734200,
+        "patternTier": "rejection",
+        "source": "CORE",
+        "resolved": false,
+        "rMultiple": null,
+        "liveR": 0.02
+      }
+    ]
   }
 }

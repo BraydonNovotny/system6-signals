@@ -12,11 +12,11 @@ function build() {
   const html = `<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>System 6 — Live Signals</title>
 <style>
-  :root { --paper:#EEF1EE; --surface:#FFFFFF; --text:#171E1A; --text-mute:#4B564E; --text-faint:#7C877D; --rail:#C7CDC5; --rail-strong:#9AA398; --signal:#1B7A6C; --signal-soft:#1B7A6C1a; --long:#2E7D4F; --short:#A8502E; --ep:#A8762E; --per:#6B5B95; }
-  @media (prefers-color-scheme: dark) { :root { --paper:#0C1210; --surface:#101613; --text:#E9EDE8; --text-mute:#A3AEA1; --text-faint:#6C776B; --rail:#2B342F; --rail-strong:#3D4941; --signal:#3FD6BE; --signal-soft:#3FD6BE22; --long:#4FB47A; --short:#D97E5C; --ep:#E0AD5C; --per:#A79AD1; } }
+  :root { --paper:#EEF1EE; --surface:#FFFFFF; --text:#171E1A; --text-mute:#4B564E; --text-faint:#7C877D; --rail:#C7CDC5; --rail-strong:#9AA398; --signal:#1B7A6C; --signal-soft:#1B7A6C1a; --long:#2E7D4F; --short:#A8502E; --win:#2E7D4F; --loss:#A8502E; }
+  @media (prefers-color-scheme: dark) { :root { --paper:#0C1210; --surface:#101613; --text:#E9EDE8; --text-mute:#A3AEA1; --text-faint:#6C776B; --rail:#2B342F; --rail-strong:#3D4941; --signal:#3FD6BE; --signal-soft:#3FD6BE22; --long:#4FB47A; --short:#D97E5C; --win:#4FB47A; --loss:#D97E5C; } }
   * { box-sizing: border-box; }
   body { background: var(--paper); color: var(--text); font-family: -apple-system, "Segoe UI", Roboto, sans-serif; margin: 0; padding: 40px 24px 80px; }
-  .wrap { max-width: 840px; margin: 0 auto; }
+  .wrap { max-width: 780px; margin: 0 auto; }
   .mono { font-family: ui-monospace, "SF Mono", Consolas, monospace; font-variant-numeric: tabular-nums; }
   h1 { font-size: 24px; font-weight: 600; margin: 0 0 6px; }
   h2 { font-size: 15px; text-transform: uppercase; letter-spacing: 0.05em; margin: 0 0 4px; color: var(--text-mute); }
@@ -31,17 +31,15 @@ function build() {
   .controls { display: flex; align-items: center; gap: 8px; }
   input[type="date"] { font-family: inherit; font-size: 13px; padding: 5px 8px; border-radius: 4px; border: 1px solid var(--rail-strong); background: var(--paper); color: var(--text); }
   button.nav { appearance: none; border: 1px solid var(--rail-strong); background: var(--paper); color: var(--text); font-size: 12.5px; padding: 5px 10px; border-radius: 4px; cursor: pointer; font-family: inherit; }
-  button.nav:hover { background: var(--signal-soft); border-color: var(--signal); }
+  button.nav:hover:not(:disabled) { background: var(--signal-soft); border-color: var(--signal); }
+  button.nav:disabled { opacity: 0.35; cursor: not-allowed; }
 
-  table { border-collapse: collapse; width: 100%; font-size: 13.5px; }
+  table { border-collapse: collapse; width: 100%; font-size: 14px; }
   th, td { padding: 10px 16px; text-align: left; border-bottom: 1px solid var(--rail); }
   th { font-size: 10.5px; text-transform: uppercase; color: var(--text-faint); }
   tbody tr:last-child td { border-bottom: none; }
   .long { color: var(--long); font-weight: 600; } .short { color: var(--short); font-weight: 600; }
-  .tag { display: inline-block; padding: 2px 7px; border-radius: 999px; font-size: 10.5px; font-weight: 700; }
-  .tag-core { background: var(--signal-soft); color: var(--signal); }
-  .tag-ep { background: color-mix(in srgb, var(--ep) 18%, transparent); color: var(--ep); }
-  .tag-per { background: color-mix(in srgb, var(--per) 18%, transparent); color: var(--per); }
+  .r-pos { color: var(--win); font-weight: 700; } .r-neg { color: var(--loss); font-weight: 700; } .r-pending { color: var(--text-faint); font-style: italic; }
   .empty { padding: 32px 20px; text-align: center; color: var(--text-faint); font-size: 14px; }
   .empty b { display: block; color: var(--text-mute); font-size: 15px; margin-bottom: 4px; }
 
@@ -67,7 +65,7 @@ function build() {
 
   <div class="signals-block">
     <div class="head">
-      <h2 id="section-title">Triggered signals</h2>
+      <h2 id="section-title">Triggered &amp; taken</h2>
       <div class="controls">
         <input type="date" id="date-input" />
         <button class="nav" id="prev-btn">&larr;</button>
@@ -75,13 +73,12 @@ function build() {
         <button class="nav" id="today-btn">Today</button>
       </div>
     </div>
-    <p style="font-size:12.5px; color:var(--text-faint); padding:0 18px; margin:10px 0 -4px;">These are qualifying pattern setups, ranked by tier (higher qual = higher conviction) — NOT capital/risk-filtered the way the backtest's actual trades are. The backtest only takes ~1 in 25-30 of these once its daily loss cap and position limits are applied, and those depend on your own realized P&L today (not something a forward-looking scanner can know). Use qual tier to prioritize, don't take everything.</p>
     <div id="signal-container"></div>
   </div>
 
   <details class="roster">
     <summary>Eligible universe (roster) — ${rosterLong.length} long / ${rosterShort.length} short — not signals, just what qualifies to be watched</summary>
-    <p class="note">Passing the roster gate means a ticker is in-play for a pattern to fire — it is NOT a buy/sell signal by itself. Most roster tickers never trigger on a given day.</p>
+    <p class="note">Passing the roster gate means a ticker is in-play for a pattern to fire — it is NOT a buy/sell signal by itself.</p>
     <div class="cols">
       <div class="panel long">
         <h3>Long roster</h3>
@@ -94,7 +91,7 @@ function build() {
     </div>
   </details>
 
-  <footer>MAX + EP + Parabolic, same thresholds as the locked backtest (~206% OOS CAGR under realistic gap pricing). Signal history only goes back to whenever this system first ran -- not retroactive to the full 2019-2026 backtest. This is directional guidance ported from a backtest, not investment advice -- verify before acting.</footer>
+  <footer>MAX + EP + Parabolic. "Taken" = passed the same -1R daily loss cap (-2R for EP-30m) and 10-position limit the backtest uses, computed chronologically as the day unfolds. Trades still in progress show as Pending until enough bars exist to resolve them (updates automatically on a later refresh). History starts from whenever this system first ran. Not investment advice -- verify before acting.</footer>
 </div>
 
 <script>
@@ -105,6 +102,8 @@ const todayStr = ${JSON.stringify(new Intl.DateTimeFormat('en-CA', { timeZone: '
 const dateInput = document.getElementById('date-input');
 const container = document.getElementById('signal-container');
 const titleEl = document.getElementById('section-title');
+const prevBtn = document.getElementById('prev-btn');
+const nextBtn = document.getElementById('next-btn');
 if (days.length) { dateInput.min = days[0]; dateInput.max = days[days.length - 1] > todayStr ? days[days.length - 1] : todayStr; }
 
 function fmtTime(barTime) {
@@ -115,36 +114,44 @@ function humanDate(dateStr) {
 }
 function render(dateStr) {
   dateInput.value = dateStr;
-  titleEl.textContent = (dateStr === todayStr ? "Today's" : humanDate(dateStr)) + ' triggered signals';
+  titleEl.textContent = (dateStr === todayStr ? "Today's" : humanDate(dateStr)) + ' triggered & taken';
   const day = HISTORY[dateStr];
-  const all = day ? [
-    ...day.core.map(s => ({ ...s, tag: 'CORE', cls: 'tag-core' })),
-    ...day.ep.map(s => ({ ...s, tag: 'EP', cls: 'tag-ep' })),
-    ...day.per.map(s => ({ ...s, tag: 'PER', cls: 'tag-per' })),
-  ].sort((a, b) => a.barTime - b.barTime) : [];
+  const taken = (day && day.taken ? day.taken.slice() : []).sort((a, b) => a.barTime - b.barTime);
 
-  if (!all.length) {
-    container.innerHTML = '<div class="empty"><b>No signals triggered</b>' + (day ? 'Checked, nothing fired ' + humanDate(dateStr) + '.' : 'No data recorded for this day yet.') + '</div>';
+  const idx = days.indexOf(dateStr);
+  prevBtn.disabled = !(idx > 0);
+  nextBtn.disabled = !(idx >= 0 && idx < days.length - 1);
+
+  if (!taken.length) {
+    container.innerHTML = '<div class="empty"><b>No trades taken</b>' + (day ? 'Checked ' + humanDate(dateStr) + ' — nothing passed the filters.' : 'No data recorded for this day yet.') + '</div>';
     return;
   }
-  const rows = all.map(s =>
-    '<tr><td>' + fmtTime(s.barTime) + ' PT</td><td class="mono" style="font-weight:600;">' + s.symbol + '</td>' +
-    '<td class="' + s.side + '">' + s.side.toUpperCase() + '</td><td><span class="tag ' + s.cls + '">' + s.tag + '</span></td>' +
-    '<td class="mono">' + s.entryPrice + '</td><td class="mono">' + s.stopPrice + '</td></tr>'
-  ).join('');
-  container.innerHTML = '<table><thead><tr><th>Time</th><th>Ticker</th><th>Action</th><th>Source</th><th>Entry</th><th>Stop</th></tr></thead><tbody>' + rows + '</tbody></table>';
+  const rows = taken.map(s => {
+    let resultHtml;
+    if (!s.resolved) {
+      const lr = s.liveR;
+      const lrText = lr == null ? '' : ' (' + (lr >= 0 ? '+' : '') + lr.toFixed(2) + 'R)';
+      const cls = lr == null ? 'r-pending' : (lr >= 0 ? 'r-pos' : 'r-neg');
+      resultHtml = '<span class="r-pending">LIVE</span><span class="' + cls + '">' + lrText + '</span>';
+    } else {
+      resultHtml = '<span class="' + (s.rMultiple >= 0 ? 'r-pos' : 'r-neg') + '">' + (s.rMultiple >= 0 ? '+' : '') + s.rMultiple.toFixed(2) + 'R</span>';
+    }
+    return '<tr><td class="mono" style="font-weight:600;">' + s.symbol + '</td><td>' + fmtTime(s.barTime + 1800) + ' PT</td>' +
+      '<td class="' + s.side + '">' + s.side.toUpperCase() + '</td><td>' + resultHtml + '</td></tr>';
+  }).join('');
+  container.innerHTML = '<table><thead><tr><th>Ticker</th><th>Time</th><th>Side</th><th>Result</th></tr></thead><tbody>' + rows + '</tbody></table>';
 }
 
 function goTo(dir) {
   const cur = dateInput.value;
   let idx = days.indexOf(cur);
-  if (idx === -1) { render(days.length ? days[days.length - 1] : todayStr); return; }
+  if (idx === -1) return;
   idx += dir;
   if (idx >= 0 && idx < days.length) render(days[idx]);
 }
 dateInput.addEventListener('change', () => render(dateInput.value));
-document.getElementById('prev-btn').addEventListener('click', () => goTo(-1));
-document.getElementById('next-btn').addEventListener('click', () => goTo(1));
+prevBtn.addEventListener('click', () => goTo(-1));
+nextBtn.addEventListener('click', () => goTo(1));
 document.getElementById('today-btn').addEventListener('click', () => render(todayStr));
 
 render(days.length && days[days.length - 1] >= todayStr ? days[days.length - 1] : (days.includes(todayStr) ? todayStr : (days[days.length - 1] || todayStr)));

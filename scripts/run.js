@@ -1,15 +1,26 @@
 // Entry point invoked by the GitHub Actions workflow (triggered every 30 min by an
 // external cron-job.org ping). Self-gates on real America/Los_Angeles time.
-//   - Roster (daily bars, changes once a day): runs once in the EOD window.
-//   - Entries (core + EP + Parabolic, 30m bars): runs every trigger during market hours,
-//     merged and recorded into the persistent day-by-day history.
-const { ptNowDecimalHour, ptDateString, loadData, saveData } = require('./lib');
+const { ptNowDecimalHour, ptDateString, loadData, fetchChart, pool } = require('./lib');
 const scanRoster = require('./scan_roster');
 const scanEntries = require('./scan_entries');
 const epScan = require('./ep_scan');
 const perScan = require('./per_scan');
-const { recordDay, loadHistory } = require('./history');
+const { loadHistory, recordCandidates, recordTaken } = require('./history');
+const { runAccountFilter } = require('./account_filter');
+const resolvePending = require('./resolve_pending');
 const { build } = require('./build_site.js');
+
+async function fetch30m(symbol) {
+  const result = await fetchChart(symbol, 'range=10d&interval=30m');
+  const ts = result.timestamp || [];
+  const q = result.indicators?.quote?.[0] || {};
+  const bars = [];
+  for (let i = 0; i < ts.length; i++) {
+    if (q.close[i] == null || q.high[i] == null || q.low[i] == null || q.volume[i] == null || q.open[i] == null) continue;
+    bars.push({ time: ts[i], open: q.open[i], high: q.high[i], low: q.low[i], close: q.close[i], volume: q.volume[i] });
+  }
+  return bars;
+}
 
 async function runEntryScans() {
   const history = loadHistory();
@@ -19,8 +30,19 @@ async function runEntryScans() {
     perScan.run().catch(e => { console.error('PER scan failed:', e.message); return []; }),
   ]);
   const today = ptDateString();
-  recordDay(today, core, ep, per);
-  return { core, ep, per };
+  const allNew = [...core, ...ep, ...per];
+  const allCandidatesToday = recordCandidates(today, allNew);
+
+  // fetch fresh bars for every symbol involved (for exit simulation)
+  const symbols = [...new Set(allCandidatesToday.map(c => c.symbol))];
+  const barResults = await pool(symbols, fetch30m, 8);
+  const barsBySymbol = {};
+  symbols.forEach((sym, i) => { if (barResults[i].ok) barsBySymbol[sym] = barResults[i].value; });
+
+  const taken = runAccountFilter(allCandidatesToday, barsBySymbol);
+  recordTaken(today, taken);
+  console.log(`Candidates today: ${allCandidatesToday.length} | Taken (passed daily cap + position limit): ${taken.length}`);
+  return taken;
 }
 
 async function main() {
@@ -30,6 +52,7 @@ async function main() {
     console.log('Force: running scan_roster + all entry scans.');
     await scanRoster.run();
     await runEntryScans();
+    await resolvePending.run().catch(e => console.error('resolvePending failed:', e.message));
     build();
     return;
   }
@@ -58,6 +81,9 @@ async function main() {
     await runEntryScans();
     didWork = true;
   }
+
+  // resolve pending trades from recent days whenever we do any other work this run
+  if (didWork) await resolvePending.run().catch(e => console.error('resolvePending failed:', e.message));
 
   if (!didWork) { console.log(`PT hour ${decimalHour.toFixed(2)} outside all active windows - no-op.`); return; }
   build();
