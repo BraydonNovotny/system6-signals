@@ -6376,5 +6376,141 @@
         "rejectReason": "max positions (10)"
       }
     ]
+  },
+  "2026-07-20": {
+    "candidates": [
+      {
+        "symbol": "CMCSA",
+        "side": "short",
+        "qual": 2,
+        "entryPrice": 23.835,
+        "stopPrice": 24.215,
+        "barTime": 1784565000,
+        "patternTier": "rejection",
+        "source": "CORE",
+        "tf": "30m",
+        "resolved": true,
+        "rMultiple": 0.46,
+        "liveR": 0.46,
+        "gapped": false
+      },
+      {
+        "symbol": "GOOG",
+        "side": "short",
+        "qual": 2,
+        "entryPrice": 352.53,
+        "stopPrice": 357.891,
+        "barTime": 1784566800,
+        "patternTier": "rejection",
+        "source": "CORE",
+        "tf": "30m",
+        "resolved": true,
+        "rMultiple": 0.79,
+        "liveR": 0.79,
+        "gapped": false
+      }
+    ],
+    "taken": [
+      {
+        "symbol": "CMCSA",
+        "side": "short",
+        "qual": 2,
+        "entryPrice": 23.835,
+        "stopPrice": 24.215,
+        "barTime": 1784565000,
+        "patternTier": "rejection",
+        "source": "CORE",
+        "tf": "30m",
+        "resolved": true,
+        "rMultiple": 0.46,
+        "liveR": 0.46,
+        "gapped": false
+      },
+      {
+        "symbol": "GOOG",
+        "side": "short",
+        "qual": 2,
+        "entryPrice": 352.53,
+        "stopPrice": 357.891,
+        "barTime": 1784566800,
+        "patternTier": "rejection",
+        "source": "CORE",
+        "tf": "30m",
+        "resolved": true,
+        "rMultiple": 0.79,
+        "liveR": 0.79,
+        "gapped": false
+      }
+    ],
+    "rejected": [],
+    "note": "Partial backfill: only CMCSA/AMZN/GOOG (3 of 19 roster tickers) checked against real TradingView data. AMZN excluded (did not pass daily scan on 7/17). Not a complete day."
+  },
+  "2026-07-21": {
+    "candidates": [
+      {
+        "symbol": "CMCSA",
+        "side": "short",
+        "qual": 3,
+        "entryPrice": 23.705,
+        "stopPrice": 24.083,
+        "barTime": 1784649600,
+        "patternTier": "dryDownBreakdown3",
+        "source": "CORE",
+        "tf": "30m",
+        "resolved": true,
+        "rMultiple": -1.2,
+        "liveR": -1.2,
+        "gapped": false
+      },
+      {
+        "symbol": "GOOG",
+        "side": "short",
+        "qual": 3,
+        "entryPrice": 348.15,
+        "stopPrice": 353.444,
+        "barTime": 1784656800,
+        "patternTier": "dryDownBreakdown3",
+        "source": "CORE",
+        "tf": "30m",
+        "resolved": true,
+        "rMultiple": 0.42,
+        "liveR": 0.42,
+        "gapped": false
+      }
+    ],
+    "taken": [
+      {
+        "symbol": "CMCSA",
+        "side": "short",
+        "qual": 3,
+        "entryPrice": 23.705,
+        "stopPrice": 24.083,
+        "barTime": 1784649600,
+        "patternTier": "dryDownBreakdown3",
+        "source": "CORE",
+        "tf": "30m",
+        "resolved": true,
+        "rMultiple": -1.2,
+        "liveR": -1.2,
+        "gapped": false
+      },
+      {
+        "symbol": "GOOG",
+        "side": "short",
+        "qual": 3,
+        "entryPrice": 348.15,
+        "stopPrice": 353.444,
+        "barTime": 1784656800,
+        "patternTier": "dryDownBreakdown3",
+        "source": "CORE",
+        "tf": "30m",
+        "resolved": true,
+        "rMultiple": 0.42,
+        "liveR": 0.42,
+        "gapped": false
+      }
+    ],
+    "rejected": [],
+    "note": "Partial backfill: only CMCSA/AMZN/GOOG (3 of 19 roster tickers) checked against real TradingView data. AMZN excluded (did not pass daily scan on 7/17). Not a complete day."
   }
 }
