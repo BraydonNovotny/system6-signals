@@ -85,6 +85,12 @@ function build() {
       </div>
     </div>
     <div id="signal-container"></div>
+    <div style="border-top:1px solid var(--rail); margin-top:4px;"></div>
+    <div style="padding:14px 18px;">
+      <h2 style="margin:0 0 4px;">Triggered, not taken (blocked by capital)</h2>
+      <p class="sub mono" style="margin:0 0 10px;">Same real pattern signal, but rejected because capital/slots were already full -- these would NOT have been actual trades. (Signals blocked by the daily loss cap are intentionally NOT shown here -- no reason to tempt overriding your own risk limit on a day you've already hit it.)</p>
+      <div id="rejected-container"></div>
+    </div>
   </div>
 
   <details class="roster">
@@ -128,6 +134,7 @@ document.getElementById('summary-strip').innerHTML =
 
 const dateInput = document.getElementById('date-input');
 const container = document.getElementById('signal-container');
+const rejectedContainer = document.getElementById('rejected-container');
 const titleEl = document.getElementById('section-title');
 const dayStatsEl = document.getElementById('day-stats');
 const prevBtn = document.getElementById('prev-btn');
@@ -180,6 +187,21 @@ function render(dateStr) {
       '<td class="' + s.side + '">' + s.side.toUpperCase() + '</td><td>' + resultHtml + '</td></tr>';
   }).join('');
   container.innerHTML = '<table><thead><tr><th>Ticker</th><th>Time</th><th>Side</th><th>Result</th></tr></thead><tbody>' + rows + '</tbody></table>';
+
+  // Rejected-for-capital section -- intentionally EXCLUDES daily-loss-cap rejections
+  // (no reason to show tempting "almost took this" alerts on a day you've already hit -1R).
+  const allRejected = (day && day.rejected ? day.rejected : []).filter(r => r.rejectReason !== 'daily loss cap');
+  if (!allRejected.length) {
+    rejectedContainer.innerHTML = '<div class="empty" style="padding:16px;">None today -- capital/slots were never the binding constraint.</div>';
+  } else {
+    const rrows = allRejected.slice().sort((a, b) => a.barTime - b.barTime).map(s => {
+      const tf = s.tf || '30m';
+      const closeOffset = tf === '1h' ? 3600 : 1800;
+      return '<tr><td class="mono" style="font-weight:600;">' + s.symbol + '</td><td>' + fmtTime(s.barTime + closeOffset) + ' PT <span style="color:var(--text-faint);">(' + tf + ')</span></td>' +
+        '<td class="' + s.side + '">' + s.side.toUpperCase() + '</td><td style="color:var(--text-faint);">' + s.rejectReason + '</td></tr>';
+    }).join('');
+    rejectedContainer.innerHTML = '<table><thead><tr><th>Ticker</th><th>Time</th><th>Side</th><th>Reason</th></tr></thead><tbody>' + rrows + '</tbody></table>';
+  }
 }
 
 function goTo(dir) {

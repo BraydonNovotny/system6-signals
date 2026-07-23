@@ -34,10 +34,11 @@ function recordCandidates(dateStr, allNewCandidates) {
   return h[dateStr].candidates;
 }
 
-function recordTaken(dateStr, taken) {
+function recordTaken(dateStr, taken, rejected) {
   const h = loadHistory();
   if (!h[dateStr]) h[dateStr] = { candidates: [], taken: [] };
   h[dateStr].taken = taken;
+  h[dateStr].rejected = rejected || [];
   saveHistory(h);
 }
 

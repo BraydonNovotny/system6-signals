@@ -264,7 +264,7 @@
         "source": "CORE",
         "resolved": false,
         "rMultiple": null,
-        "liveR": 2.12,
+        "liveR": 2.32,
         "gapped": false
       },
       {
@@ -278,7 +278,7 @@
         "source": "CORE",
         "resolved": false,
         "rMultiple": null,
-        "liveR": 1.68,
+        "liveR": 1.89,
         "gapped": false
       },
       {
@@ -292,7 +292,7 @@
         "source": "CORE",
         "resolved": false,
         "rMultiple": null,
-        "liveR": 2.94,
+        "liveR": 3.13,
         "gapped": false
       },
       {
@@ -306,7 +306,7 @@
         "source": "CORE",
         "resolved": false,
         "rMultiple": null,
-        "liveR": 2.74,
+        "liveR": 2.99,
         "gapped": false
       },
       {
@@ -320,7 +320,7 @@
         "source": "CORE",
         "resolved": false,
         "rMultiple": null,
-        "liveR": 3.4,
+        "liveR": 4,
         "gapped": false
       },
       {
@@ -334,7 +334,7 @@
         "source": "CORE",
         "resolved": false,
         "rMultiple": null,
-        "liveR": 0.32,
+        "liveR": 0.37,
         "gapped": false
       },
       {
@@ -348,7 +348,7 @@
         "source": "CORE",
         "resolved": false,
         "rMultiple": null,
-        "liveR": 1.16,
+        "liveR": 1.22,
         "gapped": false
       },
       {
@@ -376,7 +376,7 @@
         "source": "CORE",
         "resolved": false,
         "rMultiple": null,
-        "liveR": 2.03,
+        "liveR": 2.18,
         "gapped": false
       },
       {
@@ -390,7 +390,7 @@
         "source": "CORE",
         "resolved": false,
         "rMultiple": null,
-        "liveR": 2,
+        "liveR": 2.19,
         "gapped": false
       }
     ]
@@ -6309,6 +6309,72 @@
         "source": "CORE"
       }
     ],
-    "taken": []
+    "taken": [
+      {
+        "symbol": "ORCL",
+        "side": "short",
+        "qual": 2,
+        "entryPrice": 123.52,
+        "stopPrice": 126.31,
+        "barTime": 1784813400,
+        "patternTier": "rejection",
+        "tf": "30m",
+        "source": "CORE",
+        "resolved": false,
+        "rMultiple": null,
+        "liveR": 1.37,
+        "gapped": false
+      }
+    ],
+    "rejected": [
+      {
+        "symbol": "SOFI",
+        "side": "short",
+        "qual": 3,
+        "entryPrice": 16.66,
+        "stopPrice": 17.04,
+        "barTime": 1784817000,
+        "patternTier": "dryDownBreakdown3",
+        "tf": "30m",
+        "source": "CORE",
+        "rejectReason": "max positions (10)"
+      },
+      {
+        "symbol": "CRWV",
+        "side": "short",
+        "qual": 2,
+        "entryPrice": 82.03,
+        "stopPrice": 84.27,
+        "barTime": 1784817000,
+        "patternTier": "rejection",
+        "tf": "30m",
+        "source": "CORE",
+        "rejectReason": "max positions (10)"
+      },
+      {
+        "symbol": "ONDS",
+        "side": "short",
+        "qual": 2,
+        "entryPrice": 7.93,
+        "stopPrice": 8.15,
+        "barTime": 1784817000,
+        "patternTier": "rejection",
+        "tf": "30m",
+        "source": "CORE",
+        "rejectReason": "max positions (10)"
+      },
+      {
+        "symbol": "IONQ",
+        "side": "short",
+        "qual": 1,
+        "entryPrice": 33.74,
+        "stopPrice": 34.68,
+        "barTime": 1784818800,
+        "patternTier": "looseTier2Short",
+        "tf": "30m",
+        "source": "CORE",
+        "rejectReason": "max positions (10)"
+      }
+    ]
   }
 }

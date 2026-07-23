@@ -55,9 +55,9 @@ async function runEntryScans() {
   const barsBySymbol = {};
   symbols.forEach((sym, i) => { if (barResults[i].ok) barsBySymbol[sym] = barResults[i].value; });
 
-  const taken = runAccountFilter(allCandidatesToday, barsBySymbol, carriedOpenCount);
-  recordTaken(today, taken);
-  console.log(`Carried-open from prior days: ${carriedOpenCount} | Candidates today: ${allCandidatesToday.length} | Taken (passed daily cap + position limit): ${taken.length}`);
+  const { taken, rejected } = runAccountFilter(allCandidatesToday, barsBySymbol, carriedOpenCount);
+  recordTaken(today, taken, rejected);
+  console.log(`Carried-open from prior days: ${carriedOpenCount} | Candidates today: ${allCandidatesToday.length} | Taken: ${taken.length} | Rejected (capital/position limit): ${rejected.length}`);
   return taken;
 }
 

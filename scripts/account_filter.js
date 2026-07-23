@@ -23,6 +23,7 @@ function runAccountFilter(candidates, barsBySymbol, carriedOpenCount = 0) {
   let dayLossR = 0;
   const openPositions = Array.from({ length: carriedOpenCount }, () => ({ exitTime: null })); // { exitTime }
   const taken = [];
+  const rejected = []; // { ...sig, rejectReason }
 
   for (const sig of sorted) {
     // free up any positions that have resolved by this signal's entry time
@@ -31,8 +32,8 @@ function runAccountFilter(candidates, barsBySymbol, carriedOpenCount = 0) {
     }
 
     const capThreshold = sig.source === 'EP' ? -2 : -1;
-    if (dayLossR <= capThreshold) continue; // daily loss cap hit, reject
-    if (openPositions.length >= 10) continue; // max positions
+    if (dayLossR <= capThreshold) { rejected.push({ ...sig, rejectReason: 'daily loss cap' }); continue; }
+    if (openPositions.length >= 10) { rejected.push({ ...sig, rejectReason: 'max positions (10)' }); continue; }
 
     const bars = barsBySymbol[sig.symbol] || [];
     const result = simulateExit(sig.side, sig.entryPrice, sig.stopPrice, sig.barTime, bars);
@@ -45,7 +46,7 @@ function runAccountFilter(candidates, barsBySymbol, carriedOpenCount = 0) {
       if (result.rMultiple < 0) dayLossR += result.rMultiple;
     }
   }
-  return taken;
+  return { taken, rejected };
 }
 
 module.exports = { runAccountFilter };
