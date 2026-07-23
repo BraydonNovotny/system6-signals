@@ -133,9 +133,12 @@ function render(dateStr) {
   }
   const resolvedTrades = taken.filter(t => t.resolved);
   const wins = resolvedTrades.filter(t => t.rMultiple > 0);
-  const winRateText = resolvedTrades.length ? (wins.length / resolvedTrades.length * 100).toFixed(0) + '% win rate' : 'results pending';
+  const allResolved = resolvedTrades.length === taken.length;
+  const hitRateText = resolvedTrades.length
+    ? wins.length + '/' + resolvedTrades.length + ' (' + (wins.length / resolvedTrades.length * 100).toFixed(0) + '%)' + (allResolved ? '' : ' so far (TBD)')
+    : 'no results yet (TBD)';
   const avgR = resolvedTrades.length ? resolvedTrades.reduce((a, t) => a + t.rMultiple, 0) / resolvedTrades.length : null;
-  dayStatsEl.textContent = taken.length + ' trade' + (taken.length === 1 ? '' : 's') + ' · ' + winRateText + (avgR != null ? ' · avg ' + (avgR >= 0 ? '+' : '') + avgR.toFixed(2) + 'R' : '');
+  dayStatsEl.textContent = hitRateText + ' · ' + taken.length + ' trade' + (taken.length === 1 ? '' : 's') + (avgR != null ? ' · avg ' + (avgR >= 0 ? '+' : '') + avgR.toFixed(2) + 'R' : '');
   const rows = taken.map(s => {
     let resultHtml;
     if (!s.resolved) {
@@ -146,7 +149,9 @@ function render(dateStr) {
     } else {
       resultHtml = '<span class="' + (s.rMultiple >= 0 ? 'r-pos' : 'r-neg') + '">' + (s.rMultiple >= 0 ? '+' : '') + s.rMultiple.toFixed(2) + 'R</span>';
     }
-    return '<tr><td class="mono" style="font-weight:600;">' + s.symbol + '</td><td>' + fmtTime(s.barTime + 1800) + ' PT</td>' +
+    const tf = s.tf || '30m';
+    const closeOffset = tf === '1h' ? 3600 : 1800;
+    return '<tr><td class="mono" style="font-weight:600;">' + s.symbol + '</td><td>' + fmtTime(s.barTime + closeOffset) + ' PT <span style="color:var(--text-faint);">(' + tf + ')</span></td>' +
       '<td class="' + s.side + '">' + s.side.toUpperCase() + '</td><td>' + resultHtml + '</td></tr>';
   }).join('');
   container.innerHTML = '<table><thead><tr><th>Ticker</th><th>Time</th><th>Side</th><th>Result</th></tr></thead><tbody>' + rows + '</tbody></table>';

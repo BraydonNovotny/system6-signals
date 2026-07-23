@@ -3,19 +3,32 @@
 // arm=1.5R, trail=2.0R), applied to whatever forward bars are actually available. A
 // signal entered recently may not have enough future bars yet to resolve -- returns
 // { resolved: false } in that case, and the caller should re-check it on a later run.
+//
+// GAP-THROUGH-STOP: if a bar's OPEN has already gapped past the stop (a real overnight
+// or fast-market gap), the fill happens at that worse open price, not the idealized
+// stop level -- same fix applied to the main backtest after discovering it always
+// assumed a perfect -1.00R fill, which understated real tail risk. So yes, this CAN
+// show worse than -1R now when a real gap happens.
 function simulateHalf(bars, entryIdx, side, entryPrice, R, mode) {
-  const highs = bars.map(b => b.high), lows = bars.map(b => b.low), closes = bars.map(b => b.close);
+  const highs = bars.map(b => b.high), lows = bars.map(b => b.low), closes = bars.map(b => b.close), opens = bars.map(b => b.open);
   const stopPrice = side === 'long' ? entryPrice * (1 - R) : entryPrice * (1 + R);
   const scanEnd = bars.length - 1;
   let lastJ = entryIdx;
+
+  function stopHitPrice(j) {
+    const hit = side === 'long' ? lows[j] <= stopPrice : highs[j] >= stopPrice;
+    if (!hit) return null;
+    const gapped = side === 'long' ? opens[j] <= stopPrice : opens[j] >= stopPrice;
+    return gapped ? opens[j] : stopPrice;
+  }
 
   if (mode === 'fixed') {
     const targetR = 2.0;
     const targetPrice = side === 'long' ? entryPrice * (1 + targetR * R) : entryPrice * (1 - targetR * R);
     for (let j = entryIdx + 1; j <= scanEnd; j++) {
       lastJ = j;
-      const stopHit = side === 'long' ? lows[j] <= stopPrice : highs[j] >= stopPrice;
-      if (stopHit) return { ret: -R, resolved: true };
+      const stopPx = stopHitPrice(j);
+      if (stopPx != null) { const ret = side === 'long' ? (stopPx - entryPrice) / entryPrice : (entryPrice - stopPx) / entryPrice; return { ret, resolved: true }; }
       const targetHit = side === 'long' ? highs[j] >= targetPrice : lows[j] <= targetPrice;
       if (targetHit) return { ret: targetR * R, resolved: true };
     }
@@ -28,8 +41,8 @@ function simulateHalf(bars, entryIdx, side, entryPrice, R, mode) {
   let extreme = entryPrice; // highest close (long) or lowest close (short) since entry
   for (let j = entryIdx + 1; j <= scanEnd; j++) {
     lastJ = j;
-    const stopHit = side === 'long' ? lows[j] <= stopPrice : highs[j] >= stopPrice;
-    if (stopHit) return { ret: -R, resolved: true };
+    const stopPx = stopHitPrice(j);
+    if (stopPx != null) { const ret = side === 'long' ? (stopPx - entryPrice) / entryPrice : (entryPrice - stopPx) / entryPrice; return { ret, resolved: true }; }
     if (side === 'long') { if (closes[j] > extreme) extreme = closes[j]; } else { if (closes[j] < extreme) extreme = closes[j]; }
     if (!armedTrail) {
       const armed = side === 'long' ? closes[j] >= entryPrice * (1 + armR * R) : closes[j] <= entryPrice * (1 - armR * R);

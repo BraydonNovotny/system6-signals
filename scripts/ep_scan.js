@@ -114,7 +114,7 @@ async function run(history) {
       if (c.dayBars[k].high > c.firstBar.high) { entryIdx = k; entryPrice = c.firstBar.high; entryTime = c.dayBars[k].time; break; }
     }
     if (entryIdx === -1) continue;
-    entries.push({ symbol: c.symbol, side: 'long', source: 'EP', entryPrice: +entryPrice.toFixed(2), stopPrice: +lod.toFixed(2), barTime: entryTime });
+    entries.push({ symbol: c.symbol, side: 'long', source: 'EP', entryPrice: +entryPrice.toFixed(2), stopPrice: +lod.toFixed(2), barTime: entryTime, tf: '30m' });
   }
   console.log(`EP: ${candidates.length} gap+vol candidate(s), ${withFirstBar.length} with a valid first bar, ${entries.length} valid entry signal(s) today.`);
   return entries;

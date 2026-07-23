@@ -131,7 +131,7 @@ async function run() {
           if (openOk && tightPass) {
             const R = slForAdr(adrPct) / 100;
             const entryPrice = closes[i], stopPrice = entryPrice * (1 - R);
-            signals.push({ symbol, side: 'long', qual, entryPrice: +entryPrice.toFixed(2), stopPrice: +stopPrice.toFixed(2), barTime, patternTier: qual === 4 ? 'dryUpBreakout3' : qual === 3 ? 'reclaim' : qual === 2 ? 'looseTier2' : 'surfBase' });
+            signals.push({ symbol, side: 'long', qual, entryPrice: +entryPrice.toFixed(2), stopPrice: +stopPrice.toFixed(2), barTime, patternTier: qual === 4 ? 'dryUpBreakout3' : qual === 3 ? 'reclaim' : qual === 2 ? 'looseTier2' : 'surfBase', tf: '30m' });
             firedLong = true;
           }
         }
@@ -159,7 +159,7 @@ async function run() {
           if (openOk && tightPass) {
             const R = slForAdr(adrPct) / 100;
             const entryPrice = closes[i], stopPrice = entryPrice * (1 + R);
-            signals.push({ symbol, side: 'short', qual, entryPrice: +entryPrice.toFixed(2), stopPrice: +stopPrice.toFixed(2), barTime, patternTier: qual === 3 ? 'dryDownBreakdown3' : qual === 2 ? 'rejection' : 'looseTier2Short' });
+            signals.push({ symbol, side: 'short', qual, entryPrice: +entryPrice.toFixed(2), stopPrice: +stopPrice.toFixed(2), barTime, patternTier: qual === 3 ? 'dryDownBreakdown3' : qual === 2 ? 'rejection' : 'looseTier2Short', tf: '30m' });
             firedShort = true;
           }
         }

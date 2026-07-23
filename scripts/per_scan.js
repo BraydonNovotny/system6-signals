@@ -102,7 +102,7 @@ async function run() {
     if (invalidated || entryIdx === -1) continue;
     entries.push({
       symbol: s.symbol, side: s.side, source: 'PER', entryPrice: +entryPrice.toFixed(2),
-      stopPrice: +stopPrice.toFixed(2), barTime: entryTime, runupPct: s.runupPct, gapPct: s.gapPct,
+      stopPrice: +stopPrice.toFixed(2), barTime: entryTime, runupPct: s.runupPct, gapPct: s.gapPct, tf: '30m',
     });
   }
   console.log(`PER: ${signals.length} candidate(s), ${entries.length} valid strict-entry signal(s) today.`);
