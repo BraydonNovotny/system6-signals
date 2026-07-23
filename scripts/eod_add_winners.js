@@ -42,7 +42,7 @@ async function run(history) {
   for (const t of openToday) {
     const bars = barsBySymbol[t.symbol];
     if (!bars) continue;
-    const r = simulateExit(t.side, t.entryPrice, t.stopPrice, t.barTime, bars);
+    const r = simulateExit(t.side, t.entryPrice, t.stopPrice, t.barTime, bars, t.tf);
     if (r.liveR != null && r.liveR >= ADD_WINNERS_THRESHOLD_R) {
       addWinners.push({ symbol: t.symbol, side: t.side, entryPrice: t.entryPrice, barTime: t.barTime, liveR: r.liveR, addMult: ADD_WINNERS_MULT });
     }

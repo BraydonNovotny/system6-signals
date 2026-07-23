@@ -36,7 +36,7 @@ function runAccountFilter(candidates, barsBySymbol, carriedOpenCount = 0) {
     if (openPositions.length >= 10) { rejected.push({ ...sig, rejectReason: 'max positions (10)' }); continue; }
 
     const bars = barsBySymbol[sig.symbol] || [];
-    const result = simulateExit(sig.side, sig.entryPrice, sig.stopPrice, sig.barTime, bars);
+    const result = simulateExit(sig.side, sig.entryPrice, sig.stopPrice, sig.barTime, bars, sig.tf);
 
     const pos = { exitTime: null };
     openPositions.push(pos);

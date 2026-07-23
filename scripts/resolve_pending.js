@@ -38,7 +38,7 @@ async function run() {
     if (!results[i].ok) return;
     const bars = results[i].value;
     for (const { trade } of pendingBySymbol[sym]) {
-      const r = simulateExit(trade.side, trade.entryPrice, trade.stopPrice, trade.barTime, bars);
+      const r = simulateExit(trade.side, trade.entryPrice, trade.stopPrice, trade.barTime, bars, trade.tf);
       trade.liveR = r.liveR;
       if (r.resolved) { trade.resolved = true; trade.rMultiple = r.rMultiple; trade.gapped = r.gapped || false; resolvedCount++; }
     }

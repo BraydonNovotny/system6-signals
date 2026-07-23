@@ -4,15 +4,23 @@
 // signal entered recently may not have enough future bars yet to resolve -- returns
 // { resolved: false } in that case, and the caller should re-check it on a later run.
 //
+// MAX-HOLD CAP: the backtest's engine.js caps every trade's scan window at maxScan bars
+// (13 for 30m ~= one trading day, 7 for 1h ~= one trading day) and FORCE-CLOSES at that
+// bar's close if nothing else triggered first -- it never lets the simulation run forever
+// looking for a nicer exit. This file originally had no such cap, so a strong-trending
+// trade could sit "LIVE" for days waiting for a stop/target/trail that might not come for
+// a while, which doesn't match how the actual (backtested, locked) strategy behaves.
+//
 // GAP-THROUGH-STOP: if a bar's OPEN has already gapped past the stop (a real overnight
 // or fast-market gap), the fill happens at that worse open price, not the idealized
 // stop level -- same fix applied to the main backtest after discovering it always
 // assumed a perfect -1.00R fill, which understated real tail risk. So yes, this CAN
 // show worse than -1R now when a real gap happens.
-function simulateHalf(bars, entryIdx, side, entryPrice, R, mode) {
+function simulateHalf(bars, entryIdx, side, entryPrice, R, mode, maxScan) {
   const highs = bars.map(b => b.high), lows = bars.map(b => b.low), closes = bars.map(b => b.close), opens = bars.map(b => b.open);
   const stopPrice = side === 'long' ? entryPrice * (1 - R) : entryPrice * (1 + R);
-  const scanEnd = bars.length - 1;
+  const scanEnd = Math.min(bars.length - 1, entryIdx + maxScan);
+  const ranOutOfBars = scanEnd < entryIdx + maxScan; // fewer bars fetched than the hold window needs
   let lastJ = entryIdx;
 
   function stopHitPrice(j) {
@@ -32,7 +40,9 @@ function simulateHalf(bars, entryIdx, side, entryPrice, R, mode) {
       const targetHit = side === 'long' ? highs[j] >= targetPrice : lows[j] <= targetPrice;
       if (targetHit) return { ret: targetR * R, resolved: true, gapped: false };
     }
-    return { resolved: false }; // ran out of bars before resolving
+    if (ranOutOfBars) return { resolved: false }; // haven't reached the hold cap yet -- keep waiting
+    const ret = side === 'long' ? (closes[lastJ] - entryPrice) / entryPrice : (entryPrice - closes[lastJ]) / entryPrice;
+    return { ret, resolved: true, gapped: false }; // hit the max-hold cap -- force-close at that bar's close
   }
 
   // chandelier
@@ -56,25 +66,29 @@ function simulateHalf(bars, entryIdx, side, entryPrice, R, mode) {
       }
     }
   }
-  return { resolved: false };
+  if (ranOutOfBars) return { resolved: false }; // haven't reached the hold cap yet -- keep waiting
+  const ret = side === 'long' ? (closes[lastJ] - entryPrice) / entryPrice : (entryPrice - closes[lastJ]) / entryPrice;
+  return { ret, resolved: true, gapped: false }; // hit the max-hold cap -- force-close at that bar's close
 }
 
-// bars: 30m bars array covering from before entryTime through "now" (as much forward
+// bars: 30m/1h bars array covering from before entryTime through "now" (as much forward
 // data as currently exists). Returns { resolved, rMultiple, liveR } -- rMultiple only
 // valid if resolved; liveR is always computed (mark-to-market R using the latest
 // available close) so an open trade can show "how much it's up/down right now."
-function simulateExit(side, entryPrice, stopPrice, entryTime, bars) {
+// tf: '30m' (default, maxScan=13 bars ~= 1 trading day) or '1h' (maxScan=7 bars).
+function simulateExit(side, entryPrice, stopPrice, entryTime, bars, tf) {
   const entryIdx = bars.findIndex(b => b.time === entryTime);
   if (entryIdx === -1) return { resolved: false, liveR: null };
   const R = side === 'long' ? (entryPrice - stopPrice) / entryPrice : (stopPrice - entryPrice) / entryPrice;
   if (R <= 0) return { resolved: false, liveR: null };
+  const maxScan = tf === '1h' ? 7 : 13;
 
   const lastClose = bars[bars.length - 1].close;
   const liveRet = side === 'long' ? (lastClose - entryPrice) / entryPrice : (entryPrice - lastClose) / entryPrice;
   const liveR = +(liveRet / R).toFixed(2);
 
-  const half1 = simulateHalf(bars, entryIdx, side, entryPrice, R, 'fixed');
-  const half2 = simulateHalf(bars, entryIdx, side, entryPrice, R, 'chandelier');
+  const half1 = simulateHalf(bars, entryIdx, side, entryPrice, R, 'fixed', maxScan);
+  const half2 = simulateHalf(bars, entryIdx, side, entryPrice, R, 'chandelier', maxScan);
   if (!half1.resolved || !half2.resolved) return { resolved: false, liveR };
   const ret = 0.25 * half1.ret + 0.75 * half2.ret;
   return { resolved: true, rMultiple: +(ret / R).toFixed(2), liveR, gapped: half1.gapped || half2.gapped };
