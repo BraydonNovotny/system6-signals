@@ -82,9 +82,23 @@ async function run() {
     const highs = bars.map(b => b.high), lows = bars.map(b => b.low), closes = bars.map(b => b.close), opens = bars.map(b => b.open), volumes = bars.map(b => b.volume);
     const dayOf = bars.map(b => Math.floor(b.time / 86400));
     const ema20 = emaSeries(closes, 20);
-    const i = bars.length - 1; // most recently completed bar
-    if (i < 20) continue;
 
+    // Check EVERY bar of TODAY (not just the most recent), so a run always self-heals any
+    // gap since the last check -- a signal earlier today never gets silently missed just
+    // because this particular run happened to fire late or a prior trigger was skipped.
+    const lastIdx = bars.length - 1;
+    if (lastIdx < 20) continue;
+    const todayDayNum = dayOf[lastIdx];
+    let todayStart = lastIdx;
+    while (todayStart > 0 && dayOf[todayStart - 1] === todayDayNum) todayStart--;
+    todayStart = Math.max(todayStart, 20);
+
+    const isLongRoster = rosterLong.includes(symbol);
+    const isShortRoster = rosterShort.includes(symbol);
+    let firedLong = false, firedShort = false; // only alert once per symbol+side per day --
+    // the first bar a setup becomes true, not every subsequent bar it remains true.
+
+    for (let i = todayStart; i <= lastIdx; i++) {
     const barTime = bars[i].time;
     const { slot, weekday } = etSlot(barTime);
     if (weekday === 'Sat' || weekday === 'Sun') continue;
@@ -92,10 +106,7 @@ async function run() {
     const barRangePct = (highs[i] - lows[i]) / closes[i] * 100;
     const tightnessRatio = adrPct > 0 ? barRangePct / adrPct : null;
 
-    const isLongRoster = rosterLong.includes(symbol);
-    const isShortRoster = rosterShort.includes(symbol);
-
-    if (isLongRoster) {
+    if (isLongRoster && !firedLong) {
       const reclaim = closes[i - 1] < ema20[i - 1] && closes[i] > ema20[i];
       const pat = evalPatterns(highs, lows, closes, opens, volumes, dayOf, i);
       if (pat) {
@@ -121,12 +132,13 @@ async function run() {
             const R = slForAdr(adrPct) / 100;
             const entryPrice = closes[i], stopPrice = entryPrice * (1 - R);
             signals.push({ symbol, side: 'long', qual, entryPrice: +entryPrice.toFixed(2), stopPrice: +stopPrice.toFixed(2), barTime, patternTier: qual === 4 ? 'dryUpBreakout3' : qual === 3 ? 'reclaim' : qual === 2 ? 'looseTier2' : 'surfBase' });
+            firedLong = true;
           }
         }
       }
     }
 
-    if (isShortRoster) {
+    if (isShortRoster && !firedShort) {
       const sp = evalShortPatterns(highs, lows, closes, volumes, i, ema20);
       if (sp) {
         const st = !aboveEma50 && !aboveEma200;
@@ -148,14 +160,33 @@ async function run() {
             const R = slForAdr(adrPct) / 100;
             const entryPrice = closes[i], stopPrice = entryPrice * (1 + R);
             signals.push({ symbol, side: 'short', qual, entryPrice: +entryPrice.toFixed(2), stopPrice: +stopPrice.toFixed(2), barTime, patternTier: qual === 3 ? 'dryDownBreakdown3' : qual === 2 ? 'rejection' : 'looseTier2Short' });
+            firedShort = true;
           }
         }
       }
     }
+    } // end of today's-bars loop
   }
 
-  console.log(`Entry scan: ${signals.length} signal(s) on the latest completed 30m bar, across ${tickers.length} roster tickers checked.`);
-  return signals.map(s => ({ ...s, source: 'CORE' }));
+  // Spacing cap, ported from the locked backtest's SPACING = { maxNewPerWindow: 5,
+  // windowSec: 1800 }: at most 5 new signals per 30-min window, highest qual kept first.
+  // NOTE: this does NOT replicate the backtest's -1R daily loss cap or max-10-positions
+  // limit (those require knowing realized outcomes / open-position state, which a live
+  // forward-looking scanner can't know in advance) -- so this list is still closer to the
+  // backtest's raw "signals seen" pool than its filtered "taken" trades. Treat qual tier
+  // as your priority ranking; don't take everything on the list every day.
+  signals.sort((a, b) => a.barTime - b.barTime || b.qual - a.qual);
+  const spaced = [];
+  const windowEntries = [];
+  for (const s of signals) {
+    while (windowEntries.length && s.barTime - windowEntries[0] > 1800) windowEntries.shift();
+    if (windowEntries.length >= 5) continue;
+    windowEntries.push(s.barTime);
+    spaced.push(s);
+  }
+
+  console.log(`Entry scan: ${spaced.length} signal(s) after spacing (${signals.length} before), ${tickers.length} roster tickers checked.`);
+  return spaced.map(s => ({ ...s, source: 'CORE' }));
 }
 
 module.exports = { run };

@@ -75,6 +75,7 @@ function build() {
         <button class="nav" id="today-btn">Today</button>
       </div>
     </div>
+    <p style="font-size:12.5px; color:var(--text-faint); padding:0 18px; margin:10px 0 -4px;">These are qualifying pattern setups, ranked by tier (higher qual = higher conviction) — NOT capital/risk-filtered the way the backtest's actual trades are. The backtest only takes ~1 in 25-30 of these once its daily loss cap and position limits are applied, and those depend on your own realized P&L today (not something a forward-looking scanner can know). Use qual tier to prioritize, don't take everything.</p>
     <div id="signal-container"></div>
   </div>
 
