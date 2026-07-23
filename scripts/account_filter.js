@@ -12,10 +12,16 @@
 // rejected, or vice versa). Documented, not hidden.
 const { simulateExit } = require('./simulate_exit');
 
-function runAccountFilter(candidates, barsBySymbol) {
+// carriedOpenCount: how many positions from PREVIOUS days are still genuinely open (not yet
+// resolved) as of right now. These occupy real slots against the max-10-position limit even
+// though they're not in today's candidate list -- BUG FIX: this was previously always 0,
+// meaning every day started counting from a clean slate and ignored whatever capital was
+// still tied up in yesterday's still-open trades. Their exitTime is unknown (we can't know
+// the future), so they occupy a slot for the rest of today's run and never free up within it.
+function runAccountFilter(candidates, barsBySymbol, carriedOpenCount = 0) {
   const sorted = candidates.slice().sort((a, b) => a.barTime - b.barTime);
   let dayLossR = 0;
-  const openPositions = []; // { exitTime }
+  const openPositions = Array.from({ length: carriedOpenCount }, () => ({ exitTime: null })); // { exitTime }
   const taken = [];
 
   for (const sig of sorted) {

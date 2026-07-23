@@ -22,14 +22,30 @@ async function fetch30m(symbol) {
   return bars;
 }
 
+// How many positions from days BEFORE today are still genuinely open (not yet resolved).
+// These occupy real slots against the max-10-position limit even though they aren't in
+// today's candidate list -- this is the fix for the cross-day capacity bug (previously
+// every day started counting from a clean slate, ignoring whatever was still open from
+// prior days). Looks back the same window resolve_pending.js uses.
+function countCarriedOpenPositions(history, todayStr) {
+  let count = 0;
+  for (const [day, val] of Object.entries(history)) {
+    if (day >= todayStr) continue; // only days strictly before today
+    for (const t of (val.taken || [])) if (!t.resolved) count++;
+  }
+  return count;
+}
+
 async function runEntryScans() {
   const history = loadHistory();
+  const today = ptDateString();
+  const carriedOpenCount = countCarriedOpenPositions(history, today);
+
   const [core, ep, per] = await Promise.all([
     scanEntries.run(),
     epScan.run(history).catch(e => { console.error('EP scan failed:', e.message); return []; }),
     perScan.run().catch(e => { console.error('PER scan failed:', e.message); return []; }),
   ]);
-  const today = ptDateString();
   const allNew = [...core, ...ep, ...per];
   const allCandidatesToday = recordCandidates(today, allNew);
 
@@ -39,9 +55,9 @@ async function runEntryScans() {
   const barsBySymbol = {};
   symbols.forEach((sym, i) => { if (barResults[i].ok) barsBySymbol[sym] = barResults[i].value; });
 
-  const taken = runAccountFilter(allCandidatesToday, barsBySymbol);
+  const taken = runAccountFilter(allCandidatesToday, barsBySymbol, carriedOpenCount);
   recordTaken(today, taken);
-  console.log(`Candidates today: ${allCandidatesToday.length} | Taken (passed daily cap + position limit): ${taken.length}`);
+  console.log(`Carried-open from prior days: ${carriedOpenCount} | Candidates today: ${allCandidatesToday.length} | Taken (passed daily cap + position limit): ${taken.length}`);
   return taken;
 }
 

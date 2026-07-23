@@ -264,7 +264,7 @@
         "source": "CORE",
         "resolved": false,
         "rMultiple": null,
-        "liveR": 0.5,
+        "liveR": 2.12,
         "gapped": false
       },
       {
@@ -278,7 +278,7 @@
         "source": "CORE",
         "resolved": false,
         "rMultiple": null,
-        "liveR": 0.46,
+        "liveR": 1.68,
         "gapped": false
       },
       {
@@ -292,7 +292,7 @@
         "source": "CORE",
         "resolved": false,
         "rMultiple": null,
-        "liveR": 1.39,
+        "liveR": 2.94,
         "gapped": false
       },
       {
@@ -306,7 +306,7 @@
         "source": "CORE",
         "resolved": false,
         "rMultiple": null,
-        "liveR": -0.22,
+        "liveR": 2.74,
         "gapped": false
       },
       {
@@ -320,7 +320,7 @@
         "source": "CORE",
         "resolved": false,
         "rMultiple": null,
-        "liveR": 0.08,
+        "liveR": 3.4,
         "gapped": false
       },
       {
@@ -334,7 +334,7 @@
         "source": "CORE",
         "resolved": false,
         "rMultiple": null,
-        "liveR": 0,
+        "liveR": 0.32,
         "gapped": false
       },
       {
@@ -348,7 +348,7 @@
         "source": "CORE",
         "resolved": false,
         "rMultiple": null,
-        "liveR": -0.19,
+        "liveR": 1.16,
         "gapped": false
       },
       {
@@ -360,10 +360,10 @@
         "barTime": 1784732400,
         "patternTier": "dryDownBreakdown3",
         "source": "CORE",
-        "resolved": false,
-        "rMultiple": null,
-        "liveR": -0.22,
-        "gapped": false
+        "resolved": true,
+        "rMultiple": -1.11,
+        "liveR": -0.09,
+        "gapped": true
       },
       {
         "symbol": "PLTR",
@@ -376,7 +376,7 @@
         "source": "CORE",
         "resolved": false,
         "rMultiple": null,
-        "liveR": 0.89,
+        "liveR": 2.03,
         "gapped": false
       },
       {
@@ -390,7 +390,7 @@
         "source": "CORE",
         "resolved": false,
         "rMultiple": null,
-        "liveR": 0.02,
+        "liveR": 2,
         "gapped": false
       }
     ]
@@ -6250,5 +6250,65 @@
         "gapped": false
       }
     ]
+  },
+  "2026-07-23": {
+    "candidates": [
+      {
+        "symbol": "ORCL",
+        "side": "short",
+        "qual": 2,
+        "entryPrice": 123.52,
+        "stopPrice": 126.31,
+        "barTime": 1784813400,
+        "patternTier": "rejection",
+        "tf": "30m",
+        "source": "CORE"
+      },
+      {
+        "symbol": "SOFI",
+        "side": "short",
+        "qual": 3,
+        "entryPrice": 16.66,
+        "stopPrice": 17.04,
+        "barTime": 1784817000,
+        "patternTier": "dryDownBreakdown3",
+        "tf": "30m",
+        "source": "CORE"
+      },
+      {
+        "symbol": "CRWV",
+        "side": "short",
+        "qual": 2,
+        "entryPrice": 82.03,
+        "stopPrice": 84.27,
+        "barTime": 1784817000,
+        "patternTier": "rejection",
+        "tf": "30m",
+        "source": "CORE"
+      },
+      {
+        "symbol": "ONDS",
+        "side": "short",
+        "qual": 2,
+        "entryPrice": 7.93,
+        "stopPrice": 8.15,
+        "barTime": 1784817000,
+        "patternTier": "rejection",
+        "tf": "30m",
+        "source": "CORE"
+      },
+      {
+        "symbol": "IONQ",
+        "side": "short",
+        "qual": 1,
+        "entryPrice": 33.74,
+        "stopPrice": 34.68,
+        "barTime": 1784818800,
+        "patternTier": "looseTier2Short",
+        "tf": "30m",
+        "source": "CORE"
+      }
+    ],
+    "taken": []
   }
 }
