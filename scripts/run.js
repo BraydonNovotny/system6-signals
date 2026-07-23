@@ -1,24 +1,35 @@
 // Entry point invoked by the GitHub Actions workflow (triggered every 30 min by an
-// external cron-job.org ping, same pattern as the RS Screener). Self-gates on real
-// America/Los_Angeles time so the trigger cadence doesn't need to match the actual
-// work cadence.
+// external cron-job.org ping). Self-gates on real America/Los_Angeles time.
 //   - Roster (daily bars, changes once a day): runs once in the EOD window.
-//   - Entries (30m bars, changes every bar): runs every trigger during market hours,
-//     using WHATEVER roster is currently on file (yesterday's roster until today's
-//     EOD scan updates it -- fine, since the roster gate itself is prior-day-based
-//     in the backtest too).
-const { ptNowDecimalHour, ptDateString, loadData } = require('./lib');
+//   - Entries (core + EP + Parabolic, 30m bars): runs every trigger during market hours,
+//     merged and recorded into the persistent day-by-day history.
+const { ptNowDecimalHour, ptDateString, loadData, saveData } = require('./lib');
 const scanRoster = require('./scan_roster');
 const scanEntries = require('./scan_entries');
+const epScan = require('./ep_scan');
+const perScan = require('./per_scan');
+const { recordDay, loadHistory } = require('./history');
 const { build } = require('./build_site.js');
+
+async function runEntryScans() {
+  const history = loadHistory();
+  const [core, ep, per] = await Promise.all([
+    scanEntries.run(),
+    epScan.run(history).catch(e => { console.error('EP scan failed:', e.message); return []; }),
+    perScan.run().catch(e => { console.error('PER scan failed:', e.message); return []; }),
+  ]);
+  const today = ptDateString();
+  recordDay(today, core, ep, per);
+  return { core, ep, per };
+}
 
 async function main() {
   const force = process.argv.includes('--force');
 
   if (force) {
-    console.log('Force: running scan_roster + scan_entries.');
+    console.log('Force: running scan_roster + all entry scans.');
     await scanRoster.run();
-    await scanEntries.run();
+    await runEntryScans();
     build();
     return;
   }
@@ -27,8 +38,6 @@ async function main() {
   const isWeekday = !['Sat', 'Sun'].includes(weekday);
   if (!isWeekday) { console.log(`Skip: ${weekday} is a weekend.`); return; }
 
-  // Market hours: 6:30am-1:00pm PT (9:30am-4:00pm ET). Entry scan runs any trigger in
-  // this window; roster scan runs once, in a short window right after close.
   const inMarketHours = decimalHour >= 6.5 && decimalHour <= 13.0;
   const inEodWindow = decimalHour >= 13.15 && decimalHour <= 15.0;
 
@@ -46,7 +55,7 @@ async function main() {
   }
 
   if (inMarketHours) {
-    await scanEntries.run();
+    await runEntryScans();
     didWork = true;
   }
 

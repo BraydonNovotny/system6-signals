@@ -1,23 +1,31 @@
 <!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>System 6 — Live Signals</title>
 <style>
-  :root { --paper:#EEF1EE; --surface:#FFFFFF; --text:#171E1A; --text-mute:#4B564E; --text-faint:#7C877D; --rail:#C7CDC5; --rail-strong:#9AA398; --signal:#1B7A6C; --long:#2E7D4F; --short:#A8502E; }
-  @media (prefers-color-scheme: dark) { :root { --paper:#0C1210; --surface:#101613; --text:#E9EDE8; --text-mute:#A3AEA1; --text-faint:#6C776B; --rail:#2B342F; --rail-strong:#3D4941; --signal:#3FD6BE; --long:#4FB47A; --short:#D97E5C; } }
+  :root { --paper:#EEF1EE; --surface:#FFFFFF; --text:#171E1A; --text-mute:#4B564E; --text-faint:#7C877D; --rail:#C7CDC5; --rail-strong:#9AA398; --signal:#1B7A6C; --signal-soft:#1B7A6C1a; --long:#2E7D4F; --short:#A8502E; --ep:#A8762E; --per:#6B5B95; }
+  @media (prefers-color-scheme: dark) { :root { --paper:#0C1210; --surface:#101613; --text:#E9EDE8; --text-mute:#A3AEA1; --text-faint:#6C776B; --rail:#2B342F; --rail-strong:#3D4941; --signal:#3FD6BE; --signal-soft:#3FD6BE22; --long:#4FB47A; --short:#D97E5C; --ep:#E0AD5C; --per:#A79AD1; } }
   * { box-sizing: border-box; }
   body { background: var(--paper); color: var(--text); font-family: -apple-system, "Segoe UI", Roboto, sans-serif; margin: 0; padding: 40px 24px 80px; }
-  .wrap { max-width: 800px; margin: 0 auto; }
-  .mono { font-family: ui-monospace, "SF Mono", Consolas, monospace; }
+  .wrap { max-width: 840px; margin: 0 auto; }
+  .mono { font-family: ui-monospace, "SF Mono", Consolas, monospace; font-variant-numeric: tabular-nums; }
   h1 { font-size: 24px; font-weight: 600; margin: 0 0 6px; }
-  h2 { font-size: 15px; text-transform: uppercase; letter-spacing: 0.05em; margin: 32px 0 10px; color: var(--text-mute); }
+  h2 { font-size: 15px; text-transform: uppercase; letter-spacing: 0.05em; margin: 28px 0 10px; color: var(--text-mute); }
   .sub { color: var(--text-mute); font-size: 13px; margin: 0 0 4px; }
   .regime { display: inline-block; padding: 4px 12px; border-radius: 999px; font-size: 12px; font-weight: 700; margin: 12px 0 0; }
   .regime.bull { background: color-mix(in srgb, var(--long) 18%, transparent); color: var(--long); }
   .regime.bear { background: color-mix(in srgb, var(--short) 18%, transparent); color: var(--short); }
+  .controls { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; background: var(--surface); border: 1px solid var(--rail); padding: 12px 16px; margin: 16px 0; }
+  .controls label { font-size: 12px; color: var(--text-faint); text-transform: uppercase; }
+  input[type="date"] { font-family: inherit; font-size: 14px; padding: 6px 9px; border-radius: 4px; border: 1px solid var(--rail-strong); background: var(--paper); color: var(--text); }
+  button.nav { appearance: none; border: 1px solid var(--rail-strong); background: var(--paper); color: var(--text); font-size: 13px; padding: 6px 11px; border-radius: 4px; cursor: pointer; font-family: inherit; }
+  button.nav:hover { background: var(--signal-soft); border-color: var(--signal); }
   table { border-collapse: collapse; width: 100%; font-size: 13.5px; background: var(--surface); border: 1px solid var(--rail); }
   th, td { padding: 8px 12px; text-align: left; border-bottom: 1px solid var(--rail); }
   th { font-size: 11px; text-transform: uppercase; color: var(--text-faint); background: var(--paper); }
-  .long { color: var(--long); font-weight: 600; }
-  .short { color: var(--short); font-weight: 600; }
+  .long { color: var(--long); font-weight: 600; } .short { color: var(--short); font-weight: 600; }
+  .tag { display: inline-block; padding: 2px 7px; border-radius: 999px; font-size: 10.5px; font-weight: 700; }
+  .tag-core { background: var(--signal-soft); color: var(--signal); }
+  .tag-ep { background: color-mix(in srgb, var(--ep) 18%, transparent); color: var(--ep); }
+  .tag-per { background: color-mix(in srgb, var(--per) 18%, transparent); color: var(--per); }
   .empty { padding: 24px; text-align: center; color: var(--text-faint); background: var(--surface); border: 1px solid var(--rail); font-size: 13.5px; }
   .cols { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 10px; }
   @media (max-width: 600px) { .cols { grid-template-columns: 1fr; } }
@@ -30,13 +38,21 @@
 </style>
 </head><body><div class="wrap">
   <h1>System 6 — Live Signals</h1>
-  <p class="sub mono">Entries checked: Jul 22, 2026, 7:37 PM PT &middot; Roster: 2026-07-22</p>
+  <p class="sub mono">Roster last updated: 2026-07-22</p>
   <span class="regime bear">QQQ: BEARISH</span>
 
-  <h2>Live entry signals (most recent 30m bar)</h2>
-  <div class="empty">No signals on the latest completed bar. Check back at the next 30m interval.</div>
+  <div class="controls">
+    <label for="date-input">Date</label>
+    <input type="date" id="date-input" />
+    <button class="nav" id="prev-btn">&larr; Prev</button>
+    <button class="nav" id="next-btn">Next &rarr;</button>
+    <button class="nav" id="today-btn">Today</button>
+  </div>
 
-  <h2>Roster (eligible universe)</h2>
+  <h2>Signals</h2>
+  <div id="signal-container"></div>
+
+  <h2>Roster (eligible universe, as of last EOD scan)</h2>
   <div class="cols">
     <div class="panel long">
       <h3>Long (0)</h3>
@@ -48,5 +64,54 @@
     </div>
   </div>
 
-  <footer>Core pattern signals only (dryUpBreakout3/reclaim/looseTier2/surfBase for longs, dryDownBreakdown3/rejection/looseTier2Short for shorts), same thresholds as the locked backtest. EP and Parabolic overlays are not included yet. This is directional guidance ported from a backtest, not investment advice -- verify before acting.</footer>
-</div></body></html>
+  <footer>MAX + EP + Parabolic, same thresholds as the locked backtest (~206% OOS CAGR under realistic gap pricing). History only goes back to whenever this system first ran -- not retroactive to the full 2019-2026 backtest. This is directional guidance ported from a backtest, not investment advice -- verify before acting.</footer>
+</div>
+
+<script>
+const HISTORY = {"2026-07-22":{"core":[],"ep":[],"per":[]}};
+const days = Object.keys(HISTORY).sort();
+const todayStr = "2026-07-22";
+
+const dateInput = document.getElementById('date-input');
+const container = document.getElementById('signal-container');
+if (days.length) { dateInput.min = days[0]; dateInput.max = days[days.length - 1] > todayStr ? days[days.length - 1] : todayStr; }
+
+function fmtTime(barTime) {
+  return new Intl.DateTimeFormat('en-US', { timeZone: 'America/Los_Angeles', hour: '2-digit', minute: '2-digit' }).format(new Date(barTime * 1000));
+}
+function render(dateStr) {
+  dateInput.value = dateStr;
+  const day = HISTORY[dateStr];
+  const all = day ? [
+    ...day.core.map(s => ({ ...s, tag: 'CORE', cls: 'tag-core' })),
+    ...day.ep.map(s => ({ ...s, tag: 'EP', cls: 'tag-ep' })),
+    ...day.per.map(s => ({ ...s, tag: 'PER', cls: 'tag-per' })),
+  ].sort((a, b) => a.barTime - b.barTime) : [];
+
+  if (!all.length) {
+    container.innerHTML = '<div class="empty">No signals recorded for ' + dateStr + (day ? '' : ' (no data for this day yet)') + '.</div>';
+    return;
+  }
+  const rows = all.map(s =>
+    '<tr><td>' + fmtTime(s.barTime) + ' PT</td><td class="mono" style="font-weight:600;">' + s.symbol + '</td>' +
+    '<td class="' + s.side + '">' + s.side + '</td><td><span class="tag ' + s.cls + '">' + s.tag + '</span></td>' +
+    '<td class="mono">' + s.entryPrice + '</td><td class="mono">' + s.stopPrice + '</td></tr>'
+  ).join('');
+  container.innerHTML = '<table><thead><tr><th>Time</th><th>Ticker</th><th>Side</th><th>Source</th><th>Entry</th><th>Stop</th></tr></thead><tbody>' + rows + '</tbody></table>';
+}
+
+function goTo(dir) {
+  const cur = dateInput.value;
+  let idx = days.indexOf(cur);
+  if (idx === -1) { render(days.length ? days[days.length - 1] : todayStr); return; }
+  idx += dir;
+  if (idx >= 0 && idx < days.length) render(days[idx]);
+}
+dateInput.addEventListener('change', () => render(dateInput.value));
+document.getElementById('prev-btn').addEventListener('click', () => goTo(-1));
+document.getElementById('next-btn').addEventListener('click', () => goTo(1));
+document.getElementById('today-btn').addEventListener('click', () => render(todayStr));
+
+render(days.length && days[days.length - 1] >= todayStr ? days[days.length - 1] : (days.includes(todayStr) ? todayStr : (days[days.length - 1] || todayStr)));
+</script>
+</body></html>

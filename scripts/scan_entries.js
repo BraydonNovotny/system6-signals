@@ -154,11 +154,8 @@ async function run() {
     }
   }
 
-  data.liveSignals = signals;
-  data.updated = data.updated || {};
-  data.updated.entries = new Date().toISOString();
-  saveData(data);
   console.log(`Entry scan: ${signals.length} signal(s) on the latest completed 30m bar, across ${tickers.length} roster tickers checked.`);
+  return signals.map(s => ({ ...s, source: 'CORE' }));
 }
 
 module.exports = { run };
