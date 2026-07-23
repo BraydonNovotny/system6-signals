@@ -107,7 +107,7 @@
     </div>
   </details>
 
-  <footer>MAX + EP + Parabolic. "Taken" = passed the same -1R daily loss cap (-2R for EP-30m) and 10-position limit the backtest uses, computed chronologically as the day unfolds. Trades still in progress show as Pending until enough bars exist to resolve them (updates automatically on a later refresh). History starts from whenever this system first ran. Not investment advice -- verify before acting.</footer>
+  <footer>SAFE + EP + Parabolic + Close-Position Filter. "Taken" = passed the same -1R daily loss cap (-2R for EP-30m) and 10-position limit the backtest uses, computed chronologically as the day unfolds, plus the close-position rule: if the entry day's own close lands in the weak 20% of its range (long) or strong 20% (short), the position is force-closed at that close instead of held further (see the CP badge). Trades still in progress show as Pending until enough bars exist to resolve them (updates automatically on a later refresh). History starts from whenever this system first ran. Not investment advice -- verify before acting.</footer>
 </div>
 
 <script>
@@ -195,6 +195,7 @@ function render(dateStr) {
     } else {
       resultHtml = '<span class="' + (s.rMultiple >= 0 ? 'r-pos' : 'r-neg') + '">' + (s.rMultiple >= 0 ? '+' : '') + s.rMultiple.toFixed(2) + 'R</span>';
       if (s.gapped) resultHtml += ' <span class="gap-badge" title="Exit price gapped past the stop -- filled at the actual open, not the idealized stop level">GAP</span>';
+      if (s.closedByClosePosRule) resultHtml += ' <span class="gap-badge" style="background:color-mix(in srgb, var(--signal) 20%, transparent); color:var(--signal);" title="Entry day closed weak (long) or strong (short) within its own range -- force-closed at the close per the locked close-position rule">CP</span>';
     }
     const tf = s.tf || '30m';
     const closeOffset = tf === '1h' ? 3600 : 1800;

@@ -9,6 +9,7 @@ const { loadHistory, saveHistory, recordCandidates, recordTaken } = require('./h
 const { runAccountFilter } = require('./account_filter');
 const resolvePending = require('./resolve_pending');
 const eodAddWinners = require('./eod_add_winners');
+const eodClosePosition = require('./eod_close_position_check');
 const { build } = require('./build_site.js');
 
 async function fetch30m(symbol) {
@@ -94,12 +95,15 @@ async function main() {
     }
     if (data.updated?.addWinners !== today) {
       const history = loadHistory();
+      // Close-position rule runs FIRST: a position it force-closes at the close is no
+      // longer "still open," so it should never also compete for the add-winners size-up.
+      const closedOut = await eodClosePosition.run(history).catch(e => { console.error('close-position check failed:', e.message); return []; });
       const addWinners = await eodAddWinners.run(history).catch(e => { console.error('add-winners check failed:', e.message); return []; });
       saveHistory(history);
       data.updated = data.updated || {};
       data.updated.addWinners = today;
       saveData(data);
-      console.log(`Add-winners check: ${addWinners.length} qualifying position(s) today.`);
+      console.log(`Close-position check: ${closedOut.length} position(s) force-closed. Add-winners check: ${addWinners.length} qualifying position(s) today.`);
       didWork = true;
     }
   }
