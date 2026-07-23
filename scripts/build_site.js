@@ -65,7 +65,10 @@ function build() {
 
   <div class="signals-block">
     <div class="head">
-      <h2 id="section-title">Triggered &amp; taken</h2>
+      <div>
+        <h2 id="section-title">Triggered &amp; taken</h2>
+        <p id="day-stats" class="sub mono" style="margin:2px 0 0;"></p>
+      </div>
       <div class="controls">
         <input type="date" id="date-input" />
         <button class="nav" id="prev-btn">&larr;</button>
@@ -102,6 +105,7 @@ const todayStr = ${JSON.stringify(new Intl.DateTimeFormat('en-CA', { timeZone: '
 const dateInput = document.getElementById('date-input');
 const container = document.getElementById('signal-container');
 const titleEl = document.getElementById('section-title');
+const dayStatsEl = document.getElementById('day-stats');
 const prevBtn = document.getElementById('prev-btn');
 const nextBtn = document.getElementById('next-btn');
 if (days.length) { dateInput.min = days[0]; dateInput.max = days[days.length - 1] > todayStr ? days[days.length - 1] : todayStr; }
@@ -123,9 +127,15 @@ function render(dateStr) {
   nextBtn.disabled = !(idx >= 0 && idx < days.length - 1);
 
   if (!taken.length) {
+    dayStatsEl.textContent = '';
     container.innerHTML = '<div class="empty"><b>No trades taken</b>' + (day ? 'Checked ' + humanDate(dateStr) + ' — nothing passed the filters.' : 'No data recorded for this day yet.') + '</div>';
     return;
   }
+  const resolvedTrades = taken.filter(t => t.resolved);
+  const wins = resolvedTrades.filter(t => t.rMultiple > 0);
+  const winRateText = resolvedTrades.length ? (wins.length / resolvedTrades.length * 100).toFixed(0) + '% win rate' : 'results pending';
+  const avgR = resolvedTrades.length ? resolvedTrades.reduce((a, t) => a + t.rMultiple, 0) / resolvedTrades.length : null;
+  dayStatsEl.textContent = taken.length + ' trade' + (taken.length === 1 ? '' : 's') + ' · ' + winRateText + (avgR != null ? ' · avg ' + (avgR >= 0 ? '+' : '') + avgR.toFixed(2) + 'R' : '');
   const rows = taken.map(s => {
     let resultHtml;
     if (!s.resolved) {
