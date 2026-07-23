@@ -1,0 +1,38 @@
+name: Update System 6 Signal Log
+
+on:
+  schedule:
+    # Backup trigger only -- GitHub's own `schedule` cron is best-effort on free/public
+    # repos and can lag by 1-3+ hours. An external service (cron-job.org) hits
+    # workflow_dispatch every 30 min as the real driver, same pattern as the RS Screener.
+    # scripts/run.js self-gates on actual America/Los_Angeles time and no-ops otherwise.
+    - cron: '*/30 * * * *'
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency:
+  group: system6-signals-update
+  cancel-in-progress: true
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Run roster scan + rebuild site
+        run: node scripts/run.js
+
+      - name: Commit and push if changed
+        run: |
+          git config user.name "system6-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add data.json index.html
+          git diff --cached --quiet && echo "No changes to commit." || git commit -m "Auto-update roster"
+          git push
