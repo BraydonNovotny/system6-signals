@@ -172,37 +172,43 @@ function render(dateStr) {
   prevBtn.disabled = !(idx > 0);
   nextBtn.disabled = !(idx >= 0 && idx < days.length - 1);
 
+  // BUG FIX: this used to return early here on a no-trades day, which skipped updating the
+  // rejected-for-capital and close-adjustments sections below -- leaving them showing
+  // stale content from whatever day was viewed PREVIOUSLY (e.g. click back to yesterday,
+  // forward to today: today's real "nothing taken/blocked" state never got applied,
+  // yesterday's real rejections/adjustments stayed on screen looking like today's).
+  // Every render() call must now update ALL THREE sections, every time, no early exit.
   if (!taken.length) {
     dayStatsEl.textContent = '';
     container.innerHTML = '<div class="empty"><b>No trades taken</b>' + (day ? 'Checked ' + humanDate(dateStr) + ' — nothing passed the filters.' : 'No data recorded for this day yet.') + '</div>';
-    return;
+  } else {
+    const resolvedTrades = taken.filter(t => t.resolved);
+    const wins = resolvedTrades.filter(t => t.rMultiple > 0);
+    const allResolved = resolvedTrades.length === taken.length;
+    const hitRateText = resolvedTrades.length
+      ? wins.length + '/' + resolvedTrades.length + ' (' + (wins.length / resolvedTrades.length * 100).toFixed(0) + '%)' + (allResolved ? '' : ' so far (TBD)')
+      : 'no results yet (TBD)';
+    const avgR = resolvedTrades.length ? resolvedTrades.reduce((a, t) => a + t.rMultiple, 0) / resolvedTrades.length : null;
+    dayStatsEl.textContent = hitRateText + ' · ' + taken.length + ' trade' + (taken.length === 1 ? '' : 's') + (avgR != null ? ' · avg ' + (avgR >= 0 ? '+' : '') + avgR.toFixed(2) + 'R' : '');
+    const rows = taken.map(s => {
+      let resultHtml;
+      if (!s.resolved) {
+        const lr = s.liveR;
+        const lrText = lr == null ? '' : ' (' + (lr >= 0 ? '+' : '') + lr.toFixed(2) + 'R)';
+        const cls = lr == null ? 'r-pending' : (lr >= 0 ? 'r-pos' : 'r-neg');
+        resultHtml = '<span class="r-pending">LIVE</span><span class="' + cls + '">' + lrText + '</span>';
+      } else {
+        resultHtml = '<span class="' + (s.rMultiple >= 0 ? 'r-pos' : 'r-neg') + '">' + (s.rMultiple >= 0 ? '+' : '') + s.rMultiple.toFixed(2) + 'R</span>';
+        if (s.gapped) resultHtml += ' <span class="gap-badge" title="Exit price gapped past the stop -- filled at the actual open, not the idealized stop level">GAP</span>';
+        if (s.closedByClosePosRule) resultHtml += ' <span class="gap-badge" style="background:color-mix(in srgb, var(--signal) 20%, transparent); color:var(--signal);" title="Entry day closed weak (long) or strong (short) within its own range -- force-closed at the close per the locked close-position rule">CP</span>';
+      }
+      const tf = s.tf || '30m';
+      const closeOffset = tf === '1h' ? 3600 : 1800;
+      return '<tr><td class="mono" style="font-weight:600;">' + s.symbol + '</td><td>' + fmtTime(s.barTime + closeOffset) + ' PT <span style="color:var(--text-faint);">(' + tf + ')</span></td>' +
+        '<td class="' + s.side + '">' + s.side.toUpperCase() + '</td><td>' + resultHtml + '</td></tr>';
+    }).join('');
+    container.innerHTML = '<table><thead><tr><th>Ticker</th><th>Time</th><th>Side</th><th>Result</th></tr></thead><tbody>' + rows + '</tbody></table>';
   }
-  const resolvedTrades = taken.filter(t => t.resolved);
-  const wins = resolvedTrades.filter(t => t.rMultiple > 0);
-  const allResolved = resolvedTrades.length === taken.length;
-  const hitRateText = resolvedTrades.length
-    ? wins.length + '/' + resolvedTrades.length + ' (' + (wins.length / resolvedTrades.length * 100).toFixed(0) + '%)' + (allResolved ? '' : ' so far (TBD)')
-    : 'no results yet (TBD)';
-  const avgR = resolvedTrades.length ? resolvedTrades.reduce((a, t) => a + t.rMultiple, 0) / resolvedTrades.length : null;
-  dayStatsEl.textContent = hitRateText + ' · ' + taken.length + ' trade' + (taken.length === 1 ? '' : 's') + (avgR != null ? ' · avg ' + (avgR >= 0 ? '+' : '') + avgR.toFixed(2) + 'R' : '');
-  const rows = taken.map(s => {
-    let resultHtml;
-    if (!s.resolved) {
-      const lr = s.liveR;
-      const lrText = lr == null ? '' : ' (' + (lr >= 0 ? '+' : '') + lr.toFixed(2) + 'R)';
-      const cls = lr == null ? 'r-pending' : (lr >= 0 ? 'r-pos' : 'r-neg');
-      resultHtml = '<span class="r-pending">LIVE</span><span class="' + cls + '">' + lrText + '</span>';
-    } else {
-      resultHtml = '<span class="' + (s.rMultiple >= 0 ? 'r-pos' : 'r-neg') + '">' + (s.rMultiple >= 0 ? '+' : '') + s.rMultiple.toFixed(2) + 'R</span>';
-      if (s.gapped) resultHtml += ' <span class="gap-badge" title="Exit price gapped past the stop -- filled at the actual open, not the idealized stop level">GAP</span>';
-      if (s.closedByClosePosRule) resultHtml += ' <span class="gap-badge" style="background:color-mix(in srgb, var(--signal) 20%, transparent); color:var(--signal);" title="Entry day closed weak (long) or strong (short) within its own range -- force-closed at the close per the locked close-position rule">CP</span>';
-    }
-    const tf = s.tf || '30m';
-    const closeOffset = tf === '1h' ? 3600 : 1800;
-    return '<tr><td class="mono" style="font-weight:600;">' + s.symbol + '</td><td>' + fmtTime(s.barTime + closeOffset) + ' PT <span style="color:var(--text-faint);">(' + tf + ')</span></td>' +
-      '<td class="' + s.side + '">' + s.side.toUpperCase() + '</td><td>' + resultHtml + '</td></tr>';
-  }).join('');
-  container.innerHTML = '<table><thead><tr><th>Ticker</th><th>Time</th><th>Side</th><th>Result</th></tr></thead><tbody>' + rows + '</tbody></table>';
 
   // Rejected-for-capital section -- intentionally EXCLUDES daily-loss-cap rejections
   // (no reason to show tempting "almost took this" alerts on a day you've already hit -1R).
