@@ -9043,8 +9043,36 @@
     "note": "Partial backfill: only CMCSA/AMZN/GOOG (3 of 19 roster tickers) checked against real TradingView data. AMZN excluded (did not pass daily scan on 7/17). Not a complete day."
   },
   "2026-07-24": {
-    "candidates": [],
-    "taken": [],
+    "candidates": [
+      {
+        "symbol": "SOFI",
+        "side": "short",
+        "qual": 2,
+        "entryPrice": 16.68,
+        "stopPrice": 17.09,
+        "barTime": 1784907000,
+        "patternTier": "rejection",
+        "tf": "30m",
+        "source": "CORE"
+      }
+    ],
+    "taken": [
+      {
+        "symbol": "SOFI",
+        "side": "short",
+        "qual": 2,
+        "entryPrice": 16.68,
+        "stopPrice": 17.09,
+        "barTime": 1784907000,
+        "patternTier": "rejection",
+        "tf": "30m",
+        "source": "CORE",
+        "resolved": false,
+        "rMultiple": null,
+        "liveR": 0,
+        "gapped": false
+      }
+    ],
     "rejected": []
   }
 }
