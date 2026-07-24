@@ -69,7 +69,8 @@ async function getBars(symbol, tf) {
     if (q.close[i] == null) continue; // Yahoo pads non-trading minutes with nulls
     bars.push({ time: ts[i], open: q.open[i], high: q.high[i], low: q.low[i], close: q.close[i] });
   }
-  return bars;
+  // Drop Yahoo's synthetic zero-range closing snapshot (same bug fixed in simulate_exit.js).
+  return bars.filter((b, idx) => b.high !== b.low || idx === 0);
 }
 
 async function main() {

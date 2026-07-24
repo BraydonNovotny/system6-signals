@@ -76,7 +76,15 @@ function simulateHalf(bars, entryIdx, side, entryPrice, R, mode, maxScan) {
 // valid if resolved; liveR is always computed (mark-to-market R using the latest
 // available close) so an open trade can show "how much it's up/down right now."
 // tf: '30m' (default, maxScan=13 bars ~= 1 trading day) or '1h' (maxScan=7 bars).
+//
+// BUG FIX: Yahoo appends a synthetic zero-range "closing snapshot" bar right at market
+// close (O=H=L=C, no real trading in it) -- if that landed exactly at the maxScan cap
+// position, it was being counted as a genuine 13th/7th bar and force-closing the trade a
+// session early, instead of correctly extending into the next real session (confirmed via
+// a head-to-head backtest that holding the full maxScan of REAL bars beats cutting one
+// bar short: 650% vs 505% OOS CAGR). Filter these phantom bars out before scanning.
 function simulateExit(side, entryPrice, stopPrice, entryTime, bars, tf) {
+  bars = bars.filter(b => b.high !== b.low || b.time === entryTime);
   const entryIdx = bars.findIndex(b => b.time === entryTime);
   if (entryIdx === -1) return { resolved: false, liveR: null };
   const R = side === 'long' ? (entryPrice - stopPrice) / entryPrice : (stopPrice - entryPrice) / entryPrice;
