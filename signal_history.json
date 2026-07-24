@@ -9076,6 +9076,39 @@
         "patternTier": "dryDownBreakdown3",
         "tf": "30m",
         "source": "CORE"
+      },
+      {
+        "symbol": "IONQ",
+        "side": "short",
+        "qual": 3,
+        "entryPrice": 33.25,
+        "stopPrice": 34.27,
+        "barTime": 1784910600,
+        "patternTier": "dryDownBreakdown3",
+        "tf": "30m",
+        "source": "CORE"
+      },
+      {
+        "symbol": "RKLB",
+        "side": "short",
+        "qual": 3,
+        "entryPrice": 64.72,
+        "stopPrice": 66.81,
+        "barTime": 1784910600,
+        "patternTier": "dryDownBreakdown3",
+        "tf": "30m",
+        "source": "CORE"
+      },
+      {
+        "symbol": "ONDS",
+        "side": "short",
+        "qual": 2,
+        "entryPrice": 7.9,
+        "stopPrice": 8.15,
+        "barTime": 1784910600,
+        "patternTier": "rejection",
+        "tf": "30m",
+        "source": "CORE"
       }
     ],
     "taken": [
@@ -9091,7 +9124,7 @@
         "source": "CORE",
         "resolved": false,
         "rMultiple": null,
-        "liveR": -0.13,
+        "liveR": 0.15,
         "gapped": false
       },
       {
@@ -9106,7 +9139,7 @@
         "source": "CORE",
         "resolved": false,
         "rMultiple": null,
-        "liveR": -0.14,
+        "liveR": 0.15,
         "gapped": false
       },
       {
@@ -9121,7 +9154,52 @@
         "source": "CORE",
         "resolved": false,
         "rMultiple": null,
+        "liveR": 0.29,
+        "gapped": false
+      },
+      {
+        "symbol": "IONQ",
+        "side": "short",
+        "qual": 3,
+        "entryPrice": 33.25,
+        "stopPrice": 34.27,
+        "barTime": 1784910600,
+        "patternTier": "dryDownBreakdown3",
+        "tf": "30m",
+        "source": "CORE",
+        "resolved": false,
+        "rMultiple": null,
         "liveR": 0,
+        "gapped": false
+      },
+      {
+        "symbol": "RKLB",
+        "side": "short",
+        "qual": 3,
+        "entryPrice": 64.72,
+        "stopPrice": 66.81,
+        "barTime": 1784910600,
+        "patternTier": "dryDownBreakdown3",
+        "tf": "30m",
+        "source": "CORE",
+        "resolved": false,
+        "rMultiple": null,
+        "liveR": 0,
+        "gapped": false
+      },
+      {
+        "symbol": "ONDS",
+        "side": "short",
+        "qual": 2,
+        "entryPrice": 7.9,
+        "stopPrice": 8.15,
+        "barTime": 1784910600,
+        "patternTier": "rejection",
+        "tf": "30m",
+        "source": "CORE",
+        "resolved": false,
+        "rMultiple": null,
+        "liveR": -0.02,
         "gapped": false
       }
     ],
