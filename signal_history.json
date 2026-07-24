@@ -9124,8 +9124,9 @@
         "source": "CORE",
         "resolved": false,
         "rMultiple": null,
-        "liveR": 0.38,
-        "gapped": false
+        "liveR": 0.44,
+        "gapped": false,
+        "addWinnersChecked": true
       },
       {
         "symbol": "PLTR",
@@ -9139,8 +9140,9 @@
         "source": "CORE",
         "resolved": false,
         "rMultiple": null,
-        "liveR": -0.06,
-        "gapped": false
+        "liveR": 0.15,
+        "gapped": false,
+        "addWinnersChecked": true
       },
       {
         "symbol": "HIMS",
@@ -9154,8 +9156,9 @@
         "source": "CORE",
         "resolved": false,
         "rMultiple": null,
-        "liveR": 0.45,
-        "gapped": false
+        "liveR": 1.1,
+        "gapped": false,
+        "addWinnersChecked": true
       },
       {
         "symbol": "IONQ",
@@ -9169,8 +9172,9 @@
         "source": "CORE",
         "resolved": false,
         "rMultiple": null,
-        "liveR": 0.15,
-        "gapped": false
+        "liveR": 0.4,
+        "gapped": false,
+        "addWinnersChecked": true
       },
       {
         "symbol": "RKLB",
@@ -9184,8 +9188,9 @@
         "source": "CORE",
         "resolved": false,
         "rMultiple": null,
-        "liveR": 0.35,
-        "gapped": false
+        "liveR": 0.38,
+        "gapped": false,
+        "addWinnersChecked": true
       },
       {
         "symbol": "ONDS",
@@ -9199,10 +9204,41 @@
         "source": "CORE",
         "resolved": false,
         "rMultiple": null,
-        "liveR": -0.06,
-        "gapped": false
+        "liveR": 0.32,
+        "gapped": false,
+        "addWinnersChecked": true
       }
     ],
-    "rejected": []
+    "rejected": [],
+    "addWinners": [
+      {
+        "symbol": "HIMS",
+        "side": "short",
+        "entryPrice": 29.22,
+        "barTime": 1784908800,
+        "liveR": 1.1,
+        "addMult": 1.5
+      }
+    ],
+    "closeAdjustments": [
+      {
+        "type": "sized_up",
+        "symbol": "HIMS",
+        "side": "short",
+        "entryPrice": 29.22,
+        "barTime": 1784908800,
+        "liveR": 1.1,
+        "addMult": 1.5
+      },
+      {
+        "type": "sized_up",
+        "symbol": "HIMS",
+        "side": "short",
+        "entryPrice": 29.22,
+        "barTime": 1784908800,
+        "liveR": 1.1,
+        "addMult": 1.5
+      }
+    ]
   }
 }
