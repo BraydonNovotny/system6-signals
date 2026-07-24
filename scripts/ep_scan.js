@@ -10,7 +10,7 @@
 //   Entry: break of the first 30m bar's high. Stop = low of day.
 const { loadTickers } = require('./universe');
 const SECTOR = require('./sector_map');
-const { fetchChart, pool, loadData } = require('./lib');
+const { fetchChart, pool, loadData, dropIncompleteBars } = require('./lib');
 
 async function fetchDaily(symbol) {
   const result = await fetchChart(symbol, 'range=6mo&interval=1d');
@@ -32,7 +32,7 @@ async function fetch30m(symbol) {
     if (q.close[i] == null || q.high[i] == null || q.low[i] == null || q.volume[i] == null || q.open[i] == null) continue;
     bars.push({ time: ts[i], open: q.open[i], high: q.high[i], low: q.low[i], close: q.close[i], volume: q.volume[i] });
   }
-  return bars;
+  return dropIncompleteBars(bars, 1800);
 }
 function dateKeyOf(t) { return new Date(t * 1000).toISOString().slice(0, 10); }
 

@@ -5,7 +5,7 @@
 // Parabolic overlays are NOT included yet -- core pattern signals only, phase 1.
 const { emaSeries, computeAdrSeries } = require('./indicators');
 const { evalPatterns, evalShortPatterns, COMPRESSION_TIGHT_MAX, COMPRESSION_WINDOW, compRange, slForAdr } = require('./patterns');
-const { fetchChart, pool, loadData, saveData, ptDateString } = require('./lib');
+const { fetchChart, pool, loadData, saveData, ptDateString, dropIncompleteBars } = require('./lib');
 
 async function fetchDaily(symbol) {
   const result = await fetchChart(symbol, 'range=2y&interval=1d');
@@ -22,12 +22,12 @@ async function fetch30m(symbol) {
   const result = await fetchChart(symbol, 'range=10d&interval=30m');
   const ts = result.timestamp || [];
   const q = result.indicators?.quote?.[0] || {};
-  const bars = [];
+  let bars = [];
   for (let i = 0; i < ts.length; i++) {
     if (q.close[i] == null || q.high[i] == null || q.low[i] == null || q.volume[i] == null || q.open[i] == null) continue;
     bars.push({ time: ts[i], open: q.open[i], high: q.high[i], low: q.low[i], close: q.close[i], volume: q.volume[i] });
   }
-  return bars;
+  return dropIncompleteBars(bars, 1800);
 }
 
 // Ported verbatim from website_stats_final.js's regimeSizeMult -- only need the 1.3-bucket

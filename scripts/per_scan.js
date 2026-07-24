@@ -6,7 +6,7 @@
 //   SHORT (blow-off fade): must be on the LONG roster, runup >= 50% over 60 days,
 //                           gap >= 3%, hold up to 1 day.
 const { loadTickers } = require('./universe');
-const { fetchChart, pool, loadData } = require('./lib');
+const { fetchChart, pool, loadData, dropIncompleteBars } = require('./lib');
 
 const LOOKBACK = 60;
 const CONFIG = {
@@ -34,7 +34,7 @@ async function fetch30m(symbol) {
     if (q.close[i] == null || q.high[i] == null || q.low[i] == null || q.volume[i] == null || q.open[i] == null) continue;
     bars.push({ time: ts[i], open: q.open[i], high: q.high[i], low: q.low[i], close: q.close[i], volume: q.volume[i] });
   }
-  return bars;
+  return dropIncompleteBars(bars, 1800);
 }
 
 function dateKeyOf(t) { return new Date(t * 1000).toISOString().slice(0, 10); }

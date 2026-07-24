@@ -64,4 +64,17 @@ function ptDateString() {
   return new Intl.DateTimeFormat('en-CA', { timeZone: 'America/Los_Angeles' }).format(new Date()); // YYYY-MM-DD
 }
 
-module.exports = { loadUniverse, loadData, saveData, fetchChart, pool, ptNowDecimalHour, ptDateString };
+// Drops any bar that hasn't genuinely finished forming yet -- Yahoo returns the
+// currently-in-progress interval as a real row (still-updating OHLC) rather than waiting
+// for it to close, and also appends a synthetic zero-range "current price" snapshot right
+// at the tail. Found via a direct question about why a signal's entry price kept moving
+// after it was already recorded: a pattern was being evaluated against a bar that was, in
+// reality, still 20+ minutes from actually closing. Entries should only ever confirm off
+// bars whose close time has genuinely passed -- same standard the backtest engine holds
+// (it only ever sees fully-completed historical bars).
+function dropIncompleteBars(bars, intervalSec) {
+  const nowSec = Date.now() / 1000;
+  return bars.filter(b => (b.time + intervalSec) <= nowSec);
+}
+
+module.exports = { loadUniverse, loadData, saveData, fetchChart, pool, ptNowDecimalHour, ptDateString, dropIncompleteBars };
