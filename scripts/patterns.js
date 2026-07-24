@@ -62,12 +62,19 @@ const SL_BUCKETS = [
   [5, 6, 2.25, 2.5], [6, 7, 2.5, 2.75], [7, 8, 2.75, 3.0], [8, 9, 3.0, 3.25],
   [9, 10, 3.25, 3.5], [10, 11, 3.5, 3.75],
 ];
+// Widened 10% off the original tiered table -- OOS-confirmed to beat the un-widened
+// version on every metric at once (CAGR, Sharpe, win rate, and even max drawdown).
+const SL_WIDEN_MULT = 1.10;
 function slForAdr(adrPct) {
-  if (adrPct > 11) return 0.33 * adrPct;
-  for (const [lo, hi, sLo, sHi] of SL_BUCKETS) {
-    if (adrPct >= lo && adrPct < hi) return hi === lo ? sLo : sLo + (adrPct - lo) / (hi - lo) * (sHi - sLo);
+  let base;
+  if (adrPct > 11) base = 0.33 * adrPct;
+  else {
+    base = 1.25;
+    for (const [lo, hi, sLo, sHi] of SL_BUCKETS) {
+      if (adrPct >= lo && adrPct < hi) { base = hi === lo ? sLo : sLo + (adrPct - lo) / (hi - lo) * (sHi - sLo); break; }
+    }
   }
-  return 1.25;
+  return base * SL_WIDEN_MULT;
 }
 
 module.exports = { evalPatterns, evalShortPatterns, COMPRESSION_TIGHT_MAX, COMPRESSION_WINDOW, compRange, slForAdr };

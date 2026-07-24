@@ -97,9 +97,9 @@ function build() {
     </div>
     <div style="border-top:1px solid var(--rail); margin-top:4px;"></div>
     <div style="padding:14px 18px;">
-      <h2 style="margin:0 0 4px;">Add to winners (checked at the close)</h2>
-      <p class="sub mono" style="margin:0 0 10px;">LOCKED rule: a position entered today that's still open at the close and already up &ge;0.5R gets sized up to 1.5x total. Informational -- you place the add manually.</p>
-      <div id="add-winners-container"></div>
+      <h2 style="margin:0 0 4px;">Close Adjustments</h2>
+      <p class="sub mono" style="margin:0 0 10px;">Anything the LOCKED rules did to an open position at the close: sized up to 1.5x (still open, already &ge;0.5R) or force-closed early (entry day closed weak/strong within its own range). Informational -- you place any add manually.</p>
+      <div id="close-adjustments-container"></div>
     </div>
   </div>
 
@@ -118,7 +118,7 @@ function build() {
     </div>
   </details>
 
-  <footer>SAFE + EP + Parabolic + Close-Position Filter. "Taken" = passed the same -1R daily loss cap (-2R for EP-30m) and 10-position limit the backtest uses, computed chronologically as the day unfolds, plus the close-position rule: if the entry day's own close lands in the weak 20% of its range (long) or strong 20% (short), the position is force-closed at that close instead of held further (see the CP badge). Trades still in progress show as Pending until enough bars exist to resolve them (updates automatically on a later refresh). History starts from whenever this system first ran. Not investment advice -- verify before acting.</footer>
+  <footer>SAFE + EP + Parabolic + Close-Position Filter + Wider Stops (+10% off the ADR-tiered table). "Taken" = passed the same -1R daily loss cap (-2R for EP-30m) and 10-position limit the backtest uses, computed chronologically as the day unfolds, plus the close-position rule: if the entry day's own close lands in the weak 20% of its range (long) or strong 20% (short), the position is force-closed at that close instead of held further (see the CP badge). Trades still in progress show as Pending until enough bars exist to resolve them (updates automatically on a later refresh). History starts from whenever this system first ran. Not investment advice -- verify before acting.</footer>
 </div>
 
 <script>
@@ -160,7 +160,7 @@ document.getElementById('perf-windows').innerHTML =
 const dateInput = document.getElementById('date-input');
 const container = document.getElementById('signal-container');
 const rejectedContainer = document.getElementById('rejected-container');
-const addWinnersContainer = document.getElementById('add-winners-container');
+const closeAdjustmentsContainer = document.getElementById('close-adjustments-container');
 const titleEl = document.getElementById('section-title');
 const dayStatsEl = document.getElementById('day-stats');
 const prevBtn = document.getElementById('prev-btn');
@@ -230,19 +230,31 @@ function render(dateStr) {
     rejectedContainer.innerHTML = '<table><thead><tr><th>Ticker</th><th>Time</th><th>Side</th><th>Reason</th></tr></thead><tbody>' + rrows + '</tbody></table>';
   }
 
-  // Add-to-winners section -- populated once, near market close, by eod_add_winners.js.
-  const addWinners = (day && day.addWinners) ? day.addWinners : [];
-  if (!addWinners.length) {
-    addWinnersContainer.innerHTML = '<div class="empty" style="padding:16px;">None today -- either nothing was still open at the close, or nothing was up 0.5R+ yet.</div>';
+  // Close Adjustments section -- unified feed of anything the LOCKED EOD rules did to an
+  // open position: sized up (eod_add_winners.js) or force-closed early (the close-
+  // position rule, from either resolve_pending.js or eod_close_position_check.js).
+  const closeAdj = (day && day.closeAdjustments) ? day.closeAdjustments : [];
+  if (!closeAdj.length) {
+    closeAdjustmentsContainer.innerHTML = '<div class="empty" style="padding:16px;">None -- nothing sized up or force-closed at the close this day.</div>';
   } else {
-    const awrows = addWinners.slice().sort((a, b) => a.barTime - b.barTime).map(s => {
+    const carows = closeAdj.slice().sort((a, b) => a.barTime - b.barTime).map(s => {
+      if (s.type === 'sized_up') {
+        return '<tr><td class="mono" style="font-weight:600;">' + s.symbol + '</td>' +
+          '<td class="' + s.side + '">' + s.side.toUpperCase() + '</td>' +
+          '<td class="mono">$' + s.entryPrice.toFixed(2) + '</td>' +
+          '<td><span class="gap-badge" style="background:color-mix(in srgb, var(--win) 20%, transparent); color:var(--win);">SIZED UP</span></td>' +
+          '<td class="r-pos mono">+' + s.liveR.toFixed(2) + 'R</td>' +
+          '<td class="mono">' + s.addMult + 'x total</td></tr>';
+      }
+      const rCls = s.rMultiple >= 0 ? 'r-pos' : 'r-neg';
       return '<tr><td class="mono" style="font-weight:600;">' + s.symbol + '</td>' +
         '<td class="' + s.side + '">' + s.side.toUpperCase() + '</td>' +
-        '<td class="mono">$' + s.entryPrice.toFixed(2) + '</td>' +
-        '<td class="r-pos mono">+' + s.liveR.toFixed(2) + 'R</td>' +
-        '<td class="mono">' + s.addMult + 'x total</td></tr>';
+        '<td class="mono">$' + (s.entryPrice != null ? s.entryPrice.toFixed(2) : '--') + '</td>' +
+        '<td><span class="gap-badge" title="Entry day closed weak (long) or strong (short) within its own range">CLOSED (CP)</span></td>' +
+        '<td class="' + rCls + ' mono">' + (s.rMultiple >= 0 ? '+' : '') + s.rMultiple.toFixed(2) + 'R</td>' +
+        '<td class="mono">--</td></tr>';
     }).join('');
-    addWinnersContainer.innerHTML = '<table><thead><tr><th>Ticker</th><th>Side</th><th>Entry</th><th>Live R</th><th>Size to</th></tr></thead><tbody>' + awrows + '</tbody></table>';
+    closeAdjustmentsContainer.innerHTML = '<table><thead><tr><th>Ticker</th><th>Side</th><th>Entry</th><th>Action</th><th>R</th><th>Size to</th></tr></thead><tbody>' + carows + '</tbody></table>';
   }
 }
 

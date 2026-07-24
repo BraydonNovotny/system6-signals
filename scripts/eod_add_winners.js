@@ -48,6 +48,10 @@ async function run(history) {
     }
   }
   day.addWinners = addWinners;
+  day.closeAdjustments = day.closeAdjustments || [];
+  for (const w of addWinners) {
+    day.closeAdjustments.push({ type: 'sized_up', symbol: w.symbol, side: w.side, entryPrice: w.entryPrice, barTime: w.barTime, liveR: w.liveR, addMult: w.addMult });
+  }
   return addWinners;
 }
 

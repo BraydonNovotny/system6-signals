@@ -63,6 +63,13 @@ async function run(history) {
     t.closedByClosePosRule = true;
     closedOut.push({ symbol: t.symbol, side: t.side, closePos: +closePos.toFixed(2), rMultiple: t.rMultiple });
   }
+  if (closedOut.length) {
+    day.closeAdjustments = day.closeAdjustments || [];
+    for (const c of closedOut) {
+      const t = openToday.find(x => x.symbol === c.symbol && x.side === c.side);
+      day.closeAdjustments.push({ type: 'closed', symbol: c.symbol, side: c.side, entryPrice: t?.entryPrice, barTime: t?.barTime, rMultiple: c.rMultiple, closePos: c.closePos });
+    }
+  }
   return closedOut;
 }
 
