@@ -38,6 +38,10 @@ function regimeMultFromSpread(spread, side) {
   if (spread <= -0.6 && spread > -3.4) return 1.3; if (spread > -0.2 || spread <= -5.0) return 0.7; return 1.0;
 }
 
+function ptDateOf(ts) {
+  return new Intl.DateTimeFormat('en-CA', { timeZone: 'America/Los_Angeles' }).format(new Date(ts * 1000));
+}
+
 const etFmt = new Intl.DateTimeFormat('en-US', { timeZone: 'America/New_York', hour: '2-digit', minute: '2-digit', hour12: false, weekday: 'short' });
 function etSlot(unixSec) {
   const parts = etFmt.formatToParts(new Date(unixSec * 1000));
@@ -88,6 +92,13 @@ async function run() {
     // because this particular run happened to fire late or a prior trigger was skipped.
     const lastIdx = bars.length - 1;
     if (lastIdx < 20) continue;
+    // BUG FIX: the last fetched bar isn't necessarily FROM today -- if this symbol's data
+    // feed hasn't posted today's bars yet (lag, or ran before/right at the open), bars[lastIdx]
+    // can still be a prior trading day's (e.g. Friday's) last bar. Evaluating that as if it
+    // were "today" and then having the caller stamp it with the real wall-clock date (in
+    // run.js) mislabels an old, already-resolved signal as a brand-new one. Skip this symbol
+    // entirely this run if the last bar isn't actually dated today.
+    if (ptDateOf(bars[lastIdx].time) !== ptDateString()) continue;
     const todayDayNum = dayOf[lastIdx];
     let todayStart = lastIdx;
     while (todayStart > 0 && dayOf[todayStart - 1] === todayDayNum) todayStart--;
