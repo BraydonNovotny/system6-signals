@@ -9238,6 +9238,177 @@
         "barTime": 1784908800,
         "liveR": 1.1,
         "addMult": 1.5
+      },
+      {
+        "type": "sized_up",
+        "symbol": "HIMS",
+        "side": "short",
+        "entryPrice": 29.22,
+        "barTime": 1784908800,
+        "liveR": 1.21,
+        "addMult": 1.5
+      }
+    ]
+  },
+  "2026-07-27": {
+    "candidates": [
+      {
+        "symbol": "PLTR",
+        "side": "short",
+        "qual": 2,
+        "entryPrice": 123.39,
+        "stopPrice": 126.32,
+        "barTime": 1784907000,
+        "patternTier": "rejection",
+        "tf": "30m",
+        "source": "CORE"
+      },
+      {
+        "symbol": "SOFI",
+        "side": "short",
+        "qual": 2,
+        "entryPrice": 16.66,
+        "stopPrice": 17.06,
+        "barTime": 1784907000,
+        "patternTier": "rejection",
+        "tf": "30m",
+        "source": "CORE"
+      },
+      {
+        "symbol": "HIMS",
+        "side": "short",
+        "qual": 3,
+        "entryPrice": 29.22,
+        "stopPrice": 30.16,
+        "barTime": 1784908800,
+        "patternTier": "dryDownBreakdown3",
+        "tf": "30m",
+        "source": "CORE"
+      },
+      {
+        "symbol": "IONQ",
+        "side": "short",
+        "qual": 3,
+        "entryPrice": 33.25,
+        "stopPrice": 34.21,
+        "barTime": 1784910600,
+        "patternTier": "dryDownBreakdown3",
+        "tf": "30m",
+        "source": "CORE"
+      },
+      {
+        "symbol": "RKLB",
+        "side": "short",
+        "qual": 3,
+        "entryPrice": 64.72,
+        "stopPrice": 66.71,
+        "barTime": 1784910600,
+        "patternTier": "dryDownBreakdown3",
+        "tf": "30m",
+        "source": "CORE"
+      },
+      {
+        "symbol": "ONDS",
+        "side": "short",
+        "qual": 2,
+        "entryPrice": 7.9,
+        "stopPrice": 8.13,
+        "barTime": 1784910600,
+        "patternTier": "rejection",
+        "tf": "30m",
+        "source": "CORE"
+      }
+    ],
+    "taken": [
+      {
+        "symbol": "PLTR",
+        "side": "short",
+        "qual": 2,
+        "entryPrice": 123.39,
+        "stopPrice": 126.32,
+        "barTime": 1784907000,
+        "patternTier": "rejection",
+        "tf": "30m",
+        "source": "CORE",
+        "resolved": false,
+        "rMultiple": null,
+        "liveR": 0.15,
+        "gapped": false,
+        "addWinnersChecked": true
+      },
+      {
+        "symbol": "SOFI",
+        "side": "short",
+        "qual": 2,
+        "entryPrice": 16.66,
+        "stopPrice": 17.06,
+        "barTime": 1784907000,
+        "patternTier": "rejection",
+        "tf": "30m",
+        "source": "CORE",
+        "resolved": false,
+        "rMultiple": null,
+        "liveR": 0.45,
+        "gapped": false,
+        "addWinnersChecked": true
+      },
+      {
+        "symbol": "HIMS",
+        "side": "short",
+        "qual": 3,
+        "entryPrice": 29.22,
+        "stopPrice": 30.16,
+        "barTime": 1784908800,
+        "patternTier": "dryDownBreakdown3",
+        "tf": "30m",
+        "source": "CORE",
+        "resolved": false,
+        "rMultiple": null,
+        "liveR": 1.21,
+        "gapped": false,
+        "addWinnersChecked": true
+      },
+      {
+        "symbol": "IONQ",
+        "side": "short",
+        "qual": 3,
+        "entryPrice": 33.25,
+        "stopPrice": 34.21,
+        "barTime": 1784910600,
+        "patternTier": "dryDownBreakdown3",
+        "tf": "30m",
+        "source": "CORE",
+        "resolved": false,
+        "rMultiple": null,
+        "liveR": 0.43,
+        "gapped": false,
+        "addWinnersChecked": true
+      }
+    ],
+    "rejected": [
+      {
+        "symbol": "RKLB",
+        "side": "short",
+        "qual": 3,
+        "entryPrice": 64.72,
+        "stopPrice": 66.71,
+        "barTime": 1784910600,
+        "patternTier": "dryDownBreakdown3",
+        "tf": "30m",
+        "source": "CORE",
+        "rejectReason": "max positions (10)"
+      },
+      {
+        "symbol": "ONDS",
+        "side": "short",
+        "qual": 2,
+        "entryPrice": 7.9,
+        "stopPrice": 8.13,
+        "barTime": 1784910600,
+        "patternTier": "rejection",
+        "tf": "30m",
+        "source": "CORE",
+        "rejectReason": "max positions (10)"
       }
     ]
   }
