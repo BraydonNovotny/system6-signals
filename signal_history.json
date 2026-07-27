@@ -9321,8 +9321,9 @@
         "source": "CORE",
         "resolved": false,
         "rMultiple": null,
-        "liveR": 0.38,
-        "gapped": false
+        "liveR": 0.66,
+        "gapped": false,
+        "addWinnersChecked": true
       },
       {
         "symbol": "ONDS",
@@ -9334,10 +9335,11 @@
         "patternTier": "rejection",
         "tf": "30m",
         "source": "CORE",
-        "resolved": false,
-        "rMultiple": null,
-        "liveR": -0.02,
-        "gapped": false
+        "resolved": true,
+        "rMultiple": -0.75,
+        "liveR": -0.75,
+        "gapped": false,
+        "closedByClosePosRule": true
       },
       {
         "symbol": "RKLB",
@@ -9349,10 +9351,11 @@
         "patternTier": "rejection",
         "tf": "30m",
         "source": "CORE",
-        "resolved": false,
-        "rMultiple": null,
-        "liveR": -0.49,
-        "gapped": false
+        "resolved": true,
+        "rMultiple": -0.76,
+        "liveR": -0.76,
+        "gapped": false,
+        "closedByClosePosRule": true
       },
       {
         "symbol": "OPEN",
@@ -9366,8 +9369,9 @@
         "source": "CORE",
         "resolved": false,
         "rMultiple": null,
-        "liveR": 0,
-        "gapped": false
+        "liveR": -0.12,
+        "gapped": false,
+        "addWinnersChecked": true
       },
       {
         "symbol": "NFLX",
@@ -9381,10 +9385,85 @@
         "source": "CORE",
         "resolved": false,
         "rMultiple": null,
-        "liveR": 0.57,
-        "gapped": false
+        "liveR": 0.5,
+        "gapped": false,
+        "addWinnersChecked": true
       }
     ],
-    "rejected": []
+    "rejected": [],
+    "closeAdjustments": [
+      {
+        "type": "closed",
+        "symbol": "ONDS",
+        "side": "short",
+        "entryPrice": 7.84,
+        "barTime": 1785160800,
+        "rMultiple": -0.75,
+        "closePos": 0.86
+      },
+      {
+        "type": "closed",
+        "symbol": "RKLB",
+        "side": "short",
+        "entryPrice": 65.39,
+        "barTime": 1785160800,
+        "rMultiple": -0.76,
+        "closePos": 0.96
+      },
+      {
+        "type": "sized_up",
+        "symbol": "AMZN",
+        "side": "short",
+        "entryPrice": 233.48,
+        "barTime": 1785160800,
+        "liveR": 0.66,
+        "addMult": 1.5
+      },
+      {
+        "type": "sized_up",
+        "symbol": "NFLX",
+        "side": "short",
+        "entryPrice": 70.98,
+        "barTime": 1785171600,
+        "liveR": 0.5,
+        "addMult": 1.5
+      },
+      {
+        "type": "sized_up",
+        "symbol": "AMZN",
+        "side": "short",
+        "entryPrice": 233.48,
+        "barTime": 1785160800,
+        "liveR": 0.65,
+        "addMult": 1.5
+      },
+      {
+        "type": "sized_up",
+        "symbol": "NFLX",
+        "side": "short",
+        "entryPrice": 70.98,
+        "barTime": 1785171600,
+        "liveR": 0.5,
+        "addMult": 1.5
+      }
+    ],
+    "addWinners": [
+      {
+        "symbol": "AMZN",
+        "side": "short",
+        "entryPrice": 233.48,
+        "barTime": 1785160800,
+        "liveR": 0.66,
+        "addMult": 1.5
+      },
+      {
+        "symbol": "NFLX",
+        "side": "short",
+        "entryPrice": 70.98,
+        "barTime": 1785171600,
+        "liveR": 0.5,
+        "addMult": 1.5
+      }
+    ]
   }
 }
