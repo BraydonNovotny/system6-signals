@@ -201,7 +201,7 @@ function render(dateStr) {
         resultHtml = '<span class="' + (s.rMultiple >= 0 ? 'r-pos' : 'r-neg') + '">' + (s.rMultiple >= 0 ? '+' : '') + s.rMultiple.toFixed(2) + 'R</span>';
         if (s.gapped) resultHtml += ' <span class="gap-badge" title="Exit price gapped past the stop -- filled at the actual open, not the idealized stop level">GAP</span>';
       }
-      if (s.firstTradeOfDay && s.sizeMult === 0.5) resultHtml += ' <span class="gap-badge" style="background:color-mix(in srgb, var(--text-faint) 25%, transparent); color:var(--text-mute);" title="Day's first taken trade -- diagnostic showed a materially worse win% here across every core tier. Locked rule: size to 0.5x (EP/Parabolic/q0.5 confluence are exempt).">0.5x</span>';
+      if (s.firstTradeOfDay && s.sizeMult === 0.5) resultHtml += ' <span class="gap-badge" style="background:color-mix(in srgb, var(--text-faint) 25%, transparent); color:var(--text-mute);" title="Day\'s first taken trade -- diagnostic showed a materially worse win% here across every core tier. Locked rule: size to 0.5x (EP/Parabolic/q0.5 confluence are exempt).">0.5x</span>';
       const tf = s.tf || '30m';
       const closeOffset = tf === '1h' ? 3600 : 1800;
       return '<tr><td class="mono" style="font-weight:600;">' + s.symbol + '</td><td>' + fmtTime(s.barTime + closeOffset) + ' PT <span style="color:var(--text-faint);">(' + tf + ')</span></td>' +
