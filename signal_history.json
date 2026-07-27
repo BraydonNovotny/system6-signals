@@ -9295,6 +9295,17 @@
         "patternTier": "dryDownBreakdown3",
         "tf": "30m",
         "source": "CORE"
+      },
+      {
+        "symbol": "NFLX",
+        "side": "short",
+        "qual": 3,
+        "entryPrice": 70.98,
+        "stopPrice": 72.14,
+        "barTime": 1785171600,
+        "patternTier": "dryDownBreakdown3",
+        "tf": "30m",
+        "source": "CORE"
       }
     ],
     "taken": [
@@ -9310,7 +9321,7 @@
         "source": "CORE",
         "resolved": false,
         "rMultiple": null,
-        "liveR": 0.51,
+        "liveR": 0.55,
         "gapped": false
       },
       {
@@ -9325,7 +9336,7 @@
         "source": "CORE",
         "resolved": false,
         "rMultiple": null,
-        "liveR": 0.54,
+        "liveR": 0.69,
         "gapped": false
       },
       {
@@ -9340,7 +9351,7 @@
         "source": "CORE",
         "resolved": false,
         "rMultiple": null,
-        "liveR": 0.08,
+        "liveR": 0.29,
         "gapped": false
       },
       {
@@ -9350,6 +9361,21 @@
         "entryPrice": 3.82,
         "stopPrice": 3.95,
         "barTime": 1785169800,
+        "patternTier": "dryDownBreakdown3",
+        "tf": "30m",
+        "source": "CORE",
+        "resolved": false,
+        "rMultiple": null,
+        "liveR": 0.04,
+        "gapped": false
+      },
+      {
+        "symbol": "NFLX",
+        "side": "short",
+        "qual": 3,
+        "entryPrice": 70.98,
+        "stopPrice": 72.14,
+        "barTime": 1785171600,
         "patternTier": "dryDownBreakdown3",
         "tf": "30m",
         "source": "CORE",
