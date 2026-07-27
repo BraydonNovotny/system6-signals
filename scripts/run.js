@@ -81,14 +81,21 @@ async function main() {
   const inMarketHours = decimalHour >= 6.5 && decimalHour <= 13.0;
   const inEodWindow = decimalHour >= 13.15 && decimalHour <= 15.0;
 
-  let didWork = false;
+  // BUG FIX (2026-07-27, found by direct user question: liveR on an open ONDS position was
+  // stuck at a stale mark from hours earlier despite the cron running fine every 30 min).
+  // `didWork` used to only flip true when the once-per-day roster/addWinners tasks actually
+  // executed -- so once those were marked done for today (typically the FIRST eod-window
+  // tick), every LATER tick in the 13.15-15.00 window did nothing at all: no resolvePending
+  // (which refreshes liveR for every still-open position), no rebuild. The window itself
+  // being active is reason enough to keep refreshing; the once-daily tasks are a separate,
+  // independent concern from "should we resolve pending trades and rebuild the site now."
+  let didWork = inMarketHours || inEodWindow;
 
   if (inEodWindow) {
     const data = loadData();
     const today = ptDateString();
     if (data.updated?.roster !== today) {
       await scanRoster.run();
-      didWork = true;
     } else {
       console.log(`Roster already updated today (${today}) - skipping roster scan.`);
     }
@@ -103,16 +110,15 @@ async function main() {
       data.updated.addWinners = today;
       saveData(data);
       console.log(`Add-winners check: ${addWinners.length} qualifying position(s) today.`);
-      didWork = true;
     }
   }
 
   if (inMarketHours) {
     await runEntryScans();
-    didWork = true;
   }
 
-  // resolve pending trades from recent days whenever we do any other work this run
+  // resolve pending trades from recent days whenever we're in an active window, regardless
+  // of whether the once-daily roster/addWinners tasks specifically ran this tick.
   if (didWork) await resolvePending.run().catch(e => console.error('resolvePending failed:', e.message));
 
   if (!didWork) { console.log(`PT hour ${decimalHour.toFixed(2)} outside all active windows - no-op.`); return; }
