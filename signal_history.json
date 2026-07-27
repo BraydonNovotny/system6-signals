@@ -9156,7 +9156,7 @@
         "source": "CORE",
         "resolved": false,
         "rMultiple": null,
-        "liveR": 0.16,
+        "liveR": 0.12,
         "gapped": false,
         "addWinnersChecked": true
       },
@@ -9317,6 +9317,39 @@
         "patternTier": "rejection",
         "tf": "30m",
         "source": "CORE"
+      },
+      {
+        "symbol": "AMZN",
+        "side": "short",
+        "qual": 2,
+        "entryPrice": 233.48,
+        "stopPrice": 236.69,
+        "barTime": 1785160800,
+        "patternTier": "rejection",
+        "tf": "30m",
+        "source": "CORE"
+      },
+      {
+        "symbol": "ONDS",
+        "side": "short",
+        "qual": 2,
+        "entryPrice": 7.84,
+        "stopPrice": 8.08,
+        "barTime": 1785160800,
+        "patternTier": "rejection",
+        "tf": "30m",
+        "source": "CORE"
+      },
+      {
+        "symbol": "RKLB",
+        "side": "short",
+        "qual": 2,
+        "entryPrice": 65.39,
+        "stopPrice": 67.43,
+        "barTime": 1785160800,
+        "patternTier": "rejection",
+        "tf": "30m",
+        "source": "CORE"
       }
     ],
     "taken": [
@@ -9332,7 +9365,7 @@
         "source": "CORE",
         "resolved": true,
         "rMultiple": -1,
-        "liveR": -1.5,
+        "liveR": -1.29,
         "gapped": false
       }
     ],
@@ -9392,6 +9425,42 @@
         "entryPrice": 7.9,
         "stopPrice": 8.13,
         "barTime": 1784910600,
+        "patternTier": "rejection",
+        "tf": "30m",
+        "source": "CORE",
+        "rejectReason": "daily loss cap"
+      },
+      {
+        "symbol": "AMZN",
+        "side": "short",
+        "qual": 2,
+        "entryPrice": 233.48,
+        "stopPrice": 236.69,
+        "barTime": 1785160800,
+        "patternTier": "rejection",
+        "tf": "30m",
+        "source": "CORE",
+        "rejectReason": "daily loss cap"
+      },
+      {
+        "symbol": "ONDS",
+        "side": "short",
+        "qual": 2,
+        "entryPrice": 7.84,
+        "stopPrice": 8.08,
+        "barTime": 1785160800,
+        "patternTier": "rejection",
+        "tf": "30m",
+        "source": "CORE",
+        "rejectReason": "daily loss cap"
+      },
+      {
+        "symbol": "RKLB",
+        "side": "short",
+        "qual": 2,
+        "entryPrice": 65.39,
+        "stopPrice": 67.43,
+        "barTime": 1785160800,
         "patternTier": "rejection",
         "tf": "30m",
         "source": "CORE",
