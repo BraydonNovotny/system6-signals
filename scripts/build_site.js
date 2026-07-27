@@ -238,7 +238,16 @@ function render(dateStr) {
   // Close Adjustments section -- feed of anything the LOCKED EOD rules did to an open
   // position: sized up (eod_add_winners.js). Historical force-closed-by-CP entries from
   // before the rule was retired (2026-07-27) still render for accurate history.
-  const closeAdj = (day && day.closeAdjustments) ? day.closeAdjustments : [];
+  // Defensive dedup (2026-07-27): a prior bug had two independent code paths each pushing
+  // their own entry for the same qualifying trade, showing every add-winners symbol twice.
+  // Root cause fixed in eod_add_winners.js, but dedupe here too as a safety net.
+  const closeAdjSeen = new Set();
+  const closeAdj = ((day && day.closeAdjustments) ? day.closeAdjustments : []).filter(a => {
+    const key = a.type + '|' + a.symbol + '|' + a.side + '|' + a.barTime;
+    if (closeAdjSeen.has(key)) return false;
+    closeAdjSeen.add(key);
+    return true;
+  });
   if (!closeAdj.length) {
     closeAdjustmentsContainer.innerHTML = '<div class="empty" style="padding:16px;">None -- nothing sized up or force-closed at the close this day.</div>';
   } else {

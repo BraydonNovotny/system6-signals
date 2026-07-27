@@ -48,10 +48,10 @@ async function run(history) {
     }
   }
   day.addWinners = addWinners;
-  day.closeAdjustments = day.closeAdjustments || [];
-  for (const w of addWinners) {
-    day.closeAdjustments.push({ type: 'sized_up', symbol: w.symbol, side: w.side, entryPrice: w.entryPrice, barTime: w.barTime, liveR: w.liveR, addMult: w.addMult });
-  }
+  // NOTE (2026-07-27): does NOT push to day.closeAdjustments here anymore -- resolve_pending.js's
+  // checkAddWinners already does this exact check, per-trade-guarded via `addWinnersChecked` so it
+  // only ever fires once per trade. Having BOTH mechanisms push independently was the cause of
+  // every add-winners symbol (AMZN, NFLX, ...) showing twice in the Close Adjustments feed.
   return addWinners;
 }
 
