@@ -9321,7 +9321,7 @@
         "source": "CORE",
         "resolved": false,
         "rMultiple": null,
-        "liveR": 0.55,
+        "liveR": 0.38,
         "gapped": false
       },
       {
@@ -9336,7 +9336,7 @@
         "source": "CORE",
         "resolved": false,
         "rMultiple": null,
-        "liveR": 0.69,
+        "liveR": 0.15,
         "gapped": false
       },
       {
@@ -9351,7 +9351,7 @@
         "source": "CORE",
         "resolved": false,
         "rMultiple": null,
-        "liveR": 0.29,
+        "liveR": 0.12,
         "gapped": false
       },
       {
@@ -9381,7 +9381,7 @@
         "source": "CORE",
         "resolved": false,
         "rMultiple": null,
-        "liveR": 0,
+        "liveR": -0.12,
         "gapped": false
       }
     ],
