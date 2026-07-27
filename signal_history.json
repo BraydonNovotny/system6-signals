@@ -9156,7 +9156,7 @@
         "source": "CORE",
         "resolved": false,
         "rMultiple": null,
-        "liveR": -0.41,
+        "liveR": -0.3,
         "gapped": false,
         "addWinnersChecked": true
       },
@@ -9286,8 +9286,7 @@
         "source": "CORE"
       }
     ],
-    "taken": [],
-    "rejected": [
+    "taken": [
       {
         "symbol": "AMZN",
         "side": "short",
@@ -9298,7 +9297,10 @@
         "patternTier": "rejection",
         "tf": "30m",
         "source": "CORE",
-        "rejectReason": "daily loss cap"
+        "resolved": false,
+        "rMultiple": null,
+        "liveR": 0.05,
+        "gapped": false
       },
       {
         "symbol": "ONDS",
@@ -9310,7 +9312,10 @@
         "patternTier": "rejection",
         "tf": "30m",
         "source": "CORE",
-        "rejectReason": "daily loss cap"
+        "resolved": false,
+        "rMultiple": null,
+        "liveR": 0.25,
+        "gapped": false
       },
       {
         "symbol": "RKLB",
@@ -9322,8 +9327,12 @@
         "patternTier": "rejection",
         "tf": "30m",
         "source": "CORE",
-        "rejectReason": "daily loss cap"
+        "resolved": false,
+        "rMultiple": null,
+        "liveR": 0.25,
+        "gapped": false
       }
-    ]
+    ],
+    "rejected": []
   }
 }
