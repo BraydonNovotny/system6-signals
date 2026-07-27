@@ -9122,9 +9122,9 @@
         "patternTier": "rejection",
         "tf": "30m",
         "source": "CORE",
-        "resolved": false,
-        "rMultiple": null,
-        "liveR": 0.44,
+        "resolved": true,
+        "rMultiple": -1,
+        "liveR": -1.38,
         "gapped": false,
         "addWinnersChecked": true
       },
@@ -9138,9 +9138,9 @@
         "patternTier": "rejection",
         "tf": "30m",
         "source": "CORE",
-        "resolved": false,
-        "rMultiple": null,
-        "liveR": 0.15,
+        "resolved": true,
+        "rMultiple": -1,
+        "liveR": -1.46,
         "gapped": false,
         "addWinnersChecked": true
       },
@@ -9156,7 +9156,7 @@
         "source": "CORE",
         "resolved": false,
         "rMultiple": null,
-        "liveR": 1.1,
+        "liveR": 0.15,
         "gapped": false,
         "addWinnersChecked": true
       },
@@ -9170,10 +9170,10 @@
         "patternTier": "dryDownBreakdown3",
         "tf": "30m",
         "source": "CORE",
-        "resolved": false,
-        "rMultiple": null,
-        "liveR": 0.4,
-        "gapped": false,
+        "resolved": true,
+        "rMultiple": -1.2,
+        "liveR": -3.36,
+        "gapped": true,
         "addWinnersChecked": true
       },
       {
@@ -9186,9 +9186,9 @@
         "patternTier": "dryDownBreakdown3",
         "tf": "30m",
         "source": "CORE",
-        "resolved": false,
-        "rMultiple": null,
-        "liveR": 0.38,
+        "resolved": true,
+        "rMultiple": -1,
+        "liveR": -0.71,
         "gapped": false,
         "addWinnersChecked": true
       },
@@ -9202,9 +9202,9 @@
         "patternTier": "rejection",
         "tf": "30m",
         "source": "CORE",
-        "resolved": false,
-        "rMultiple": null,
-        "liveR": 0.32,
+        "resolved": true,
+        "rMultiple": -1,
+        "liveR": -0.48,
         "gapped": false,
         "addWinnersChecked": true
       }
@@ -9330,12 +9330,13 @@
         "patternTier": "rejection",
         "tf": "30m",
         "source": "CORE",
-        "resolved": false,
-        "rMultiple": null,
-        "liveR": 0.15,
-        "gapped": false,
-        "addWinnersChecked": true
-      },
+        "resolved": true,
+        "rMultiple": -1,
+        "liveR": -1.51,
+        "gapped": false
+      }
+    ],
+    "rejected": [
       {
         "symbol": "SOFI",
         "side": "short",
@@ -9346,11 +9347,7 @@
         "patternTier": "rejection",
         "tf": "30m",
         "source": "CORE",
-        "resolved": false,
-        "rMultiple": null,
-        "liveR": 0.45,
-        "gapped": false,
-        "addWinnersChecked": true
+        "rejectReason": "daily loss cap"
       },
       {
         "symbol": "HIMS",
@@ -9362,11 +9359,7 @@
         "patternTier": "dryDownBreakdown3",
         "tf": "30m",
         "source": "CORE",
-        "resolved": false,
-        "rMultiple": null,
-        "liveR": 1.21,
-        "gapped": false,
-        "addWinnersChecked": true
+        "rejectReason": "daily loss cap"
       },
       {
         "symbol": "IONQ",
@@ -9378,14 +9371,8 @@
         "patternTier": "dryDownBreakdown3",
         "tf": "30m",
         "source": "CORE",
-        "resolved": false,
-        "rMultiple": null,
-        "liveR": 0.43,
-        "gapped": false,
-        "addWinnersChecked": true
-      }
-    ],
-    "rejected": [
+        "rejectReason": "daily loss cap"
+      },
       {
         "symbol": "RKLB",
         "side": "short",
@@ -9396,7 +9383,7 @@
         "patternTier": "dryDownBreakdown3",
         "tf": "30m",
         "source": "CORE",
-        "rejectReason": "max positions (10)"
+        "rejectReason": "daily loss cap"
       },
       {
         "symbol": "ONDS",
@@ -9408,7 +9395,7 @@
         "patternTier": "rejection",
         "tf": "30m",
         "source": "CORE",
-        "rejectReason": "max positions (10)"
+        "rejectReason": "daily loss cap"
       }
     ]
   }
