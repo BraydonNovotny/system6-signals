@@ -9154,9 +9154,9 @@
         "patternTier": "dryDownBreakdown3",
         "tf": "30m",
         "source": "CORE",
-        "resolved": false,
-        "rMultiple": null,
-        "liveR": -0.33,
+        "resolved": true,
+        "rMultiple": -0.38,
+        "liveR": -0.38,
         "gapped": false,
         "addWinnersChecked": true
       },
@@ -9299,7 +9299,7 @@
         "source": "CORE",
         "resolved": false,
         "rMultiple": null,
-        "liveR": 0.5,
+        "liveR": 0.61,
         "gapped": false
       },
       {
@@ -9314,7 +9314,7 @@
         "source": "CORE",
         "resolved": false,
         "rMultiple": null,
-        "liveR": 0.4,
+        "liveR": -0.02,
         "gapped": false
       },
       {
@@ -9329,7 +9329,7 @@
         "source": "CORE",
         "resolved": false,
         "rMultiple": null,
-        "liveR": 0.29,
+        "liveR": -0.04,
         "gapped": false
       }
     ],
