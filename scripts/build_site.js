@@ -118,7 +118,7 @@ function build() {
     </div>
   </details>
 
-  <footer>SAFE + EP + Parabolic + Close-Position Filter + Wider Stops (+10% off the ADR-tiered table). "Taken" = passed the same -1R daily loss cap (-2R for EP-30m) and 10-position limit the backtest uses, computed chronologically as the day unfolds, plus the close-position rule: if the entry day's own close lands in the weak 20% of its range (long) or strong 20% (short), the position is force-closed at that close instead of held further (see the CP badge). Trades still in progress show as Pending until enough bars exist to resolve them (updates automatically on a later refresh). History starts from whenever this system first ran. Not investment advice -- verify before acting.</footer>
+  <footer>Core+EP+Parabolic, confluence tiers, first-trade-of-day 0.5x sizing, SL widened +40% off the ADR-tiered table (no close-position filter -- retired 2026-07-27, backtesting confirmed it's not part of the current locked config). "Taken" = passed the same -1R daily loss cap (-2R for EP-30m) and 10-position limit the backtest uses, computed chronologically as the day unfolds. Trades still in progress show as Pending until enough bars exist to resolve them (updates automatically on a later refresh). History starts from whenever this system first ran. Not investment advice -- verify before acting.</footer>
 </div>
 
 <script>
@@ -211,7 +211,6 @@ function render(dateStr) {
       } else {
         resultHtml = '<span class="' + (s.rMultiple >= 0 ? 'r-pos' : 'r-neg') + '">' + (s.rMultiple >= 0 ? '+' : '') + s.rMultiple.toFixed(2) + 'R</span>';
         if (s.gapped) resultHtml += ' <span class="gap-badge" title="Exit price gapped past the stop -- filled at the actual open, not the idealized stop level">GAP</span>';
-        if (s.closedByClosePosRule) resultHtml += ' <span class="gap-badge" style="background:color-mix(in srgb, var(--signal) 20%, transparent); color:var(--signal);" title="Entry day closed weak (long) or strong (short) within its own range -- force-closed at the close per the locked close-position rule">CP</span>';
       }
       const tf = s.tf || '30m';
       const closeOffset = tf === '1h' ? 3600 : 1800;
@@ -236,9 +235,9 @@ function render(dateStr) {
     rejectedContainer.innerHTML = '<table><thead><tr><th>Ticker</th><th>Time</th><th>Side</th><th>Reason</th></tr></thead><tbody>' + rrows + '</tbody></table>';
   }
 
-  // Close Adjustments section -- unified feed of anything the LOCKED EOD rules did to an
-  // open position: sized up (eod_add_winners.js) or force-closed early (the close-
-  // position rule, from either resolve_pending.js or eod_close_position_check.js).
+  // Close Adjustments section -- feed of anything the LOCKED EOD rules did to an open
+  // position: sized up (eod_add_winners.js). Historical force-closed-by-CP entries from
+  // before the rule was retired (2026-07-27) still render for accurate history.
   const closeAdj = (day && day.closeAdjustments) ? day.closeAdjustments : [];
   if (!closeAdj.length) {
     closeAdjustmentsContainer.innerHTML = '<div class="empty" style="padding:16px;">None -- nothing sized up or force-closed at the close this day.</div>';

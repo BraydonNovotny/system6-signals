@@ -3,22 +3,14 @@
 // Does NOT re-run the account filter itself (who got "taken" on a given day is fixed once
 // decided) -- only fills in the resolved/rMultiple fields as new bars arrive.
 //
-// BUG FIX (found by direct user question, confirmed 0 trades had EVER been closed by the
-// close-position rule across the entire live history): this function's natural exit sim
-// has its own max-hold-cap (13 bars ~= one trading day) that force-closes a trade at end
-// of its entry day via the blended target/chandelier fallback -- and since this runs on
-// EVERY market-hours cycle, it was beating eod_close_position_check.js's dedicated
-// 13:15-15:00 PT window to the punch for any trade entered early enough that its 13-bar
-// cap lands at/before market close (13:00 PT) -- i.e. most morning entries. The close-
-// position rule was effectively dead code. Fix: check close-position FIRST, right here,
-// for any pending trade whose entry day has already closed -- before letting the natural
-// cap-based fallback resolve it via the wrong rule.
+// Close-position rule REMOVED (2026-07-27) -- backtesting confirmed it's not part of the
+// current locked config. Only the add-winners mark-to-market snapshot still happens at the
+// entry-day-close boundary, before the natural cap-based exit sim resolves the trade.
 const { fetchChart, pool } = require('./lib');
 const { simulateExit } = require('./simulate_exit');
 const { loadHistory, saveHistory } = require('./history');
 
 const LOOKBACK_DAYS = 10; // how many recent days to keep re-checking for pending trades
-const CLOSEPOS_MIN = 0.20;
 const MARKET_CLOSE_DECIMAL_HOUR = 13.0; // 1:00pm PT
 
 function ptDateOf(ts) {
@@ -37,24 +29,6 @@ function entryDaySessionClosed(barTime, todayStr) {
   if (entryDay < todayStr) return true;
   if (entryDay > todayStr) return false;
   return ptNowDecimalHour() >= MARKET_CLOSE_DECIMAL_HOUR;
-}
-
-// Same-day closePos override -- mirrors eod_close_position_check.js exactly, just called
-// from a place that's guaranteed to run before the natural cap can beat it to resolving.
-function checkClosePosition(trade, bars) {
-  const entryDay = ptDateOf(trade.barTime);
-  const entryDayBars = bars.filter(b => ptDateOf(b.time) === entryDay && b.time >= trade.barTime);
-  if (!entryDayBars.length) return null;
-  const high = Math.max(...entryDayBars.map(b => b.high));
-  const low = Math.min(...entryDayBars.map(b => b.low));
-  const lastClose = entryDayBars[entryDayBars.length - 1].close;
-  const range = high - low;
-  const closePos = range > 0 ? (lastClose - low) / range : 0.5;
-  const failed = trade.side === 'long' ? closePos < CLOSEPOS_MIN : closePos > (1 - CLOSEPOS_MIN);
-  if (!failed) return null;
-  const R = trade.side === 'long' ? (trade.entryPrice - trade.stopPrice) / trade.entryPrice : (trade.stopPrice - trade.entryPrice) / trade.entryPrice;
-  const ret = trade.side === 'long' ? (lastClose - trade.entryPrice) / trade.entryPrice : (trade.entryPrice - lastClose) / trade.entryPrice;
-  return { rMultiple: R > 0 ? +(ret / R).toFixed(2) : 0, closePos: +closePos.toFixed(2) };
 }
 
 // SAME BUG, other half: eod_add_winners.js only flags a trade if it's still !resolved when
@@ -102,27 +76,14 @@ async function run() {
   if (!symbols.length) { console.log('No pending trades to resolve.'); return; }
 
   const results = await pool(symbols, fetchLongRange30m, 8);
-  let resolvedCount = 0, closedByCpCount = 0;
+  let resolvedCount = 0;
   symbols.forEach((sym, i) => {
     if (!results[i].ok) return;
     const bars = results[i].value;
     for (const { trade } of pendingBySymbol[sym]) {
-      // Close-position gets first refusal, but ONLY once its own entry day has actually
-      // closed -- otherwise we'd be judging an unfinished day's range.
+      // Close-position rule REMOVED (2026-07-27) -- not part of the current locked config.
+      // Add-winners check still runs at the entry-day-close boundary.
       if (entryDaySessionClosed(trade.barTime, todayStr)) {
-        const cp = checkClosePosition(trade, bars);
-        if (cp) {
-          trade.resolved = true;
-          trade.rMultiple = cp.rMultiple;
-          trade.liveR = cp.rMultiple;
-          trade.closedByClosePosRule = true;
-          resolvedCount++; closedByCpCount++;
-          const entryDay = ptDateOf(trade.barTime);
-          history[entryDay] = history[entryDay] || {};
-          history[entryDay].closeAdjustments = history[entryDay].closeAdjustments || [];
-          history[entryDay].closeAdjustments.push({ type: 'closed', symbol: trade.symbol, side: trade.side, entryPrice: trade.entryPrice, barTime: trade.barTime, rMultiple: cp.rMultiple, closePos: cp.closePos });
-          continue;
-        }
         if (!trade.addWinnersChecked) {
           trade.addWinnersChecked = true;
           const aw = checkAddWinners(trade, bars);
@@ -141,7 +102,7 @@ async function run() {
   });
 
   saveHistory(history);
-  console.log(`Resolved ${resolvedCount} previously-pending trade(s) across ${symbols.length} symbol(s) (${closedByCpCount} by close-position rule).`);
+  console.log(`Resolved ${resolvedCount} previously-pending trade(s) across ${symbols.length} symbol(s).`);
 }
 
 module.exports = { run };
