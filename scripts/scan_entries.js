@@ -86,6 +86,7 @@ async function run() {
     const highs = bars.map(b => b.high), lows = bars.map(b => b.low), closes = bars.map(b => b.close), opens = bars.map(b => b.open), volumes = bars.map(b => b.volume);
     const dayOf = bars.map(b => Math.floor(b.time / 86400));
     const ema20 = emaSeries(closes, 20);
+    const ema8 = emaSeries(closes, 8);
 
     // Check EVERY bar of TODAY (not just the most recent), so a run always self-heals any
     // gap since the last check -- a signal earlier today never gets silently missed just
@@ -124,8 +125,14 @@ async function run() {
         pat.reclaim = reclaim;
         const isSurfBase = closes[i] > ema20[i] && (closes[i] - ema20[i]) / ema20[i] < 0.04;
         const st = aboveEma50 && aboveEma200;
+        // Confluence tier (q0.5): 8ema reclaim + 2-bar volume decay + tight bar -- additive
+        // only, fires when nothing else matched. Highest win% (75.6%) / avgR (0.500) of any
+        // tier in the locked backtest. Ported from ll_backtest's buildCombinedSignals.
+        const reclaim8 = i >= 1 && ema8[i - 1] != null && closes[i - 1] < ema8[i - 1] && closes[i] > ema8[i];
+        const volDecay2Long = i >= 2 && volumes[i - 2] > volumes[i - 1];
+        const tightNowLong = tightnessRatio != null && tightnessRatio <= 0.6;
         let qual = 0;
-        if (pat.dryUpBreakout3 && st) qual = 4; else if (pat.reclaim && st) qual = 3; else if (pat.looseTier2 && st) qual = 2; else if (isSurfBase) qual = 1;
+        if (pat.dryUpBreakout3 && st) qual = 4; else if (pat.reclaim && st) qual = 3; else if (pat.looseTier2 && st) qual = 2; else if (isSurfBase) qual = 1; else if (reclaim8 && volDecay2Long && tightNowLong && st) qual = 0.5;
         if (qual === 1 && !(dist200Pct > 0)) qual = 0;
         if (qual > 0) {
           const regimeMult = regimeMultFromSpread(spread8_20, 'long');
@@ -142,7 +149,7 @@ async function run() {
           if (openOk && tightPass) {
             const R = slForAdr(adrPct) / 100;
             const entryPrice = closes[i], stopPrice = entryPrice * (1 - R);
-            signals.push({ symbol, side: 'long', qual, entryPrice: +entryPrice.toFixed(2), stopPrice: +stopPrice.toFixed(2), barTime, patternTier: qual === 4 ? 'dryUpBreakout3' : qual === 3 ? 'reclaim' : qual === 2 ? 'looseTier2' : 'surfBase', tf: '30m' });
+            signals.push({ symbol, side: 'long', qual, entryPrice: +entryPrice.toFixed(2), stopPrice: +stopPrice.toFixed(2), barTime, patternTier: qual === 4 ? 'dryUpBreakout3' : qual === 3 ? 'reclaim' : qual === 2 ? 'looseTier2' : qual === 1 ? 'surfBase' : 'confluence8ema', tf: '30m' });
             firedLong = true;
           }
         }
@@ -153,8 +160,13 @@ async function run() {
       const sp = evalShortPatterns(highs, lows, closes, volumes, i, ema20);
       if (sp) {
         const st = !aboveEma50 && !aboveEma200;
+        // Short mirror of the q0.5 confluence tier: 8ema rejection + 2-bar volume decay +
+        // tight bar. Ported from ll_backtest's buildCombinedSignals.
+        const bounce8 = i >= 1 && ema8[i - 1] != null && closes[i - 1] > ema8[i - 1] && closes[i] < ema8[i];
+        const volDecay2Short = i >= 2 && volumes[i - 2] > volumes[i - 1];
+        const tightNowShort = tightnessRatio != null && tightnessRatio <= 0.6;
         let qual = 0;
-        if (sp.dryDownBreakdown3 && st) qual = 3; else if (sp.rejection && st) qual = 2; else if (sp.looseTier2Short && st) qual = 1;
+        if (sp.dryDownBreakdown3 && st) qual = 3; else if (sp.rejection && st) qual = 2; else if (sp.looseTier2Short && st) qual = 1; else if (bounce8 && volDecay2Short && tightNowShort && st) qual = 0.4;
         if (qual > 0) {
           const regimeMult = regimeMultFromSpread(spread8_20, 'short');
           const openOk = !(slot === '09:30' && (qual < 2 || regimeMult !== 1.3));
@@ -170,7 +182,7 @@ async function run() {
           if (openOk && tightPass) {
             const R = slForAdr(adrPct) / 100;
             const entryPrice = closes[i], stopPrice = entryPrice * (1 + R);
-            signals.push({ symbol, side: 'short', qual, entryPrice: +entryPrice.toFixed(2), stopPrice: +stopPrice.toFixed(2), barTime, patternTier: qual === 3 ? 'dryDownBreakdown3' : qual === 2 ? 'rejection' : 'looseTier2Short', tf: '30m' });
+            signals.push({ symbol, side: 'short', qual, entryPrice: +entryPrice.toFixed(2), stopPrice: +stopPrice.toFixed(2), barTime, patternTier: qual === 3 ? 'dryDownBreakdown3' : qual === 2 ? 'rejection' : qual === 1 ? 'looseTier2Short' : 'confluence8ema', tf: '30m' });
             firedShort = true;
           }
         }

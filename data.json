@@ -36,6 +36,7 @@
     "INTC",
     "IONQ",
     "JOBY",
+    "KDP",
     "LRCX",
     "MARA",
     "MCHP",
@@ -46,6 +47,7 @@
     "NFLX",
     "NKE",
     "NVDA",
+    "OKLO",
     "ON",
     "ONDS",
     "OPEN",
@@ -65,6 +67,7 @@
     "SOUN",
     "TSLA",
     "TSM",
+    "TTD",
     "UBER",
     "WULF"
   ],
@@ -843,8 +846,8 @@
       "price": 26.55,
       "adrPct": 3.43,
       "aboveEma50": true,
-      "passesTierNow": false,
-      "longTrailing252": 56,
+      "passesTierNow": true,
+      "longTrailing252": 57,
       "shortTrailing252": 89,
       "onLongRoster": false,
       "onShortRoster": false
@@ -903,11 +906,11 @@
       "price": 30.12,
       "adrPct": 2.8,
       "aboveEma50": false,
-      "passesTierNow": false,
+      "passesTierNow": true,
       "longTrailing252": 9,
-      "shortTrailing252": 24,
+      "shortTrailing252": 25,
       "onLongRoster": false,
-      "onShortRoster": false
+      "onShortRoster": true
     },
     "KEY": {
       "price": 22.51,
@@ -1603,11 +1606,11 @@
       "price": 17.88,
       "adrPct": 4.78,
       "aboveEma50": false,
-      "passesTierNow": false,
+      "passesTierNow": true,
       "longTrailing252": 3,
-      "shortTrailing252": 191,
+      "shortTrailing252": 192,
       "onLongRoster": false,
-      "onShortRoster": false
+      "onShortRoster": true
     },
     "TXN": {
       "price": 279.41,
@@ -1933,11 +1936,11 @@
       "price": 41.81,
       "adrPct": 6.88,
       "aboveEma50": false,
-      "passesTierNow": false,
+      "passesTierNow": true,
       "longTrailing252": 111,
-      "shortTrailing252": 102,
+      "shortTrailing252": 103,
       "onLongRoster": false,
-      "onShortRoster": false
+      "onShortRoster": true
     },
     "M": {
       "price": 24.96,

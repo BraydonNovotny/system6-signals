@@ -62,9 +62,10 @@ const SL_BUCKETS = [
   [5, 6, 2.25, 2.5], [6, 7, 2.5, 2.75], [7, 8, 2.75, 3.0], [8, 9, 3.0, 3.25],
   [9, 10, 3.25, 3.5], [10, 11, 3.5, 3.75],
 ];
-// Widened 10% off the original tiered table -- OOS-confirmed to beat the un-widened
-// version on every metric at once (CAGR, Sharpe, win rate, and even max drawdown).
-const SL_WIDEN_MULT = 1.10;
+// Widened 40% off the original tiered table (2026-07-27, up from the earlier +10% --
+// the SL-widen sweep confirmed 1.40 as the current locked value, part of the confirmed
+// 453.3% OOS CAGR / 3.98 Sharpe / 6.71% maxDD baseline; see ll_backtest's SL_WIDEN env var).
+const SL_WIDEN_MULT = 1.40;
 function slForAdr(adrPct) {
   let base;
   if (adrPct > 11) base = 0.33 * adrPct;

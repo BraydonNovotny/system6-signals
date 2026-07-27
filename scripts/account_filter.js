@@ -18,8 +18,17 @@ const { simulateExit } = require('./simulate_exit');
 // meaning every day started counting from a clean slate and ignored whatever capital was
 // still tied up in yesterday's still-open trades. Their exitTime is unknown (we can't know
 // the future), so they occupy a slot for the rest of today's run and never free up within it.
-function runAccountFilter(candidates, barsBySymbol, carriedOpenCount = 0) {
-  const sorted = candidates.slice().sort((a, b) => a.barTime - b.barTime);
+// dayHasTakenTrade tracks, PORTFOLIO-WIDE (not per-symbol), whether any trade has already
+// been taken today -- matches the backtest's runFullTable exactly. Diagnostic on real taken
+// trades showed the day's FIRST taken trade has a materially worse win% across every core
+// tier (q1 48.5% vs 60.2% overall, etc.) -- only EP/Parabolic/q0.5 hold up as first trades.
+// Size the day's first trade to 0.5x for every OTHER tier; informational flag only (this repo
+// doesn't simulate dollar position sizing, just taken/rejected + realized R).
+function runAccountFilter(candidates, barsBySymbol, carriedOpenCount = 0, dayHasTakenTradeState = {}) {
+  // Tiebreak by qual DESC on same-barTime ties, matching the backtest's runFullTable exactly --
+  // among simultaneous signals, the highest-quality one is evaluated "first" (and gets the
+  // first-trade-of-day 0.5x haircut if it's not EP/PER/q0.5), not an arbitrary insertion order.
+  const sorted = candidates.slice().sort((a, b) => a.barTime - b.barTime || b.qual - a.qual);
   let dayLossR = 0;
   const openPositions = Array.from({ length: carriedOpenCount }, () => ({ exitTime: null })); // { exitTime }
   const taken = [];
@@ -38,9 +47,15 @@ function runAccountFilter(candidates, barsBySymbol, carriedOpenCount = 0) {
     const bars = barsBySymbol[sig.symbol] || [];
     const result = simulateExit(sig.side, sig.entryPrice, sig.stopPrice, sig.barTime, bars, sig.tf);
 
+    const dayKey = Math.floor(sig.barTime / 86400);
+    const isFirstTradeOfDay = !dayHasTakenTradeState[dayKey];
+    const isWeakAsFirstTrade = !(sig.source === 'EP' || sig.source === 'PER' || sig.qual === 0.5);
+    const firstTradeSizeMult = (isFirstTradeOfDay && isWeakAsFirstTrade) ? 0.5 : 1.0;
+    dayHasTakenTradeState[dayKey] = true;
+
     const pos = { exitTime: null };
     openPositions.push(pos);
-    taken.push({ ...sig, resolved: result.resolved, rMultiple: result.resolved ? result.rMultiple : null, liveR: result.liveR, gapped: result.gapped || false });
+    taken.push({ ...sig, resolved: result.resolved, rMultiple: result.resolved ? result.rMultiple : null, liveR: result.liveR, gapped: result.gapped || false, firstTradeOfDay: isFirstTradeOfDay, sizeMult: firstTradeSizeMult });
     if (result.resolved) {
       pos.exitTime = sig.barTime + 1; // resolved essentially immediately in our coarse view; frees the slot for the next check
       if (result.rMultiple < 0) dayLossR += result.rMultiple;
