@@ -9156,7 +9156,7 @@
         "source": "CORE",
         "resolved": false,
         "rMultiple": null,
-        "liveR": 0.15,
+        "liveR": 0.16,
         "gapped": false,
         "addWinnersChecked": true
       },
@@ -9332,7 +9332,7 @@
         "source": "CORE",
         "resolved": true,
         "rMultiple": -1,
-        "liveR": -1.51,
+        "liveR": -1.5,
         "gapped": false
       }
     ],
