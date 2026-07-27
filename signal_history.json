@@ -9299,7 +9299,7 @@
         "source": "CORE",
         "resolved": false,
         "rMultiple": null,
-        "liveR": 0.61,
+        "liveR": 0.41,
         "gapped": false
       },
       {
@@ -9314,7 +9314,7 @@
         "source": "CORE",
         "resolved": false,
         "rMultiple": null,
-        "liveR": -0.02,
+        "liveR": -0.1,
         "gapped": false
       },
       {
@@ -9329,7 +9329,7 @@
         "source": "CORE",
         "resolved": false,
         "rMultiple": null,
-        "liveR": -0.04,
+        "liveR": -0.12,
         "gapped": false
       }
     ],
