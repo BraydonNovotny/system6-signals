@@ -9413,7 +9413,7 @@
         "source": "CORE",
         "resolved": false,
         "rMultiple": null,
-        "liveR": 0.08,
+        "liveR": -0.27,
         "gapped": false,
         "addWinnersChecked": true
       },
@@ -9535,6 +9535,30 @@
         "tf": "30m",
         "avgDollarVol20": 163117222.46757555,
         "source": "CORE"
+      },
+      {
+        "symbol": "DOW",
+        "side": "short",
+        "qual": 3,
+        "entryPrice": 28.98,
+        "stopPrice": 29.7,
+        "barTime": 1785250800,
+        "patternTier": "dryDownBreakdown3",
+        "tf": "30m",
+        "avgDollarVol20": 306504190.5645766,
+        "source": "CORE"
+      },
+      {
+        "symbol": "NKE",
+        "side": "short",
+        "qual": 3,
+        "entryPrice": 42.88,
+        "stopPrice": 43.77,
+        "barTime": 1785250800,
+        "patternTier": "dryDownBreakdown3",
+        "tf": "30m",
+        "avgDollarVol20": 1017920961.2415397,
+        "source": "CORE"
       }
     ],
     "taken": [
@@ -9549,16 +9573,18 @@
         "tf": "30m",
         "avgDollarVol20": 160906872.35767192,
         "source": "CORE",
-        "resolved": false,
-        "rMultiple": null,
-        "liveR": -0.44,
+        "resolved": true,
+        "rMultiple": -1,
+        "liveR": -1.11,
         "gapped": false,
         "firstTradeOfDay": true,
         "sizeMult": 0.25,
         "thinFirstTrade": true,
         "losingWeekActive": false,
         "qqqOverboughtActive": false
-      },
+      }
+    ],
+    "rejected": [
       {
         "symbol": "JOBY",
         "side": "short",
@@ -9570,15 +9596,7 @@
         "tf": "30m",
         "avgDollarVol20": 394216136.9847332,
         "source": "CORE",
-        "resolved": false,
-        "rMultiple": null,
-        "liveR": -0.41,
-        "gapped": false,
-        "firstTradeOfDay": false,
-        "sizeMult": 1,
-        "thinFirstTrade": false,
-        "losingWeekActive": false,
-        "qqqOverboughtActive": false
+        "rejectReason": "daily loss cap"
       },
       {
         "symbol": "ORCL",
@@ -9591,15 +9609,7 @@
         "tf": "30m",
         "avgDollarVol20": 5059239715.354458,
         "source": "CORE",
-        "resolved": false,
-        "rMultiple": null,
-        "liveR": -0.61,
-        "gapped": false,
-        "firstTradeOfDay": false,
-        "sizeMult": 1,
-        "thinFirstTrade": false,
-        "losingWeekActive": false,
-        "qqqOverboughtActive": false
+        "rejectReason": "daily loss cap"
       },
       {
         "symbol": "QCOM",
@@ -9612,15 +9622,7 @@
         "tf": "30m",
         "avgDollarVol20": 2321578354.972934,
         "source": "CORE",
-        "resolved": false,
-        "rMultiple": null,
-        "liveR": -0.14,
-        "gapped": false,
-        "firstTradeOfDay": false,
-        "sizeMult": 1,
-        "thinFirstTrade": false,
-        "losingWeekActive": false,
-        "qqqOverboughtActive": false
+        "rejectReason": "daily loss cap"
       },
       {
         "symbol": "QS",
@@ -9633,17 +9635,34 @@
         "tf": "30m",
         "avgDollarVol20": 163117222.46757555,
         "source": "CORE",
-        "resolved": false,
-        "rMultiple": null,
-        "liveR": 0.15,
-        "gapped": false,
-        "firstTradeOfDay": false,
-        "sizeMult": 1,
-        "thinFirstTrade": false,
-        "losingWeekActive": false,
-        "qqqOverboughtActive": false
+        "rejectReason": "daily loss cap"
+      },
+      {
+        "symbol": "DOW",
+        "side": "short",
+        "qual": 3,
+        "entryPrice": 28.98,
+        "stopPrice": 29.7,
+        "barTime": 1785250800,
+        "patternTier": "dryDownBreakdown3",
+        "tf": "30m",
+        "avgDollarVol20": 306504190.5645766,
+        "source": "CORE",
+        "rejectReason": "daily loss cap"
+      },
+      {
+        "symbol": "NKE",
+        "side": "short",
+        "qual": 3,
+        "entryPrice": 42.88,
+        "stopPrice": 43.77,
+        "barTime": 1785250800,
+        "patternTier": "dryDownBreakdown3",
+        "tf": "30m",
+        "avgDollarVol20": 1017920961.2415397,
+        "source": "CORE",
+        "rejectReason": "daily loss cap"
       }
-    ],
-    "rejected": []
+    ]
   }
 }
