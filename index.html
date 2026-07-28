@@ -80,16 +80,6 @@
 
   <div class="perf-windows" id="perf-windows"></div>
 
-  <div class="signals-block" id="open-positions-block">
-    <div class="head">
-      <div>
-        <h2>Currently open positions</h2>
-        <p class="sub mono" style="margin:2px 0 0;">Aggregated across ALL recent days, not just whatever day is selected below -- a position stays listed here until it actually resolves, regardless of which entry day it came from.</p>
-      </div>
-    </div>
-    <div id="open-positions-container"></div>
-  </div>
-
   <div class="signals-block">
     <div class="head">
       <div>
@@ -113,7 +103,7 @@
     <div style="border-top:1px solid var(--rail); margin-top:4px;"></div>
     <div style="padding:14px 18px;">
       <h2 style="margin:0 0 4px;">Close Adjustments</h2>
-      <p class="sub mono" style="margin:0 0 10px;">Anything the LOCKED rules did to an open position at the close: sized up to 1.5x (still open, already &ge;0.5R) or force-closed early (entry day closed weak/strong within its own range). Informational -- you place any add manually.</p>
+      <p class="sub mono" style="margin:0 0 10px;">Anything the LOCKED rules did to an open position at the close: sized up to 1.5x (still open, already &ge;0.5R), force-closed early (entry day closed weak/strong within its own range -- retired 2026-07-27), or closed as part of the daily-cap reaction (down &ge;0.25R as of today's close, on a day another trade already tripped the -1R cap). Informational -- you place any add/close manually.</p>
       <div id="close-adjustments-container"></div>
     </div>
   </div>
@@ -134,12 +124,13 @@
   </details>
 
   <details class="changelog">
-    <summary>Strategy changelog — 4 updates (2026-07-27)</summary>
+    <summary>Strategy changelog — 5 updates (2026-07-28)</summary>
     <div class="tab-bar">
       <button class="tab-btn active" data-tab="exit">Exit rule</button>
       <button class="tab-btn" data-tab="entry">Entry filter</button>
       <button class="tab-btn" data-tab="sizing">First-trade sizing</button>
       <button class="tab-btn" data-tab="component">Component sweep</button>
+      <button class="tab-btn" data-tab="capreaction">Daily-cap reaction</button>
     </div>
     <div class="tab-panel active" id="tab-exit">
       Exit dynamics changed from a 25%-fixed-target / 75%-chandelier blend to <b>100% chandelier</b>
@@ -208,9 +199,30 @@
         <div class="stat"><span class="k">OOS Max DD</span><span class="v">6.67% <span class="arrow">&rarr;</span> 6.05% (improved)</span></div>
       </div>
     </div>
+    <div class="tab-panel" id="tab-capreaction">
+      New rule ("A2"): once today's REALIZED loss (from already-resolved trades entered
+      today) trips the <b>-1R daily cap</b>, any OTHER currently-open position (from today or
+      carried over from a prior day) that's down <b>at least 0.25R as of that same day's own
+      close</b> gets closed out too, instead of left to run untouched. Uses only same-day,
+      already-known information — no future price data, no hindsight. Found while tracing why
+      several positions held through 2026-07-24 (an extreme, oversold-market pullback day)
+      survived the day's own close only to get caught by a Monday gap against them. Testing
+      showed that once ANY trade in the portfolio has realized a big enough loss that day,
+      other open losers on that same day are statistically more likely to keep losing than to
+      recover. Passed the full 4-step check: IS/OOS, a parameter sweep across the down-threshold
+      (0R/-0.1R/-0.25R/-0.5R — a smooth, gradual peak, no cliff), a trade-level lumpiness check
+      (top single trade ~1.8% of total OOS return — no home runs), and a 30-seed Monte Carlo
+      permutation test — <b>0 of 30 permuted datasets beat the real result on IS Sharpe, IS
+      CAGR, OOS Sharpe, or OOS CAGR (p=0 on all four)</b>.
+      <div class="stat-row">
+        <div class="stat"><span class="k">OOS CAGR</span><span class="v">554.8% <span class="arrow">&rarr;</span> 608.0%</span></div>
+        <div class="stat"><span class="k">OOS Sharpe</span><span class="v">4.276 <span class="arrow">&rarr;</span> 4.430</span></div>
+        <div class="stat"><span class="k">OOS Max DD</span><span class="v">6.05% <span class="arrow">&rarr;</span> 5.59% (improved)</span></div>
+      </div>
+    </div>
   </details>
 
-  <footer>Core+EP+Parabolic, confluence tiers, first-trade-of-day 0.5x sizing (+0.5x more if also below median liquidity), SL widened +40% off the ADR-tiered table, 100% chandelier exit (arm 1.5R/trail 2.0R), long-only 3-week RS-vs-QQQ entry filter (see Strategy changelog above) (no close-position filter -- retired 2026-07-27, backtesting confirmed it's not part of the current locked config). "Taken" = passed the same -1R daily loss cap (-2R for EP-30m) and 10-position limit the backtest uses, computed chronologically as the day unfolds. Trades still in progress show as Pending until enough bars exist to resolve them (updates automatically on a later refresh). History starts from whenever this system first ran. Not investment advice -- verify before acting.</footer>
+  <footer>Core+EP+Parabolic, confluence tiers, first-trade-of-day 0.5x sizing (+0.5x more if also below median liquidity), SL widened +40% off the ADR-tiered table, 100% chandelier exit (arm 1.5R/trail 2.0R), long-only 3-week RS-vs-QQQ entry filter, daily-cap reaction (close other open positions down &ge;0.25R as of today's close once the day's -1R cap trips -- see Strategy changelog above) (no close-position filter -- retired 2026-07-27, backtesting confirmed it's not part of the current locked config). "Taken" = passed the same -1R daily loss cap (-2R for EP-30m) and 10-position limit the backtest uses, computed chronologically as the day unfolds. Trades still in progress show as Pending until enough bars exist to resolve them (updates automatically on a later refresh). History starts from whenever this system first ran. Not investment advice -- verify before acting.</footer>
 </div>
 
 <script>
@@ -266,41 +278,6 @@ function humanDate(dateStr) {
   return new Intl.DateTimeFormat('en-US', { timeZone: 'America/Los_Angeles', weekday: 'long', month: 'long', day: 'numeric' }).format(new Date(dateStr + 'T12:00:00'));
 }
 
-// Currently-open positions, aggregated across ALL recent days (2026-07-28, user request) --
-// previously a position only ever showed up on the page for its OWN entry day, so a still-
-// open trade from a few days back was invisible unless you happened to navigate back to that
-// exact date, and the moment it resolved it silently vanished from view entirely (no aggregate
-// "what's live right now" list existed anywhere on the site). This renders once, independent
-// of whatever day is selected in the navigator below.
-function renderOpenPositions() {
-  const openPositionsContainer = document.getElementById('open-positions-container');
-  const open = [];
-  for (const d of days) {
-    for (const t of (HISTORY[d].taken || [])) {
-      if (!t.resolved) open.push({ ...t, entryDay: d });
-    }
-  }
-  if (!open.length) {
-    openPositionsContainer.innerHTML = '<div class="empty" style="padding:16px;">No positions currently open.</div>';
-    return;
-  }
-  open.sort((a, b) => a.barTime - b.barTime);
-  const rows = open.map(s => {
-    const tf = s.tf || '30m';
-    const closeOffset = tf === '1h' ? 3600 : 1800;
-    const lr = s.liveR;
-    const lrText = lr == null ? 'pending' : (lr >= 0 ? '+' : '') + lr.toFixed(2) + 'R';
-    const lrCls = lr == null ? 'r-pending' : (lr >= 0 ? 'r-pos' : 'r-neg');
-    return '<tr><td class="mono" style="font-weight:600;">' + s.symbol + '</td>' +
-      '<td>' + humanDate(s.entryDay) + '</td>' +
-      '<td>' + fmtTime(s.barTime + closeOffset) + ' PT <span style="color:var(--text-faint);">(' + tf + ')</span></td>' +
-      '<td class="' + s.side + '">' + s.side.toUpperCase() + '</td>' +
-      '<td class="mono">$' + s.entryPrice.toFixed(2) + '</td>' +
-      '<td class="' + lrCls + ' mono">' + lrText + '</td></tr>';
-  }).join('');
-  openPositionsContainer.innerHTML = '<table><thead><tr><th>Ticker</th><th>Entry Day</th><th>Entry Time</th><th>Side</th><th>Entry</th><th>Live R</th></tr></thead><tbody>' + rows + '</tbody></table>';
-}
-renderOpenPositions();
 
 function render(dateStr) {
   dateInput.value = dateStr;
@@ -400,10 +377,13 @@ function render(dateStr) {
           '<td class="mono">' + s.addMult + 'x total</td></tr>';
       }
       const rCls = s.rMultiple >= 0 ? 'r-pos' : 'r-neg';
+      const badge = s.type === 'closed_cap_reaction'
+        ? '<span class="gap-badge" title="Today\'s daily loss cap tripped on a different trade -- this position was down at least 0.25R as of today\'s own close, so it was closed out rather than left to run">CLOSED (CAP)</span>'
+        : '<span class="gap-badge" title="Entry day closed weak (long) or strong (short) within its own range">CLOSED (CP)</span>';
       return '<tr><td class="mono" style="font-weight:600;">' + s.symbol + '</td>' +
         '<td class="' + s.side + '">' + s.side.toUpperCase() + '</td>' +
         '<td class="mono">$' + (s.entryPrice != null ? s.entryPrice.toFixed(2) : '--') + '</td>' +
-        '<td><span class="gap-badge" title="Entry day closed weak (long) or strong (short) within its own range">CLOSED (CP)</span></td>' +
+        '<td>' + badge + '</td>' +
         '<td class="' + rCls + ' mono">' + (s.rMultiple >= 0 ? '+' : '') + s.rMultiple.toFixed(2) + 'R</td>' +
         '<td class="mono">--</td></tr>';
     }).join('');

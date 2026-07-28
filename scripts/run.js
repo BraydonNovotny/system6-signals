@@ -9,6 +9,7 @@ const { loadHistory, saveHistory, recordCandidates, recordTaken } = require('./h
 const { runAccountFilter } = require('./account_filter');
 const resolvePending = require('./resolve_pending');
 const eodAddWinners = require('./eod_add_winners');
+const eodCapTriggerReaction = require('./eod_cap_trigger_reaction');
 const { build } = require('./build_site.js');
 
 async function fetch30m(symbol) {
@@ -142,6 +143,20 @@ async function main() {
   // resolve pending trades from recent days whenever we're in an active window, regardless
   // of whether the once-daily roster/addWinners tasks specifically ran this tick.
   if (didWork) await resolvePending.run().catch(e => console.error('resolvePending failed:', e.message));
+
+  // LOCKED (2026-07-28, "A2" in ll_backtest): once today's REALIZED loss trips the -1R cap,
+  // close out any other currently-open position down >= 0.25R as of TODAY's own close (no
+  // hindsight). Runs AFTER resolvePending so it sees today's freshest resolved/rMultiple
+  // values. EOD-window only, matching the rule's "as of today's close" semantics -- checking
+  // mid-day would use an incomplete, not-yet-final close.
+  if (inEodWindow) {
+    const history = loadHistory();
+    const closedByCap = await eodCapTriggerReaction.run(history).catch(e => { console.error('cap-trigger reaction failed:', e.message); return []; });
+    if (closedByCap.length) {
+      saveHistory(history);
+      console.log(`Cap-trigger reaction: closed ${closedByCap.length} down-position(s) at today's close.`);
+    }
+  }
 
   if (!didWork) { console.log(`PT hour ${decimalHour.toFixed(2)} outside all active windows - no-op.`); return; }
   build();
