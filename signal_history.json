@@ -9380,10 +9380,9 @@
         "tf": "30m",
         "source": "CORE",
         "resolved": true,
-        "rMultiple": -0.75,
-        "liveR": -0.75,
-        "gapped": false,
-        "closedByClosePosRule": true
+        "rMultiple": 1.4,
+        "liveR": 0.54,
+        "gapped": false
       },
       {
         "symbol": "RKLB",
