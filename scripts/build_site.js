@@ -91,6 +91,16 @@ function build() {
 
   <div class="perf-windows" id="perf-windows"></div>
 
+  <div class="signals-block" id="open-positions-block">
+    <div class="head">
+      <div>
+        <h2>Currently open positions</h2>
+        <p class="sub mono" style="margin:2px 0 0;">Aggregated across ALL recent days, not just whatever day is selected below -- a position stays listed here until it actually resolves, regardless of which entry day it came from.</p>
+      </div>
+    </div>
+    <div id="open-positions-container"></div>
+  </div>
+
   <div class="signals-block">
     <div class="head">
       <div>
@@ -266,6 +276,43 @@ function fmtTime(barTime) {
 function humanDate(dateStr) {
   return new Intl.DateTimeFormat('en-US', { timeZone: 'America/Los_Angeles', weekday: 'long', month: 'long', day: 'numeric' }).format(new Date(dateStr + 'T12:00:00'));
 }
+
+// Currently-open positions, aggregated across ALL recent days (2026-07-28, user request) --
+// previously a position only ever showed up on the page for its OWN entry day, so a still-
+// open trade from a few days back was invisible unless you happened to navigate back to that
+// exact date, and the moment it resolved it silently vanished from view entirely (no aggregate
+// "what's live right now" list existed anywhere on the site). This renders once, independent
+// of whatever day is selected in the navigator below.
+function renderOpenPositions() {
+  const openPositionsContainer = document.getElementById('open-positions-container');
+  const open = [];
+  for (const d of days) {
+    for (const t of (HISTORY[d].taken || [])) {
+      if (!t.resolved) open.push({ ...t, entryDay: d });
+    }
+  }
+  if (!open.length) {
+    openPositionsContainer.innerHTML = '<div class="empty" style="padding:16px;">No positions currently open.</div>';
+    return;
+  }
+  open.sort((a, b) => a.barTime - b.barTime);
+  const rows = open.map(s => {
+    const tf = s.tf || '30m';
+    const closeOffset = tf === '1h' ? 3600 : 1800;
+    const lr = s.liveR;
+    const lrText = lr == null ? 'pending' : (lr >= 0 ? '+' : '') + lr.toFixed(2) + 'R';
+    const lrCls = lr == null ? 'r-pending' : (lr >= 0 ? 'r-pos' : 'r-neg');
+    return '<tr><td class="mono" style="font-weight:600;">' + s.symbol + '</td>' +
+      '<td>' + humanDate(s.entryDay) + '</td>' +
+      '<td>' + fmtTime(s.barTime + closeOffset) + ' PT <span style="color:var(--text-faint);">(' + tf + ')</span></td>' +
+      '<td class="' + s.side + '">' + s.side.toUpperCase() + '</td>' +
+      '<td class="mono">$' + s.entryPrice.toFixed(2) + '</td>' +
+      '<td class="' + lrCls + ' mono">' + lrText + '</td></tr>';
+  }).join('');
+  openPositionsContainer.innerHTML = '<table><thead><tr><th>Ticker</th><th>Entry Day</th><th>Entry Time</th><th>Side</th><th>Entry</th><th>Live R</th></tr></thead><tbody>' + rows + '</tbody></table>';
+}
+renderOpenPositions();
+
 function render(dateStr) {
   dateInput.value = dateStr;
   titleEl.textContent = (dateStr === todayStr ? "Today's" : humanDate(dateStr)) + ' triggered & taken';
