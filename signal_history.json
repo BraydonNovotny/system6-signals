@@ -10529,6 +10529,18 @@
         "tf": "30m",
         "avgDollarVol20": 1588582648.5530484,
         "source": "CORE"
+      },
+      {
+        "symbol": "NFLX",
+        "side": "short",
+        "qual": 0.4,
+        "entryPrice": 72.51,
+        "stopPrice": 74.06,
+        "barTime": 1785265200,
+        "patternTier": "confluence8ema",
+        "tf": "30m",
+        "avgDollarVol20": 3538633244.0847273,
+        "source": "CORE"
       }
     ],
     "taken": [
@@ -10608,7 +10620,7 @@
         "source": "CORE",
         "resolved": false,
         "rMultiple": null,
-        "liveR": 0.48,
+        "liveR": 0.29,
         "gapped": false,
         "firstTradeOfDay": false,
         "sizeMult": 1,
@@ -10922,6 +10934,19 @@
         "patternTier": "looseTier2Short",
         "tf": "30m",
         "avgDollarVol20": 307495257.3807013,
+        "source": "CORE",
+        "rejectReason": "daily loss cap"
+      },
+      {
+        "symbol": "NFLX",
+        "side": "short",
+        "qual": 0.4,
+        "entryPrice": 72.51,
+        "stopPrice": 74.06,
+        "barTime": 1785265200,
+        "patternTier": "confluence8ema",
+        "tf": "30m",
+        "avgDollarVol20": 3538633244.0847273,
         "source": "CORE",
         "rejectReason": "daily loss cap"
       }
