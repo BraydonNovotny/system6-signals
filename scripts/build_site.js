@@ -25,7 +25,7 @@ function build() {
   .regime.bull { background: color-mix(in srgb, var(--long) 18%, transparent); color: var(--long); }
   .regime.bear { background: color-mix(in srgb, var(--short) 18%, transparent); color: var(--short); }
 
-  .perf-windows { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--rail); border: 1px solid var(--rail); margin-top: 20px; }
+  .perf-windows { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1px; background: var(--rail); border: 1px solid var(--rail); margin-top: 20px; }
   .perf-window { background: var(--surface); padding: 14px 16px; }
   .perf-window h3 { font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-mute); margin: 0 0 10px; }
   .perf-row { display: flex; align-items: baseline; justify-content: space-between; margin-top: 6px; }
@@ -33,7 +33,8 @@ function build() {
   .perf-label { font-size: 11.5px; color: var(--text-faint); }
   .perf-value { font-size: 15px; font-weight: 700; color: var(--signal); font-family: ui-monospace, "SF Mono", Consolas, monospace; font-variant-numeric: tabular-nums; }
   .perf-value.neg { color: var(--loss); }
-  @media (max-width: 600px) { .perf-windows { grid-template-columns: 1fr; } }
+  @media (max-width: 900px) { .perf-windows { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 480px) { .perf-windows { grid-template-columns: 1fr; } }
   .signals-block { margin-top: 20px; border: 2px solid var(--signal); background: var(--surface); }
   .signals-block .head { display: flex; align-items: center; justify-content: space-between; padding: 14px 18px; border-bottom: 1px solid var(--rail); flex-wrap: wrap; gap: 10px; }
   .signals-block .head h2 { margin: 0; color: var(--signal); font-size: 14px; }
@@ -269,7 +270,9 @@ function windowHtml(label, s) {
 }
 document.getElementById('perf-windows').innerHTML =
   windowHtml('Past Week', windowStats(5)) +
+  windowHtml('Past 2 Weeks', windowStats(10)) +
   windowHtml('Past Month', windowStats(21)) +
+  windowHtml('Past 2 Months', windowStats(42)) +
   windowHtml('Past 3 Months', windowStats(63));
 
 const dateInput = document.getElementById('date-input');
