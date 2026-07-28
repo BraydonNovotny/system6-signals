@@ -82,6 +82,15 @@ async function run() {
     const dist200Pct = (dCloses[dLast] - dEma200[dLast]) / dEma200[dLast] * 100;
     const adrPct = computeAdrSeries(daily)[dLast];
     if (adrPct == null) continue;
+    // LOCKED (2026-07-27): 20-day avg $ volume, for the combined first-trade-of-day +
+    // liquidity sizing lever (see account_filter.js) -- IS/OOS confirmed both together with
+    // the existing first-trade rule.
+    let avgDollarVol20 = null;
+    if (dLast - 19 >= 0) {
+      let sum = 0;
+      for (let k = dLast - 19; k <= dLast; k++) sum += daily[k].volume * daily[k].close;
+      avgDollarVol20 = sum / 20;
+    }
     // LOCKED (2026-07-27): 3-week RS vs QQQ, long-only entry filter -- IS/OOS confirmed
     // requiring the stock to have outperformed QQQ over the trailing 15 trading days
     // (rsVsQqq3w >= 0) before taking a long, moved CAGR/Sharpe up together on both IS and
@@ -160,7 +169,7 @@ async function run() {
           if (openOk && tightPass) {
             const R = slForAdr(adrPct) / 100;
             const entryPrice = closes[i], stopPrice = entryPrice * (1 - R);
-            signals.push({ symbol, side: 'long', qual, entryPrice: +entryPrice.toFixed(2), stopPrice: +stopPrice.toFixed(2), barTime, patternTier: qual === 4 ? 'dryUpBreakout3' : qual === 3 ? 'reclaim' : qual === 2 ? 'looseTier2' : qual === 1 ? 'surfBase' : 'confluence8ema', tf: '30m', rsVsQqq3w: rsVsQqq3w != null ? +rsVsQqq3w.toFixed(2) : null });
+            signals.push({ symbol, side: 'long', qual, entryPrice: +entryPrice.toFixed(2), stopPrice: +stopPrice.toFixed(2), barTime, patternTier: qual === 4 ? 'dryUpBreakout3' : qual === 3 ? 'reclaim' : qual === 2 ? 'looseTier2' : qual === 1 ? 'surfBase' : 'confluence8ema', tf: '30m', rsVsQqq3w: rsVsQqq3w != null ? +rsVsQqq3w.toFixed(2) : null, avgDollarVol20 });
             firedLong = true;
           }
         }
@@ -193,7 +202,7 @@ async function run() {
           if (openOk && tightPass) {
             const R = slForAdr(adrPct) / 100;
             const entryPrice = closes[i], stopPrice = entryPrice * (1 + R);
-            signals.push({ symbol, side: 'short', qual, entryPrice: +entryPrice.toFixed(2), stopPrice: +stopPrice.toFixed(2), barTime, patternTier: qual === 3 ? 'dryDownBreakdown3' : qual === 2 ? 'rejection' : qual === 1 ? 'looseTier2Short' : 'confluence8ema', tf: '30m' });
+            signals.push({ symbol, side: 'short', qual, entryPrice: +entryPrice.toFixed(2), stopPrice: +stopPrice.toFixed(2), barTime, patternTier: qual === 3 ? 'dryDownBreakdown3' : qual === 2 ? 'rejection' : qual === 1 ? 'looseTier2Short' : 'confluence8ema', tf: '30m', avgDollarVol20 });
             firedShort = true;
           }
         }

@@ -124,10 +124,11 @@
   </details>
 
   <details class="changelog">
-    <summary>Strategy changelog — 2 updates (2026-07-27)</summary>
+    <summary>Strategy changelog — 3 updates (2026-07-27)</summary>
     <div class="tab-bar">
       <button class="tab-btn active" data-tab="exit">Exit rule</button>
       <button class="tab-btn" data-tab="entry">Entry filter</button>
+      <button class="tab-btn" data-tab="sizing">First-trade sizing</button>
     </div>
     <div class="tab-panel active" id="tab-exit">
       Exit dynamics changed from a 25%-fixed-target / 75%-chandelier blend to <b>100% chandelier</b>
@@ -155,9 +156,25 @@
         <div class="stat"><span class="k">OOS Max DD</span><span class="v">6.77% <span class="arrow">&rarr;</span> 6.77% (unchanged)</span></div>
       </div>
     </div>
+    <div class="tab-panel" id="tab-sizing">
+      The day's first trade was already known to have a materially worse win% across every core
+      tier (losing it forecloses the rest of the day via the -1R daily loss cap, so it's the
+      single highest-leverage trade of the day). New rule: an <b>additional 0.5x haircut</b> when
+      that first trade is <b>also</b> below median 20-day $ volume liquidity (~$1.45B) — two
+      independent weak-spot signals compounding, rather than a blanket liquidity filter across
+      all trades (which was tested and made things worse on every variant). Shows as a
+      <b>0.25x</b> badge on the trade log when both conditions stack (0.5x first-trade &times;
+      0.5x thin-liquidity), or <b>0.5x (thin)</b> when only the liquidity half applies (EP/
+      Parabolic/q0.5 are exempt from the base first-trade rule but not this one).
+      <div class="stat-row">
+        <div class="stat"><span class="k">OOS CAGR</span><span class="v">511.5% <span class="arrow">&rarr;</span> 526.1%</span></div>
+        <div class="stat"><span class="k">OOS Sharpe</span><span class="v">4.103 <span class="arrow">&rarr;</span> 4.157</span></div>
+        <div class="stat"><span class="k">OOS Max DD</span><span class="v">6.77% <span class="arrow">&rarr;</span> 6.67% (improved)</span></div>
+      </div>
+    </div>
   </details>
 
-  <footer>Core+EP+Parabolic, confluence tiers, first-trade-of-day 0.5x sizing, SL widened +40% off the ADR-tiered table, 100% chandelier exit (arm 1.5R/trail 2.0R), long-only 3-week RS-vs-QQQ entry filter (see Strategy changelog above) (no close-position filter -- retired 2026-07-27, backtesting confirmed it's not part of the current locked config). "Taken" = passed the same -1R daily loss cap (-2R for EP-30m) and 10-position limit the backtest uses, computed chronologically as the day unfolds. Trades still in progress show as Pending until enough bars exist to resolve them (updates automatically on a later refresh). History starts from whenever this system first ran. Not investment advice -- verify before acting.</footer>
+  <footer>Core+EP+Parabolic, confluence tiers, first-trade-of-day 0.5x sizing (+0.5x more if also below median liquidity), SL widened +40% off the ADR-tiered table, 100% chandelier exit (arm 1.5R/trail 2.0R), long-only 3-week RS-vs-QQQ entry filter (see Strategy changelog above) (no close-position filter -- retired 2026-07-27, backtesting confirmed it's not part of the current locked config). "Taken" = passed the same -1R daily loss cap (-2R for EP-30m) and 10-position limit the backtest uses, computed chronologically as the day unfolds. Trades still in progress show as Pending until enough bars exist to resolve them (updates automatically on a later refresh). History starts from whenever this system first ran. Not investment advice -- verify before acting.</footer>
 </div>
 
 <script>
@@ -251,7 +268,9 @@ function render(dateStr) {
         resultHtml = '<span class="' + (s.rMultiple >= 0 ? 'r-pos' : 'r-neg') + '">' + (s.rMultiple >= 0 ? '+' : '') + s.rMultiple.toFixed(2) + 'R</span>';
         if (s.gapped) resultHtml += ' <span class="gap-badge" title="Exit price gapped past the stop -- filled at the actual open, not the idealized stop level">GAP</span>';
       }
-      if (s.firstTradeOfDay && s.sizeMult === 0.5) resultHtml += ' <span class="gap-badge" style="background:color-mix(in srgb, var(--text-faint) 25%, transparent); color:var(--text-mute);" title="Day\'s first taken trade -- diagnostic showed a materially worse win% here across every core tier. Locked rule: size to 0.5x (EP/Parabolic/q0.5 confluence are exempt).">0.5x</span>';
+      if (s.firstTradeOfDay && s.sizeMult === 0.25) resultHtml += ' <span class="gap-badge" style="background:color-mix(in srgb, var(--loss) 20%, transparent); color:var(--loss);" title="Day\'s first taken trade AND below median 20-day $ volume liquidity -- two independent weak-spot signals compounding. Locked rule: size to 0.25x total (0.5x first-trade x 0.5x thin-liquidity).">0.25x</span>';
+      else if (s.firstTradeOfDay && s.sizeMult === 0.5) resultHtml += ' <span class="gap-badge" style="background:color-mix(in srgb, var(--text-faint) 25%, transparent); color:var(--text-mute);" title="Day\'s first taken trade -- diagnostic showed a materially worse win% here across every core tier. Locked rule: size to 0.5x (EP/Parabolic/q0.5 confluence are exempt).">0.5x</span>';
+      else if (s.thinFirstTrade && s.sizeMult === 0.5) resultHtml += ' <span class="gap-badge" style="background:color-mix(in srgb, var(--text-faint) 25%, transparent); color:var(--text-mute);" title="Day\'s first taken trade AND below median liquidity (EP/Parabolic/q0.5 exempt from the base first-trade rule, but not this one). Locked rule: size to 0.5x.">0.5x (thin)</span>';
       const tf = s.tf || '30m';
       const closeOffset = tf === '1h' ? 3600 : 1800;
       return '<tr><td class="mono" style="font-weight:600;">' + s.symbol + '</td><td>' + fmtTime(s.barTime + closeOffset) + ' PT <span style="color:var(--text-faint);">(' + tf + ')</span></td>' +

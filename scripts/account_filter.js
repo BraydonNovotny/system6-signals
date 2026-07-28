@@ -51,11 +51,19 @@ function runAccountFilter(candidates, barsBySymbol, carriedOpenCount = 0, dayHas
     const isFirstTradeOfDay = !dayHasTakenTradeState[dayKey];
     const isWeakAsFirstTrade = !(sig.source === 'EP' || sig.source === 'PER' || sig.qual === 0.5);
     const firstTradeSizeMult = (isFirstTradeOfDay && isWeakAsFirstTrade) ? 0.5 : 1.0;
+    // LOCKED (2026-07-27): additional 0.5x when the day's first trade is ALSO below median
+    // 20-day $ volume liquidity (~$1.45B) -- a second, independent weak-spot signal on top of
+    // the existing first-trade rule. Matches the backtest exactly: this check does NOT exempt
+    // EP/PER/q0.5 the way firstTradeSizeMult does, so it can compound with either 0.5x or 1.0x.
+    const FIRST_TRADE_LIQ_MIN = 1454523531;
+    const isThinFirstTrade = isFirstTradeOfDay && sig.avgDollarVol20 != null && sig.avgDollarVol20 < FIRST_TRADE_LIQ_MIN;
+    const firstTradeLiqMult = isThinFirstTrade ? 0.5 : 1.0;
+    const sizeMult = firstTradeSizeMult * firstTradeLiqMult;
     dayHasTakenTradeState[dayKey] = true;
 
     const pos = { exitTime: null };
     openPositions.push(pos);
-    taken.push({ ...sig, resolved: result.resolved, rMultiple: result.resolved ? result.rMultiple : null, liveR: result.liveR, gapped: result.gapped || false, firstTradeOfDay: isFirstTradeOfDay, sizeMult: firstTradeSizeMult });
+    taken.push({ ...sig, resolved: result.resolved, rMultiple: result.resolved ? result.rMultiple : null, liveR: result.liveR, gapped: result.gapped || false, firstTradeOfDay: isFirstTradeOfDay, sizeMult, thinFirstTrade: isThinFirstTrade });
     if (result.resolved) {
       pos.exitTime = sig.barTime + 1; // resolved essentially immediately in our coarse view; frees the slot for the next check
       if (result.rMultiple < 0) dayLossR += result.rMultiple;
