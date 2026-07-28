@@ -9773,9 +9773,7 @@
         "thinFirstTrade": true,
         "losingWeekActive": false,
         "qqqOverboughtActive": false
-      }
-    ],
-    "rejected": [
+      },
       {
         "symbol": "JOBY",
         "side": "short",
@@ -9787,7 +9785,15 @@
         "tf": "30m",
         "avgDollarVol20": 394216136.9847332,
         "source": "CORE",
-        "rejectReason": "daily loss cap"
+        "resolved": true,
+        "rMultiple": -1,
+        "liveR": -0.85,
+        "gapped": false,
+        "firstTradeOfDay": false,
+        "sizeMult": 1,
+        "thinFirstTrade": false,
+        "losingWeekActive": false,
+        "qqqOverboughtActive": false
       },
       {
         "symbol": "ORCL",
@@ -9800,7 +9806,15 @@
         "tf": "30m",
         "avgDollarVol20": 5059239715.354458,
         "source": "CORE",
-        "rejectReason": "daily loss cap"
+        "resolved": true,
+        "rMultiple": -1,
+        "liveR": -1.49,
+        "gapped": false,
+        "firstTradeOfDay": false,
+        "sizeMult": 1,
+        "thinFirstTrade": false,
+        "losingWeekActive": false,
+        "qqqOverboughtActive": false
       },
       {
         "symbol": "QCOM",
@@ -9813,7 +9827,15 @@
         "tf": "30m",
         "avgDollarVol20": 2321578354.972934,
         "source": "CORE",
-        "rejectReason": "daily loss cap"
+        "resolved": false,
+        "rMultiple": null,
+        "liveR": 0.13,
+        "gapped": false,
+        "firstTradeOfDay": false,
+        "sizeMult": 1,
+        "thinFirstTrade": false,
+        "losingWeekActive": false,
+        "qqqOverboughtActive": false
       },
       {
         "symbol": "QS",
@@ -9826,8 +9848,18 @@
         "tf": "30m",
         "avgDollarVol20": 163117222.46757555,
         "source": "CORE",
-        "rejectReason": "daily loss cap"
-      },
+        "resolved": true,
+        "rMultiple": -1,
+        "liveR": -0.88,
+        "gapped": false,
+        "firstTradeOfDay": false,
+        "sizeMult": 1,
+        "thinFirstTrade": false,
+        "losingWeekActive": false,
+        "qqqOverboughtActive": false
+      }
+    ],
+    "rejected": [
       {
         "symbol": "CMG",
         "side": "short",

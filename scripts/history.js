@@ -34,10 +34,26 @@ function recordCandidates(dateStr, allNewCandidates) {
   return h[dateStr].candidates;
 }
 
+function tradeKey(t) { return t.symbol + '|' + t.side + '|' + t.barTime + '|' + t.source; }
+
+// SAFETY NET (2026-07-28): a decision, once recorded as "taken", must never disappear from a
+// later save -- account_filter.js is supposed to guarantee this upstream (via previousDecisions),
+// but this is the actual write point, so it enforces the invariant directly regardless of any
+// upstream gap (e.g. a race between overlapping runs both reading history before either saves).
+// Loads the FRESH on-disk state (not just what this process started with) and merges: anything
+// already recorded as taken on disk stays taken even if the incoming `taken` array is missing it
+// (logged loudly so a real regression is never silent); genuinely new decisions from this run
+// are added on top.
 function recordTaken(dateStr, taken, rejected) {
   const h = loadHistory();
   if (!h[dateStr]) h[dateStr] = { candidates: [], taken: [] };
-  h[dateStr].taken = taken;
+  const existingTaken = h[dateStr].taken || [];
+  const incomingKeys = new Set(taken.map(tradeKey));
+  const droppedFromDisk = existingTaken.filter(t => !incomingKeys.has(tradeKey(t)));
+  if (droppedFromDisk.length) {
+    console.error(`recordTaken SAFETY NET: ${droppedFromDisk.length} previously-taken trade(s) missing from this run's result, re-adding: ${droppedFromDisk.map(t => t.symbol).join(', ')}`);
+  }
+  h[dateStr].taken = taken.concat(droppedFromDisk);
   h[dateStr].rejected = rejected || [];
   saveHistory(h);
 }
