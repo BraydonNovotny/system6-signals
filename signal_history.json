@@ -9750,6 +9750,54 @@
         "tf": "30m",
         "avgDollarVol20": 307495257.3807013,
         "source": "CORE"
+      },
+      {
+        "symbol": "SOFI",
+        "side": "short",
+        "qual": 2,
+        "entryPrice": 16.23,
+        "stopPrice": 16.73,
+        "barTime": 1785245400,
+        "patternTier": "rejection",
+        "tf": "30m",
+        "avgDollarVol20": 1437440270.432867,
+        "source": "CORE"
+      },
+      {
+        "symbol": "ONDS",
+        "side": "short",
+        "qual": 2,
+        "entryPrice": 7.73,
+        "stopPrice": 8.04,
+        "barTime": 1785254400,
+        "patternTier": "rejection",
+        "tf": "30m",
+        "avgDollarVol20": 822990416.6045966,
+        "source": "CORE"
+      },
+      {
+        "symbol": "TSLA",
+        "side": "short",
+        "qual": 2,
+        "entryPrice": 306.56,
+        "stopPrice": 315.55,
+        "barTime": 1785254400,
+        "patternTier": "rejection",
+        "tf": "30m",
+        "avgDollarVol20": 15958935612.578796,
+        "source": "CORE"
+      },
+      {
+        "symbol": "RKLB",
+        "side": "short",
+        "qual": 0.4,
+        "entryPrice": 63.74,
+        "stopPrice": 66.33,
+        "barTime": 1785258000,
+        "patternTier": "confluence8ema",
+        "tf": "30m",
+        "avgDollarVol20": 1588582648.5530484,
+        "source": "CORE"
       }
     ],
     "taken": [
@@ -9829,7 +9877,7 @@
         "source": "CORE",
         "resolved": false,
         "rMultiple": null,
-        "liveR": 0.13,
+        "liveR": 0.58,
         "gapped": false,
         "firstTradeOfDay": false,
         "sizeMult": 1,
@@ -9860,6 +9908,19 @@
       }
     ],
     "rejected": [
+      {
+        "symbol": "SOFI",
+        "side": "short",
+        "qual": 2,
+        "entryPrice": 16.23,
+        "stopPrice": 16.73,
+        "barTime": 1785245400,
+        "patternTier": "rejection",
+        "tf": "30m",
+        "avgDollarVol20": 1437440270.432867,
+        "source": "CORE",
+        "rejectReason": "daily loss cap"
+      },
       {
         "symbol": "CMG",
         "side": "short",
@@ -9965,6 +10026,32 @@
         "rejectReason": "daily loss cap"
       },
       {
+        "symbol": "ONDS",
+        "side": "short",
+        "qual": 2,
+        "entryPrice": 7.73,
+        "stopPrice": 8.04,
+        "barTime": 1785254400,
+        "patternTier": "rejection",
+        "tf": "30m",
+        "avgDollarVol20": 822990416.6045966,
+        "source": "CORE",
+        "rejectReason": "daily loss cap"
+      },
+      {
+        "symbol": "TSLA",
+        "side": "short",
+        "qual": 2,
+        "entryPrice": 306.56,
+        "stopPrice": 315.55,
+        "barTime": 1785254400,
+        "patternTier": "rejection",
+        "tf": "30m",
+        "avgDollarVol20": 15958935612.578796,
+        "source": "CORE",
+        "rejectReason": "daily loss cap"
+      },
+      {
         "symbol": "MSTR",
         "side": "short",
         "qual": 3,
@@ -10026,6 +10113,19 @@
         "patternTier": "confluence8ema",
         "tf": "30m",
         "avgDollarVol20": 484305565.69216764,
+        "source": "CORE",
+        "rejectReason": "daily loss cap"
+      },
+      {
+        "symbol": "RKLB",
+        "side": "short",
+        "qual": 0.4,
+        "entryPrice": 63.74,
+        "stopPrice": 66.33,
+        "barTime": 1785258000,
+        "patternTier": "confluence8ema",
+        "tf": "30m",
+        "avgDollarVol20": 1588582648.5530484,
         "source": "CORE",
         "rejectReason": "daily loss cap"
       },
