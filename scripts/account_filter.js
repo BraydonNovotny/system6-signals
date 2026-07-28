@@ -24,7 +24,7 @@ const { simulateExit } = require('./simulate_exit');
 // tier (q1 48.5% vs 60.2% overall, etc.) -- only EP/Parabolic/q0.5 hold up as first trades.
 // Size the day's first trade to 0.5x for every OTHER tier; informational flag only (this repo
 // doesn't simulate dollar position sizing, just taken/rejected + realized R).
-function runAccountFilter(candidates, barsBySymbol, carriedOpenCount = 0, dayHasTakenTradeState = {}) {
+function runAccountFilter(candidates, barsBySymbol, carriedOpenCount = 0, dayHasTakenTradeState = {}, losingWeek = false) {
   // Tiebreak by qual DESC on same-barTime ties, matching the backtest's runFullTable exactly --
   // among simultaneous signals, the highest-quality one is evaluated "first" (and gets the
   // first-trade-of-day 0.5x haircut if it's not EP/PER/q0.5), not an arbitrary insertion order.
@@ -58,12 +58,17 @@ function runAccountFilter(candidates, barsBySymbol, carriedOpenCount = 0, dayHas
     const FIRST_TRADE_LIQ_MIN = 1454523531;
     const isThinFirstTrade = isFirstTradeOfDay && sig.avgDollarVol20 != null && sig.avgDollarVol20 < FIRST_TRADE_LIQ_MIN;
     const firstTradeLiqMult = isThinFirstTrade ? 0.5 : 1.0;
-    const sizeMult = firstTradeSizeMult * firstTradeLiqMult;
+    // LOCKED (2026-07-27): 0.7x the week after a losing week (all trades, both sides), and
+    // 0.7x for longs specifically when QQQ RSI14 >= 75 the prior day (sig.rsiSizeMult, computed
+    // in scan_entries.js -- 1.0 for shorts/EP/PER which don't carry that field).
+    const losingWeekMult = losingWeek ? 0.7 : 1.0;
+    const qqqRsiMult = sig.rsiSizeMult != null ? sig.rsiSizeMult : 1.0;
+    const sizeMult = firstTradeSizeMult * firstTradeLiqMult * losingWeekMult * qqqRsiMult;
     dayHasTakenTradeState[dayKey] = true;
 
     const pos = { exitTime: null };
     openPositions.push(pos);
-    taken.push({ ...sig, resolved: result.resolved, rMultiple: result.resolved ? result.rMultiple : null, liveR: result.liveR, gapped: result.gapped || false, firstTradeOfDay: isFirstTradeOfDay, sizeMult, thinFirstTrade: isThinFirstTrade });
+    taken.push({ ...sig, resolved: result.resolved, rMultiple: result.resolved ? result.rMultiple : null, liveR: result.liveR, gapped: result.gapped || false, firstTradeOfDay: isFirstTradeOfDay, sizeMult, thinFirstTrade: isThinFirstTrade, losingWeekActive: losingWeek, qqqOverboughtActive: qqqRsiMult < 1.0 });
     if (result.resolved) {
       pos.exitTime = sig.barTime + 1; // resolved essentially immediately in our coarse view; frees the slot for the next check
       if (result.rMultiple < 0) dayLossR += result.rMultiple;

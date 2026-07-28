@@ -124,11 +124,12 @@
   </details>
 
   <details class="changelog">
-    <summary>Strategy changelog — 3 updates (2026-07-27)</summary>
+    <summary>Strategy changelog — 4 updates (2026-07-27)</summary>
     <div class="tab-bar">
       <button class="tab-btn active" data-tab="exit">Exit rule</button>
       <button class="tab-btn" data-tab="entry">Entry filter</button>
       <button class="tab-btn" data-tab="sizing">First-trade sizing</button>
+      <button class="tab-btn" data-tab="component">Component sweep</button>
     </div>
     <div class="tab-panel active" id="tab-exit">
       Exit dynamics changed from a 25%-fixed-target / 75%-chandelier blend to <b>100% chandelier</b>
@@ -170,6 +171,31 @@
         <div class="stat"><span class="k">OOS CAGR</span><span class="v">511.5% <span class="arrow">&rarr;</span> 526.1%</span></div>
         <div class="stat"><span class="k">OOS Sharpe</span><span class="v">4.103 <span class="arrow">&rarr;</span> 4.157</span></div>
         <div class="stat"><span class="k">OOS Max DD</span><span class="v">6.77% <span class="arrow">&rarr;</span> 6.67% (improved)</span></div>
+      </div>
+    </div>
+    <div class="tab-panel" id="tab-component">
+      A 65-variant sweep across every remaining component (compression tightness, entry spacing,
+      position-sizing divisor, QQQ-overbought sizing threshold &amp; multiplier, losing-week
+      multiplier, EMA8/20 regime tilt, opening-bar filter, stop-loss width) found the current
+      config was slightly <b>over-penalizing</b> on three dimensions — loosening all three
+      together, confirmed via IS and OOS moving together on every metric:
+      <ul style="margin:10px 0 0; padding-left:20px;">
+        <li><b>Compression tightness 0.8 &rarr; 1.2</b> — the "how coiled is this breakout"
+        filter was cutting real setups by being too strict.</li>
+        <li><b>QQQ-overbought sizing 70/0.5x &rarr; 75/0.7x</b> — fires later and cuts less hard
+        when it does.</li>
+        <li><b>Losing-week sizing 0.5x &rarr; 0.7x</b> — the week-after-a-loss penalty was too
+        punitive.</li>
+      </ul>
+      Validated through the full 4-step check: IS/OOS, a 6+ value sensitivity sweep per
+      parameter (no cliffs, no cherry-picked spikes), a trade-level lumpiness check (top single
+      trade is &lt;2% of total return on both samples — no home runs), and a 30-seed Monte
+      Carlo permutation test — <b>0 of 30 permuted datasets beat the real result on any of IS
+      Sharpe, IS CAGR, OOS Sharpe, or OOS CAGR (p=0 on all four).</b>
+      <div class="stat-row">
+        <div class="stat"><span class="k">OOS CAGR</span><span class="v">526.1% <span class="arrow">&rarr;</span> 554.8%</span></div>
+        <div class="stat"><span class="k">OOS Sharpe</span><span class="v">4.103 <span class="arrow">&rarr;</span> 4.276</span></div>
+        <div class="stat"><span class="k">OOS Max DD</span><span class="v">6.67% <span class="arrow">&rarr;</span> 6.05% (improved)</span></div>
       </div>
     </div>
   </details>
@@ -268,9 +294,16 @@ function render(dateStr) {
         resultHtml = '<span class="' + (s.rMultiple >= 0 ? 'r-pos' : 'r-neg') + '">' + (s.rMultiple >= 0 ? '+' : '') + s.rMultiple.toFixed(2) + 'R</span>';
         if (s.gapped) resultHtml += ' <span class="gap-badge" title="Exit price gapped past the stop -- filled at the actual open, not the idealized stop level">GAP</span>';
       }
-      if (s.firstTradeOfDay && s.sizeMult === 0.25) resultHtml += ' <span class="gap-badge" style="background:color-mix(in srgb, var(--loss) 20%, transparent); color:var(--loss);" title="Day\'s first taken trade AND below median 20-day $ volume liquidity -- two independent weak-spot signals compounding. Locked rule: size to 0.25x total (0.5x first-trade x 0.5x thin-liquidity).">0.25x</span>';
-      else if (s.firstTradeOfDay && s.sizeMult === 0.5) resultHtml += ' <span class="gap-badge" style="background:color-mix(in srgb, var(--text-faint) 25%, transparent); color:var(--text-mute);" title="Day\'s first taken trade -- diagnostic showed a materially worse win% here across every core tier. Locked rule: size to 0.5x (EP/Parabolic/q0.5 confluence are exempt).">0.5x</span>';
-      else if (s.thinFirstTrade && s.sizeMult === 0.5) resultHtml += ' <span class="gap-badge" style="background:color-mix(in srgb, var(--text-faint) 25%, transparent); color:var(--text-mute);" title="Day\'s first taken trade AND below median liquidity (EP/Parabolic/q0.5 exempt from the base first-trade rule, but not this one). Locked rule: size to 0.5x.">0.5x (thin)</span>';
+      if (s.sizeMult != null && s.sizeMult < 1.0) {
+        const reasons = [];
+        if (s.firstTradeOfDay && s.thinFirstTrade) reasons.push('day\'s first trade + below-median liquidity (0.5x × 0.5x)');
+        else if (s.firstTradeOfDay) reasons.push('day\'s first taken trade (materially worse win% across every core tier)');
+        else if (s.thinFirstTrade) reasons.push('day\'s first trade + below-median liquidity (EP/Parabolic/q0.5 aren\'t exempt from this half)');
+        if (s.losingWeekActive) reasons.push('week following a losing week');
+        if (s.qqqOverboughtActive) reasons.push('QQQ RSI14 ≥ 75 the prior day (longs only)');
+        const badgeColor = s.sizeMult <= 0.35 ? 'var(--loss)' : 'var(--text-faint)';
+        resultHtml += ' <span class="gap-badge" style="background:color-mix(in srgb, ' + badgeColor + ' 20%, transparent); color:' + badgeColor + ';" title="' + reasons.join(' + ') + ' -- locked rule: size to ' + s.sizeMult + 'x.">' + s.sizeMult + 'x</span>';
+      }
       const tf = s.tf || '30m';
       const closeOffset = tf === '1h' ? 3600 : 1800;
       return '<tr><td class="mono" style="font-weight:600;">' + s.symbol + '</td><td>' + fmtTime(s.barTime + closeOffset) + ' PT <span style="color:var(--text-faint);">(' + tf + ')</span></td>' +

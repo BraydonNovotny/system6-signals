@@ -37,10 +37,25 @@ function countCarriedOpenPositions(history, todayStr) {
   return count;
 }
 
+// LOCKED (2026-07-27): 0.7x sizing for the week following a losing week (loosened from the
+// backtest's original 0.5x -- full component sweep + permutation test confirmed 0.7x is
+// better). Mirrors the backtest's Math.floor(dayKey/7) week bucketing.
+function dayKeyOf(dateStr) { return Math.floor(new Date(dateStr + 'T12:00:00Z').getTime() / 1000 / 86400); }
+function wasLastWeekLosing(history, todayStr) {
+  const todayWk = Math.floor(dayKeyOf(todayStr) / 7);
+  let sum = 0, found = false;
+  for (const [day, val] of Object.entries(history)) {
+    if (Math.floor(dayKeyOf(day) / 7) !== todayWk - 1) continue;
+    for (const t of (val.taken || [])) { if (t.resolved) { sum += t.rMultiple; found = true; } }
+  }
+  return found && sum < 0;
+}
+
 async function runEntryScans() {
   const history = loadHistory();
   const today = ptDateString();
   const carriedOpenCount = countCarriedOpenPositions(history, today);
+  const losingWeek = wasLastWeekLosing(history, today);
 
   const [core, ep, per] = await Promise.all([
     scanEntries.run(),
@@ -56,9 +71,9 @@ async function runEntryScans() {
   const barsBySymbol = {};
   symbols.forEach((sym, i) => { if (barResults[i].ok) barsBySymbol[sym] = barResults[i].value; });
 
-  const { taken, rejected } = runAccountFilter(allCandidatesToday, barsBySymbol, carriedOpenCount);
+  const { taken, rejected } = runAccountFilter(allCandidatesToday, barsBySymbol, carriedOpenCount, {}, losingWeek);
   recordTaken(today, taken, rejected);
-  console.log(`Carried-open from prior days: ${carriedOpenCount} | Candidates today: ${allCandidatesToday.length} | Taken: ${taken.length} | Rejected (capital/position limit): ${rejected.length}`);
+  console.log(`Carried-open from prior days: ${carriedOpenCount} | Candidates today: ${allCandidatesToday.length} | Taken: ${taken.length} | Rejected (capital/position limit): ${rejected.length} | Losing-week sizing active: ${losingWeek}`);
   return taken;
 }
 

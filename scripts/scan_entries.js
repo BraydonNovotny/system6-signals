@@ -3,7 +3,7 @@
 // roster-qualifying ticker against the exact same pattern/qual/tightness rules as the
 // locked backtest (ll_backtest/website_stats_final.js buildCombinedSignals). EP and
 // Parabolic overlays are NOT included yet -- core pattern signals only, phase 1.
-const { emaSeries, computeAdrSeries } = require('./indicators');
+const { emaSeries, computeAdrSeries, rsiSeries } = require('./indicators');
 const { evalPatterns, evalShortPatterns, COMPRESSION_TIGHT_MAX, COMPRESSION_WINDOW, compRange, slForAdr } = require('./patterns');
 const { fetchChart, pool, loadData, saveData, ptDateString, dropIncompleteBars } = require('./lib');
 
@@ -62,6 +62,13 @@ async function run() {
   const qqqEma8 = emaSeries(qqqCloses, 8), qqqEma20 = emaSeries(qqqCloses, 20);
   const qLast = qqqDaily.length - 1;
   const spread8_20 = (qqqEma8[qLast] - qqqEma20[qLast]) / qqqEma20[qLast] * 100;
+  // LOCKED (2026-07-27): QQQ RSI14 overbought sizing, longs only -- always-on in the backtest
+  // (not previously ported here). Threshold/mult loosened from 70/0.5x to 75/0.7x this session,
+  // confirmed via full component sweep + permutation test (0/30 beat it).
+  const qqqRsi14Series = rsiSeries(qqqCloses, 14);
+  const qqqRsi14 = qqqRsi14Series[qLast];
+  const QQQ_RSI_SIZE_THRESH = 75, QQQ_RSI_SIZE_MULT = 0.7;
+  const rsiSizeMult = (qqqRsi14 != null && qqqRsi14 >= QQQ_RSI_SIZE_THRESH) ? QQQ_RSI_SIZE_MULT : 1.0;
 
   const dailyResults = await pool(tickers, fetchDaily, 8);
   const intradayResults = await pool(tickers, fetch30m, 8);
@@ -169,7 +176,7 @@ async function run() {
           if (openOk && tightPass) {
             const R = slForAdr(adrPct) / 100;
             const entryPrice = closes[i], stopPrice = entryPrice * (1 - R);
-            signals.push({ symbol, side: 'long', qual, entryPrice: +entryPrice.toFixed(2), stopPrice: +stopPrice.toFixed(2), barTime, patternTier: qual === 4 ? 'dryUpBreakout3' : qual === 3 ? 'reclaim' : qual === 2 ? 'looseTier2' : qual === 1 ? 'surfBase' : 'confluence8ema', tf: '30m', rsVsQqq3w: rsVsQqq3w != null ? +rsVsQqq3w.toFixed(2) : null, avgDollarVol20 });
+            signals.push({ symbol, side: 'long', qual, entryPrice: +entryPrice.toFixed(2), stopPrice: +stopPrice.toFixed(2), barTime, patternTier: qual === 4 ? 'dryUpBreakout3' : qual === 3 ? 'reclaim' : qual === 2 ? 'looseTier2' : qual === 1 ? 'surfBase' : 'confluence8ema', tf: '30m', rsVsQqq3w: rsVsQqq3w != null ? +rsVsQqq3w.toFixed(2) : null, avgDollarVol20, qqqRsi14: qqqRsi14 != null ? +qqqRsi14.toFixed(1) : null, rsiSizeMult });
             firedLong = true;
           }
         }

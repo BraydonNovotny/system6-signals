@@ -19,4 +19,25 @@ function computeAdrSeries(dailyBars) {
   return adr;
 }
 
-module.exports = { emaSeries, computeAdrSeries };
+function rsiSeries(vals, span) {
+  const out = new Array(vals.length).fill(null);
+  if (vals.length <= span) return out;
+  let gainSum = 0, lossSum = 0;
+  for (let i = 1; i <= span; i++) {
+    const diff = vals[i] - vals[i - 1];
+    if (diff >= 0) gainSum += diff; else lossSum -= diff;
+  }
+  let avgGain = gainSum / span, avgLoss = lossSum / span;
+  out[span] = avgLoss === 0 ? 100 : 100 - 100 / (1 + avgGain / avgLoss);
+  for (let i = span + 1; i < vals.length; i++) {
+    const diff = vals[i] - vals[i - 1];
+    const gain = diff >= 0 ? diff : 0;
+    const loss = diff < 0 ? -diff : 0;
+    avgGain = (avgGain * (span - 1) + gain) / span;
+    avgLoss = (avgLoss * (span - 1) + loss) / span;
+    out[i] = avgLoss === 0 ? 100 : 100 - 100 / (1 + avgGain / avgLoss);
+  }
+  return out;
+}
+
+module.exports = { emaSeries, computeAdrSeries, rsiSeries };

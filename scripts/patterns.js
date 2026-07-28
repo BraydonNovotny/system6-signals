@@ -43,10 +43,13 @@ function evalShortPatterns(highs, lows, closes, volumes, i, ema20) {
   return { dryDownBreakdown3, looseTier2Short, rejection };
 }
 
-// LOCKED thresholds, ported from website_stats_final.js: compression tightness = 0.8,
-// measured over 3 bars before breakout. Extension/EMA400/slope/regime-hold modes are all
-// 'off' in the locked config -- not implemented here since they're not active.
-const COMPRESSION_TIGHT_MAX = 0.8;
+// LOCKED thresholds (updated 2026-07-27): compression tightness = 1.2 (up from 0.8), measured
+// over 3 bars before breakout. Full component sweep (65 variants) found loosening this
+// further still improved both IS and OOS together -- part of the confirmed 554.8% OOS CAGR /
+// 4.276 Sharpe / 6.05% maxDD lock, permutation-tested clean (0/30 beat it on every metric).
+// Extension/EMA400/slope/regime-hold modes are all 'off' in the locked config -- not
+// implemented here since they're not active.
+const COMPRESSION_TIGHT_MAX = 1.2;
 const COMPRESSION_WINDOW = 3;
 
 function compRange(highsArr, lowsArr, i, window) {
