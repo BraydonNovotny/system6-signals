@@ -10126,10 +10126,9 @@
         "tf": "30m",
         "source": "CORE",
         "resolved": true,
-        "rMultiple": -0.76,
-        "liveR": -0.76,
-        "gapped": false,
-        "closedByClosePosRule": true
+        "rMultiple": 2.29,
+        "liveR": 0.73,
+        "gapped": false
       },
       {
         "symbol": "OPEN",
