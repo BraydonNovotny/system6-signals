@@ -83,8 +83,17 @@ function simulateHalf(bars, entryIdx, side, entryPrice, R, mode, maxScan) {
 // session early, instead of correctly extending into the next real session (confirmed via
 // a head-to-head backtest that holding the full maxScan of REAL bars beats cutting one
 // bar short: 650% vs 505% OOS CAGR). Filter these phantom bars out before scanning.
+//
+// BROADENED (2026-07-28, ONDS 7/27 investigation): the original check required EXACT
+// high===low equality, which missed a real case -- a trailing bar with only tiny
+// floating-point/rounding-level range slipped through, got counted as a genuine bar, and
+// force-closed the trade a session early on a manufactured price. Confirmed transient: the
+// very next fetch of the same date range no longer even included that bar at all, proving
+// it was a still-forming/snapshot artifact, not real trading. Switched to a relative-epsilon
+// check (range under 0.01% of price) so near-flat snapshot bars are caught even when not
+// bit-for-bit identical.
 function simulateExit(side, entryPrice, stopPrice, entryTime, bars, tf) {
-  bars = bars.filter(b => b.high !== b.low || b.time === entryTime);
+  bars = bars.filter(b => (b.high - b.low) > b.close * 0.0001 || b.time === entryTime);
   const entryIdx = bars.findIndex(b => b.time === entryTime);
   if (entryIdx === -1) return { resolved: false, liveR: null };
   const R = side === 'long' ? (entryPrice - stopPrice) / entryPrice : (stopPrice - entryPrice) / entryPrice;
