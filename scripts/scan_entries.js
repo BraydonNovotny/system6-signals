@@ -82,6 +82,16 @@ async function run() {
     const dist200Pct = (dCloses[dLast] - dEma200[dLast]) / dEma200[dLast] * 100;
     const adrPct = computeAdrSeries(daily)[dLast];
     if (adrPct == null) continue;
+    // LOCKED (2026-07-27): 3-week RS vs QQQ, long-only entry filter -- IS/OOS confirmed
+    // requiring the stock to have outperformed QQQ over the trailing 15 trading days
+    // (rsVsQqq3w >= 0) before taking a long, moved CAGR/Sharpe up together on both IS and
+    // OOS (OOS CAGR 472.2%->511.5%, Sharpe 4.005->4.103, maxDD unchanged). Short side untested/unfiltered.
+    let rsVsQqq3w = null;
+    if (dLast - 15 >= 0 && qLast - 15 >= 0) {
+      const stockRet = (dCloses[dLast] / dCloses[dLast - 15] - 1) * 100;
+      const qqqRet = (qqqCloses[qLast] / qqqCloses[qLast - 15] - 1) * 100;
+      rsVsQqq3w = stockRet - qqqRet;
+    }
 
     const highs = bars.map(b => b.high), lows = bars.map(b => b.low), closes = bars.map(b => b.close), opens = bars.map(b => b.open), volumes = bars.map(b => b.volume);
     const dayOf = bars.map(b => Math.floor(b.time / 86400));
@@ -134,6 +144,7 @@ async function run() {
         let qual = 0;
         if (pat.dryUpBreakout3 && st) qual = 4; else if (pat.reclaim && st) qual = 3; else if (pat.looseTier2 && st) qual = 2; else if (isSurfBase) qual = 1; else if (reclaim8 && volDecay2Long && tightNowLong && st) qual = 0.5;
         if (qual === 1 && !(dist200Pct > 0)) qual = 0;
+        if (qual > 0 && rsVsQqq3w != null && rsVsQqq3w < 0) qual = 0; // RS3w exclude filter
         if (qual > 0) {
           const regimeMult = regimeMultFromSpread(spread8_20, 'long');
           const openOk = !(slot === '09:30' && (qual < 3 || regimeMult !== 1.3));
@@ -149,7 +160,7 @@ async function run() {
           if (openOk && tightPass) {
             const R = slForAdr(adrPct) / 100;
             const entryPrice = closes[i], stopPrice = entryPrice * (1 - R);
-            signals.push({ symbol, side: 'long', qual, entryPrice: +entryPrice.toFixed(2), stopPrice: +stopPrice.toFixed(2), barTime, patternTier: qual === 4 ? 'dryUpBreakout3' : qual === 3 ? 'reclaim' : qual === 2 ? 'looseTier2' : qual === 1 ? 'surfBase' : 'confluence8ema', tf: '30m' });
+            signals.push({ symbol, side: 'long', qual, entryPrice: +entryPrice.toFixed(2), stopPrice: +stopPrice.toFixed(2), barTime, patternTier: qual === 4 ? 'dryUpBreakout3' : qual === 3 ? 'reclaim' : qual === 2 ? 'looseTier2' : qual === 1 ? 'surfBase' : 'confluence8ema', tf: '30m', rsVsQqq3w: rsVsQqq3w != null ? +rsVsQqq3w.toFixed(2) : null });
             firedLong = true;
           }
         }

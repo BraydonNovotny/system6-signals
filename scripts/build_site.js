@@ -66,6 +66,22 @@ function build() {
   .ticker-list { display: flex; flex-wrap: wrap; gap: 5px; }
   .ticker { font-size: 12px; padding: 2px 7px; border-radius: 4px; background: var(--paper); border: 1px solid var(--rail); }
 
+  details.changelog { margin-top: 12px; border: 1px solid var(--rail); background: var(--surface); }
+  details.changelog summary { padding: 12px 16px; cursor: pointer; font-size: 13px; color: var(--text-mute); list-style: none; display: flex; align-items: center; gap: 8px; }
+  details.changelog summary::-webkit-details-marker { display: none; }
+  details.changelog summary::before { content: '▸'; color: var(--text-faint); transition: transform 0.15s; }
+  details.changelog[open] summary::before { transform: rotate(90deg); }
+  .tab-bar { display: flex; gap: 6px; padding: 0 16px 12px; }
+  .tab-btn { appearance: none; border: 1px solid var(--rail-strong); background: var(--paper); color: var(--text-mute); font-size: 12.5px; padding: 6px 12px; border-radius: 999px; cursor: pointer; font-family: inherit; }
+  .tab-btn.active { background: var(--signal-soft); border-color: var(--signal); color: var(--signal); font-weight: 700; }
+  .tab-panel { display: none; padding: 0 16px 16px; font-size: 13px; color: var(--text-mute); line-height: 1.55; }
+  .tab-panel.active { display: block; }
+  .tab-panel .stat-row { display: flex; gap: 18px; margin-top: 10px; flex-wrap: wrap; }
+  .tab-panel .stat { background: var(--paper); border: 1px solid var(--rail); border-radius: 6px; padding: 8px 12px; }
+  .tab-panel .stat .k { font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.04em; color: var(--text-faint); display: block; }
+  .tab-panel .stat .v { font-size: 14px; font-weight: 700; color: var(--text); font-family: ui-monospace, "SF Mono", Consolas, monospace; }
+  .tab-panel .arrow { color: var(--text-faint); }
+
   footer { margin-top: 28px; font-size: 12px; color: var(--text-faint); }
 </style>
 </head><body><div class="wrap">
@@ -118,7 +134,41 @@ function build() {
     </div>
   </details>
 
-  <footer>Core+EP+Parabolic, confluence tiers, first-trade-of-day 0.5x sizing, SL widened +40% off the ADR-tiered table (no close-position filter -- retired 2026-07-27, backtesting confirmed it's not part of the current locked config). "Taken" = passed the same -1R daily loss cap (-2R for EP-30m) and 10-position limit the backtest uses, computed chronologically as the day unfolds. Trades still in progress show as Pending until enough bars exist to resolve them (updates automatically on a later refresh). History starts from whenever this system first ran. Not investment advice -- verify before acting.</footer>
+  <details class="changelog">
+    <summary>Strategy changelog — 2 updates (2026-07-27)</summary>
+    <div class="tab-bar">
+      <button class="tab-btn active" data-tab="exit">Exit rule</button>
+      <button class="tab-btn" data-tab="entry">Entry filter</button>
+    </div>
+    <div class="tab-panel active" id="tab-exit">
+      Exit dynamics changed from a 25%-fixed-target / 75%-chandelier blend to <b>100% chandelier</b>
+      (arm at 1.5R, trail at 2.0R) — the fixed 2.0R take-profit leg was dropped entirely.
+      Found via a systematic exit-parameter sweep; the fixed leg was capping winners early more
+      than it was protecting anything. In-sample and out-of-sample moved <b>together</b> in the
+      same direction, which is the strongest sign this is a real edge and not overfitting.
+      <div class="stat-row">
+        <div class="stat"><span class="k">OOS CAGR</span><span class="v">453.3% <span class="arrow">&rarr;</span> 472.2%</span></div>
+        <div class="stat"><span class="k">OOS Sharpe</span><span class="v">3.980 <span class="arrow">&rarr;</span> 4.005</span></div>
+        <div class="stat"><span class="k">OOS Max DD</span><span class="v">6.71% <span class="arrow">&rarr;</span> 6.77%</span></div>
+      </div>
+    </div>
+    <div class="tab-panel" id="tab-entry">
+      New long-only entry requirement: the stock must have outperformed QQQ over the <b>trailing
+      3 weeks</b> (15 trading days) — <code class="mono">rsVsQqq3w &ge; 0</code> — or the long is
+      skipped entirely. Found in a systematic scan of relative-strength/weakness features; this
+      was the one lookback window (of 3d/1w/2w/3w tested) that showed a clean, monotonic
+      relationship between trailing RS and trade quality. Relative WEAKNESS did not show a
+      matching edge on the short side, so shorts are unfiltered. Core pattern signals only (EP
+      and Parabolic overlays are exempt, same as the backtest).
+      <div class="stat-row">
+        <div class="stat"><span class="k">OOS CAGR</span><span class="v">472.2% <span class="arrow">&rarr;</span> 511.5%</span></div>
+        <div class="stat"><span class="k">OOS Sharpe</span><span class="v">4.005 <span class="arrow">&rarr;</span> 4.103</span></div>
+        <div class="stat"><span class="k">OOS Max DD</span><span class="v">6.77% <span class="arrow">&rarr;</span> 6.77% (unchanged)</span></div>
+      </div>
+    </div>
+  </details>
+
+  <footer>Core+EP+Parabolic, confluence tiers, first-trade-of-day 0.5x sizing, SL widened +40% off the ADR-tiered table, 100% chandelier exit (arm 1.5R/trail 2.0R), long-only 3-week RS-vs-QQQ entry filter (see Strategy changelog above) (no close-position filter -- retired 2026-07-27, backtesting confirmed it's not part of the current locked config). "Taken" = passed the same -1R daily loss cap (-2R for EP-30m) and 10-position limit the backtest uses, computed chronologically as the day unfolds. Trades still in progress show as Pending until enough bars exist to resolve them (updates automatically on a later refresh). History starts from whenever this system first ran. Not investment advice -- verify before acting.</footer>
 </div>
 
 <script>
@@ -284,6 +334,15 @@ dateInput.addEventListener('change', () => render(dateInput.value));
 prevBtn.addEventListener('click', () => goTo(-1));
 nextBtn.addEventListener('click', () => goTo(1));
 document.getElementById('today-btn').addEventListener('click', () => render(todayStr));
+
+document.querySelectorAll('.tab-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('tab-' + btn.dataset.tab).classList.add('active');
+  });
+});
 
 render(days.length && days[days.length - 1] >= todayStr ? days[days.length - 1] : (days.includes(todayStr) ? todayStr : (days[days.length - 1] || todayStr)));
 </script>

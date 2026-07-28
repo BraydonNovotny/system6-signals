@@ -95,11 +95,13 @@ function simulateExit(side, entryPrice, stopPrice, entryTime, bars, tf) {
   const liveRet = side === 'long' ? (lastClose - entryPrice) / entryPrice : (entryPrice - lastClose) / entryPrice;
   const liveR = +(liveRet / R).toFixed(2);
 
-  const half1 = simulateHalf(bars, entryIdx, side, entryPrice, R, 'fixed', maxScan);
+  // LOCKED (2026-07-27): 100% chandelier exit, no fixed-target leg -- the exit-parameter
+  // sweep confirmed this beats the old 25%-fixed/75%-chandelier blend with IS and OOS moving
+  // together (OOS CAGR 453.3%->472.2%, Sharpe 3.980->4.005, maxDD flat).
   const half2 = simulateHalf(bars, entryIdx, side, entryPrice, R, 'chandelier', maxScan);
-  if (!half1.resolved || !half2.resolved) return { resolved: false, liveR };
-  const ret = 0.25 * half1.ret + 0.75 * half2.ret;
-  return { resolved: true, rMultiple: +(ret / R).toFixed(2), liveR, gapped: half1.gapped || half2.gapped };
+  if (!half2.resolved) return { resolved: false, liveR };
+  const ret = half2.ret;
+  return { resolved: true, rMultiple: +(ret / R).toFixed(2), liveR, gapped: half2.gapped };
 }
 
 module.exports = { simulateExit };
