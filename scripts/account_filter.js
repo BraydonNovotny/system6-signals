@@ -24,7 +24,7 @@ const { simulateExit } = require('./simulate_exit');
 // tier (q1 48.5% vs 60.2% overall, etc.) -- only EP/Parabolic/q0.5 hold up as first trades.
 // Size the day's first trade to 0.5x for every OTHER tier; informational flag only (this repo
 // doesn't simulate dollar position sizing, just taken/rejected + realized R).
-function runAccountFilter(candidates, barsBySymbol, carriedOpenCount = 0, dayHasTakenTradeState = {}, losingWeek = false) {
+function runAccountFilter(candidates, barsBySymbol, carriedOpenCount = 0, dayHasTakenTradeState = {}, losingWeek = false, previousDecisions = {}) {
   // Tiebreak by qual DESC on same-barTime ties, matching the backtest's runFullTable exactly --
   // among simultaneous signals, the highest-quality one is evaluated "first" (and gets the
   // first-trade-of-day 0.5x haircut if it's not EP/PER/q0.5), not an arbitrary insertion order.
@@ -38,6 +38,32 @@ function runAccountFilter(candidates, barsBySymbol, carriedOpenCount = 0, dayHas
     // free up any positions that have resolved by this signal's entry time
     for (let i = openPositions.length - 1; i >= 0; i--) {
       if (openPositions[i].exitTime != null && openPositions[i].exitTime <= sig.barTime) openPositions.splice(i, 1);
+    }
+
+    // LOOK-AHEAD BUG FIX (2026-07-28): the daily-cap/position-limit decision used to be
+    // recomputed from scratch on every run, using WHATEVER simulateExit currently says about
+    // every candidate -- so once an earlier same-day trade resolved to a loss on a LATER run
+    // than the one that took a subsequent signal, the day's cap would "retroactively" trip and
+    // ERASE that later signal entirely from history, even though it was legitimately taken in
+    // real time before that loss was knowable (confirmed 2026-07-28: ACHR resolved to -1R
+    // between two ticks and JOBY/ORCL/QCOM/QS -- all validly taken earlier that morning --
+    // vanished from the record). A decision, once made, must never be re-decided or erased by
+    // a later run; only its resolution (resolved/rMultiple/liveR) may keep updating, which
+    // resolve_pending.js already handles separately. Replay already-decided candidates' known
+    // effect on the running state (so genuinely NEW candidates this run see correct cap/
+    // position bookkeeping) without re-deciding them.
+    const prevKey = sig.symbol + '|' + sig.side + '|' + sig.barTime + '|' + sig.source;
+    const prev = previousDecisions[prevKey];
+    if (prev) {
+      if (prev.taken) {
+        taken.push(prev.trade);
+        openPositions.push({ exitTime: prev.trade.resolved ? sig.barTime + 1 : null });
+        dayHasTakenTradeState[Math.floor(sig.barTime / 86400)] = true;
+        if (prev.trade.resolved && prev.trade.rMultiple < 0) dayLossR += prev.trade.rMultiple;
+      } else {
+        rejected.push(prev.trade);
+      }
+      continue;
     }
 
     const capThreshold = sig.source === 'EP' ? -2 : -1;

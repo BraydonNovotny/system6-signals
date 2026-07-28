@@ -71,7 +71,14 @@ async function runEntryScans() {
   const barsBySymbol = {};
   symbols.forEach((sym, i) => { if (barResults[i].ok) barsBySymbol[sym] = barResults[i].value; });
 
-  const { taken, rejected } = runAccountFilter(allCandidatesToday, barsBySymbol, carriedOpenCount, {}, losingWeek);
+  // Already-decided candidates from an earlier run today -- passed through so the account
+  // filter NEVER re-decides or erases them (see account_filter.js for the bug this fixes).
+  const todayHistory = history[today] || { taken: [], rejected: [] };
+  const previousDecisions = {};
+  for (const t of (todayHistory.taken || [])) previousDecisions[t.symbol + '|' + t.side + '|' + t.barTime + '|' + t.source] = { taken: true, trade: t };
+  for (const r of (todayHistory.rejected || [])) previousDecisions[r.symbol + '|' + r.side + '|' + r.barTime + '|' + r.source] = { taken: false, trade: r };
+
+  const { taken, rejected } = runAccountFilter(allCandidatesToday, barsBySymbol, carriedOpenCount, {}, losingWeek, previousDecisions);
   recordTaken(today, taken, rejected);
   console.log(`Carried-open from prior days: ${carriedOpenCount} | Candidates today: ${allCandidatesToday.length} | Taken: ${taken.length} | Rejected (capital/position limit): ${rejected.length} | Losing-week sizing active: ${losingWeek}`);
   return taken;
