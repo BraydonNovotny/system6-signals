@@ -9413,7 +9413,7 @@
         "source": "CORE",
         "resolved": false,
         "rMultiple": null,
-        "liveR": -0.42,
+        "liveR": -0.26,
         "gapped": false,
         "addWinnersChecked": true
       },
@@ -9611,7 +9611,7 @@
         "source": "CORE",
         "resolved": true,
         "rMultiple": -1,
-        "liveR": -0.95,
+        "liveR": -0.85,
         "gapped": false,
         "firstTradeOfDay": true,
         "sizeMult": 0.25,
