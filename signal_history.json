@@ -9413,7 +9413,7 @@
         "source": "CORE",
         "resolved": false,
         "rMultiple": null,
-        "liveR": -0.26,
+        "liveR": -0.27,
         "gapped": false,
         "addWinnersChecked": true
       },
@@ -9595,6 +9595,42 @@
         "tf": "30m",
         "avgDollarVol20": 705858798.3629615,
         "source": "CORE"
+      },
+      {
+        "symbol": "BE",
+        "side": "short",
+        "qual": 3,
+        "entryPrice": 162.75,
+        "stopPrice": 173,
+        "barTime": 1785254400,
+        "patternTier": "dryDownBreakdown3",
+        "tf": "30m",
+        "avgDollarVol20": 3196708694.789771,
+        "source": "CORE"
+      },
+      {
+        "symbol": "BBAI",
+        "side": "short",
+        "qual": 2,
+        "entryPrice": 2.81,
+        "stopPrice": 2.9,
+        "barTime": 1785254400,
+        "patternTier": "rejection",
+        "tf": "30m",
+        "avgDollarVol20": 77177776.60092172,
+        "source": "CORE"
+      },
+      {
+        "symbol": "CDE",
+        "side": "short",
+        "qual": 2,
+        "entryPrice": 15.02,
+        "stopPrice": 15.47,
+        "barTime": 1785254400,
+        "patternTier": "rejection",
+        "tf": "30m",
+        "avgDollarVol20": 417037248.5959822,
+        "source": "CORE"
       }
     ],
     "taken": [
@@ -9611,7 +9647,7 @@
         "source": "CORE",
         "resolved": true,
         "rMultiple": -1,
-        "liveR": -0.85,
+        "liveR": -0.86,
         "gapped": false,
         "firstTradeOfDay": true,
         "sizeMult": 0.25,
@@ -9735,6 +9771,45 @@
         "patternTier": "confluence8ema",
         "tf": "30m",
         "avgDollarVol20": 705858798.3629615,
+        "source": "CORE",
+        "rejectReason": "daily loss cap"
+      },
+      {
+        "symbol": "BE",
+        "side": "short",
+        "qual": 3,
+        "entryPrice": 162.75,
+        "stopPrice": 173,
+        "barTime": 1785254400,
+        "patternTier": "dryDownBreakdown3",
+        "tf": "30m",
+        "avgDollarVol20": 3196708694.789771,
+        "source": "CORE",
+        "rejectReason": "daily loss cap"
+      },
+      {
+        "symbol": "BBAI",
+        "side": "short",
+        "qual": 2,
+        "entryPrice": 2.81,
+        "stopPrice": 2.9,
+        "barTime": 1785254400,
+        "patternTier": "rejection",
+        "tf": "30m",
+        "avgDollarVol20": 77177776.60092172,
+        "source": "CORE",
+        "rejectReason": "daily loss cap"
+      },
+      {
+        "symbol": "CDE",
+        "side": "short",
+        "qual": 2,
+        "entryPrice": 15.02,
+        "stopPrice": 15.47,
+        "barTime": 1785254400,
+        "patternTier": "rejection",
+        "tf": "30m",
+        "avgDollarVol20": 417037248.5959822,
         "source": "CORE",
         "rejectReason": "daily loss cap"
       }
