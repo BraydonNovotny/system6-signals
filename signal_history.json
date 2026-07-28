@@ -10620,13 +10620,14 @@
         "source": "CORE",
         "resolved": false,
         "rMultiple": null,
-        "liveR": 0.29,
+        "liveR": 0.51,
         "gapped": false,
         "firstTradeOfDay": false,
         "sizeMult": 1,
         "thinFirstTrade": false,
         "losingWeekActive": false,
-        "qqqOverboughtActive": false
+        "qqqOverboughtActive": false,
+        "addWinnersChecked": true
       },
       {
         "symbol": "QS",
@@ -10949,6 +10950,27 @@
         "avgDollarVol20": 3538633244.0847273,
         "source": "CORE",
         "rejectReason": "daily loss cap"
+      }
+    ],
+    "addWinners": [
+      {
+        "symbol": "QCOM",
+        "side": "short",
+        "entryPrice": 165.17,
+        "barTime": 1785245400,
+        "liveR": 0.51,
+        "addMult": 1.5
+      }
+    ],
+    "closeAdjustments": [
+      {
+        "type": "sized_up",
+        "symbol": "QCOM",
+        "side": "short",
+        "entryPrice": 165.17,
+        "barTime": 1785245400,
+        "liveR": 0.51,
+        "addMult": 1.5
       }
     ]
   }
