@@ -9714,6 +9714,42 @@
         "tf": "30m",
         "avgDollarVol20": 9495180821.131746,
         "source": "CORE"
+      },
+      {
+        "symbol": "IBM",
+        "side": "short",
+        "qual": 3,
+        "entryPrice": 227.54,
+        "stopPrice": 234.25,
+        "barTime": 1785261600,
+        "patternTier": "dryDownBreakdown3",
+        "tf": "30m",
+        "avgDollarVol20": 3203518328.4451857,
+        "source": "CORE"
+      },
+      {
+        "symbol": "COIN",
+        "side": "short",
+        "qual": 1,
+        "entryPrice": 165.57,
+        "stopPrice": 170.75,
+        "barTime": 1785261600,
+        "patternTier": "looseTier2Short",
+        "tf": "30m",
+        "avgDollarVol20": 1123135535.7439141,
+        "source": "CORE"
+      },
+      {
+        "symbol": "CPNG",
+        "side": "short",
+        "qual": 1,
+        "entryPrice": 15.44,
+        "stopPrice": 15.87,
+        "barTime": 1785261600,
+        "patternTier": "looseTier2Short",
+        "tf": "30m",
+        "avgDollarVol20": 307495257.3807013,
+        "source": "CORE"
       }
     ],
     "taken": [
@@ -9984,6 +10020,45 @@
         "patternTier": "rejection",
         "tf": "30m",
         "avgDollarVol20": 9495180821.131746,
+        "source": "CORE",
+        "rejectReason": "daily loss cap"
+      },
+      {
+        "symbol": "IBM",
+        "side": "short",
+        "qual": 3,
+        "entryPrice": 227.54,
+        "stopPrice": 234.25,
+        "barTime": 1785261600,
+        "patternTier": "dryDownBreakdown3",
+        "tf": "30m",
+        "avgDollarVol20": 3203518328.4451857,
+        "source": "CORE",
+        "rejectReason": "daily loss cap"
+      },
+      {
+        "symbol": "COIN",
+        "side": "short",
+        "qual": 1,
+        "entryPrice": 165.57,
+        "stopPrice": 170.75,
+        "barTime": 1785261600,
+        "patternTier": "looseTier2Short",
+        "tf": "30m",
+        "avgDollarVol20": 1123135535.7439141,
+        "source": "CORE",
+        "rejectReason": "daily loss cap"
+      },
+      {
+        "symbol": "CPNG",
+        "side": "short",
+        "qual": 1,
+        "entryPrice": 15.44,
+        "stopPrice": 15.87,
+        "barTime": 1785261600,
+        "patternTier": "looseTier2Short",
+        "tf": "30m",
+        "avgDollarVol20": 307495257.3807013,
         "source": "CORE",
         "rejectReason": "daily loss cap"
       }
