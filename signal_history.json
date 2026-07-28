@@ -9690,6 +9690,30 @@
         "tf": "30m",
         "avgDollarVol20": 484305565.69216764,
         "source": "CORE"
+      },
+      {
+        "symbol": "ASTS",
+        "side": "short",
+        "qual": 3,
+        "entryPrice": 56.38,
+        "stopPrice": 58.82,
+        "barTime": 1785259800,
+        "patternTier": "dryDownBreakdown3",
+        "tf": "30m",
+        "avgDollarVol20": 1077180688.5671787,
+        "source": "CORE"
+      },
+      {
+        "symbol": "AMZN",
+        "side": "short",
+        "qual": 2,
+        "entryPrice": 231.6,
+        "stopPrice": 235.76,
+        "barTime": 1785259800,
+        "patternTier": "rejection",
+        "tf": "30m",
+        "avgDollarVol20": 9495180821.131746,
+        "source": "CORE"
       }
     ],
     "taken": [
@@ -9934,6 +9958,32 @@
         "patternTier": "confluence8ema",
         "tf": "30m",
         "avgDollarVol20": 484305565.69216764,
+        "source": "CORE",
+        "rejectReason": "daily loss cap"
+      },
+      {
+        "symbol": "ASTS",
+        "side": "short",
+        "qual": 3,
+        "entryPrice": 56.38,
+        "stopPrice": 58.82,
+        "barTime": 1785259800,
+        "patternTier": "dryDownBreakdown3",
+        "tf": "30m",
+        "avgDollarVol20": 1077180688.5671787,
+        "source": "CORE",
+        "rejectReason": "daily loss cap"
+      },
+      {
+        "symbol": "AMZN",
+        "side": "short",
+        "qual": 2,
+        "entryPrice": 231.6,
+        "stopPrice": 235.76,
+        "barTime": 1785259800,
+        "patternTier": "rejection",
+        "tf": "30m",
+        "avgDollarVol20": 9495180821.131746,
         "source": "CORE",
         "rejectReason": "daily loss cap"
       }
