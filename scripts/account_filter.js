@@ -89,12 +89,18 @@ function runAccountFilter(candidates, barsBySymbol, carriedOpenCount = 0, dayHas
     // in scan_entries.js -- 1.0 for shorts/EP/PER which don't carry that field).
     const losingWeekMult = losingWeek ? 0.7 : 1.0;
     const qqqRsiMult = sig.rsiSizeMult != null ? sig.rsiSizeMult : 1.0;
-    const sizeMult = firstTradeSizeMult * firstTradeLiqMult * losingWeekMult * qqqRsiMult;
+    // LOCKED (2026-07-29, "4-Combo"): RS-boost (1.5x longs, own RS>=+5 & QQQ 2D RSI<=15) and
+    // overbought-size-down (0.5x longs, QQQ 14D RSI>=80 -- stacks with qqqRsiMult above, both
+    // fire together at RSI>=80). Both computed in scan_entries.js; 1.0 for shorts/EP/PER which
+    // don't carry these fields.
+    const rsBoostMult = sig.rsBoostMult != null ? sig.rsBoostMult : 1.0;
+    const obSizeDownMult = sig.obSizeDownMult != null ? sig.obSizeDownMult : 1.0;
+    const sizeMult = firstTradeSizeMult * firstTradeLiqMult * losingWeekMult * qqqRsiMult * rsBoostMult * obSizeDownMult;
     dayHasTakenTradeState[dayKey] = true;
 
     const pos = { exitTime: null };
     openPositions.push(pos);
-    taken.push({ ...sig, resolved: result.resolved, rMultiple: result.resolved ? result.rMultiple : null, liveR: result.liveR, gapped: result.gapped || false, firstTradeOfDay: isFirstTradeOfDay, sizeMult, thinFirstTrade: isThinFirstTrade, losingWeekActive: losingWeek, qqqOverboughtActive: qqqRsiMult < 1.0 });
+    taken.push({ ...sig, resolved: result.resolved, rMultiple: result.resolved ? result.rMultiple : null, liveR: result.liveR, gapped: result.gapped || false, firstTradeOfDay: isFirstTradeOfDay, sizeMult, thinFirstTrade: isThinFirstTrade, losingWeekActive: losingWeek, qqqOverboughtActive: qqqRsiMult < 1.0, rsBoostActive: rsBoostMult > 1.0, obSizeDownActive: obSizeDownMult < 1.0 });
     if (result.resolved) {
       pos.exitTime = sig.barTime + 1; // resolved essentially immediately in our coarse view; frees the slot for the next check
       if (result.rMultiple < 0) dayLossR += result.rMultiple;

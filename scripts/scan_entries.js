@@ -69,6 +69,33 @@ async function run() {
   const qqqRsi14 = qqqRsi14Series[qLast];
   const QQQ_RSI_SIZE_THRESH = 75, QQQ_RSI_SIZE_MULT = 0.7;
   const rsiSizeMult = (qqqRsi14 != null && qqqRsi14 >= QQQ_RSI_SIZE_THRESH) ? QQQ_RSI_SIZE_MULT : 1.0;
+  // LOCKED (2026-07-29, "4-Combo" in ll_backtest): two NEW sizing levers, longs only, both
+  // using QQQ's PRIOR-DAY (qLast, already-closed session) values -- causal, no hindsight.
+  // (a) RS-BOOST: size UP 1.5x when the stock's own 3-week RS vs QQQ is >=+5 while QQQ's
+  // 2D RSI is oversold (<=15) -- lean into leadership names during a market pullback.
+  // (b) OVERBOUGHT-SIZE-DOWN: size DOWN 0.5x when QQQ's 14D RSI is >=80 -- STACKS
+  // multiplicatively with the existing 75/0.7x cut above (both fire together at RSI>=80,
+  // giving 0.35x combined) -- this is exactly how it was tested in ll_backtest (the 75/0.7
+  // rule was never disabled during any of that testing), not a replacement for it.
+  const qqqRsi2Series = rsiSeries(qqqCloses, 2);
+  const qqqRsi2 = qqqRsi2Series[qLast];
+  const RS_BOOST_QQQ_RSI2_MAX = 15, RS_BOOST_RS_MIN = 5, RS_BOOST_MULT = 1.5;
+  const OB_SIZE_DOWN_THRESH = 80, OB_SIZE_DOWN_MULT = 0.5;
+  const obSizeDownMult = (qqqRsi14 != null && qqqRsi14 >= OB_SIZE_DOWN_THRESH) ? OB_SIZE_DOWN_MULT : 1.0;
+  // LOCKED (2026-07-29): the 7/28 entry-block needs QQQ's OWN intraday move today (from
+  // yesterday's close to the current entry bar) -- fetch QQQ's own 30m bars alongside the
+  // stock universe. Real trigger example: 2026-07-28, QQQ 2D RSI closed 7.79 the day before,
+  // then fell another ~1.9% intraday by 7:00am PT while ACHR/JOBY/ORCL/QCOM/QS were each
+  // already down 3.8-5%+ before the entry bar even printed.
+  const qqqIntraday = await fetch30m('QQQ');
+  const qqqPrevClose = qqqCloses[qLast];
+  function qqqMoveAtOrBefore(targetTime) {
+    let best = null;
+    for (const b of qqqIntraday) { if (b.time <= targetTime) best = b; else break; }
+    if (!best) return null;
+    return (best.close - qqqPrevClose) / qqqPrevClose * 100;
+  }
+  const RULE728_QQQ_RSI2_MAX = 15, RULE728_QQQ_MOVE_MAX = -1.0, RULE728_STOCK_ADR_MAX = -0.65;
 
   const dailyResults = await pool(tickers, fetchDaily, 8);
   const intradayResults = await pool(tickers, fetch30m, 8);
@@ -176,7 +203,10 @@ async function run() {
           if (openOk && tightPass) {
             const R = slForAdr(adrPct) / 100;
             const entryPrice = closes[i], stopPrice = entryPrice * (1 - R);
-            signals.push({ symbol, side: 'long', qual, entryPrice: +entryPrice.toFixed(2), stopPrice: +stopPrice.toFixed(2), barTime, patternTier: qual === 4 ? 'dryUpBreakout3' : qual === 3 ? 'reclaim' : qual === 2 ? 'looseTier2' : qual === 1 ? 'surfBase' : 'confluence8ema', tf: '30m', rsVsQqq3w: rsVsQqq3w != null ? +rsVsQqq3w.toFixed(2) : null, avgDollarVol20, qqqRsi14: qqqRsi14 != null ? +qqqRsi14.toFixed(1) : null, rsiSizeMult });
+            // RS-BOOST (see declaration above): stock's own 3-week RS >=+5 AND QQQ oversold
+            // (2D RSI<=15) the prior day -- both already-known, causal values.
+            const rsBoostMult = (qqqRsi2 != null && qqqRsi2 <= RS_BOOST_QQQ_RSI2_MAX && rsVsQqq3w != null && rsVsQqq3w >= RS_BOOST_RS_MIN) ? RS_BOOST_MULT : 1.0;
+            signals.push({ symbol, side: 'long', qual, entryPrice: +entryPrice.toFixed(2), stopPrice: +stopPrice.toFixed(2), barTime, patternTier: qual === 4 ? 'dryUpBreakout3' : qual === 3 ? 'reclaim' : qual === 2 ? 'looseTier2' : qual === 1 ? 'surfBase' : 'confluence8ema', tf: '30m', rsVsQqq3w: rsVsQqq3w != null ? +rsVsQqq3w.toFixed(2) : null, avgDollarVol20, qqqRsi14: qqqRsi14 != null ? +qqqRsi14.toFixed(1) : null, rsiSizeMult, rsBoostMult, obSizeDownMult });
             firedLong = true;
           }
         }
@@ -209,6 +239,16 @@ async function run() {
           if (openOk && tightPass) {
             const R = slForAdr(adrPct) / 100;
             const entryPrice = closes[i], stopPrice = entryPrice * (1 + R);
+            // 7/28 RULE (entry block, see declaration above): skip this short entirely when
+            // QQQ was already oversold the prior day AND is still falling intraday AND the
+            // stock itself has already moved hard before we'd even enter -- a 3-way AND,
+            // all causal (prior-day RSI, today's-so-far QQQ move, today's-so-far stock move).
+            const stockPreEntryMove = adrPct > 0 ? (entryPrice - dCloses[dLast]) / dCloses[dLast] * 100 / adrPct : null;
+            const qqqMoveNow = qqqMoveAtOrBefore(barTime);
+            const rule728Active = qqqRsi2 != null && qqqRsi2 <= RULE728_QQQ_RSI2_MAX &&
+              qqqMoveNow != null && qqqMoveNow <= RULE728_QQQ_MOVE_MAX &&
+              stockPreEntryMove != null && stockPreEntryMove <= RULE728_STOCK_ADR_MAX;
+            if (rule728Active) { firedShort = true; continue; } // treat as fired (don't re-check later bars today) but emit no signal
             signals.push({ symbol, side: 'short', qual, entryPrice: +entryPrice.toFixed(2), stopPrice: +stopPrice.toFixed(2), barTime, patternTier: qual === 3 ? 'dryDownBreakdown3' : qual === 2 ? 'rejection' : qual === 1 ? 'looseTier2Short' : 'confluence8ema', tf: '30m', avgDollarVol20 });
             firedShort = true;
           }

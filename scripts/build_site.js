@@ -393,6 +393,8 @@ function render(dateStr) {
       const rCls = s.rMultiple >= 0 ? 'r-pos' : 'r-neg';
       const badge = s.type === 'closed_cap_reaction'
         ? '<span class="gap-badge" title="Today\\'s daily loss cap tripped on a different trade -- this position was down at least 0.25R as of today\\'s own close, so it was closed out rather than left to run">CLOSED (CAP)</span>'
+        : s.type === 'closed_724_rule'
+        ? '<span class="gap-badge" title="QQQ closed oversold (2D RSI<=10) while still above its 200ema and >=5x its own 14d ADR off the 52-week high -- an oversold-bounce-risk day, so this short was closed at today\\'s own close">CLOSED (7/24)</span>'
         : '<span class="gap-badge" title="Entry day closed weak (long) or strong (short) within its own range">CLOSED (CP)</span>';
       return '<tr><td class="mono" style="font-weight:600;">' + s.symbol + '</td>' +
         '<td class="' + s.side + '">' + s.side.toUpperCase() + '</td>' +

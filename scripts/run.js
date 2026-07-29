@@ -10,6 +10,7 @@ const { runAccountFilter } = require('./account_filter');
 const resolvePending = require('./resolve_pending');
 const eodAddWinners = require('./eod_add_winners');
 const eodCapTriggerReaction = require('./eod_cap_trigger_reaction');
+const eod724Exit = require('./eod_724_exit');
 const { build } = require('./build_site.js');
 
 async function fetch30m(symbol) {
@@ -155,6 +156,16 @@ async function main() {
     if (closedByCap.length) {
       saveHistory(history);
       console.log(`Cap-trigger reaction: closed ${closedByCap.length} down-position(s) at today's close.`);
+    }
+
+    // LOCKED (2026-07-29, "7/24 rule"): if QQQ's own close today is oversold+extended-within-
+    // uptrend (2D RSI<=10, still above 200ema, >=5x its 14d ADR off the 52w high), close any
+    // currently open short -- same EOD-window semantics as the cap-trigger reaction above (uses
+    // only today's own now-known close, decided once per day at EOD).
+    const closedBy724 = await eod724Exit.run(history).catch(e => { console.error('724-exit failed:', e.message); return []; });
+    if (closedBy724.length) {
+      saveHistory(history);
+      console.log(`7/24 rule: closed ${closedBy724.length} open short(s) at today's close.`);
     }
   }
 
