@@ -62,15 +62,23 @@ async function run() {
   const qqqEma8 = emaSeries(qqqCloses, 8), qqqEma20 = emaSeries(qqqCloses, 20);
   const qLast = qqqDaily.length - 1;
   const spread8_20 = (qqqEma8[qLast] - qqqEma20[qLast]) / qqqEma20[qLast] * 100;
+  // BUG FIX (2026-07-29): fetchDaily's LAST bar is TODAY's own still-forming daily bar (Yahoo's
+  // daily API keeps updating it live all session, confirmed via direct date check), not
+  // yesterday's completed close. Every "prior day" QQQ value below must index qPrevIdx
+  // (yesterday's actual close), not qLast (today's live-updating one) -- using qLast directly
+  // silently turns "prior day's RSI" into "right-now's still-changing RSI", and for the 7/28
+  // rule's stock-side check it's worse: comparing entryPrice against the STOCK's own
+  // still-forming today bar makes the move always ~0%, so the rule could never fire at all.
+  const qPrevIdx = ptDateOf(qqqDaily[qLast].time) === ptDateString() ? qLast - 1 : qLast;
   // LOCKED (2026-07-27): QQQ RSI14 overbought sizing, longs only -- always-on in the backtest
   // (not previously ported here). Threshold/mult loosened from 70/0.5x to 75/0.7x this session,
   // confirmed via full component sweep + permutation test (0/30 beat it).
   const qqqRsi14Series = rsiSeries(qqqCloses, 14);
-  const qqqRsi14 = qqqRsi14Series[qLast];
+  const qqqRsi14 = qqqRsi14Series[qPrevIdx];
   const QQQ_RSI_SIZE_THRESH = 75, QQQ_RSI_SIZE_MULT = 0.7;
   const rsiSizeMult = (qqqRsi14 != null && qqqRsi14 >= QQQ_RSI_SIZE_THRESH) ? QQQ_RSI_SIZE_MULT : 1.0;
   // LOCKED (2026-07-29, "4-Combo" in ll_backtest): two NEW sizing levers, longs only, both
-  // using QQQ's PRIOR-DAY (qLast, already-closed session) values -- causal, no hindsight.
+  // using QQQ's PRIOR-DAY (qPrevIdx, already-closed session) values -- causal, no hindsight.
   // (a) RS-BOOST: size UP 1.5x when the stock's own 3-week RS vs QQQ is >=+5 while QQQ's
   // 2D RSI is oversold (<=15) -- lean into leadership names during a market pullback.
   // (b) OVERBOUGHT-SIZE-DOWN: size DOWN 0.5x when QQQ's 14D RSI is >=80 -- STACKS
@@ -78,17 +86,17 @@ async function run() {
   // giving 0.35x combined) -- this is exactly how it was tested in ll_backtest (the 75/0.7
   // rule was never disabled during any of that testing), not a replacement for it.
   const qqqRsi2Series = rsiSeries(qqqCloses, 2);
-  const qqqRsi2 = qqqRsi2Series[qLast];
+  const qqqRsi2 = qqqRsi2Series[qPrevIdx];
   const RS_BOOST_QQQ_RSI2_MAX = 15, RS_BOOST_RS_MIN = 5, RS_BOOST_MULT = 1.5;
   const OB_SIZE_DOWN_THRESH = 80, OB_SIZE_DOWN_MULT = 0.5;
   const obSizeDownMult = (qqqRsi14 != null && qqqRsi14 >= OB_SIZE_DOWN_THRESH) ? OB_SIZE_DOWN_MULT : 1.0;
   // LOCKED (2026-07-29): the 7/28 entry-block needs QQQ's OWN intraday move today (from
-  // yesterday's close to the current entry bar) -- fetch QQQ's own 30m bars alongside the
-  // stock universe. Real trigger example: 2026-07-28, QQQ 2D RSI closed 7.79 the day before,
-  // then fell another ~1.9% intraday by 7:00am PT while ACHR/JOBY/ORCL/QCOM/QS were each
-  // already down 3.8-5%+ before the entry bar even printed.
+  // YESTERDAY's actual close to the current entry bar) -- fetch QQQ's own 30m bars alongside
+  // the stock universe. Real trigger example: 2026-07-28, QQQ 2D RSI closed 7.79 the day
+  // before, then fell another ~1.9% intraday by 7:00am PT while ACHR/JOBY/ORCL/QCOM/QS were
+  // each already down 3.8-5%+ before the entry bar even printed.
   const qqqIntraday = await fetch30m('QQQ');
-  const qqqPrevClose = qqqCloses[qLast];
+  const qqqPrevClose = qqqCloses[qPrevIdx];
   function qqqMoveAtOrBefore(targetTime) {
     let best = null;
     for (const b of qqqIntraday) { if (b.time <= targetTime) best = b; else break; }
@@ -111,6 +119,10 @@ async function run() {
     const dCloses = daily.map(b => b.close);
     const dEma50 = emaSeries(dCloses, 50), dEma200 = emaSeries(dCloses, 200);
     const dLast = daily.length - 1;
+    // Same live-bar issue as qPrevIdx above -- needed for the 7/28 rule's stockPreEntryMove,
+    // which must compare entryPrice against YESTERDAY's actual close, not today's own
+    // still-forming one (that comparison would be near-circular and never cross the threshold).
+    const dPrevIdx = ptDateOf(daily[dLast].time) === ptDateString() ? dLast - 1 : dLast;
     const aboveEma50 = dCloses[dLast] > dEma50[dLast];
     const aboveEma200 = dCloses[dLast] > dEma200[dLast];
     const dist200Pct = (dCloses[dLast] - dEma200[dLast]) / dEma200[dLast] * 100;
@@ -243,7 +255,7 @@ async function run() {
             // QQQ was already oversold the prior day AND is still falling intraday AND the
             // stock itself has already moved hard before we'd even enter -- a 3-way AND,
             // all causal (prior-day RSI, today's-so-far QQQ move, today's-so-far stock move).
-            const stockPreEntryMove = adrPct > 0 ? (entryPrice - dCloses[dLast]) / dCloses[dLast] * 100 / adrPct : null;
+            const stockPreEntryMove = adrPct > 0 ? (entryPrice - dCloses[dPrevIdx]) / dCloses[dPrevIdx] * 100 / adrPct : null;
             const qqqMoveNow = qqqMoveAtOrBefore(barTime);
             const rule728Active = qqqRsi2 != null && qqqRsi2 <= RULE728_QQQ_RSI2_MAX &&
               qqqMoveNow != null && qqqMoveNow <= RULE728_QQQ_MOVE_MAX &&

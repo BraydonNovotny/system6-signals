@@ -331,6 +331,8 @@ function render(dateStr) {
       } else {
         resultHtml = '<span class="' + (s.rMultiple >= 0 ? 'r-pos' : 'r-neg') + '">' + (s.rMultiple >= 0 ? '+' : '') + s.rMultiple.toFixed(2) + 'R</span>';
         if (s.gapped) resultHtml += ' <span class="gap-badge" title="Exit price gapped past the stop -- filled at the actual open, not the idealized stop level">GAP</span>';
+        if (s.closedByCapReaction) resultHtml += ' <span class="gap-badge" title="Today\\'s daily loss cap tripped on a different trade -- closed at today\\'s own close instead of left to run">(CLOSED AT EOD)</span>';
+        if (s.closedByRule724) resultHtml += ' <span class="gap-badge" title="QQQ closed oversold (2D RSI<=10) while still above its 200ema and >=5x its own 14d ADR off the 52-week high -- closed at today\\'s own close">(CLOSED AT EOD)</span>';
       }
       if (s.sizeMult != null && s.sizeMult < 1.0) {
         const reasons = [];
@@ -339,8 +341,12 @@ function render(dateStr) {
         else if (s.thinFirstTrade) reasons.push('day\\'s first trade + below-median liquidity (EP/Parabolic/q0.5 aren\\'t exempt from this half)');
         if (s.losingWeekActive) reasons.push('week following a losing week');
         if (s.qqqOverboughtActive) reasons.push('QQQ RSI14 ≥ 75 the prior day (longs only)');
+        if (s.obSizeDownActive) reasons.push('QQQ RSI14 ≥ 80 the prior day (longs only, stacks with the 75x cut above)');
         const badgeColor = s.sizeMult <= 0.35 ? 'var(--loss)' : 'var(--text-faint)';
         resultHtml += ' <span class="gap-badge" style="background:color-mix(in srgb, ' + badgeColor + ' 20%, transparent); color:' + badgeColor + ';" title="' + reasons.join(' + ') + ' -- locked rule: size to ' + s.sizeMult + 'x.">' + s.sizeMult + 'x</span>';
+      }
+      if (s.rsBoostActive) {
+        resultHtml += ' <span class="gap-badge" style="background:color-mix(in srgb, var(--win) 20%, transparent); color:var(--win);" title="Stock\\'s own 3-week RS vs QQQ >=+5 while QQQ 2D RSI<=15 the prior day -- locked rule: size to 1.5x.">1.5x RS-BOOST</span>';
       }
       const tf = s.tf || '30m';
       const closeOffset = tf === '1h' ? 3600 : 1800;
