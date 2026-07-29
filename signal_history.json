@@ -11310,15 +11310,17 @@
         "tf": "30m",
         "avgDollarVol20": 471296437.992853,
         "source": "CORE",
-        "resolved": false,
-        "rMultiple": null,
-        "liveR": 2.09,
+        "resolved": true,
+        "rMultiple": 2.52,
+        "liveR": 2.52,
         "gapped": false,
         "firstTradeOfDay": true,
         "sizeMult": 0.25,
         "thinFirstTrade": true,
         "losingWeekActive": false,
-        "qqqOverboughtActive": false
+        "qqqOverboughtActive": false,
+        "addWinnersChecked": true,
+        "closedByRule724": true
       },
       {
         "symbol": "JOBY",
@@ -11331,15 +11333,17 @@
         "tf": "30m",
         "avgDollarVol20": 381305586.8779763,
         "source": "CORE",
-        "resolved": false,
-        "rMultiple": null,
-        "liveR": 1.06,
+        "resolved": true,
+        "rMultiple": 1.83,
+        "liveR": 1.83,
         "gapped": false,
         "firstTradeOfDay": false,
         "sizeMult": 1,
         "thinFirstTrade": false,
         "losingWeekActive": false,
-        "qqqOverboughtActive": false
+        "qqqOverboughtActive": false,
+        "addWinnersChecked": true,
+        "closedByRule724": true
       },
       {
         "symbol": "ONDS",
@@ -11352,15 +11356,17 @@
         "tf": "30m",
         "avgDollarVol20": 797481567.8217988,
         "source": "CORE",
-        "resolved": false,
-        "rMultiple": null,
-        "liveR": 1.58,
+        "resolved": true,
+        "rMultiple": 2.57,
+        "liveR": 2.57,
         "gapped": false,
         "firstTradeOfDay": false,
         "sizeMult": 1,
         "thinFirstTrade": false,
         "losingWeekActive": false,
-        "qqqOverboughtActive": false
+        "qqqOverboughtActive": false,
+        "addWinnersChecked": true,
+        "closedByRule724": true
       },
       {
         "symbol": "QS",
@@ -11373,15 +11379,17 @@
         "tf": "30m",
         "avgDollarVol20": 167173928.05005893,
         "source": "CORE",
-        "resolved": false,
-        "rMultiple": null,
-        "liveR": -0.47,
+        "resolved": true,
+        "rMultiple": 0.35,
+        "liveR": 0.35,
         "gapped": false,
         "firstTradeOfDay": false,
         "sizeMult": 1,
         "thinFirstTrade": false,
         "losingWeekActive": false,
-        "qqqOverboughtActive": false
+        "qqqOverboughtActive": false,
+        "addWinnersChecked": true,
+        "closedByRule724": true
       },
       {
         "symbol": "MSTR",
@@ -11438,15 +11446,17 @@
         "tf": "30m",
         "avgDollarVol20": 3164318870.228984,
         "source": "CORE",
-        "resolved": false,
-        "rMultiple": null,
-        "liveR": -0.47,
+        "resolved": true,
+        "rMultiple": -0.13,
+        "liveR": -0.13,
         "gapped": false,
         "firstTradeOfDay": false,
         "sizeMult": 1,
         "thinFirstTrade": false,
         "losingWeekActive": false,
-        "qqqOverboughtActive": false
+        "qqqOverboughtActive": false,
+        "addWinnersChecked": true,
+        "closedByRule724": true
       },
       {
         "symbol": "ASTS",
@@ -11459,15 +11469,17 @@
         "tf": "30m",
         "avgDollarVol20": 996009970.0727085,
         "source": "CORE",
-        "resolved": false,
-        "rMultiple": null,
-        "liveR": 0.33,
+        "resolved": true,
+        "rMultiple": 1.04,
+        "liveR": 1.04,
         "gapped": false,
         "firstTradeOfDay": false,
         "sizeMult": 1,
         "thinFirstTrade": false,
         "losingWeekActive": false,
-        "qqqOverboughtActive": false
+        "qqqOverboughtActive": false,
+        "addWinnersChecked": true,
+        "closedByRule724": true
       },
       {
         "symbol": "PLTR",
@@ -11480,15 +11492,17 @@
         "tf": "30m",
         "avgDollarVol20": 4701313791.430029,
         "source": "CORE",
-        "resolved": false,
-        "rMultiple": null,
-        "liveR": 0.05,
+        "resolved": true,
+        "rMultiple": 0.37,
+        "liveR": 0.37,
         "gapped": false,
         "firstTradeOfDay": false,
         "sizeMult": 1,
         "thinFirstTrade": false,
         "losingWeekActive": false,
-        "qqqOverboughtActive": false
+        "qqqOverboughtActive": false,
+        "addWinnersChecked": true,
+        "closedByRule724": true
       },
       {
         "symbol": "BE",
@@ -11677,6 +11691,134 @@
         "avgDollarVol20": 2317266453.32059,
         "source": "CORE",
         "rejectReason": "daily loss cap"
+      }
+    ],
+    "addWinners": [
+      {
+        "symbol": "HIMS",
+        "side": "short",
+        "entryPrice": 28.32,
+        "barTime": 1785331800,
+        "liveR": 2.52,
+        "addMult": 1.5
+      },
+      {
+        "symbol": "JOBY",
+        "side": "short",
+        "entryPrice": 7.09,
+        "barTime": 1785331800,
+        "liveR": 1.79,
+        "addMult": 1.5
+      },
+      {
+        "symbol": "ONDS",
+        "side": "short",
+        "entryPrice": 7.57,
+        "barTime": 1785331800,
+        "liveR": 2.48,
+        "addMult": 1.5
+      },
+      {
+        "symbol": "ASTS",
+        "side": "short",
+        "entryPrice": 55.54,
+        "barTime": 1785337200,
+        "liveR": 1.05,
+        "addMult": 1.5
+      }
+    ],
+    "closeAdjustments": [
+      {
+        "type": "sized_up",
+        "symbol": "HIMS",
+        "side": "short",
+        "entryPrice": 28.32,
+        "barTime": 1785331800,
+        "liveR": 2.52,
+        "addMult": 1.5
+      },
+      {
+        "type": "sized_up",
+        "symbol": "JOBY",
+        "side": "short",
+        "entryPrice": 7.09,
+        "barTime": 1785331800,
+        "liveR": 1.83,
+        "addMult": 1.5
+      },
+      {
+        "type": "sized_up",
+        "symbol": "ONDS",
+        "side": "short",
+        "entryPrice": 7.57,
+        "barTime": 1785331800,
+        "liveR": 2.57,
+        "addMult": 1.5
+      },
+      {
+        "type": "sized_up",
+        "symbol": "ASTS",
+        "side": "short",
+        "entryPrice": 55.54,
+        "barTime": 1785337200,
+        "liveR": 1.04,
+        "addMult": 1.5
+      },
+      {
+        "type": "closed_724_rule",
+        "symbol": "HIMS",
+        "side": "short",
+        "entryPrice": 28.32,
+        "rMultiple": 2.52,
+        "barTime": 1785331800
+      },
+      {
+        "type": "closed_724_rule",
+        "symbol": "JOBY",
+        "side": "short",
+        "entryPrice": 7.09,
+        "rMultiple": 1.83,
+        "barTime": 1785331800
+      },
+      {
+        "type": "closed_724_rule",
+        "symbol": "ONDS",
+        "side": "short",
+        "entryPrice": 7.57,
+        "rMultiple": 2.57,
+        "barTime": 1785331800
+      },
+      {
+        "type": "closed_724_rule",
+        "symbol": "QS",
+        "side": "short",
+        "entryPrice": 5.03,
+        "rMultiple": 0.35,
+        "barTime": 1785331800
+      },
+      {
+        "type": "closed_724_rule",
+        "symbol": "IBM",
+        "side": "short",
+        "entryPrice": 225.59,
+        "rMultiple": -0.13,
+        "barTime": 1785335400
+      },
+      {
+        "type": "closed_724_rule",
+        "symbol": "ASTS",
+        "side": "short",
+        "entryPrice": 55.54,
+        "rMultiple": 1.04,
+        "barTime": 1785337200
+      },
+      {
+        "type": "closed_724_rule",
+        "symbol": "PLTR",
+        "side": "short",
+        "entryPrice": 124.45,
+        "rMultiple": 0.37,
+        "barTime": 1785337200
       }
     ]
   }
