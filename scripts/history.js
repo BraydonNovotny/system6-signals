@@ -44,6 +44,30 @@ function tradeKey(t) { return t.symbol + '|' + t.side + '|' + t.barTime + '|' + 
 // already recorded as taken on disk stays taken even if the incoming `taken` array is missing it
 // (logged loudly so a real regression is never silent); genuinely new decisions from this run
 // are added on top.
+const MAX_POSITIONS = 10;
+
+// BUG FIX (2026-07-29): the safety net below force-restores any previously-taken trade that's
+// missing from the current run's result -- but it never checked whether restoring it would
+// blow past the 10-position cap. Confirmed root cause of an 11-taken/10-max violation on
+// 2026-07-29: some trade legitimately excluded by THIS run's fresh, correctly-capped account
+// filter pass (because a differently-sorted candidate set filled its slot instead) got force
+// re-added anyway, overflowing the cap. Re-derive concurrent-position state chronologically
+// (same coarse convention as account_filter.js: a resolved trade frees its slot immediately
+// at barTime+1, an unresolved one never frees within the day) and reject anything that would
+// push the count past MAX_POSITIONS, instead of blindly restoring it.
+function enforcePositionCap(trades) {
+  const sorted = trades.slice().sort((a, b) => a.barTime - b.barTime || (b.qual || 0) - (a.qual || 0));
+  const open = [];
+  const kept = [], overflow = [];
+  for (const t of sorted) {
+    for (let i = open.length - 1; i >= 0; i--) { if (open[i] <= t.barTime) open.splice(i, 1); }
+    if (open.length >= MAX_POSITIONS) { overflow.push(t); continue; }
+    open.push(t.resolved ? t.barTime + 1 : Infinity);
+    kept.push(t);
+  }
+  return { kept, overflow };
+}
+
 function recordTaken(dateStr, taken, rejected) {
   const h = loadHistory();
   if (!h[dateStr]) h[dateStr] = { candidates: [], taken: [] };
@@ -53,8 +77,13 @@ function recordTaken(dateStr, taken, rejected) {
   if (droppedFromDisk.length) {
     console.error(`recordTaken SAFETY NET: ${droppedFromDisk.length} previously-taken trade(s) missing from this run's result, re-adding: ${droppedFromDisk.map(t => t.symbol).join(', ')}`);
   }
-  h[dateStr].taken = taken.concat(droppedFromDisk);
-  h[dateStr].rejected = rejected || [];
+  const merged = taken.concat(droppedFromDisk);
+  const { kept, overflow } = enforcePositionCap(merged);
+  if (overflow.length) {
+    console.error(`recordTaken POSITION-CAP GUARD: ${overflow.length} trade(s) would exceed the ${MAX_POSITIONS}-position cap, moving to rejected: ${overflow.map(t => t.symbol).join(', ')}`);
+  }
+  h[dateStr].taken = kept;
+  h[dateStr].rejected = (rejected || []).concat(overflow.map(t => ({ ...t, rejectReason: 'max positions (10) -- caught by post-hoc cap guard' })));
   saveHistory(h);
 }
 
