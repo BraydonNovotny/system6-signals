@@ -11216,7 +11216,7 @@
         "source": "CORE",
         "resolved": false,
         "rMultiple": null,
-        "liveR": 1.79,
+        "liveR": 1.76,
         "gapped": false,
         "firstTradeOfDay": true,
         "sizeMult": 0.25,
@@ -11237,7 +11237,7 @@
         "source": "CORE",
         "resolved": false,
         "rMultiple": null,
-        "liveR": 1.37,
+        "liveR": 1.21,
         "gapped": false,
         "firstTradeOfDay": false,
         "sizeMult": 1,
@@ -11279,7 +11279,7 @@
         "source": "CORE",
         "resolved": false,
         "rMultiple": null,
-        "liveR": -0.12,
+        "liveR": -0.2,
         "gapped": false,
         "firstTradeOfDay": false,
         "sizeMult": 1,
@@ -11300,7 +11300,7 @@
         "source": "CORE",
         "resolved": false,
         "rMultiple": null,
-        "liveR": -0.33,
+        "liveR": -0.44,
         "gapped": false,
         "firstTradeOfDay": false,
         "sizeMult": 1,
@@ -11321,7 +11321,7 @@
         "source": "CORE",
         "resolved": false,
         "rMultiple": null,
-        "liveR": -0.7,
+        "liveR": -0.81,
         "gapped": false,
         "firstTradeOfDay": false,
         "sizeMult": 1,
@@ -11344,7 +11344,7 @@
         "source": "CORE",
         "resolved": false,
         "rMultiple": null,
-        "liveR": -0.3,
+        "liveR": -0.28,
         "gapped": false,
         "firstTradeOfDay": false,
         "sizeMult": 1,
@@ -11365,7 +11365,7 @@
         "source": "CORE",
         "resolved": false,
         "rMultiple": null,
-        "liveR": 0.35,
+        "liveR": 0.19,
         "gapped": false,
         "firstTradeOfDay": false,
         "sizeMult": 1,
@@ -11386,7 +11386,7 @@
         "source": "CORE",
         "resolved": false,
         "rMultiple": null,
-        "liveR": -0.17,
+        "liveR": -0.23,
         "gapped": false,
         "firstTradeOfDay": false,
         "sizeMult": 1,
@@ -11414,7 +11414,9 @@
         "thinFirstTrade": false,
         "losingWeekActive": false,
         "qqqOverboughtActive": false
-      },
+      }
+    ],
+    "rejected": [
       {
         "symbol": "IONQ",
         "side": "short",
@@ -11434,10 +11436,9 @@
         "sizeMult": 1,
         "thinFirstTrade": false,
         "losingWeekActive": false,
-        "qqqOverboughtActive": false
-      }
-    ],
-    "rejected": [
+        "qqqOverboughtActive": false,
+        "rejectReason": "max positions (10) -- caught by post-hoc cap guard, backfilled 2026-07-29"
+      },
       {
         "symbol": "ORCL",
         "side": "short",
