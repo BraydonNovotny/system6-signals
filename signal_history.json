@@ -4428,34 +4428,6 @@
         "exitConfigLocked": "100pct_chandelier"
       },
       {
-        "symbol": "INTC",
-        "side": "short",
-        "barTime": 1779112800,
-        "source": "PER",
-        "qual": 1,
-        "tf": "30m",
-        "resolved": true,
-        "rMultiple": -0.347,
-        "liveR": null,
-        "gapped": false,
-        "entryPrice": null,
-        "stopPrice": null
-      },
-      {
-        "symbol": "MU",
-        "side": "short",
-        "barTime": 1779112800,
-        "source": "PER",
-        "qual": 1,
-        "tf": "30m",
-        "resolved": true,
-        "rMultiple": 0.588,
-        "liveR": null,
-        "gapped": false,
-        "entryPrice": null,
-        "stopPrice": null
-      },
-      {
         "symbol": "APP",
         "side": "long",
         "barTime": 1779114600,
@@ -7769,20 +7741,6 @@
         "slWidenMult": 1.4,
         "rMultiplePriorChandelierLock": 0.56,
         "exitConfigLocked": "100pct_chandelier"
-      },
-      {
-        "symbol": "CRDO",
-        "side": "short",
-        "barTime": 1782309600,
-        "source": "PER",
-        "qual": 1,
-        "tf": "30m",
-        "resolved": true,
-        "rMultiple": -1.281,
-        "liveR": null,
-        "gapped": true,
-        "entryPrice": null,
-        "stopPrice": null
       }
     ]
   },
@@ -7982,48 +7940,7 @@
         "stopPrice": 43.8196
       }
     ],
-    "taken": [
-      {
-        "symbol": "CMCSA",
-        "side": "short",
-        "barTime": 1782918000,
-        "source": "CORE",
-        "qual": 2,
-        "tf": "30m",
-        "resolved": true,
-        "rMultiple": 1.8,
-        "liveR": null,
-        "gapped": false,
-        "entryPrice": 24.25,
-        "stopPrice": 24.8041,
-        "rMultipleOldStop": 2.385,
-        "slWidened": true,
-        "rMultiplePriorWiden": 2.21,
-        "slWidenMult": 1.4,
-        "rMultiplePriorChandelierLock": 1.8,
-        "exitConfigLocked": "100pct_chandelier"
-      },
-      {
-        "symbol": "BSX",
-        "side": "short",
-        "barTime": 1782918000,
-        "source": "CORE",
-        "qual": 1,
-        "tf": "30m",
-        "resolved": true,
-        "rMultiple": -1,
-        "liveR": null,
-        "gapped": false,
-        "entryPrice": 43.11,
-        "stopPrice": 44.1035,
-        "rMultipleOldStop": -1,
-        "slWidened": true,
-        "rMultiplePriorWiden": -1,
-        "slWidenMult": 1.4,
-        "rMultiplePriorChandelierLock": -1,
-        "exitConfigLocked": "100pct_chandelier"
-      }
-    ],
+    "taken": [],
     "closeAdjustments": [
       {
         "type": "sized_up",
@@ -8636,68 +8553,7 @@
         "stopPrice": 160.2318
       }
     ],
-    "taken": [
-      {
-        "symbol": "NKE",
-        "side": "short",
-        "barTime": 1783953000,
-        "source": "CORE",
-        "qual": 3,
-        "tf": "30m",
-        "resolved": true,
-        "rMultiple": 1.6,
-        "liveR": null,
-        "gapped": false,
-        "entryPrice": 44.43,
-        "stopPrice": 45.429,
-        "rMultipleOldStop": 2.177,
-        "slWidened": true,
-        "rMultiplePriorWiden": 2.03,
-        "slWidenMult": 1.4,
-        "rMultiplePriorChandelierLock": 1.6,
-        "exitConfigLocked": "100pct_chandelier"
-      },
-      {
-        "symbol": "SMCI",
-        "side": "short",
-        "barTime": 1783954800,
-        "source": "CORE",
-        "qual": 3,
-        "tf": "30m",
-        "resolved": true,
-        "rMultiple": 0,
-        "liveR": null,
-        "gapped": false,
-        "entryPrice": 27.88,
-        "stopPrice": 28.9626,
-        "rMultipleOldStop": -0.013,
-        "slWidened": true,
-        "rMultiplePriorWiden": -0.01,
-        "slWidenMult": 1.4,
-        "rMultiplePriorChandelierLock": 0,
-        "exitConfigLocked": "100pct_chandelier"
-      },
-      {
-        "symbol": "COIN",
-        "side": "short",
-        "barTime": 1783958400,
-        "source": "CORE",
-        "qual": 3,
-        "tf": "30m",
-        "resolved": true,
-        "rMultiple": -1,
-        "liveR": null,
-        "gapped": false,
-        "entryPrice": 156.29,
-        "stopPrice": 161.8085,
-        "rMultipleOldStop": -1,
-        "slWidened": true,
-        "rMultiplePriorWiden": -0.26,
-        "slWidenMult": 1.4,
-        "rMultiplePriorChandelierLock": -1,
-        "exitConfigLocked": "100pct_chandelier"
-      }
-    ],
+    "taken": [],
     "closeAdjustments": [
       {
         "type": "sized_up",
