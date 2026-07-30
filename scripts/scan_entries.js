@@ -42,6 +42,28 @@ function ptDateOf(ts) {
   return new Intl.DateTimeFormat('en-CA', { timeZone: 'America/Los_Angeles' }).format(new Date(ts * 1000));
 }
 
+// COMPRESSION signal (LOCKED 2026-07-29, "anchor1" in ll_backtest): a single bar fully inside
+// the prior bar's range, breakout above/below the anchor bar -- additive only (fires when
+// nothing else matched), gated to QQQ's regime (already enforced by roster membership: longs
+// only fire on rosterLong which requires QQQ bullish, shorts only on rosterShort which requires
+// QQQ bearish -- so the backtest's "trendOnly" regime gate is a structural no-op here, same
+// asymmetry noted in the backtest itself), QQQ not overbought/oversold (2D... 14D RSI prior
+// day), and the breakout bar's own volume in the upper 40th percentile of its trailing 20-bar
+// range (a "strong", not dried-up, volume requirement -- opposite intent from the dry-up-based
+// core tiers). Passed the full 4-step overfitting check in ll_backtest (parameter sweep across
+// containment depth 1/2/3, lumpiness, 30-seed permutation, p=0/30 on all four metrics) stacked
+// on the real 4-combo baseline: 619.4%->623.0% CAGR alone, combines additively with dist-top
+// (643.4% together, 619.4+20.4+3.6 exactly, confirming zero cannibalization).
+const COMPVAR_OB_RSI_MAX = 70, COMPVAR_OS_RSI_MIN = 30, COMPVAR_VOL_PCT_MIN = 0.6, COMPVAR_VOL_PCT_LOOKBACK = 20;
+function volPercentileRank(volumes, idx, lookback) {
+  const start = idx - lookback;
+  if (start < 0) return null;
+  const v = volumes[idx];
+  let below = 0;
+  for (let k = start; k < idx; k++) if (volumes[k] <= v) below++;
+  return below / lookback;
+}
+
 const etFmt = new Intl.DateTimeFormat('en-US', { timeZone: 'America/New_York', hour: '2-digit', minute: '2-digit', hour12: false, weekday: 'short' });
 function etSlot(unixSec) {
   const parts = etFmt.formatToParts(new Date(unixSec * 1000));
@@ -104,6 +126,27 @@ async function run() {
     return (best.close - qqqPrevClose) / qqqPrevClose * 100;
   }
   const RULE728_QQQ_RSI2_MAX = 15, RULE728_QQQ_MOVE_MAX = -1.0, RULE728_STOCK_ADR_MAX = -0.65;
+
+  // DIST-TOP ENTRY-BLOCK (LOCKED 2026-07-29): no new longs today if YESTERDAY (qPrevIdx, already
+  // fully known) was a dist-top day -- 3 consecutive ascending-high blue bars on descending
+  // volume, >=3 days since QQQ's own 8ema touch. Mirrors eod_disttop_exit.js's isDistTopDay()
+  // exactly, evaluated one day back instead of at today's own close. Causal: uses only
+  // yesterday's already-closed daily bars, nothing from today.
+  const DISTTOP_MIN_DAYS_NO_TOUCH = 3;
+  function wasDistTopDay(idx) {
+    if (idx < 2) return false;
+    let daysSinceTouch = 999;
+    for (let k = idx; k >= Math.max(0, idx - 30); k--) {
+      if (qqqEma8[k] != null && qqqDaily[k].low <= qqqEma8[k] && qqqDaily[k].high >= qqqEma8[k]) { daysSinceTouch = idx - k; break; }
+    }
+    if (daysSinceTouch < DISTTOP_MIN_DAYS_NO_TOUCH) return false;
+    const d0 = qqqDaily[idx - 2], d1 = qqqDaily[idx - 1], d2 = qqqDaily[idx];
+    const ascHighs = d0.high < d1.high && d1.high < d2.high;
+    const allBlue = d0.close > d0.open && d1.close > d1.open && d2.close > d2.open;
+    const volDesc = d0.volume > d1.volume && d1.volume > d2.volume;
+    return ascHighs && allBlue && volDesc;
+  }
+  const distTopEntryBlockActive = wasDistTopDay(qPrevIdx);
 
   const dailyResults = await pool(tickers, fetchDaily, 8);
   const intradayResults = await pool(tickers, fetch30m, 8);
@@ -196,8 +239,14 @@ async function run() {
         const reclaim8 = i >= 1 && ema8[i - 1] != null && closes[i - 1] < ema8[i - 1] && closes[i] > ema8[i];
         const volDecay2Long = i >= 2 && volumes[i - 2] > volumes[i - 1];
         const tightNowLong = tightnessRatio != null && tightnessRatio <= 0.6;
+        // COMPRESSION (see declaration above): 1-bar-inside-prev, breakout above the anchor,
+        // QQQ not overbought, breakout bar's own volume in the upper 40th percentile.
+        const compBreakoutLong = pat.isInside1 && highs[i] > highs[i - 2];
+        const compObOk = qqqRsi14 == null || qqqRsi14 <= COMPVAR_OB_RSI_MAX;
+        const compVolOk = (() => { const pr = volPercentileRank(volumes, i, COMPVAR_VOL_PCT_LOOKBACK); return pr != null && pr >= COMPVAR_VOL_PCT_MIN; })();
+        const compVarLongPass = compBreakoutLong && compObOk && compVolOk;
         let qual = 0;
-        if (pat.dryUpBreakout3 && st) qual = 4; else if (pat.reclaim && st) qual = 3; else if (pat.looseTier2 && st) qual = 2; else if (isSurfBase) qual = 1; else if (reclaim8 && volDecay2Long && tightNowLong && st) qual = 0.5;
+        if (pat.dryUpBreakout3 && st) qual = 4; else if (pat.reclaim && st) qual = 3; else if (pat.looseTier2 && st) qual = 2; else if (isSurfBase) qual = 1; else if (reclaim8 && volDecay2Long && tightNowLong && st) qual = 0.5; else if (compVarLongPass) qual = 0.21;
         if (qual === 1 && !(dist200Pct > 0)) qual = 0;
         if (qual > 0 && rsVsQqq3w != null && rsVsQqq3w < 0) qual = 0; // RS3w exclude filter
         if (qual > 0) {
@@ -218,7 +267,11 @@ async function run() {
             // RS-BOOST (see declaration above): stock's own 3-week RS >=+5 AND QQQ oversold
             // (2D RSI<=15) the prior day -- both already-known, causal values.
             const rsBoostMult = (qqqRsi2 != null && qqqRsi2 <= RS_BOOST_QQQ_RSI2_MAX && rsVsQqq3w != null && rsVsQqq3w >= RS_BOOST_RS_MIN) ? RS_BOOST_MULT : 1.0;
-            signals.push({ symbol, side: 'long', qual, entryPrice: +entryPrice.toFixed(2), stopPrice: +stopPrice.toFixed(2), barTime, patternTier: qual === 4 ? 'dryUpBreakout3' : qual === 3 ? 'reclaim' : qual === 2 ? 'looseTier2' : qual === 1 ? 'surfBase' : 'confluence8ema', tf: '30m', rsVsQqq3w: rsVsQqq3w != null ? +rsVsQqq3w.toFixed(2) : null, avgDollarVol20, qqqRsi14: qqqRsi14 != null ? +qqqRsi14.toFixed(1) : null, rsiSizeMult, rsBoostMult, obSizeDownMult });
+            // DIST-TOP entry-block (see declaration above): skip this long entirely if yesterday
+            // was a dist-top day -- treat as fired (don't re-check later bars today) but emit
+            // no signal, same convention as the 7/28 rule's short-side block.
+            if (distTopEntryBlockActive) { firedLong = true; continue; }
+            signals.push({ symbol, side: 'long', qual, entryPrice: +entryPrice.toFixed(2), stopPrice: +stopPrice.toFixed(2), barTime, patternTier: qual === 4 ? 'dryUpBreakout3' : qual === 3 ? 'reclaim' : qual === 2 ? 'looseTier2' : qual === 1 ? 'surfBase' : qual === 0.21 ? 'compressionBreakout' : 'confluence8ema', tf: '30m', rsVsQqq3w: rsVsQqq3w != null ? +rsVsQqq3w.toFixed(2) : null, avgDollarVol20, qqqRsi14: qqqRsi14 != null ? +qqqRsi14.toFixed(1) : null, rsiSizeMult, rsBoostMult, obSizeDownMult });
             firedLong = true;
           }
         }
@@ -234,8 +287,16 @@ async function run() {
         const bounce8 = i >= 1 && ema8[i - 1] != null && closes[i - 1] > ema8[i - 1] && closes[i] < ema8[i];
         const volDecay2Short = i >= 2 && volumes[i - 2] > volumes[i - 1];
         const tightNowShort = tightnessRatio != null && tightnessRatio <= 0.6;
+        // COMPRESSION, short mirror (see long-side declaration above): 1-bar-inside-prev,
+        // breakdown below the anchor, QQQ not oversold, breakout bar's own volume in the upper
+        // 40th percentile.
+        const isInside1Short = i >= 2 && highs[i - 1] <= highs[i - 2] && lows[i - 1] >= lows[i - 2];
+        const compBreakdownShort = isInside1Short && lows[i] < lows[i - 2];
+        const compOsOk = qqqRsi14 == null || qqqRsi14 >= COMPVAR_OS_RSI_MIN;
+        const compVolOkShort = (() => { const pr = volPercentileRank(volumes, i, COMPVAR_VOL_PCT_LOOKBACK); return pr != null && pr >= COMPVAR_VOL_PCT_MIN; })();
+        const compVarShortPass = compBreakdownShort && compOsOk && compVolOkShort;
         let qual = 0;
-        if (sp.dryDownBreakdown3 && st) qual = 3; else if (sp.rejection && st) qual = 2; else if (sp.looseTier2Short && st) qual = 1; else if (bounce8 && volDecay2Short && tightNowShort && st) qual = 0.4;
+        if (sp.dryDownBreakdown3 && st) qual = 3; else if (sp.rejection && st) qual = 2; else if (sp.looseTier2Short && st) qual = 1; else if (bounce8 && volDecay2Short && tightNowShort && st) qual = 0.4; else if (compVarShortPass) qual = 0.21;
         if (qual > 0) {
           const regimeMult = regimeMultFromSpread(spread8_20, 'short');
           const openOk = !(slot === '09:30' && (qual < 2 || regimeMult !== 1.3));
@@ -261,7 +322,7 @@ async function run() {
               qqqMoveNow != null && qqqMoveNow <= RULE728_QQQ_MOVE_MAX &&
               stockPreEntryMove != null && stockPreEntryMove <= RULE728_STOCK_ADR_MAX;
             if (rule728Active) { firedShort = true; continue; } // treat as fired (don't re-check later bars today) but emit no signal
-            signals.push({ symbol, side: 'short', qual, entryPrice: +entryPrice.toFixed(2), stopPrice: +stopPrice.toFixed(2), barTime, patternTier: qual === 3 ? 'dryDownBreakdown3' : qual === 2 ? 'rejection' : qual === 1 ? 'looseTier2Short' : 'confluence8ema', tf: '30m', avgDollarVol20 });
+            signals.push({ symbol, side: 'short', qual, entryPrice: +entryPrice.toFixed(2), stopPrice: +stopPrice.toFixed(2), barTime, patternTier: qual === 3 ? 'dryDownBreakdown3' : qual === 2 ? 'rejection' : qual === 1 ? 'looseTier2Short' : qual === 0.21 ? 'compressionBreakdown' : 'confluence8ema', tf: '30m', avgDollarVol20 });
             firedShort = true;
           }
         }

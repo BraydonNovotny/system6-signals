@@ -11,6 +11,7 @@ const resolvePending = require('./resolve_pending');
 const eodAddWinners = require('./eod_add_winners');
 const eodCapTriggerReaction = require('./eod_cap_trigger_reaction');
 const eod724Exit = require('./eod_724_exit');
+const eodDistTopExit = require('./eod_disttop_exit');
 const { build } = require('./build_site.js');
 
 async function fetch30m(symbol) {
@@ -166,6 +167,16 @@ async function main() {
     if (closedBy724.length) {
       saveHistory(history);
       console.log(`7/24 rule: closed ${closedBy724.length} open short(s) at today's close.`);
+    }
+
+    // LOCKED (2026-07-29, "dist-top" rule): if QQQ shows 3 consecutive ascending-high blue bars
+    // on descending volume with >=3 days since its own 8ema touch, close any currently open
+    // long -- same EOD-window semantics (today's own now-known close only). Also feeds the
+    // next-day entry-block in scan_entries.js.
+    const closedByDistTop = await eodDistTopExit.run(history).catch(e => { console.error('disttop-exit failed:', e.message); return []; });
+    if (closedByDistTop.length) {
+      saveHistory(history);
+      console.log(`Dist-top rule: closed ${closedByDistTop.length} open long(s) at today's close.`);
     }
   }
 
