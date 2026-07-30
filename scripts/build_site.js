@@ -339,6 +339,7 @@ function render(dateStr) {
         if (s.gapped) resultHtml += ' <span class="gap-badge" title="Exit price gapped past the stop -- filled at the actual open, not the idealized stop level">GAP</span>';
         if (s.closedByCapReaction) resultHtml += ' <span class="gap-badge" title="Today\\'s daily loss cap tripped on a different trade -- closed at today\\'s own close instead of left to run">(CLOSED AT EOD)</span>';
         if (s.closedByRule724) resultHtml += ' <span class="gap-badge" title="QQQ closed oversold (2D RSI<=10) while still above its 200ema and >=5x its own 14d ADR off the 52-week high -- closed at today\\'s own close">(CLOSED AT EOD)</span>';
+        if (s.closedByDistTop) resultHtml += ' <span class="gap-badge" title="QQQ showed 3 consecutive ascending-high blue bars on descending volume, >=3 days since its own 8ema touch -- a distribution-top exhaustion day, so this long was closed at today\\'s own close">(CLOSED AT EOD)</span>';
       }
       if (s.sizeMult != null && s.sizeMult < 1.0) {
         const reasons = [];
@@ -407,6 +408,8 @@ function render(dateStr) {
         ? '<span class="gap-badge" title="Today\\'s daily loss cap tripped on a different trade -- this position was down at least 0.25R as of today\\'s own close, so it was closed out rather than left to run">CLOSED (CAP)</span>'
         : s.type === 'closed_724_rule'
         ? '<span class="gap-badge" title="QQQ closed oversold (2D RSI<=10) while still above its 200ema and >=5x its own 14d ADR off the 52-week high -- an oversold-bounce-risk day, so this short was closed at today\\'s own close">CLOSED (7/24)</span>'
+        : s.type === 'closed_disttop_rule'
+        ? '<span class="gap-badge" title="QQQ showed 3 consecutive ascending-high blue bars on descending volume, >=3 days since its own 8ema touch -- a distribution-top exhaustion day, so this long was closed at today\\'s own close">CLOSED (DIST-TOP)</span>'
         : '<span class="gap-badge" title="Entry day closed weak (long) or strong (short) within its own range">CLOSED (CP)</span>';
       return '<tr><td class="mono" style="font-weight:600;">' + s.symbol + '</td>' +
         '<td class="' + s.side + '">' + s.side.toUpperCase() + '</td>' +
