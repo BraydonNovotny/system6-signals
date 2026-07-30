@@ -274,7 +274,12 @@ async function run() {
         const compBreakdownShort = sp.isInside1 && lows[i] < lows[i - 2];
         const compOsOk = qqqRsi14 == null || qqqRsi14 >= COMPVAR_OS_RSI_MIN;
         const compVolOkShort = (() => { const pr = volPercentileRank(volumes, i, COMPVAR_VOL_PCT_LOOKBACK); return pr != null && pr >= COMPVAR_VOL_PCT_MIN; })();
-        const compVarShortPass = compBreakdownShort && compOsOk && compVolOkShort;
+        // LOCKED config (compVarFor643 in mcpt_engine_runner_step1.js) requires regimeGate:
+        // 'trendOnly' on the short side (QQQ's own 8ema below its 20ema) -- unlike longs, where
+        // the roster's own qqqEmaCross===true requirement already makes this a no-op, shorts are
+        // not otherwise regime-gated, so this must be checked explicitly here.
+        const compRegimeOkShort = qqqEma8[qPrevIdx] != null && qqqEma20[qPrevIdx] != null && qqqEma8[qPrevIdx] < qqqEma20[qPrevIdx];
+        const compVarShortPass = compBreakdownShort && compOsOk && compVolOkShort && compRegimeOkShort;
         let qual = 0;
         if (sp.dryDownBreakdown3 && st) qual = 3; else if (sp.rejection && st) qual = 2; else if (sp.looseTier2Short && st) qual = 1; else if (bounce8 && volDecay2Short && tightNowShort && st) qual = 0.4; else if (compVarShortPass) qual = 0.21;
         if (qual > 0) {
