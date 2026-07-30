@@ -11954,6 +11954,18 @@
         "tf": "30m",
         "avgDollarVol20": 954476802.1149727,
         "source": "CORE"
+      },
+      {
+        "symbol": "DKNG",
+        "side": "short",
+        "qual": 3,
+        "entryPrice": 23.52,
+        "stopPrice": 24.18,
+        "barTime": 1785425400,
+        "patternTier": "dryDownBreakdown3",
+        "tf": "30m",
+        "avgDollarVol20": 259895240.91010514,
+        "source": "CORE"
       }
     ],
     "taken": [
@@ -11970,7 +11982,7 @@
         "source": "CORE",
         "resolved": false,
         "rMultiple": null,
-        "liveR": 0.06,
+        "liveR": -0.01,
         "gapped": false,
         "firstTradeOfDay": true,
         "sizeMult": 0.5,
@@ -11993,7 +12005,7 @@
         "source": "CORE",
         "resolved": false,
         "rMultiple": null,
-        "liveR": -0.51,
+        "liveR": -0.9,
         "gapped": false,
         "firstTradeOfDay": false,
         "sizeMult": 1,
@@ -12016,7 +12028,7 @@
         "source": "CORE",
         "resolved": false,
         "rMultiple": null,
-        "liveR": -0.24,
+        "liveR": -0.1,
         "gapped": false,
         "firstTradeOfDay": false,
         "sizeMult": 1,
@@ -12039,7 +12051,7 @@
         "source": "CORE",
         "resolved": false,
         "rMultiple": null,
-        "liveR": 0.29,
+        "liveR": 0.25,
         "gapped": false,
         "firstTradeOfDay": false,
         "sizeMult": 1,
@@ -12062,7 +12074,7 @@
         "source": "CORE",
         "resolved": false,
         "rMultiple": null,
-        "liveR": 0.23,
+        "liveR": 0.1,
         "gapped": false,
         "firstTradeOfDay": false,
         "sizeMult": 1,
@@ -12085,7 +12097,7 @@
         "source": "CORE",
         "resolved": false,
         "rMultiple": null,
-        "liveR": 0.11,
+        "liveR": 0.01,
         "gapped": false,
         "firstTradeOfDay": false,
         "sizeMult": 1,
@@ -12108,7 +12120,7 @@
         "source": "CORE",
         "resolved": false,
         "rMultiple": null,
-        "liveR": -0.18,
+        "liveR": -0.4,
         "gapped": false,
         "firstTradeOfDay": false,
         "sizeMult": 1,
@@ -12131,7 +12143,7 @@
         "source": "CORE",
         "resolved": false,
         "rMultiple": null,
-        "liveR": 0,
+        "liveR": 0.01,
         "gapped": false,
         "firstTradeOfDay": false,
         "sizeMult": 1,
@@ -12154,7 +12166,7 @@
         "source": "CORE",
         "resolved": false,
         "rMultiple": null,
-        "liveR": 0,
+        "liveR": -0.11,
         "gapped": false,
         "firstTradeOfDay": false,
         "sizeMult": 1,
@@ -12177,7 +12189,7 @@
         "source": "CORE",
         "resolved": false,
         "rMultiple": null,
-        "liveR": 0,
+        "liveR": -0.17,
         "gapped": false,
         "firstTradeOfDay": false,
         "sizeMult": 1,
@@ -12188,6 +12200,20 @@
         "obSizeDownActive": false
       }
     ],
-    "rejected": []
+    "rejected": [
+      {
+        "symbol": "DKNG",
+        "side": "short",
+        "qual": 3,
+        "entryPrice": 23.52,
+        "stopPrice": 24.18,
+        "barTime": 1785425400,
+        "patternTier": "dryDownBreakdown3",
+        "tf": "30m",
+        "avgDollarVol20": 259895240.91010514,
+        "source": "CORE",
+        "rejectReason": "max positions (10)"
+      }
+    ]
   }
 }
