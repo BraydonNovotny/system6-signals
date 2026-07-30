@@ -248,14 +248,20 @@ const todayStr = ${JSON.stringify(new Intl.DateTimeFormat('en-CA', { timeZone: '
 // win is still a WIN, a small loss is still a LOSS -- not the looser "wasn't fully
 // stopped out" definition).
 const tradingDaysWithData = days.filter(d => d <= todayStr);
+// effR: size-weighted R (user request 2026-07-29) -- a 0.25x-sized -1R loss is a real -0.25R
+// of portfolio impact, not a full -1R; a 1.5x RS-boost winner is worth 1.5x its raw R. sizeMult
+// was previously display-only (just the badge), never applied to the aggregate totals below --
+// win/loss classification still uses the raw rMultiple sign (sizeMult is always positive, so it
+// never flips a win into a loss or vice versa).
+function effR(t) { return t.rMultiple * (t.sizeMult != null ? t.sizeMult : 1.0); }
 function windowStats(tradingDaysBack) {
   const windowDays = new Set(tradingDaysWithData.slice(-tradingDaysBack));
   const trades = [...windowDays].flatMap(d => (HISTORY[d].taken || []).filter(t => t.resolved));
   const wins = trades.filter(t => t.rMultiple > 0);
   const losses = trades.filter(t => t.rMultiple <= 0);
-  const netR = trades.reduce((a, t) => a + t.rMultiple, 0);
-  const avgWin = wins.length ? wins.reduce((a, t) => a + t.rMultiple, 0) / wins.length : 0;
-  const avgLoss = losses.length ? losses.reduce((a, t) => a + t.rMultiple, 0) / losses.length : 0;
+  const netR = trades.reduce((a, t) => a + effR(t), 0);
+  const avgWin = wins.length ? wins.reduce((a, t) => a + effR(t), 0) / wins.length : 0;
+  const avgLoss = losses.length ? losses.reduce((a, t) => a + effR(t), 0) / losses.length : 0;
   const rr = avgLoss !== 0 ? Math.abs(avgWin / avgLoss) : 0;
   const winRate = trades.length ? (wins.length / trades.length * 100) : 0;
   return { n: trades.length, netR, winRate, rr, avgWin, avgLoss };
@@ -319,7 +325,7 @@ function render(dateStr) {
     const hitRateText = resolvedTrades.length
       ? wins.length + '/' + resolvedTrades.length + ' (' + (wins.length / resolvedTrades.length * 100).toFixed(0) + '%)' + (allResolved ? '' : ' so far (TBD)')
       : 'no results yet (TBD)';
-    const avgR = resolvedTrades.length ? resolvedTrades.reduce((a, t) => a + t.rMultiple, 0) / resolvedTrades.length : null;
+    const avgR = resolvedTrades.length ? resolvedTrades.reduce((a, t) => a + effR(t), 0) / resolvedTrades.length : null;
     dayStatsEl.textContent = hitRateText + ' · ' + taken.length + ' trade' + (taken.length === 1 ? '' : 's') + (avgR != null ? ' · avg ' + (avgR >= 0 ? '+' : '') + avgR.toFixed(2) + 'R' : '');
     const rows = taken.map(s => {
       let resultHtml;
