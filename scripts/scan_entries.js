@@ -4,8 +4,9 @@
 // locked backtest (ll_backtest/website_stats_final.js buildCombinedSignals). EP and
 // Parabolic overlays are NOT included yet -- core pattern signals only, phase 1.
 const { emaSeries, computeAdrSeries, rsiSeries } = require('./indicators');
-const { evalPatterns, evalShortPatterns, COMPRESSION_TIGHT_MAX, COMPRESSION_WINDOW, compRange, slForAdr } = require('./patterns');
+const { evalPatterns, evalShortPatterns, COMPRESSION_TIGHT_MAX, COMPRESSION_WINDOW, compRange, slForAdr, volPercentileRank } = require('./patterns');
 const { fetchChart, pool, loadData, saveData, ptDateString, dropIncompleteBars } = require('./lib');
+const { isDistTopDay: isDistTopDayShared } = require('../vendor/strategy-core/disttop.js');
 
 async function fetchDaily(symbol) {
   const result = await fetchChart(symbol, 'range=2y&interval=1d');
@@ -55,14 +56,8 @@ function ptDateOf(ts) {
 // on the real 4-combo baseline: 619.4%->623.0% CAGR alone, combines additively with dist-top
 // (643.4% together, 619.4+20.4+3.6 exactly, confirming zero cannibalization).
 const COMPVAR_OB_RSI_MAX = 70, COMPVAR_OS_RSI_MIN = 30, COMPVAR_VOL_PCT_MIN = 0.6, COMPVAR_VOL_PCT_LOOKBACK = 20;
-function volPercentileRank(volumes, idx, lookback) {
-  const start = idx - lookback;
-  if (start < 0) return null;
-  const v = volumes[idx];
-  let below = 0;
-  for (let k = start; k < idx; k++) if (volumes[k] <= v) below++;
-  return below / lookback;
-}
+// volPercentileRank now lives in the shared strategy-core submodule -- see
+// vendor/strategy-core/patterns.js. Imported at top of file as volPercentileRank.
 
 const etFmt = new Intl.DateTimeFormat('en-US', { timeZone: 'America/New_York', hour: '2-digit', minute: '2-digit', hour12: false, weekday: 'short' });
 function etSlot(unixSec) {
@@ -128,25 +123,11 @@ async function run() {
   const RULE728_QQQ_RSI2_MAX = 15, RULE728_QQQ_MOVE_MAX = -1.0, RULE728_STOCK_ADR_MAX = -0.65;
 
   // DIST-TOP ENTRY-BLOCK (LOCKED 2026-07-29): no new longs today if YESTERDAY (qPrevIdx, already
-  // fully known) was a dist-top day -- 3 consecutive ascending-high blue bars on descending
-  // volume, >=3 days since QQQ's own 8ema touch. Mirrors eod_disttop_exit.js's isDistTopDay()
-  // exactly, evaluated one day back instead of at today's own close. Causal: uses only
-  // yesterday's already-closed daily bars, nothing from today.
-  const DISTTOP_MIN_DAYS_NO_TOUCH = 3;
-  function wasDistTopDay(idx) {
-    if (idx < 2) return false;
-    let daysSinceTouch = 999;
-    for (let k = idx; k >= Math.max(0, idx - 30); k--) {
-      if (qqqEma8[k] != null && qqqDaily[k].low <= qqqEma8[k] && qqqDaily[k].high >= qqqEma8[k]) { daysSinceTouch = idx - k; break; }
-    }
-    if (daysSinceTouch < DISTTOP_MIN_DAYS_NO_TOUCH) return false;
-    const d0 = qqqDaily[idx - 2], d1 = qqqDaily[idx - 1], d2 = qqqDaily[idx];
-    const ascHighs = d0.high < d1.high && d1.high < d2.high;
-    const allBlue = d0.close > d0.open && d1.close > d1.open && d2.close > d2.open;
-    const volDesc = d0.volume > d1.volume && d1.volume > d2.volume;
-    return ascHighs && allBlue && volDesc;
-  }
-  const distTopEntryBlockActive = wasDistTopDay(qPrevIdx);
+  // fully known) was a dist-top day. Uses the SAME shared strategy-core implementation
+  // eod_disttop_exit.js's EOD-close uses (see vendor/strategy-core/disttop.js) -- guarantees the
+  // entry-block and the EOD-close can never disagree on what counts as a dist-top day. Causal:
+  // uses only yesterday's already-closed daily bars, nothing from today.
+  const distTopEntryBlockActive = isDistTopDayShared(qqqDaily, qqqEma8, qPrevIdx);
 
   const dailyResults = await pool(tickers, fetchDaily, 8);
   const intradayResults = await pool(tickers, fetch30m, 8);
@@ -290,8 +271,7 @@ async function run() {
         // COMPRESSION, short mirror (see long-side declaration above): 1-bar-inside-prev,
         // breakdown below the anchor, QQQ not oversold, breakout bar's own volume in the upper
         // 40th percentile.
-        const isInside1Short = i >= 2 && highs[i - 1] <= highs[i - 2] && lows[i - 1] >= lows[i - 2];
-        const compBreakdownShort = isInside1Short && lows[i] < lows[i - 2];
+        const compBreakdownShort = sp.isInside1 && lows[i] < lows[i - 2];
         const compOsOk = qqqRsi14 == null || qqqRsi14 >= COMPVAR_OS_RSI_MIN;
         const compVolOkShort = (() => { const pr = volPercentileRank(volumes, i, COMPVAR_VOL_PCT_LOOKBACK); return pr != null && pr >= COMPVAR_VOL_PCT_MIN; })();
         const compVarShortPass = compBreakdownShort && compOsOk && compVolOkShort;

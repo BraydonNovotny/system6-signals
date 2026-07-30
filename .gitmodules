@@ -1,0 +1,3 @@
+[submodule "vendor/strategy-core"]
+	path = vendor/strategy-core
+	url = https://github.com/BraydonNovotny/strategy-core.git

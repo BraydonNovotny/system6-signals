@@ -16,15 +16,14 @@
 // Sharpe, IS CAGR, OOS Sharpe, OOS CAGR). Stacked on the real 4-combo baseline: 619.4%->639.8%
 // CAGR (+20.4pts), and the only lever this cycle to also improve max drawdown (5.59%->5.53%).
 const { fetchChart, ptDateString } = require('./lib');
+const { emaSeries } = require('../vendor/strategy-core/indicators.js');
+// Dist-top day detection now lives in the shared strategy-core submodule -- see
+// vendor/strategy-core/disttop.js. Do NOT duplicate this logic here (or in scan_entries.js's
+// entry-block); update the submodule instead so the EOD-close and next-day entry-block can
+// never disagree on what counts as a dist-top day.
+const { isDistTopDay: isDistTopDayShared } = require('../vendor/strategy-core/disttop.js');
 
-const MIN_DAYS_NO_TOUCH = 3;
 const LOOKBACK_DAYS = 10; // same window resolve_pending.js/eod_724_exit.js use for "still open" positions
-
-function emaSeries(closes, period) {
-  const k = 2 / (period + 1); let e = closes[0]; const out = [e];
-  for (let i = 1; i < closes.length; i++) { e = closes[i] * k + e * (1 - k); out.push(e); }
-  return out;
-}
 
 async function fetchQqqDaily() {
   const result = await fetchChart('QQQ', 'range=2y&interval=1d');
@@ -51,26 +50,14 @@ async function fetch30m(symbol) {
 }
 
 // Is TODAY (QQQ's own last daily bar) a dist-top day? Checked using QQQ's OWN daily bars --
-// since this runs at EOD, today's own high/close/volume are already fully known.
+// since this runs at EOD, today's own high/close/volume are already fully known. Delegates to
+// the shared strategy-core implementation (see import above).
 async function isDistTopDay() {
   const bars = await fetchQqqDaily();
   if (bars.length < 30) return false;
   const closes = bars.map(b => b.close);
   const ema8 = emaSeries(closes, 8);
-  const last = bars.length - 1;
-
-  // days since QQQ's own 8ema touch (a touch = the day's own high/low straddles the ema)
-  let daysSinceTouch = 999;
-  for (let i = last; i >= Math.max(0, last - 30); i--) {
-    if (ema8[i] != null && bars[i].low <= ema8[i] && bars[i].high >= ema8[i]) { daysSinceTouch = last - i; break; }
-  }
-  if (daysSinceTouch < MIN_DAYS_NO_TOUCH) return false;
-
-  const d0 = bars[last - 2], d1 = bars[last - 1], d2 = bars[last];
-  const ascHighs = d0.high < d1.high && d1.high < d2.high;
-  const allBlue = d0.close > d0.open && d1.close > d1.open && d2.close > d2.open;
-  const volDesc = d0.volume > d1.volume && d1.volume > d2.volume;
-  return ascHighs && allBlue && volDesc;
+  return isDistTopDayShared(bars, ema8, bars.length - 1);
 }
 
 // Runs once, near market close (same EOD window as eod_724_exit.js). Closes ALL currently open

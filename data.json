@@ -24,6 +24,7 @@
     "BSX",
     "C",
     "CIFR",
+    "CNC",
     "COIN",
     "CORZ",
     "CPNG",
@@ -32,11 +33,13 @@
     "CVNA",
     "DELL",
     "DKNG",
+    "DOW",
     "ECHO",
     "ENPH",
     "FCX",
     "GOOG",
     "GOOGL",
+    "HAL",
     "HIMS",
     "HOOD",
     "IBM",
@@ -56,6 +59,7 @@
     "NFLX",
     "NKE",
     "NVDA",
+    "OKLO",
     "ON",
     "ONDS",
     "OPEN",
@@ -67,6 +71,7 @@
     "RIOT",
     "RIVN",
     "RKLB",
+    "SLB",
     "SMCI",
     "SMR",
     "SOFI",
@@ -75,6 +80,7 @@
     "TSM",
     "TTD",
     "VRT",
+    "WFC",
     "WULF"
   ],
   "tickerDetail": {
@@ -210,7 +216,7 @@
     },
     "APH": {
       "price": 150.31,
-      "adrPct": 4.03,
+      "adrPct": 4.04,
       "aboveEma50": false,
       "passesTierNow": true,
       "longTrailing252": 68,
@@ -382,11 +388,11 @@
       "price": 61.82,
       "adrPct": 4.44,
       "aboveEma50": false,
-      "passesTierNow": false,
+      "passesTierNow": true,
       "longTrailing252": 37,
-      "shortTrailing252": 50,
+      "shortTrailing252": 51,
       "onLongRoster": false,
-      "onShortRoster": false
+      "onShortRoster": true
     },
     "COHR": {
       "price": 222.05,
@@ -420,7 +426,7 @@
     },
     "CPNG": {
       "price": 15.16,
-      "adrPct": 4.03,
+      "adrPct": 4.04,
       "aboveEma50": false,
       "passesTierNow": true,
       "longTrailing252": 31,
@@ -450,7 +456,7 @@
     },
     "CRWD": {
       "price": 179.38,
-      "adrPct": 5.63,
+      "adrPct": 5.67,
       "aboveEma50": true,
       "passesTierNow": true,
       "longTrailing252": 91,
@@ -550,7 +556,7 @@
     },
     "DD": {
       "price": 138.1,
-      "adrPct": 2.29,
+      "adrPct": 2.3,
       "aboveEma50": false,
       "passesTierNow": false,
       "longTrailing252": 0,
@@ -560,7 +566,7 @@
     },
     "DELL": {
       "price": 369.64,
-      "adrPct": 8.05,
+      "adrPct": 8.06,
       "aboveEma50": false,
       "passesTierNow": true,
       "longTrailing252": 115,
@@ -592,11 +598,11 @@
       "price": 30.45,
       "adrPct": 3.4,
       "aboveEma50": false,
-      "passesTierNow": false,
+      "passesTierNow": true,
       "longTrailing252": 87,
-      "shortTrailing252": 77,
+      "shortTrailing252": 78,
       "onLongRoster": false,
-      "onShortRoster": false
+      "onShortRoster": true
     },
     "DVN": {
       "price": 44.46,
@@ -640,7 +646,7 @@
     },
     "ECHO": {
       "price": 83.89,
-      "adrPct": 4.59,
+      "adrPct": 4.6,
       "aboveEma50": false,
       "passesTierNow": true,
       "longTrailing252": 65,
@@ -700,7 +706,7 @@
     },
     "FSLR": {
       "price": 199.24,
-      "adrPct": 4.27,
+      "adrPct": 4.28,
       "aboveEma50": false,
       "passesTierNow": false,
       "longTrailing252": 8,
@@ -750,7 +756,7 @@
     },
     "GE": {
       "price": 350.63,
-      "adrPct": 2.85,
+      "adrPct": 2.86,
       "aboveEma50": true,
       "passesTierNow": false,
       "longTrailing252": 0,
@@ -812,11 +818,11 @@
       "price": 31.19,
       "adrPct": 3.18,
       "aboveEma50": false,
-      "passesTierNow": false,
+      "passesTierNow": true,
       "longTrailing252": 88,
-      "shortTrailing252": 21,
+      "shortTrailing252": 22,
       "onLongRoster": false,
-      "onShortRoster": false
+      "onShortRoster": true
     },
     "HIMS": {
       "price": 25,
@@ -890,7 +896,7 @@
     },
     "JBLU": {
       "price": 5.72,
-      "adrPct": 5.86,
+      "adrPct": 5.87,
       "aboveEma50": true,
       "passesTierNow": true,
       "longTrailing252": 31,
@@ -1022,8 +1028,8 @@
       "price": 15.44,
       "adrPct": 4.51,
       "aboveEma50": true,
-      "passesTierNow": false,
-      "longTrailing252": 61,
+      "passesTierNow": true,
+      "longTrailing252": 62,
       "shortTrailing252": 28,
       "onLongRoster": false,
       "onShortRoster": false
@@ -1360,7 +1366,7 @@
     },
     "PYPL": {
       "price": 58.35,
-      "adrPct": 2.73,
+      "adrPct": 2.74,
       "aboveEma50": true,
       "passesTierNow": true,
       "longTrailing252": 32,
@@ -1430,7 +1436,7 @@
     },
     "RTX": {
       "price": 215.25,
-      "adrPct": 2.39,
+      "adrPct": 2.41,
       "aboveEma50": true,
       "passesTierNow": false,
       "longTrailing252": 0,
@@ -1472,11 +1478,11 @@
       "price": 48.96,
       "adrPct": 2.93,
       "aboveEma50": false,
-      "passesTierNow": false,
+      "passesTierNow": true,
       "longTrailing252": 108,
-      "shortTrailing252": 43,
+      "shortTrailing252": 44,
       "onLongRoster": false,
-      "onShortRoster": false
+      "onShortRoster": true
     },
     "SMCI": {
       "price": 25.7,
@@ -1500,7 +1506,7 @@
     },
     "SNOW": {
       "price": 282.9,
-      "adrPct": 4.9,
+      "adrPct": 4.92,
       "aboveEma50": true,
       "passesTierNow": true,
       "longTrailing252": 44,
@@ -1600,7 +1606,7 @@
     },
     "TSM": {
       "price": 374.67,
-      "adrPct": 3.71,
+      "adrPct": 3.72,
       "aboveEma50": false,
       "passesTierNow": true,
       "longTrailing252": 97,
@@ -1660,7 +1666,7 @@
     },
     "UNH": {
       "price": 420.57,
-      "adrPct": 3.1,
+      "adrPct": 3.11,
       "aboveEma50": true,
       "passesTierNow": false,
       "longTrailing252": 19,
@@ -1710,7 +1716,7 @@
     },
     "VTRS": {
       "price": 17.82,
-      "adrPct": 2.76,
+      "adrPct": 2.77,
       "aboveEma50": true,
       "passesTierNow": false,
       "longTrailing252": 14,
@@ -1752,11 +1758,11 @@
       "price": 83.87,
       "adrPct": 2.59,
       "aboveEma50": false,
-      "passesTierNow": false,
+      "passesTierNow": true,
       "longTrailing252": 17,
-      "shortTrailing252": 24,
+      "shortTrailing252": 25,
       "onLongRoster": false,
-      "onShortRoster": false
+      "onShortRoster": true
     },
     "WMB": {
       "price": 70.13,
@@ -1800,7 +1806,7 @@
     },
     "XYZ": {
       "price": 82.18,
-      "adrPct": 3.3,
+      "adrPct": 3.31,
       "aboveEma50": true,
       "passesTierNow": false,
       "longTrailing252": 19,
@@ -1820,7 +1826,7 @@
     },
     "NIO": {
       "price": 4.76,
-      "adrPct": 3.16,
+      "adrPct": 3.15,
       "aboveEma50": false,
       "passesTierNow": false,
       "longTrailing252": 48,
@@ -1900,7 +1906,7 @@
     },
     "WULF": {
       "price": 15.09,
-      "adrPct": 10.52,
+      "adrPct": 10.54,
       "aboveEma50": false,
       "passesTierNow": true,
       "longTrailing252": 181,
@@ -1920,7 +1926,7 @@
     },
     "SOUN": {
       "price": 5.7,
-      "adrPct": 6.61,
+      "adrPct": 6.62,
       "aboveEma50": false,
       "passesTierNow": true,
       "longTrailing252": 79,
@@ -1929,8 +1935,8 @@
       "onShortRoster": true
     },
     "QBTS": {
-      "price": 16.21,
-      "adrPct": 7.39,
+      "price": 16.18,
+      "adrPct": 7.41,
       "aboveEma50": false,
       "passesTierNow": true,
       "longTrailing252": 124,
@@ -1942,11 +1948,11 @@
       "price": 36.84,
       "adrPct": 7.62,
       "aboveEma50": false,
-      "passesTierNow": false,
+      "passesTierNow": true,
       "longTrailing252": 108,
-      "shortTrailing252": 105,
+      "shortTrailing252": 106,
       "onLongRoster": false,
-      "onShortRoster": false
+      "onShortRoster": true
     },
     "M": {
       "price": 24.76,
@@ -1970,7 +1976,7 @@
     },
     "ASTS": {
       "price": 53.03,
-      "adrPct": 9.24,
+      "adrPct": 9.25,
       "aboveEma50": false,
       "passesTierNow": true,
       "longTrailing252": 128,
@@ -1980,7 +1986,7 @@
     },
     "RGTI": {
       "price": 13.22,
-      "adrPct": 7.32,
+      "adrPct": 7.33,
       "aboveEma50": false,
       "passesTierNow": false,
       "longTrailing252": 108,
@@ -2000,7 +2006,7 @@
     },
     "CLF": {
       "price": 11.38,
-      "adrPct": 4.98,
+      "adrPct": 4.99,
       "aboveEma50": true,
       "passesTierNow": false,
       "longTrailing252": 16,
@@ -2010,7 +2016,7 @@
     },
     "APLD": {
       "price": 23.22,
-      "adrPct": 9.77,
+      "adrPct": 9.78,
       "aboveEma50": false,
       "passesTierNow": true,
       "longTrailing252": 157,
@@ -2030,7 +2036,7 @@
     },
     "UPST": {
       "price": 26.6,
-      "adrPct": 5.49,
+      "adrPct": 5.5,
       "aboveEma50": false,
       "passesTierNow": false,
       "longTrailing252": 9,

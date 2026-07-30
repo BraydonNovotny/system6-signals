@@ -10,15 +10,10 @@
 const { loadTickers } = require('./universe');
 const { emaSeries, computeAdrSeries } = require('./indicators');
 const { fetchChart, pool, saveData, loadData, ptDateString } = require('./lib');
-
-const SCANS = [
-  { minPrice: 24.25, minVol: 7.5e6, minAdr: 3.5 },
-  { minPrice: 100, minVol: 5e6, minAdr: 3.5 },
-  { minPrice: 15, minVol: 12.5e6, minAdr: 2.5 },
-  { minPrice: 2.5, minVol: 25e6, minAdr: 5.0 },
-  { minPrice: 250, minVol: 4.5e6, minAdr: 5.0 },
-];
-function passesTiers(cp, v, adr) { for (const s of SCANS) if (cp >= s.minPrice && v >= s.minVol && adr >= s.minAdr) return true; return false; }
+// Universe-qualification thresholds now live in the shared strategy-core submodule -- see
+// vendor/strategy-core/qualify.js. Do NOT duplicate SCANS/passesTiers/trailing-count values
+// here; update the submodule instead.
+const { SCANS, passesTiers, LONG_TRAILING_MIN, SHORT_TRAILING_MIN } = require('../vendor/strategy-core/qualify.js');
 
 async function fetchDaily(symbol) {
   const result = await fetchChart(symbol, 'range=2y&interval=1d');
@@ -72,8 +67,8 @@ async function run() {
       if (closes[i] < ema50[i] && pass) shortCount++;
     }
 
-    const onLongRoster = aboveEma50 && passesTierNow && qqqBullishToday && longCount >= 70;
-    const onShortRoster = belowEma50 && passesTierNow && !qqqBullishToday && shortCount >= 20;
+    const onLongRoster = aboveEma50 && passesTierNow && qqqBullishToday && longCount >= LONG_TRAILING_MIN;
+    const onShortRoster = belowEma50 && passesTierNow && !qqqBullishToday && shortCount >= SHORT_TRAILING_MIN;
 
     details[sym] = {
       price: +closes[last].toFixed(2), adrPct: +adrPct.toFixed(2),
