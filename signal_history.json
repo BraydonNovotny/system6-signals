@@ -11920,9 +11920,9 @@
         "tf": "30m",
         "avgDollarVol20": 3155414480.993572,
         "source": "CORE",
-        "resolved": false,
-        "rMultiple": null,
-        "liveR": 0,
+        "resolved": true,
+        "rMultiple": 0.27,
+        "liveR": 0.27,
         "gapped": false,
         "firstTradeOfDay": true,
         "sizeMult": 0.5,
@@ -12302,8 +12302,80 @@
     ]
   },
   "2026-07-31": {
-    "candidates": [],
-    "taken": [],
+    "candidates": [
+      {
+        "symbol": "NFLX",
+        "side": "short",
+        "qual": 2,
+        "entryPrice": 72.06,
+        "stopPrice": 73.57,
+        "barTime": 1785504600,
+        "patternTier": "rejection",
+        "tf": "30m",
+        "avgDollarVol20": 3409456754.129411,
+        "source": "CORE"
+      },
+      {
+        "symbol": "NKE",
+        "side": "short",
+        "qual": 2,
+        "entryPrice": 41.99,
+        "stopPrice": 42.84,
+        "barTime": 1785504600,
+        "patternTier": "rejection",
+        "tf": "30m",
+        "avgDollarVol20": 725809168.3366213,
+        "source": "CORE"
+      }
+    ],
+    "taken": [
+      {
+        "symbol": "NFLX",
+        "side": "short",
+        "qual": 2,
+        "entryPrice": 72.06,
+        "stopPrice": 73.57,
+        "barTime": 1785504600,
+        "patternTier": "rejection",
+        "tf": "30m",
+        "avgDollarVol20": 3409456754.129411,
+        "source": "CORE",
+        "resolved": false,
+        "rMultiple": null,
+        "liveR": 0,
+        "gapped": false,
+        "firstTradeOfDay": true,
+        "sizeMult": 0.5,
+        "thinFirstTrade": false,
+        "losingWeekActive": false,
+        "qqqOverboughtActive": false,
+        "rsBoostActive": false,
+        "obSizeDownActive": false
+      },
+      {
+        "symbol": "NKE",
+        "side": "short",
+        "qual": 2,
+        "entryPrice": 41.99,
+        "stopPrice": 42.84,
+        "barTime": 1785504600,
+        "patternTier": "rejection",
+        "tf": "30m",
+        "avgDollarVol20": 725809168.3366213,
+        "source": "CORE",
+        "resolved": false,
+        "rMultiple": null,
+        "liveR": -0.01,
+        "gapped": false,
+        "firstTradeOfDay": false,
+        "sizeMult": 1,
+        "thinFirstTrade": false,
+        "losingWeekActive": false,
+        "qqqOverboughtActive": false,
+        "rsBoostActive": false,
+        "obSizeDownActive": false
+      }
+    ],
     "rejected": []
   }
 }
