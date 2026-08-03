@@ -12678,7 +12678,7 @@
         "source": "CORE",
         "resolved": false,
         "rMultiple": null,
-        "liveR": -0.4,
+        "liveR": -0.6,
         "gapped": false,
         "firstTradeOfDay": false,
         "sizeMult": 1,
@@ -12750,7 +12750,7 @@
         "source": "CORE",
         "resolved": false,
         "rMultiple": null,
-        "liveR": 0.49,
+        "liveR": 0,
         "gapped": false,
         "firstTradeOfDay": false,
         "sizeMult": 1,
@@ -12871,8 +12871,43 @@
     "addWinners": []
   },
   "2026-08-03": {
-    "candidates": [],
-    "taken": [],
+    "candidates": [
+      {
+        "symbol": "MSTR",
+        "side": "long",
+        "source": "PER",
+        "entryPrice": 95.33,
+        "stopPrice": 90.93,
+        "barTime": 1785765600,
+        "runupPct": -50.1,
+        "gapPct": -1.36,
+        "tf": "30m"
+      }
+    ],
+    "taken": [
+      {
+        "symbol": "MSTR",
+        "side": "long",
+        "source": "PER",
+        "entryPrice": 95.33,
+        "stopPrice": 90.93,
+        "barTime": 1785765600,
+        "runupPct": -50.1,
+        "gapPct": -1.36,
+        "tf": "30m",
+        "resolved": false,
+        "rMultiple": null,
+        "liveR": -0.04,
+        "gapped": false,
+        "firstTradeOfDay": true,
+        "sizeMult": 1,
+        "thinFirstTrade": false,
+        "losingWeekActive": false,
+        "qqqOverboughtActive": false,
+        "rsBoostActive": false,
+        "obSizeDownActive": false
+      }
+    ],
     "rejected": []
   }
 }
