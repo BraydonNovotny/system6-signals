@@ -12990,6 +12990,30 @@
         "tf": "30m",
         "avgDollarVol20": 337948623.9420819,
         "source": "CORE"
+      },
+      {
+        "symbol": "MARA",
+        "side": "short",
+        "qual": 1,
+        "entryPrice": 11.72,
+        "stopPrice": 12.22,
+        "barTime": 1785774600,
+        "patternTier": "looseTier2Short",
+        "tf": "30m",
+        "avgDollarVol20": 587785324.6855075,
+        "source": "CORE"
+      },
+      {
+        "symbol": "TSLA",
+        "side": "short",
+        "qual": 1,
+        "entryPrice": 319.96,
+        "stopPrice": 329.12,
+        "barTime": 1785774600,
+        "patternTier": "looseTier2Short",
+        "tf": "30m",
+        "avgDollarVol20": 13853340305.67595,
+        "source": "CORE"
       }
     ],
     "taken": [
@@ -13006,7 +13030,7 @@
         "source": "CORE",
         "resolved": false,
         "rMultiple": null,
-        "liveR": 0.29,
+        "liveR": 0.07,
         "gapped": false,
         "firstTradeOfDay": false,
         "sizeMult": 1,
@@ -13028,7 +13052,7 @@
         "tf": "30m",
         "resolved": false,
         "rMultiple": null,
-        "liveR": -0.24,
+        "liveR": -0.13,
         "gapped": false,
         "firstTradeOfDay": true,
         "sizeMult": 1,
@@ -13051,7 +13075,7 @@
         "source": "CORE",
         "resolved": false,
         "rMultiple": null,
-        "liveR": -0.05,
+        "liveR": -0.09,
         "gapped": false,
         "firstTradeOfDay": false,
         "sizeMult": 1,
@@ -13074,7 +13098,7 @@
         "source": "CORE",
         "resolved": false,
         "rMultiple": null,
-        "liveR": -0.06,
+        "liveR": -0.07,
         "gapped": false,
         "firstTradeOfDay": false,
         "sizeMult": 1,
@@ -13097,7 +13121,7 @@
         "source": "CORE",
         "resolved": false,
         "rMultiple": null,
-        "liveR": -0.09,
+        "liveR": -0.18,
         "gapped": false,
         "firstTradeOfDay": false,
         "sizeMult": 1,
@@ -13143,7 +13167,7 @@
         "source": "CORE",
         "resolved": false,
         "rMultiple": null,
-        "liveR": -0.05,
+        "liveR": -0.02,
         "gapped": false,
         "firstTradeOfDay": false,
         "sizeMult": 1,
@@ -13166,7 +13190,7 @@
         "source": "CORE",
         "resolved": false,
         "rMultiple": null,
-        "liveR": 0.15,
+        "liveR": 0.13,
         "gapped": false,
         "firstTradeOfDay": false,
         "sizeMult": 1,
@@ -13189,7 +13213,7 @@
         "source": "CORE",
         "resolved": false,
         "rMultiple": null,
-        "liveR": 0.18,
+        "liveR": 0.13,
         "gapped": false,
         "firstTradeOfDay": false,
         "sizeMult": 1,
@@ -13212,7 +13236,7 @@
         "source": "CORE",
         "resolved": false,
         "rMultiple": null,
-        "liveR": 0.38,
+        "liveR": 0.25,
         "gapped": false,
         "firstTradeOfDay": false,
         "sizeMult": 1,
@@ -13223,6 +13247,33 @@
         "obSizeDownActive": false
       }
     ],
-    "rejected": []
+    "rejected": [
+      {
+        "symbol": "MARA",
+        "side": "short",
+        "qual": 1,
+        "entryPrice": 11.72,
+        "stopPrice": 12.22,
+        "barTime": 1785774600,
+        "patternTier": "looseTier2Short",
+        "tf": "30m",
+        "avgDollarVol20": 587785324.6855075,
+        "source": "CORE",
+        "rejectReason": "max positions (10)"
+      },
+      {
+        "symbol": "TSLA",
+        "side": "short",
+        "qual": 1,
+        "entryPrice": 319.96,
+        "stopPrice": 329.12,
+        "barTime": 1785774600,
+        "patternTier": "looseTier2Short",
+        "tf": "30m",
+        "avgDollarVol20": 13853340305.67595,
+        "source": "CORE",
+        "rejectReason": "max positions (10)"
+      }
+    ]
   }
 }
