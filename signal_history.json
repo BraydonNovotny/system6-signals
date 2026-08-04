@@ -13599,7 +13599,7 @@
         "source": "CORE",
         "resolved": false,
         "rMultiple": null,
-        "liveR": -0.05,
+        "liveR": 0.17,
         "gapped": false,
         "firstTradeOfDay": true,
         "sizeMult": 0.25,
@@ -13607,7 +13607,8 @@
         "losingWeekActive": false,
         "qqqOverboughtActive": false,
         "rsBoostActive": false,
-        "obSizeDownActive": false
+        "obSizeDownActive": false,
+        "addWinnersChecked": true
       },
       {
         "symbol": "NFLX",
@@ -13622,7 +13623,7 @@
         "source": "CORE",
         "resolved": false,
         "rMultiple": null,
-        "liveR": -0.12,
+        "liveR": -0.32,
         "gapped": false,
         "firstTradeOfDay": false,
         "sizeMult": 1,
@@ -13630,7 +13631,8 @@
         "losingWeekActive": false,
         "qqqOverboughtActive": false,
         "rsBoostActive": false,
-        "obSizeDownActive": false
+        "obSizeDownActive": false,
+        "addWinnersChecked": true
       },
       {
         "symbol": "MARA",
@@ -13645,7 +13647,7 @@
         "source": "CORE",
         "resolved": false,
         "rMultiple": null,
-        "liveR": -0.2,
+        "liveR": -0.24,
         "gapped": false,
         "firstTradeOfDay": false,
         "sizeMult": 1,
@@ -13653,7 +13655,8 @@
         "losingWeekActive": false,
         "qqqOverboughtActive": false,
         "rsBoostActive": false,
-        "obSizeDownActive": false
+        "obSizeDownActive": false,
+        "addWinnersChecked": true
       },
       {
         "symbol": "META",
@@ -13668,7 +13671,7 @@
         "source": "CORE",
         "resolved": false,
         "rMultiple": null,
-        "liveR": -0.68,
+        "liveR": -0.47,
         "gapped": false,
         "firstTradeOfDay": false,
         "sizeMult": 1,
@@ -13676,7 +13679,8 @@
         "losingWeekActive": false,
         "qqqOverboughtActive": false,
         "rsBoostActive": false,
-        "obSizeDownActive": false
+        "obSizeDownActive": false,
+        "addWinnersChecked": true
       },
       {
         "symbol": "ON",
@@ -13691,7 +13695,7 @@
         "source": "CORE",
         "resolved": false,
         "rMultiple": null,
-        "liveR": -0.1,
+        "liveR": 0.05,
         "gapped": false,
         "firstTradeOfDay": false,
         "sizeMult": 1,
@@ -13699,7 +13703,8 @@
         "losingWeekActive": false,
         "qqqOverboughtActive": false,
         "rsBoostActive": false,
-        "obSizeDownActive": false
+        "obSizeDownActive": false,
+        "addWinnersChecked": true
       },
       {
         "symbol": "NKE",
@@ -13714,7 +13719,7 @@
         "source": "CORE",
         "resolved": false,
         "rMultiple": null,
-        "liveR": 0.37,
+        "liveR": 0.26,
         "gapped": false,
         "firstTradeOfDay": false,
         "sizeMult": 1,
@@ -13722,7 +13727,8 @@
         "losingWeekActive": false,
         "qqqOverboughtActive": false,
         "rsBoostActive": false,
-        "obSizeDownActive": false
+        "obSizeDownActive": false,
+        "addWinnersChecked": true
       },
       {
         "symbol": "ECHO",
@@ -13737,7 +13743,7 @@
         "source": "CORE",
         "resolved": false,
         "rMultiple": null,
-        "liveR": -0.19,
+        "liveR": -0.5,
         "gapped": false,
         "firstTradeOfDay": false,
         "sizeMult": 1,
@@ -13745,7 +13751,8 @@
         "losingWeekActive": false,
         "qqqOverboughtActive": false,
         "rsBoostActive": false,
-        "obSizeDownActive": false
+        "obSizeDownActive": false,
+        "addWinnersChecked": true
       },
       {
         "symbol": "ORCL",
@@ -13760,7 +13767,7 @@
         "source": "CORE",
         "resolved": false,
         "rMultiple": null,
-        "liveR": 0,
+        "liveR": 0.12,
         "gapped": false,
         "firstTradeOfDay": false,
         "sizeMult": 1,
@@ -13768,7 +13775,8 @@
         "losingWeekActive": false,
         "qqqOverboughtActive": false,
         "rsBoostActive": false,
-        "obSizeDownActive": false
+        "obSizeDownActive": false,
+        "addWinnersChecked": true
       },
       {
         "symbol": "MRVL",
@@ -13783,7 +13791,7 @@
         "source": "CORE",
         "resolved": false,
         "rMultiple": null,
-        "liveR": 0,
+        "liveR": 0.1,
         "gapped": false,
         "firstTradeOfDay": false,
         "sizeMult": 1,
@@ -13791,7 +13799,8 @@
         "losingWeekActive": false,
         "qqqOverboughtActive": false,
         "rsBoostActive": false,
-        "obSizeDownActive": false
+        "obSizeDownActive": false,
+        "addWinnersChecked": true
       }
     ],
     "rejected": [
@@ -13808,6 +13817,7 @@
         "source": "CORE",
         "rejectReason": "max positions (10)"
       }
-    ]
+    ],
+    "addWinners": []
   }
 }
