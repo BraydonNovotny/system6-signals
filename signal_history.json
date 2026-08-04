@@ -13281,7 +13281,7 @@
         "source": "CORE",
         "resolved": false,
         "rMultiple": null,
-        "liveR": -0.45,
+        "liveR": -0.42,
         "gapped": false,
         "firstTradeOfDay": false,
         "sizeMult": 1,
@@ -13475,9 +13475,45 @@
         "tf": "30m",
         "avgDollarVol20": 579188757.8231966,
         "source": "CORE"
+      },
+      {
+        "symbol": "RBLX",
+        "side": "short",
+        "qual": 0.4,
+        "entryPrice": 37.26,
+        "stopPrice": 38.78,
+        "barTime": 1785853800,
+        "patternTier": "confluence8ema",
+        "tf": "30m",
+        "avgDollarVol20": 512220889.9217987,
+        "source": "CORE"
       }
     ],
-    "taken": [],
+    "taken": [
+      {
+        "symbol": "RBLX",
+        "side": "short",
+        "qual": 0.4,
+        "entryPrice": 37.26,
+        "stopPrice": 38.78,
+        "barTime": 1785853800,
+        "patternTier": "confluence8ema",
+        "tf": "30m",
+        "avgDollarVol20": 512220889.9217987,
+        "source": "CORE",
+        "resolved": false,
+        "rMultiple": null,
+        "liveR": 0,
+        "gapped": false,
+        "firstTradeOfDay": true,
+        "sizeMult": 0.25,
+        "thinFirstTrade": true,
+        "losingWeekActive": false,
+        "qqqOverboughtActive": false,
+        "rsBoostActive": false,
+        "obSizeDownActive": false
+      }
+    ],
     "rejected": [
       {
         "symbol": "MARA",
