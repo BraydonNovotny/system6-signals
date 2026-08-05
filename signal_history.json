@@ -13993,7 +13993,7 @@
         "source": "CORE",
         "resolved": false,
         "rMultiple": null,
-        "liveR": 0.31,
+        "liveR": 0.7,
         "gapped": false,
         "firstTradeOfDay": true,
         "sizeMult": 0.25,
@@ -14001,7 +14001,8 @@
         "losingWeekActive": false,
         "qqqOverboughtActive": false,
         "rsBoostActive": false,
-        "obSizeDownActive": false
+        "obSizeDownActive": false,
+        "addWinnersChecked": true
       },
       {
         "symbol": "IONQ",
@@ -14016,7 +14017,7 @@
         "source": "CORE",
         "resolved": false,
         "rMultiple": null,
-        "liveR": -0.26,
+        "liveR": 0.34,
         "gapped": false,
         "firstTradeOfDay": false,
         "sizeMult": 1,
@@ -14024,7 +14025,8 @@
         "losingWeekActive": false,
         "qqqOverboughtActive": false,
         "rsBoostActive": false,
-        "obSizeDownActive": false
+        "obSizeDownActive": false,
+        "addWinnersChecked": true
       },
       {
         "symbol": "MARA",
@@ -14039,7 +14041,7 @@
         "source": "CORE",
         "resolved": false,
         "rMultiple": null,
-        "liveR": 0.54,
+        "liveR": 0.98,
         "gapped": false,
         "firstTradeOfDay": false,
         "sizeMult": 1,
@@ -14047,7 +14049,8 @@
         "losingWeekActive": false,
         "qqqOverboughtActive": false,
         "rsBoostActive": false,
-        "obSizeDownActive": false
+        "obSizeDownActive": false,
+        "addWinnersChecked": true
       },
       {
         "symbol": "ON",
@@ -14062,7 +14065,7 @@
         "source": "CORE",
         "resolved": false,
         "rMultiple": null,
-        "liveR": -0.12,
+        "liveR": 0.32,
         "gapped": false,
         "firstTradeOfDay": false,
         "sizeMult": 1,
@@ -14070,7 +14073,8 @@
         "losingWeekActive": false,
         "qqqOverboughtActive": false,
         "rsBoostActive": false,
-        "obSizeDownActive": false
+        "obSizeDownActive": false,
+        "addWinnersChecked": true
       },
       {
         "symbol": "META",
@@ -14085,7 +14089,7 @@
         "source": "CORE",
         "resolved": false,
         "rMultiple": null,
-        "liveR": -0.19,
+        "liveR": -0.22,
         "gapped": false,
         "firstTradeOfDay": false,
         "sizeMult": 1,
@@ -14093,7 +14097,8 @@
         "losingWeekActive": false,
         "qqqOverboughtActive": false,
         "rsBoostActive": false,
-        "obSizeDownActive": false
+        "obSizeDownActive": false,
+        "addWinnersChecked": true
       },
       {
         "symbol": "CPNG",
@@ -14108,7 +14113,7 @@
         "source": "CORE",
         "resolved": false,
         "rMultiple": null,
-        "liveR": 0.49,
+        "liveR": 0.76,
         "gapped": false,
         "firstTradeOfDay": false,
         "sizeMult": 1,
@@ -14116,7 +14121,8 @@
         "losingWeekActive": false,
         "qqqOverboughtActive": false,
         "rsBoostActive": false,
-        "obSizeDownActive": false
+        "obSizeDownActive": false,
+        "addWinnersChecked": true
       },
       {
         "symbol": "APP",
@@ -14131,7 +14137,7 @@
         "source": "CORE",
         "resolved": false,
         "rMultiple": null,
-        "liveR": -0.22,
+        "liveR": 0.2,
         "gapped": false,
         "firstTradeOfDay": false,
         "sizeMult": 1,
@@ -14139,7 +14145,8 @@
         "losingWeekActive": false,
         "qqqOverboughtActive": false,
         "rsBoostActive": false,
-        "obSizeDownActive": false
+        "obSizeDownActive": false,
+        "addWinnersChecked": true
       }
     ],
     "rejected": [
@@ -14220,6 +14227,61 @@
         "avgDollarVol20": 3421695267.8403764,
         "source": "CORE",
         "rejectReason": "max positions (10)"
+      }
+    ],
+    "addWinners": [
+      {
+        "symbol": "APLD",
+        "side": "short",
+        "entryPrice": 30.74,
+        "barTime": 1785938400,
+        "liveR": 0.7,
+        "addMult": 1.5
+      },
+      {
+        "symbol": "MARA",
+        "side": "short",
+        "entryPrice": 11.72,
+        "barTime": 1785938400,
+        "liveR": 0.98,
+        "addMult": 1.5
+      },
+      {
+        "symbol": "CPNG",
+        "side": "short",
+        "entryPrice": 16.31,
+        "barTime": 1785949200,
+        "liveR": 0.76,
+        "addMult": 1.5
+      }
+    ],
+    "closeAdjustments": [
+      {
+        "type": "sized_up",
+        "symbol": "APLD",
+        "side": "short",
+        "entryPrice": 30.74,
+        "barTime": 1785938400,
+        "liveR": 0.67,
+        "addMult": 1.5
+      },
+      {
+        "type": "sized_up",
+        "symbol": "MARA",
+        "side": "short",
+        "entryPrice": 11.72,
+        "barTime": 1785938400,
+        "liveR": 0.98,
+        "addMult": 1.5
+      },
+      {
+        "type": "sized_up",
+        "symbol": "CPNG",
+        "side": "short",
+        "entryPrice": 16.31,
+        "barTime": 1785949200,
+        "liveR": 0.74,
+        "addMult": 1.5
       }
     ]
   }
