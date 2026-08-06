@@ -232,7 +232,7 @@ async function run() {
         if (qual > 0 && rsVsQqq3w != null && rsVsQqq3w < 0) qual = 0; // RS3w exclude filter
         if (qual > 0) {
           const regimeMult = regimeMultFromSpread(spread8_20, 'long');
-          const openOk = !(slot === '09:30' && (qual < 3 || regimeMult !== 1.3));
+          const openOk = slot !== '09:30'; // 1109% system: exclude all 9:30 ET entries
           let tightPass;
           if (qual === 4 && i >= COMPRESSION_WINDOW) {
             const { hi, lo } = compRange(highs, lows, i, COMPRESSION_WINDOW);
@@ -284,7 +284,7 @@ async function run() {
         if (sp.dryDownBreakdown3 && st) qual = 3; else if (sp.rejection && st) qual = 2; else if (sp.looseTier2Short && st) qual = 1; else if (bounce8 && volDecay2Short && tightNowShort && st) qual = 0.4; else if (compVarShortPass) qual = 0.21;
         if (qual > 0) {
           const regimeMult = regimeMultFromSpread(spread8_20, 'short');
-          const openOk = !(slot === '09:30' && (qual < 2 || regimeMult !== 1.3));
+          const openOk = slot !== '09:30'; // 1109% system: exclude all 9:30 ET entries
           let tightPass;
           if (qual === 3 && i >= COMPRESSION_WINDOW) {
             const { hi, lo } = compRange(highs, lows, i, COMPRESSION_WINDOW);
