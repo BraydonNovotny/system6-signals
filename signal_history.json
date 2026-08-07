@@ -14890,7 +14890,7 @@
         "source": "CORE",
         "resolved": false,
         "rMultiple": null,
-        "liveR": 0.24,
+        "liveR": 0.29,
         "gapped": false,
         "firstTradeOfDay": true,
         "sizeMult": 0.175,
