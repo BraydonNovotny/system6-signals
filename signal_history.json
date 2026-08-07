@@ -14826,6 +14826,42 @@
         "tf": "30m",
         "avgDollarVol20": 1440403581.9633172,
         "source": "CORE"
+      },
+      {
+        "symbol": "ORCL",
+        "side": "short",
+        "qual": 2,
+        "entryPrice": 144.4,
+        "stopPrice": 148.73,
+        "barTime": 1786122000,
+        "patternTier": "rejection",
+        "tf": "30m",
+        "avgDollarVol20": 4770587296.3266,
+        "source": "CORE"
+      },
+      {
+        "symbol": "TTD",
+        "side": "short",
+        "qual": 1,
+        "entryPrice": 13.84,
+        "stopPrice": 14.37,
+        "barTime": 1786122000,
+        "patternTier": "looseTier2Short",
+        "tf": "30m",
+        "avgDollarVol20": 403529882.18366194,
+        "source": "CORE"
+      },
+      {
+        "symbol": "COIN",
+        "side": "short",
+        "qual": 0.4,
+        "entryPrice": 151.15,
+        "stopPrice": 156.4,
+        "barTime": 1786122000,
+        "patternTier": "confluence8ema",
+        "tf": "30m",
+        "avgDollarVol20": 1205574749.9429765,
+        "source": "CORE"
       }
     ],
     "taken": [
@@ -14842,7 +14878,7 @@
         "source": "CORE",
         "resolved": false,
         "rMultiple": null,
-        "liveR": 0.24,
+        "liveR": 0.32,
         "gapped": false,
         "firstTradeOfDay": true,
         "sizeMult": 0.175,
@@ -14988,6 +15024,45 @@
         "patternTier": "confluence8ema",
         "tf": "30m",
         "avgDollarVol20": 1440403581.9633172,
+        "source": "CORE",
+        "rejectReason": "daily loss cap"
+      },
+      {
+        "symbol": "ORCL",
+        "side": "short",
+        "qual": 2,
+        "entryPrice": 144.4,
+        "stopPrice": 148.73,
+        "barTime": 1786122000,
+        "patternTier": "rejection",
+        "tf": "30m",
+        "avgDollarVol20": 4770587296.3266,
+        "source": "CORE",
+        "rejectReason": "daily loss cap"
+      },
+      {
+        "symbol": "TTD",
+        "side": "short",
+        "qual": 1,
+        "entryPrice": 13.84,
+        "stopPrice": 14.37,
+        "barTime": 1786122000,
+        "patternTier": "looseTier2Short",
+        "tf": "30m",
+        "avgDollarVol20": 403529882.18366194,
+        "source": "CORE",
+        "rejectReason": "daily loss cap"
+      },
+      {
+        "symbol": "COIN",
+        "side": "short",
+        "qual": 0.4,
+        "entryPrice": 151.15,
+        "stopPrice": 156.4,
+        "barTime": 1786122000,
+        "patternTier": "confluence8ema",
+        "tf": "30m",
+        "avgDollarVol20": 1205574749.9429765,
         "source": "CORE",
         "rejectReason": "daily loss cap"
       }
