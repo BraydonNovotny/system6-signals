@@ -14890,7 +14890,7 @@
         "source": "CORE",
         "resolved": false,
         "rMultiple": null,
-        "liveR": 0.33,
+        "liveR": 0.47,
         "gapped": false,
         "firstTradeOfDay": true,
         "sizeMult": 0.175,
@@ -14898,7 +14898,8 @@
         "losingWeekActive": true,
         "qqqOverboughtActive": false,
         "rsBoostActive": false,
-        "obSizeDownActive": false
+        "obSizeDownActive": false,
+        "addWinnersChecked": true
       },
       {
         "symbol": "OPEN",
@@ -14921,7 +14922,8 @@
         "losingWeekActive": true,
         "qqqOverboughtActive": false,
         "rsBoostActive": false,
-        "obSizeDownActive": false
+        "obSizeDownActive": false,
+        "addWinnersChecked": true
       },
       {
         "symbol": "SMR",
@@ -15091,6 +15093,7 @@
         "source": "CORE",
         "rejectReason": "daily loss cap"
       }
-    ]
+    ],
+    "addWinners": []
   }
 }
