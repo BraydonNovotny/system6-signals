@@ -14766,6 +14766,42 @@
         "tf": "30m",
         "avgDollarVol20": 334090347.48520565,
         "source": "CORE"
+      },
+      {
+        "symbol": "UPST",
+        "side": "short",
+        "qual": 2,
+        "entryPrice": 30.28,
+        "stopPrice": 31.26,
+        "barTime": 1786118400,
+        "patternTier": "rejection",
+        "tf": "30m",
+        "avgDollarVol20": 120906578.20988274,
+        "source": "CORE"
+      },
+      {
+        "symbol": "VST",
+        "side": "short",
+        "qual": 2,
+        "entryPrice": 140.11,
+        "stopPrice": 144.62,
+        "barTime": 1786118400,
+        "patternTier": "rejection",
+        "tf": "30m",
+        "avgDollarVol20": 737824291.4051971,
+        "source": "CORE"
+      },
+      {
+        "symbol": "APP",
+        "side": "short",
+        "qual": 0.4,
+        "entryPrice": 343.15,
+        "stopPrice": 354.5,
+        "barTime": 1786118400,
+        "patternTier": "confluence8ema",
+        "tf": "30m",
+        "avgDollarVol20": 2875033390.0857363,
+        "source": "CORE"
       }
     ],
     "taken": [
@@ -14782,7 +14818,7 @@
         "source": "CORE",
         "resolved": false,
         "rMultiple": null,
-        "liveR": 0.19,
+        "liveR": 0.29,
         "gapped": false,
         "firstTradeOfDay": true,
         "sizeMult": 0.175,
@@ -14805,7 +14841,7 @@
         "source": "CORE",
         "resolved": false,
         "rMultiple": null,
-        "liveR": 0.18,
+        "liveR": 0.21,
         "gapped": false,
         "firstTradeOfDay": false,
         "sizeMult": 0.7,
@@ -14863,6 +14899,45 @@
         "patternTier": "confluence8ema",
         "tf": "30m",
         "avgDollarVol20": 334090347.48520565,
+        "source": "CORE",
+        "rejectReason": "daily loss cap"
+      },
+      {
+        "symbol": "UPST",
+        "side": "short",
+        "qual": 2,
+        "entryPrice": 30.28,
+        "stopPrice": 31.26,
+        "barTime": 1786118400,
+        "patternTier": "rejection",
+        "tf": "30m",
+        "avgDollarVol20": 120906578.20988274,
+        "source": "CORE",
+        "rejectReason": "daily loss cap"
+      },
+      {
+        "symbol": "VST",
+        "side": "short",
+        "qual": 2,
+        "entryPrice": 140.11,
+        "stopPrice": 144.62,
+        "barTime": 1786118400,
+        "patternTier": "rejection",
+        "tf": "30m",
+        "avgDollarVol20": 737824291.4051971,
+        "source": "CORE",
+        "rejectReason": "daily loss cap"
+      },
+      {
+        "symbol": "APP",
+        "side": "short",
+        "qual": 0.4,
+        "entryPrice": 343.15,
+        "stopPrice": 354.5,
+        "barTime": 1786118400,
+        "patternTier": "confluence8ema",
+        "tf": "30m",
+        "avgDollarVol20": 2875033390.0857363,
         "source": "CORE",
         "rejectReason": "daily loss cap"
       }
