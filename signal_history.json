@@ -14802,6 +14802,30 @@
         "tf": "30m",
         "avgDollarVol20": 2875033390.0857363,
         "source": "CORE"
+      },
+      {
+        "symbol": "META",
+        "side": "short",
+        "qual": 0.4,
+        "entryPrice": 592.44,
+        "stopPrice": 604.94,
+        "barTime": 1786120200,
+        "patternTier": "confluence8ema",
+        "tf": "30m",
+        "avgDollarVol20": 10300729441.080286,
+        "source": "CORE"
+      },
+      {
+        "symbol": "MSTR",
+        "side": "short",
+        "qual": 0.4,
+        "entryPrice": 100.12,
+        "stopPrice": 103.17,
+        "barTime": 1786120200,
+        "patternTier": "confluence8ema",
+        "tf": "30m",
+        "avgDollarVol20": 1440403581.9633172,
+        "source": "CORE"
       }
     ],
     "taken": [
@@ -14818,7 +14842,7 @@
         "source": "CORE",
         "resolved": false,
         "rMultiple": null,
-        "liveR": 0.22,
+        "liveR": 0.24,
         "gapped": false,
         "firstTradeOfDay": true,
         "sizeMult": 0.175,
@@ -14841,7 +14865,7 @@
         "source": "CORE",
         "resolved": false,
         "rMultiple": null,
-        "liveR": 0.18,
+        "liveR": -0.04,
         "gapped": false,
         "firstTradeOfDay": false,
         "sizeMult": 0.7,
@@ -14938,6 +14962,32 @@
         "patternTier": "confluence8ema",
         "tf": "30m",
         "avgDollarVol20": 2875033390.0857363,
+        "source": "CORE",
+        "rejectReason": "daily loss cap"
+      },
+      {
+        "symbol": "META",
+        "side": "short",
+        "qual": 0.4,
+        "entryPrice": 592.44,
+        "stopPrice": 604.94,
+        "barTime": 1786120200,
+        "patternTier": "confluence8ema",
+        "tf": "30m",
+        "avgDollarVol20": 10300729441.080286,
+        "source": "CORE",
+        "rejectReason": "daily loss cap"
+      },
+      {
+        "symbol": "MSTR",
+        "side": "short",
+        "qual": 0.4,
+        "entryPrice": 100.12,
+        "stopPrice": 103.17,
+        "barTime": 1786120200,
+        "patternTier": "confluence8ema",
+        "tf": "30m",
+        "avgDollarVol20": 1440403581.9633172,
         "source": "CORE",
         "rejectReason": "daily loss cap"
       }
