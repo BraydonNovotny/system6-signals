@@ -14742,6 +14742,30 @@
         "tf": "30m",
         "avgDollarVol20": 257265304.09696198,
         "source": "CORE"
+      },
+      {
+        "symbol": "APLD",
+        "side": "short",
+        "qual": 0.4,
+        "entryPrice": 28.95,
+        "stopPrice": 30.27,
+        "barTime": 1786116600,
+        "patternTier": "confluence8ema",
+        "tf": "30m",
+        "avgDollarVol20": 571384900.4697843,
+        "source": "CORE"
+      },
+      {
+        "symbol": "CPNG",
+        "side": "short",
+        "qual": 0.4,
+        "entryPrice": 16.35,
+        "stopPrice": 16.78,
+        "barTime": 1786116600,
+        "patternTier": "confluence8ema",
+        "tf": "30m",
+        "avgDollarVol20": 334090347.48520565,
+        "source": "CORE"
       }
     ],
     "taken": [
@@ -14758,7 +14782,7 @@
         "source": "CORE",
         "resolved": false,
         "rMultiple": null,
-        "liveR": -0.06,
+        "liveR": 0.19,
         "gapped": false,
         "firstTradeOfDay": true,
         "sizeMult": 0.175,
@@ -14781,7 +14805,7 @@
         "source": "CORE",
         "resolved": false,
         "rMultiple": null,
-        "liveR": 0.04,
+        "liveR": 0.18,
         "gapped": false,
         "firstTradeOfDay": false,
         "sizeMult": 0.7,
@@ -14815,6 +14839,33 @@
         "obSizeDownActive": false
       }
     ],
-    "rejected": []
+    "rejected": [
+      {
+        "symbol": "APLD",
+        "side": "short",
+        "qual": 0.4,
+        "entryPrice": 28.95,
+        "stopPrice": 30.27,
+        "barTime": 1786116600,
+        "patternTier": "confluence8ema",
+        "tf": "30m",
+        "avgDollarVol20": 571384900.4697843,
+        "source": "CORE",
+        "rejectReason": "daily loss cap"
+      },
+      {
+        "symbol": "CPNG",
+        "side": "short",
+        "qual": 0.4,
+        "entryPrice": 16.35,
+        "stopPrice": 16.78,
+        "barTime": 1786116600,
+        "patternTier": "confluence8ema",
+        "tf": "30m",
+        "avgDollarVol20": 334090347.48520565,
+        "source": "CORE",
+        "rejectReason": "daily loss cap"
+      }
+    ]
   }
 }
