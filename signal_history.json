@@ -14862,6 +14862,18 @@
         "tf": "30m",
         "avgDollarVol20": 1205574749.9429765,
         "source": "CORE"
+      },
+      {
+        "symbol": "DOW",
+        "side": "short",
+        "qual": 0.4,
+        "entryPrice": 29.84,
+        "stopPrice": 30.63,
+        "barTime": 1786125600,
+        "patternTier": "confluence8ema",
+        "tf": "30m",
+        "avgDollarVol20": 303473680.88139075,
+        "source": "CORE"
       }
     ],
     "taken": [
@@ -14878,7 +14890,7 @@
         "source": "CORE",
         "resolved": false,
         "rMultiple": null,
-        "liveR": 0.09,
+        "liveR": 0.24,
         "gapped": false,
         "firstTradeOfDay": true,
         "sizeMult": 0.175,
@@ -14901,7 +14913,7 @@
         "source": "CORE",
         "resolved": false,
         "rMultiple": null,
-        "liveR": 0.04,
+        "liveR": 0.18,
         "gapped": false,
         "firstTradeOfDay": false,
         "sizeMult": 0.7,
@@ -15063,6 +15075,19 @@
         "patternTier": "confluence8ema",
         "tf": "30m",
         "avgDollarVol20": 1205574749.9429765,
+        "source": "CORE",
+        "rejectReason": "daily loss cap"
+      },
+      {
+        "symbol": "DOW",
+        "side": "short",
+        "qual": 0.4,
+        "entryPrice": 29.84,
+        "stopPrice": 30.63,
+        "barTime": 1786125600,
+        "patternTier": "confluence8ema",
+        "tf": "30m",
+        "avgDollarVol20": 303473680.88139075,
         "source": "CORE",
         "rejectReason": "daily loss cap"
       }
