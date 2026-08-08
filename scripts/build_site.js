@@ -349,8 +349,12 @@ function render(dateStr) {
         resultHtml += ' <span class="gap-badge" style="background:color-mix(in srgb, var(--win) 20%, transparent); color:var(--win);" title="Stock\\'s own 3-week RS vs QQQ >=+5 while QQQ 2D RSI<=15 the prior day -- locked rule: size to 1.5x.">1.5x RS-BOOST</span>';
       }
       const tf = s.tf || '30m';
-      const closeOffset = tf === '1h' ? 3600 : 1800;
-      return '<tr><td class="mono" style="font-weight:600;">' + s.symbol + '</td><td>' + fmtTime(s.barTime + closeOffset) + ' PT <span style="color:var(--text-faint);">(' + tf + ')</span></td>' +
+      // barTime is already the real entry bar's OPEN time (entryTime = entryBar.time in every
+      // scanner/backtest builder) -- displaying it directly, no added offset. A prior version
+      // added +30/60min here assuming barTime was a detection bar one step before entry, which
+      // double-counted and pushed displayed times (incl. legitimate 12:30 PT last-bar entries)
+      // past what actually happened, in one case making a 12:30 PT entry read as 1:00 PT.
+      return '<tr><td class="mono" style="font-weight:600;">' + s.symbol + '</td><td>' + fmtTime(s.barTime) + ' PT <span style="color:var(--text-faint);">(' + tf + ')</span></td>' +
         '<td class="' + s.side + '">' + s.side.toUpperCase() + '</td><td>' + resultHtml + '</td></tr>';
     }).join('');
     container.innerHTML = '<table><thead><tr><th>Ticker</th><th>Time</th><th>Side</th><th>Result</th></tr></thead><tbody>' + rows + '</tbody></table>';
@@ -364,8 +368,7 @@ function render(dateStr) {
   } else {
     const rrows = allRejected.slice().sort((a, b) => a.barTime - b.barTime).map(s => {
       const tf = s.tf || '30m';
-      const closeOffset = tf === '1h' ? 3600 : 1800;
-      return '<tr><td class="mono" style="font-weight:600;">' + s.symbol + '</td><td>' + fmtTime(s.barTime + closeOffset) + ' PT <span style="color:var(--text-faint);">(' + tf + ')</span></td>' +
+      return '<tr><td class="mono" style="font-weight:600;">' + s.symbol + '</td><td>' + fmtTime(s.barTime) + ' PT <span style="color:var(--text-faint);">(' + tf + ')</span></td>' +
         '<td class="' + s.side + '">' + s.side.toUpperCase() + '</td><td style="color:var(--text-faint);">' + s.rejectReason + '</td></tr>';
     }).join('');
     rejectedContainer.innerHTML = '<table><thead><tr><th>Ticker</th><th>Time</th><th>Side</th><th>Reason</th></tr></thead><tbody>' + rrows + '</tbody></table>';

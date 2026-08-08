@@ -37,6 +37,10 @@ async function fetch30m(symbol) {
   const bars = [];
   for (let i = 0; i < ts.length; i++) {
     if (q.close[i] == null || q.high[i] == null || q.low[i] == null || q.volume[i] == null || q.open[i] == null) continue;
+    // ZERO-VOLUME ARTIFACT FIX (2026-08-08): Yahoo sometimes appends a spurious closing-print bar
+    // at exactly market close with vol=0 -- not a real tradeable bar. Same fix as the backtest
+    // builder (build_intraday_shelf_signals.js), keeps shelf from "entering" on it.
+    if (q.volume[i] === 0) continue;
     bars.push({ time: ts[i], open: q.open[i], high: q.high[i], low: q.low[i], close: q.close[i], volume: q.volume[i] });
   }
   return dropIncompleteBars(bars, 1800);
