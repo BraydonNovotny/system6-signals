@@ -1,17 +1,18 @@
-// Entry point for the ACTUAL 1065.2% locked system -- replaces run.js's old System 6
+// Entry point for the ACTUAL 1075.3% locked system -- replaces run.js's old System 6
 // orchestration entirely. No roster dependency (fixed 233-ticker universe instead), no
 // add-winners/cap-trigger-reaction/7-24-rule/dist-top-rule overlays (none apply to this
 // system -- it only ever exits via stop-or-EOD-close, nothing else touches an open position).
 //
-// KNOWN GAP: shelf long/short is NOT included here. Its exact original live-detection
-// parameters (touch tolerance, volume-spike multiple, lookback window) couldn't be reverse-
-// engineered from the existing validated backtest output despite several attempts -- rather
-// than guess and risk silently wrong shelf signals, it's left out until those parameters are
-// recovered or shelf is re-derived from scratch. Base, 3x-inside, and EP are real and complete.
+// Shelf long/short (2026-08-08): its live-detection parameters were recovered from this
+// session's own tool-call history (the exact command that built the validated
+// intraday_shelf_finallong/finalshort files) and verified to reproduce the original OOS trade
+// counts to <0.5%. All 5 patterns (base, shelf-long, shelf-short, 3x-inside, EP) are now real
+// and complete.
 const { ptNowDecimalHour, ptDateString, fetchChart, pool, dropIncompleteBars } = require('./lib');
 const scanBase = require('./scan_base_reclaim');
 const scan3xInside = require('./scan_3x_inside');
 const scanEP = require('./scan_ep_loosened');
+const scanShelf = require('./scan_shelf');
 const { loadHistory, saveHistory, recordCandidates, recordTaken } = require('./history');
 const { runAccountFilter } = require('./account_filter_v2');
 const resolvePending = require('./resolve_pending_v2');
@@ -50,12 +51,13 @@ async function runEntryScans() {
   const carriedOpenCount = countCarriedOpenPositions(history, today);
 
   const todayBaseTaken = todaysTakenByPattern(history, today, 'base_4h_reclaim');
-  const [base, threeX, ep] = await Promise.all([
+  const [base, threeX, ep, shelf] = await Promise.all([
     scanBase.run(todayBaseTaken).catch(e => { console.error('Base scan failed:', e.message); return []; }),
     scan3xInside.run().catch(e => { console.error('3x-inside scan failed:', e.message); return []; }),
     scanEP.run().catch(e => { console.error('EP scan failed:', e.message); return []; }),
+    scanShelf.run().catch(e => { console.error('Shelf scan failed:', e.message); return []; }),
   ]);
-  const allNew = [...base, ...threeX, ...ep];
+  const allNew = [...base, ...threeX, ...ep, ...shelf];
   const allCandidatesToday = recordCandidates(today, allNew);
 
   const symbols = [...new Set(allCandidatesToday.map(c => c.symbol))];
@@ -70,7 +72,7 @@ async function runEntryScans() {
 
   const { taken, rejected } = runAccountFilter(allCandidatesToday, barsBySymbol, carriedOpenCount, previousDecisions);
   recordTaken(today, taken, rejected);
-  console.log(`[1065.2% system] Carried-open: ${carriedOpenCount} | Candidates: ${allCandidatesToday.length} (base=${base.length}, 3x-inside=${threeX.length}, EP=${ep.length}) | Taken: ${taken.length} | Rejected: ${rejected.length}`);
+  console.log(`[1075.3% system] Carried-open: ${carriedOpenCount} | Candidates: ${allCandidatesToday.length} (base=${base.length}, 3x-inside=${threeX.length}, EP=${ep.length}, shelf=${shelf.length}) | Taken: ${taken.length} | Rejected: ${rejected.length}`);
   return taken;
 }
 
@@ -78,7 +80,7 @@ async function main() {
   const force = process.argv.includes('--force');
 
   if (force) {
-    console.log('Force: running entry scans (base + 3x-inside + EP; shelf pending).');
+    console.log('Force: running entry scans (base + 3x-inside + EP + shelf-long/short).');
     await runEntryScans();
     await resolvePending.run().catch(e => console.error('resolvePending failed:', e.message));
     build();
