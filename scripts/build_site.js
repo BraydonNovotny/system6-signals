@@ -112,12 +112,6 @@ function build() {
       <p class="sub mono" style="margin:0 0 10px;">Same real pattern signal, but rejected because capital/slots were already full -- these would NOT have been actual trades. (Signals blocked by the daily loss cap are intentionally NOT shown here -- no reason to tempt overriding your own risk limit on a day you've already hit it.)</p>
       <div id="rejected-container"></div>
     </div>
-    <div style="border-top:1px solid var(--rail); margin-top:4px;"></div>
-    <div style="padding:14px 18px;">
-      <h2 style="margin:0 0 4px;">Close Adjustments</h2>
-      <p class="sub mono" style="margin:0 0 10px;">Anything the LOCKED rules did to an open position at the close: sized up to 1.5x (still open, already &ge;0.5R), force-closed early (entry day closed weak/strong within its own range -- retired 2026-07-27), or closed as part of the daily-cap reaction (down &ge;0.25R as of today's close, on a day another trade already tripped the -1R cap). Informational -- you place any add/close manually.</p>
-      <div id="close-adjustments-container"></div>
-    </div>
   </div>
 
   <details class="roster">
@@ -284,7 +278,6 @@ document.getElementById('perf-windows').innerHTML =
 const dateInput = document.getElementById('date-input');
 const container = document.getElementById('signal-container');
 const rejectedContainer = document.getElementById('rejected-container');
-const closeAdjustmentsContainer = document.getElementById('close-adjustments-container');
 const titleEl = document.getElementById('section-title');
 const dayStatsEl = document.getElementById('day-stats');
 const prevBtn = document.getElementById('prev-btn');
@@ -310,9 +303,9 @@ function render(dateStr) {
   nextBtn.disabled = !(idx >= 0 && idx < days.length - 1);
 
   // BUG FIX: this used to return early here on a no-trades day, which skipped updating the
-  // rejected-for-capital and close-adjustments sections below -- leaving them showing
-  // stale content from whatever day was viewed PREVIOUSLY (e.g. click back to yesterday,
-  // forward to today: today's real "nothing taken/blocked" state never got applied,
+  // rejected-for-capital section below -- leaving it showing stale content from whatever day
+  // was viewed PREVIOUSLY (e.g. click back to yesterday, forward to today: today's real
+  // "nothing taken/blocked" state never got applied,
   // yesterday's real rejections/adjustments stayed on screen looking like today's).
   // Every render() call must now update ALL THREE sections, every time, no early exit.
   if (!taken.length) {
@@ -378,48 +371,6 @@ function render(dateStr) {
     rejectedContainer.innerHTML = '<table><thead><tr><th>Ticker</th><th>Time</th><th>Side</th><th>Reason</th></tr></thead><tbody>' + rrows + '</tbody></table>';
   }
 
-  // Close Adjustments section -- feed of anything the LOCKED EOD rules did to an open
-  // position: sized up (eod_add_winners.js). Historical force-closed-by-CP entries from
-  // before the rule was retired (2026-07-27) still render for accurate history.
-  // Defensive dedup (2026-07-27): a prior bug had two independent code paths each pushing
-  // their own entry for the same qualifying trade, showing every add-winners symbol twice.
-  // Root cause fixed in eod_add_winners.js, but dedupe here too as a safety net.
-  const closeAdjSeen = new Set();
-  const closeAdj = ((day && day.closeAdjustments) ? day.closeAdjustments : []).filter(a => {
-    const key = a.type + '|' + a.symbol + '|' + a.side + '|' + a.barTime;
-    if (closeAdjSeen.has(key)) return false;
-    closeAdjSeen.add(key);
-    return true;
-  });
-  if (!closeAdj.length) {
-    closeAdjustmentsContainer.innerHTML = '<div class="empty" style="padding:16px;">None -- nothing sized up or force-closed at the close this day.</div>';
-  } else {
-    const carows = closeAdj.slice().sort((a, b) => a.barTime - b.barTime).map(s => {
-      if (s.type === 'sized_up') {
-        return '<tr><td class="mono" style="font-weight:600;">' + s.symbol + '</td>' +
-          '<td class="' + s.side + '">' + s.side.toUpperCase() + '</td>' +
-          '<td class="mono">$' + s.entryPrice.toFixed(2) + '</td>' +
-          '<td><span class="gap-badge" style="background:color-mix(in srgb, var(--win) 20%, transparent); color:var(--win);">SIZED UP</span></td>' +
-          '<td class="r-pos mono">+' + s.liveR.toFixed(2) + 'R</td>' +
-          '<td class="mono">' + s.addMult + 'x total</td></tr>';
-      }
-      const rCls = s.rMultiple >= 0 ? 'r-pos' : 'r-neg';
-      const badge = s.type === 'closed_cap_reaction'
-        ? '<span class="gap-badge" title="Today\\'s daily loss cap tripped on a different trade -- this position was down at least 0.25R as of today\\'s own close, so it was closed out rather than left to run">CLOSED (CAP)</span>'
-        : s.type === 'closed_724_rule'
-        ? '<span class="gap-badge" title="QQQ closed oversold (2D RSI<=10) while still above its 200ema and >=5x its own 14d ADR off the 52-week high -- an oversold-bounce-risk day, so this short was closed at today\\'s own close">CLOSED (7/24)</span>'
-        : s.type === 'closed_disttop_rule'
-        ? '<span class="gap-badge" title="QQQ showed 3 consecutive ascending-high blue bars on descending volume, >=3 days since its own 8ema touch -- a distribution-top exhaustion day, so this long was closed at today\\'s own close">CLOSED (DIST-TOP)</span>'
-        : '<span class="gap-badge" title="Entry day closed weak (long) or strong (short) within its own range">CLOSED (CP)</span>';
-      return '<tr><td class="mono" style="font-weight:600;">' + s.symbol + '</td>' +
-        '<td class="' + s.side + '">' + s.side.toUpperCase() + '</td>' +
-        '<td class="mono">$' + (s.entryPrice != null ? s.entryPrice.toFixed(2) : '--') + '</td>' +
-        '<td>' + badge + '</td>' +
-        '<td class="' + rCls + ' mono">' + (s.rMultiple >= 0 ? '+' : '') + s.rMultiple.toFixed(2) + 'R</td>' +
-        '<td class="mono">--</td></tr>';
-    }).join('');
-    closeAdjustmentsContainer.innerHTML = '<table><thead><tr><th>Ticker</th><th>Side</th><th>Entry</th><th>Action</th><th>R</th><th>Size to</th></tr></thead><tbody>' + carows + '</tbody></table>';
-  }
 }
 
 function goTo(dir) {
