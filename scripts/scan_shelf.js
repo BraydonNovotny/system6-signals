@@ -129,7 +129,7 @@ function scanSymbolSide(symbol, side, daily, bars30) {
     signals.push({
       symbol, side, entryPrice: +entryPrice.toFixed(4), stopPrice: +stopPrice.toFixed(4),
       barTime: entryBar.time, patternTier: side === 'short' ? 'shelf_short' : 'shelf_long',
-      tf: '30m', source: 'CORE', qual: null, shelfTouches: bestTouches,
+      tf: '30m', source: 'CORE', qual: null, shelfTouches: bestTouches, sizeMult: 1.0,
     });
   }
   const seen = new Set(); const deduped = [];

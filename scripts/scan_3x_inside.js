@@ -113,7 +113,7 @@ async function scanSymbol(symbol, daily, bars30, bars1h) {
 
         signals.push({
           symbol, side: 'long', qual, entryPrice: +entryPrice.toFixed(4), stopPrice: +finalStop.toFixed(4),
-          barTime: entryBar.time, patternTier: 'three_x_inside', tf: entryTf, source: 'CORE',
+          barTime: entryBar.time, patternTier: 'three_x_inside', tf: entryTf, source: 'CORE', sizeMult: 1.0,
         });
       }
     }

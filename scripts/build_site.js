@@ -87,6 +87,7 @@ function build() {
 </style>
 </head><body><div class="wrap">
   <h1>System 6 — Live Signals</h1>
+  <p class="sub">Current locked system: base 4H-reclaim + shelf long/short + 3x-inside + EP (loosened). Base and EP entries require stop &le;0.75&times; prior-day ADR14; base additionally requires entry-bar volume &ge;0.7&times; its own trailing same-slot average. OOS backtest: 915.8% CAGR, 13.906 Sharpe, 2.25% max drawdown (10-position MAX sizing).</p>
   <p class="sub mono">Roster last checked: ${rosterUpdated}</p>
   <span class="regime ${data.qqqBullish ? 'bull' : 'bear'}">QQQ: ${data.qqqBullish ? 'BULLISH' : 'BEARISH'}</span>
 
@@ -97,6 +98,7 @@ function build() {
       <div>
         <h2 id="section-title">Triggered &amp; taken</h2>
         <p id="day-stats" class="sub mono" style="margin:2px 0 0;"></p>
+        <p class="sub" style="margin:2px 0 0; font-size:11.5px;">Time = Pacific, the entry bar's own open (e.g. "7:00" = enter at the open of the 7:00 bar / close of the prior 6:30 bar). Size = position-size multiplier vs standard (1.00x unless a rule sizes it up or down).</p>
       </div>
       <div class="controls">
         <input type="date" id="date-input" />
@@ -130,7 +132,8 @@ function build() {
   </details>
 
   <details class="changelog">
-    <summary>Strategy changelog — 5 updates (2026-07-28)</summary>
+    <summary>Strategy changelog (legacy — describes the retired pre-2026-08 architecture, kept for history)</summary>
+    <p class="note" style="padding:0 16px 10px; margin:0; font-size:12px; color:var(--text-faint);">The 5 tabs below document the OLD "System 6" core-scan system (roster-based, RS-boost/first-trade sizing/-1R daily cap). The system actually running now is the base+shelf+3x-inside+EP architecture described at the top of this page (0.75x ADR stop cap, 0.7x volume-surge filter on base) — none of the sizing badges below (RS-BOOST, thin-liquidity, etc.) apply to it.</p>
     <div class="tab-bar">
       <button class="tab-btn active" data-tab="exit">Exit rule</button>
       <button class="tab-btn" data-tab="entry">Entry filter</button>
@@ -228,7 +231,7 @@ function build() {
     </div>
   </details>
 
-  <footer>Core+EP+Parabolic, confluence tiers, first-trade-of-day 0.5x sizing (+0.5x more if also below median liquidity), SL widened +40% off the ADR-tiered table, 100% chandelier exit (arm 1.5R/trail 2.0R), long-only 3-week RS-vs-QQQ entry filter, daily-cap reaction (close other open positions down &ge;0.25R as of today's close once the day's -1R cap trips -- see Strategy changelog above) (no close-position filter -- retired 2026-07-27, backtesting confirmed it's not part of the current locked config). "Taken" = passed the same -1R daily loss cap (-2R for EP-30m) and 10-position limit the backtest uses, computed chronologically as the day unfolds. Trades still in progress show as Pending until enough bars exist to resolve them (updates automatically on a later refresh). History starts from whenever this system first ran. Not investment advice -- verify before acting.</footer>
+  <footer>Base 4H-reclaim (stop &le;0.75&times; prior-day ADR14, entry-bar volume &ge;0.7&times; its own trailing same-slot average, daily cap 5 / block at day-realized -1R) + shelf long/short + 3x-inside + EP loosened (stop &le;0.75&times; prior-day ADR14, QQQ-bullish gated). 10 main positions (MAX) + 5 reserved slots for shelf/3x-inside/EP (base never competes for reserved slots). Exit: stop-or-EOD-close only. 9:30 ET entries excluded. "Taken" = passed the same position-cap/reserved-slot logic the backtest uses, computed chronologically as the day unfolds. Trades still in progress show as Pending until enough bars exist to resolve them (updates automatically on a later refresh). History starts from whenever this system first ran. Not investment advice -- verify before acting.</footer>
 </div>
 
 <script>
@@ -287,6 +290,7 @@ if (days.length) { dateInput.min = days[0]; dateInput.max = days[days.length - 1
 function fmtTime(barTime) {
   return new Intl.DateTimeFormat('en-US', { timeZone: 'America/Los_Angeles', hour: '2-digit', minute: '2-digit' }).format(new Date(barTime * 1000));
 }
+function fmtPrice(p) { return p == null ? '—' : '$' + p.toFixed(2); }
 function humanDate(dateStr) {
   return new Intl.DateTimeFormat('en-US', { timeZone: 'America/Los_Angeles', weekday: 'long', month: 'long', day: 'numeric' }).format(new Date(dateStr + 'T12:00:00'));
 }
@@ -354,10 +358,13 @@ function render(dateStr) {
       // added +30/60min here assuming barTime was a detection bar one step before entry, which
       // double-counted and pushed displayed times (incl. legitimate 12:30 PT last-bar entries)
       // past what actually happened, in one case making a 12:30 PT entry read as 1:00 PT.
+      const sizeStr = (s.sizeMult != null ? s.sizeMult : 1.0).toFixed(2) + 'x';
       return '<tr><td class="mono" style="font-weight:600;">' + s.symbol + '</td><td>' + fmtTime(s.barTime) + ' PT <span style="color:var(--text-faint);">(' + tf + ')</span></td>' +
-        '<td class="' + s.side + '">' + s.side.toUpperCase() + '</td><td>' + resultHtml + '</td></tr>';
+        '<td class="' + s.side + '">' + s.side.toUpperCase() + '</td>' +
+        '<td class="mono">' + fmtPrice(s.entryPrice) + '</td><td class="mono">' + fmtPrice(s.stopPrice) + '</td>' +
+        '<td class="mono">' + sizeStr + '</td><td>' + resultHtml + '</td></tr>';
     }).join('');
-    container.innerHTML = '<table><thead><tr><th>Ticker</th><th>Time</th><th>Side</th><th>Result</th></tr></thead><tbody>' + rows + '</tbody></table>';
+    container.innerHTML = '<table><thead><tr><th>Ticker</th><th>Time</th><th>Side</th><th>Entry</th><th>Stop</th><th>Size</th><th>Result</th></tr></thead><tbody>' + rows + '</tbody></table>';
   }
 
   // Rejected-for-capital section -- intentionally EXCLUDES daily-loss-cap rejections
@@ -369,9 +376,11 @@ function render(dateStr) {
     const rrows = allRejected.slice().sort((a, b) => a.barTime - b.barTime).map(s => {
       const tf = s.tf || '30m';
       return '<tr><td class="mono" style="font-weight:600;">' + s.symbol + '</td><td>' + fmtTime(s.barTime) + ' PT <span style="color:var(--text-faint);">(' + tf + ')</span></td>' +
-        '<td class="' + s.side + '">' + s.side.toUpperCase() + '</td><td style="color:var(--text-faint);">' + s.rejectReason + '</td></tr>';
+        '<td class="' + s.side + '">' + s.side.toUpperCase() + '</td>' +
+        '<td class="mono">' + fmtPrice(s.entryPrice) + '</td><td class="mono">' + fmtPrice(s.stopPrice) + '</td>' +
+        '<td style="color:var(--text-faint);">' + s.rejectReason + '</td></tr>';
     }).join('');
-    rejectedContainer.innerHTML = '<table><thead><tr><th>Ticker</th><th>Time</th><th>Side</th><th>Reason</th></tr></thead><tbody>' + rrows + '</tbody></table>';
+    rejectedContainer.innerHTML = '<table><thead><tr><th>Ticker</th><th>Time</th><th>Side</th><th>Entry</th><th>Stop</th><th>Reason</th></tr></thead><tbody>' + rrows + '</tbody></table>';
   }
 
 }

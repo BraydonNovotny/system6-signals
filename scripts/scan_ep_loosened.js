@@ -16,6 +16,9 @@ const UNIVERSE_233 = require('./universe_233.js');
 
 const GAP_MIN_PCT = 8, VOL_RATIO_MIN = 2.0;
 const TERCILE_FRAC = 2 / 3; // "Loosened": top two-thirds of first-bar looseness qualify
+// ADR-relative stop cap (2026-08-09, "915.8% system"): same rule as scan_base_reclaim.js -- reject
+// if the stop (LOD) is wider than 0.75x the stock's own prior-day ADR14.
+const ADR_CAP_RATIO = 0.75;
 
 async function fetchDaily(symbol) {
   const result = await fetchChart(symbol, 'range=2y&interval=1d');
@@ -102,9 +105,15 @@ async function scanSymbol(symbol, daily, bars30, qqqBullishToday) {
   const firstBarRangePct = (firstBar.high - firstBar.low) / firstBar.open * 100;
   const firstBarLooseness = adrPrevDay > 0 ? firstBarRangePct / adrPrevDay : null;
 
+  // ADR-relative stop cap: reject if the LOD stop is wider than 0.75x prior-day ADR14.
+  if (adrPrevDay <= 0) return null;
+  const rVsAdr = R * 100 / adrPrevDay;
+  if (rVsAdr > ADR_CAP_RATIO) return null;
+
   return {
     symbol, side: 'long', qual: 4, entryPrice: +entryPrice.toFixed(4), stopPrice: +stopPrice.toFixed(4),
     barTime: entryTime, patternTier: 'ep_loosened', tf: '30m', source: 'EP', firstBarLooseness,
+    rVsAdr: +rVsAdr.toFixed(3), sizeMult: 1.0,
   };
 }
 

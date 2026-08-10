@@ -18,6 +18,17 @@ const STRONG_BODY_RATIO = 0.60, STRONG_CLOSE_POS = 0.75, CONFIRM_WINDOW_BARS = 8
 const EARLY_BODY_RATIO = 0.30, EARLY_CLOSE_POS = 0.55;
 const SL_FLOOR_ADR_FRAC = 0.275;
 const BASE_DAILY_CAP = 5, BASE_BREAKER_R = -1;
+// ADR-relative stop cap (2026-08-09, "915.8% system"): reject entries whose raw chart stop is
+// wider than 0.75x the stock's own prior-day ADR14. Found via a cross-pattern sweep to be the
+// single best combo -- best Sharpe of ~90 tested configs AND cuts the June 3-12 drawdown episode
+// 5.4x, both at once (not a tradeoff). rPct/adrPct, same formula as ll_backtest/*.js.
+const ADR_CAP_RATIO = 0.75;
+// Entry-bar volume surge (2026-08-09, same system): the confirm/entry 30m bar's own volume must
+// be >=0.7x its stock's trailing 20-bar average for that same time-of-day slot (causal). Found via
+// a feature scan to be a strong, clean, monotonic predictor of rMultiple -- base-only (tested and
+// rejected on shelf, where it hurt badly: shelf's edge is trade-volume-driven, not selectivity-
+// driven). Best Sharpe of the full 0.5x-1.4x sweep on base.
+const SURGE_MIN_RATIO = 0.7, SURGE_LOOKBACK_BARS = 20;
 
 async function fetchDaily(symbol) {
   const result = await fetchChart(symbol, 'range=2y&interval=1d');
@@ -31,7 +42,9 @@ async function fetchDaily(symbol) {
   return bars;
 }
 async function fetch30m(symbol) {
-  const result = await fetchChart(symbol, 'range=10d&interval=30m');
+  // range bumped 10d -> 30d (2026-08-09) so the entry-bar volume-surge check below has enough
+  // same-time-of-day history (needs ~20 prior trading days) -- 10d wasn't enough.
+  const result = await fetchChart(symbol, 'range=30d&interval=30m');
   const ts = result.timestamp || [];
   const q = result.indicators?.quote?.[0] || {};
   let bars = [];
@@ -40,6 +53,18 @@ async function fetch30m(symbol) {
     bars.push({ time: ts[i], open: q.open[i], high: q.high[i], low: q.low[i], close: q.close[i], volume: q.volume[i] });
   }
   return dropIncompleteBars(bars, 1800);
+}
+
+// Entry-bar volume surge: entryBar's own volume vs the trailing SURGE_LOOKBACK_BARS bars in the
+// SAME time-of-day slot (causal -- only bars strictly before entryBar). Same convention as
+// ll_backtest's feature scan/test scripts. Requires at least 5 comparable prior bars (mirrors the
+// backtest's fallback minimum) -- returns null if there's not enough history yet to judge.
+function entryBarVolSurge(bars30, entryBar) {
+  const slotHHMM = etHHMM(entryBar.time);
+  const sameSlot = bars30.filter(b => b.time < entryBar.time && etHHMM(b.time) === slotHHMM).slice(-SURGE_LOOKBACK_BARS);
+  if (sameSlot.length < 5) return null;
+  const avgVol = sameSlot.reduce((s, b) => s + b.volume, 0) / sameSlot.length;
+  return avgVol ? entryBar.volume / avgVol : null;
 }
 
 const etDateFmt = new Intl.DateTimeFormat('en-CA', { timeZone: 'America/New_York' });
@@ -149,9 +174,19 @@ async function scanSymbol(symbol, daily, bars30) {
       if (R > 0.25) continue;
       const stopPrice = rRaw < floorDist ? entryPrice * (1 - floorDist) : chartStopPrice;
 
+      // ADR-relative stop cap: reject if the raw chart stop is wider than 0.75x prior-day ADR14.
+      const rPctVsAdr = Math.abs(entryPrice - chartStopPrice) / entryPrice * 100 / adrPct;
+      if (rPctVsAdr > ADR_CAP_RATIO) continue;
+
+      // Entry-bar volume surge: reject if the confirm/entry bar's own volume is below 0.7x its
+      // stock's trailing same-time-slot average (weak-conviction breakout).
+      const surge = entryBarVolSurge(bars30, entryBar);
+      if (surge == null || surge < SURGE_MIN_RATIO) continue;
+
       signals.push({
         symbol, side: 'long', qual: 1, entryPrice: +entryPrice.toFixed(4), stopPrice: +stopPrice.toFixed(4),
         barTime: entryBar.time, patternTier: 'base_4h_reclaim', tf: '30m', source: 'CORE',
+        rVsAdr: +rPctVsAdr.toFixed(3), volSurge: +surge.toFixed(2), sizeMult: 1.0,
       });
     }
   }
