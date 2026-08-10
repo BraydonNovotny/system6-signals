@@ -16899,6 +16899,20 @@
         "qual": null,
         "shelfTouches": 5,
         "sizeMult": 1
+      },
+      {
+        "symbol": "MOS",
+        "side": "long",
+        "qual": 1,
+        "entryPrice": 22.67,
+        "stopPrice": 22.4119,
+        "barTime": 1786375800,
+        "patternTier": "base_4h_reclaim",
+        "tf": "30m",
+        "source": "CORE",
+        "rVsAdr": 0.17,
+        "volSurge": 0.71,
+        "sizeMult": 1
       }
     ],
     "taken": [
@@ -17301,6 +17315,21 @@
         "liveR": 0.54,
         "gapped": false,
         "rejectReason": "max positions (10) -- caught by post-hoc cap guard"
+      },
+      {
+        "symbol": "MOS",
+        "side": "long",
+        "qual": 1,
+        "entryPrice": 22.67,
+        "stopPrice": 22.4119,
+        "barTime": 1786375800,
+        "patternTier": "base_4h_reclaim",
+        "tf": "30m",
+        "source": "CORE",
+        "rVsAdr": 0.17,
+        "volSurge": 0.71,
+        "sizeMult": 1,
+        "rejectReason": "max positions"
       }
     ]
   }
