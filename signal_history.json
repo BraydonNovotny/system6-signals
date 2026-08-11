@@ -17777,21 +17777,6 @@
         "rejectReason": "max positions (10) -- caught by post-hoc cap guard"
       },
       {
-        "symbol": "DASH",
-        "side": "long",
-        "qual": 1,
-        "entryPrice": 215.83,
-        "stopPrice": 211.565,
-        "barTime": 1786460400,
-        "patternTier": "base_4h_reclaim",
-        "tf": "30m",
-        "source": "CORE",
-        "rVsAdr": 0.506,
-        "volSurge": 0.85,
-        "sizeMult": 1,
-        "rejectReason": "max positions"
-      },
-      {
         "symbol": "BMY",
         "side": "short",
         "entryPrice": 64.993,
@@ -17808,6 +17793,21 @@
         "liveR": 0.96,
         "gapped": false,
         "rejectReason": "max positions (10) -- caught by post-hoc cap guard"
+      },
+      {
+        "symbol": "DASH",
+        "side": "long",
+        "qual": 1,
+        "entryPrice": 215.83,
+        "stopPrice": 211.565,
+        "barTime": 1786460400,
+        "patternTier": "base_4h_reclaim",
+        "tf": "30m",
+        "source": "CORE",
+        "rVsAdr": 0.506,
+        "volSurge": 0.85,
+        "sizeMult": 1,
+        "rejectReason": "max positions"
       },
       {
         "symbol": "TFC",
