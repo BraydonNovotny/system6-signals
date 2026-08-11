@@ -17559,6 +17559,18 @@
         "rVsAdr": 0.145,
         "volSurge": 1.1,
         "sizeMult": 1
+      },
+      {
+        "symbol": "FTNT",
+        "side": "long",
+        "qual": 2,
+        "entryPrice": 162.94,
+        "stopPrice": 160.9598,
+        "barTime": 1786469400,
+        "patternTier": "three_x_inside",
+        "tf": "1h",
+        "source": "CORE",
+        "sizeMult": 1
       }
     ],
     "taken": [
@@ -17732,6 +17744,22 @@
         "resolved": false,
         "rMultiple": null,
         "liveR": 1.17,
+        "gapped": false
+      },
+      {
+        "symbol": "FTNT",
+        "side": "long",
+        "qual": 2,
+        "entryPrice": 162.94,
+        "stopPrice": 160.9598,
+        "barTime": 1786469400,
+        "patternTier": "three_x_inside",
+        "tf": "1h",
+        "source": "CORE",
+        "sizeMult": 1,
+        "resolved": false,
+        "rMultiple": null,
+        "liveR": -0.87,
         "gapped": false
       }
     ],
