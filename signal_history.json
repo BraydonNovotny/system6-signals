@@ -18415,36 +18415,6 @@
         "rejectReason": "max positions (10) -- caught by post-hoc cap guard"
       },
       {
-        "symbol": "FTNT",
-        "side": "long",
-        "qual": 1,
-        "entryPrice": 164.5,
-        "stopPrice": 162.5067,
-        "barTime": 1786545000,
-        "patternTier": "base_4h_reclaim",
-        "tf": "30m",
-        "source": "CORE",
-        "rVsAdr": 0.183,
-        "volSurge": 0.84,
-        "sizeMult": 1,
-        "rejectReason": "max positions"
-      },
-      {
-        "symbol": "WFC",
-        "side": "long",
-        "qual": 1,
-        "entryPrice": 88.5,
-        "stopPrice": 87.72,
-        "barTime": 1786545000,
-        "patternTier": "base_4h_reclaim",
-        "tf": "30m",
-        "source": "CORE",
-        "rVsAdr": 0.46,
-        "volSurge": 0.86,
-        "sizeMult": 1,
-        "rejectReason": "max positions"
-      },
-      {
         "symbol": "BYND",
         "side": "short",
         "entryPrice": 0.4101,
@@ -18463,6 +18433,21 @@
         "rejectReason": "max positions (10) -- caught by post-hoc cap guard"
       },
       {
+        "symbol": "FTNT",
+        "side": "long",
+        "qual": 1,
+        "entryPrice": 164.5,
+        "stopPrice": 162.5067,
+        "barTime": 1786545000,
+        "patternTier": "base_4h_reclaim",
+        "tf": "30m",
+        "source": "CORE",
+        "rVsAdr": 0.183,
+        "volSurge": 0.84,
+        "sizeMult": 1,
+        "rejectReason": "max positions"
+      },
+      {
         "symbol": "NVDA",
         "side": "long",
         "entryPrice": 217.916,
@@ -18479,6 +18464,21 @@
         "liveR": 1.2,
         "gapped": false,
         "rejectReason": "max positions (10) -- caught by post-hoc cap guard"
+      },
+      {
+        "symbol": "WFC",
+        "side": "long",
+        "qual": 1,
+        "entryPrice": 88.5,
+        "stopPrice": 87.72,
+        "barTime": 1786545000,
+        "patternTier": "base_4h_reclaim",
+        "tf": "30m",
+        "source": "CORE",
+        "rVsAdr": 0.46,
+        "volSurge": 0.86,
+        "sizeMult": 1,
+        "rejectReason": "max positions"
       },
       {
         "symbol": "WYNN",
