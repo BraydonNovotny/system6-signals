@@ -18448,7 +18448,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": -0.43,
+        "liveR": -0.44,
         "gapped": false
       },
       {
@@ -18465,7 +18465,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": 1.44,
+        "liveR": 1.61,
         "gapped": false
       },
       {
@@ -18516,7 +18516,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": -0.18,
+        "liveR": 0.13,
         "gapped": false
       },
       {
@@ -18533,7 +18533,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": 0.16,
+        "liveR": -0.15,
         "gapped": false
       },
       {
@@ -18550,7 +18550,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": 2.52,
+        "liveR": 2.33,
         "gapped": false
       },
       {
@@ -18567,7 +18567,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": 0.87,
+        "liveR": 1.08,
         "gapped": false
       },
       {
@@ -18584,7 +18584,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": 1.05,
+        "liveR": 1.28,
         "gapped": false
       },
       {
@@ -18601,7 +18601,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": 1.09,
+        "liveR": 0.92,
         "gapped": false
       }
     ],
