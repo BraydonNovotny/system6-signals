@@ -19434,6 +19434,20 @@
         "rVsAdr": 0.584,
         "volSurge": 0.71,
         "sizeMult": 1
+      },
+      {
+        "symbol": "KEY",
+        "side": "long",
+        "qual": 1,
+        "entryPrice": 23.125,
+        "stopPrice": 22.975,
+        "barTime": 1786631400,
+        "patternTier": "base_4h_reclaim",
+        "tf": "30m",
+        "source": "CORE",
+        "rVsAdr": 0.371,
+        "volSurge": 0.72,
+        "sizeMult": 1
       }
     ],
     "taken": [
@@ -19451,7 +19465,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": 0.12,
+        "liveR": 0.29,
         "gapped": false
       },
       {
@@ -19468,7 +19482,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": -0.51,
+        "liveR": -0.58,
         "gapped": false
       },
       {
@@ -19485,7 +19499,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": -0.25,
+        "liveR": -0.57,
         "gapped": false
       },
       {
@@ -19502,7 +19516,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": 0.15,
+        "liveR": -0.04,
         "gapped": false
       },
       {
@@ -19519,7 +19533,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": -0.25,
+        "liveR": -0.06,
         "gapped": false
       },
       {
@@ -19536,7 +19550,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": 0.38,
+        "liveR": 0.36,
         "gapped": false
       },
       {
@@ -19553,7 +19567,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": 0.93,
+        "liveR": 0.38,
         "gapped": false
       },
       {
@@ -19570,7 +19584,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": 1.04,
+        "liveR": 0.61,
         "gapped": false
       },
       {
@@ -19587,7 +19601,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": 0.11,
+        "liveR": -0.02,
         "gapped": false
       },
       {
@@ -19604,7 +19618,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": 0.02,
+        "liveR": -0.12,
         "gapped": false
       }
     ],
@@ -19816,6 +19830,21 @@
         "source": "CORE",
         "rVsAdr": 0.584,
         "volSurge": 0.71,
+        "sizeMult": 1,
+        "rejectReason": "max positions"
+      },
+      {
+        "symbol": "KEY",
+        "side": "long",
+        "qual": 1,
+        "entryPrice": 23.125,
+        "stopPrice": 22.975,
+        "barTime": 1786631400,
+        "patternTier": "base_4h_reclaim",
+        "tf": "30m",
+        "source": "CORE",
+        "rVsAdr": 0.371,
+        "volSurge": 0.72,
         "sizeMult": 1,
         "rejectReason": "max positions"
       },
