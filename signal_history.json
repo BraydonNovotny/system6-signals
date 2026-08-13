@@ -19420,6 +19420,20 @@
         "qual": null,
         "shelfTouches": 5,
         "sizeMult": 1
+      },
+      {
+        "symbol": "CVX",
+        "side": "long",
+        "qual": 1,
+        "entryPrice": 196.7,
+        "stopPrice": 194.37,
+        "barTime": 1786631400,
+        "patternTier": "base_4h_reclaim",
+        "tf": "30m",
+        "source": "CORE",
+        "rVsAdr": 0.584,
+        "volSurge": 0.71,
+        "sizeMult": 1
       }
     ],
     "taken": [
@@ -19573,7 +19587,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": 0.12,
+        "liveR": 0.11,
         "gapped": false
       },
       {
@@ -19590,11 +19604,29 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": 0,
+        "liveR": 0.02,
         "gapped": false
       }
     ],
     "rejected": [
+      {
+        "symbol": "JPM",
+        "side": "long",
+        "entryPrice": 365.4177,
+        "stopPrice": 359.0229,
+        "barTime": 1786629600,
+        "patternTier": "shelf_long",
+        "tf": "30m",
+        "source": "CORE",
+        "qual": null,
+        "shelfTouches": 6,
+        "sizeMult": 1,
+        "resolved": false,
+        "rMultiple": null,
+        "liveR": 0.09,
+        "gapped": false,
+        "rejectReason": "max positions (10) -- caught by post-hoc cap guard"
+      },
       {
         "symbol": "JPM",
         "side": "short",
@@ -19773,22 +19805,19 @@
         "rejectReason": "max positions"
       },
       {
-        "symbol": "JPM",
+        "symbol": "CVX",
         "side": "long",
-        "entryPrice": 365.4177,
-        "stopPrice": 359.0229,
-        "barTime": 1786629600,
-        "patternTier": "shelf_long",
+        "qual": 1,
+        "entryPrice": 196.7,
+        "stopPrice": 194.37,
+        "barTime": 1786631400,
+        "patternTier": "base_4h_reclaim",
         "tf": "30m",
         "source": "CORE",
-        "qual": null,
-        "shelfTouches": 6,
+        "rVsAdr": 0.584,
+        "volSurge": 0.71,
         "sizeMult": 1,
-        "resolved": false,
-        "rMultiple": null,
-        "liveR": 0.09,
-        "gapped": false,
-        "rejectReason": "max positions (10) -- caught by post-hoc cap guard"
+        "rejectReason": "max positions"
       },
       {
         "symbol": "LVS",
