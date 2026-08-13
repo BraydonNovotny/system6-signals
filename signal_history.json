@@ -19552,6 +19552,20 @@
         "qual": null,
         "shelfTouches": 5,
         "sizeMult": 1
+      },
+      {
+        "symbol": "RF",
+        "side": "long",
+        "qual": 1,
+        "entryPrice": 31.695,
+        "stopPrice": 31.5518,
+        "barTime": 1786638600,
+        "patternTier": "base_4h_reclaim",
+        "tf": "30m",
+        "source": "CORE",
+        "rVsAdr": 0.182,
+        "volSurge": 0.74,
+        "sizeMult": 1
       }
     ],
     "taken": [
@@ -19688,7 +19702,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": 1.06,
+        "liveR": 1.07,
         "gapped": false
       },
       {
@@ -20095,6 +20109,24 @@
       },
       {
         "symbol": "KMI",
+        "side": "short",
+        "entryPrice": 31.708,
+        "stopPrice": 32.2629,
+        "barTime": 1786638600,
+        "patternTier": "shelf_short",
+        "tf": "30m",
+        "source": "CORE",
+        "qual": null,
+        "shelfTouches": 5,
+        "sizeMult": 1,
+        "resolved": false,
+        "rMultiple": null,
+        "liveR": -0.73,
+        "gapped": false,
+        "rejectReason": "max positions (10) -- caught by post-hoc cap guard"
+      },
+      {
+        "symbol": "KMI",
         "side": "long",
         "qual": 2,
         "entryPrice": 31.97,
@@ -20111,22 +20143,19 @@
         "rejectReason": "max positions (10) -- caught by post-hoc cap guard"
       },
       {
-        "symbol": "KMI",
-        "side": "short",
-        "entryPrice": 31.708,
-        "stopPrice": 32.2629,
+        "symbol": "RF",
+        "side": "long",
+        "qual": 1,
+        "entryPrice": 31.695,
+        "stopPrice": 31.5518,
         "barTime": 1786638600,
-        "patternTier": "shelf_short",
+        "patternTier": "base_4h_reclaim",
         "tf": "30m",
         "source": "CORE",
-        "qual": null,
-        "shelfTouches": 5,
+        "rVsAdr": 0.182,
+        "volSurge": 0.74,
         "sizeMult": 1,
-        "resolved": false,
-        "rMultiple": null,
-        "liveR": -0.73,
-        "gapped": false,
-        "rejectReason": "max positions (10) -- caught by post-hoc cap guard"
+        "rejectReason": "max positions"
       }
     ]
   }
