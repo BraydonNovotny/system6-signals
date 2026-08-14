@@ -20271,6 +20271,72 @@
         "qual": null,
         "shelfTouches": 5,
         "sizeMult": 1
+      },
+      {
+        "symbol": "MSFT",
+        "side": "long",
+        "qual": 1,
+        "entryPrice": 498.7,
+        "stopPrice": 493.925,
+        "barTime": 1786716000,
+        "patternTier": "base_4h_reclaim",
+        "tf": "30m",
+        "source": "CORE",
+        "rVsAdr": 0.378,
+        "volSurge": 2.47,
+        "sizeMult": 1
+      },
+      {
+        "symbol": "RTX",
+        "side": "short",
+        "entryPrice": 220.146,
+        "stopPrice": 223.9985,
+        "barTime": 1786716000,
+        "patternTier": "shelf_short",
+        "tf": "30m",
+        "source": "CORE",
+        "qual": null,
+        "shelfTouches": 5,
+        "sizeMult": 1
+      },
+      {
+        "symbol": "RTX",
+        "side": "long",
+        "entryPrice": 220.7114,
+        "stopPrice": 216.849,
+        "barTime": 1786716000,
+        "patternTier": "shelf_long",
+        "tf": "30m",
+        "source": "CORE",
+        "qual": null,
+        "shelfTouches": 7,
+        "sizeMult": 1
+      },
+      {
+        "symbol": "CVX",
+        "side": "long",
+        "entryPrice": 197.554,
+        "stopPrice": 194.0968,
+        "barTime": 1786717800,
+        "patternTier": "shelf_long",
+        "tf": "30m",
+        "source": "CORE",
+        "qual": null,
+        "shelfTouches": 5,
+        "sizeMult": 1
+      },
+      {
+        "symbol": "SPG",
+        "side": "short",
+        "entryPrice": 221.4285,
+        "stopPrice": 225.3034,
+        "barTime": 1786717800,
+        "patternTier": "shelf_short",
+        "tf": "30m",
+        "source": "CORE",
+        "qual": null,
+        "shelfTouches": 6,
+        "sizeMult": 1
       }
     ],
     "taken": [
@@ -20289,7 +20355,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": -0.13,
+        "liveR": -0.19,
         "gapped": false
       },
       {
@@ -20307,7 +20373,25 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": 0.58,
+        "liveR": 0.61,
+        "gapped": false
+      },
+      {
+        "symbol": "MSFT",
+        "side": "long",
+        "qual": 1,
+        "entryPrice": 498.7,
+        "stopPrice": 493.925,
+        "barTime": 1786716000,
+        "patternTier": "base_4h_reclaim",
+        "tf": "30m",
+        "source": "CORE",
+        "rVsAdr": 0.378,
+        "volSurge": 2.47,
+        "sizeMult": 1,
+        "resolved": false,
+        "rMultiple": null,
+        "liveR": -0.04,
         "gapped": false
       },
       {
@@ -20324,7 +20408,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": 0.87,
+        "liveR": 0.77,
         "gapped": false
       },
       {
@@ -20341,7 +20425,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": -0.11,
+        "liveR": 0.05,
         "gapped": false
       },
       {
@@ -20358,7 +20442,41 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": 1.4,
+        "liveR": 1.34,
+        "gapped": false
+      },
+      {
+        "symbol": "RTX",
+        "side": "long",
+        "entryPrice": 220.7114,
+        "stopPrice": 216.849,
+        "barTime": 1786716000,
+        "patternTier": "shelf_long",
+        "tf": "30m",
+        "source": "CORE",
+        "qual": null,
+        "shelfTouches": 7,
+        "sizeMult": 1,
+        "resolved": false,
+        "rMultiple": null,
+        "liveR": 0.29,
+        "gapped": false
+      },
+      {
+        "symbol": "RTX",
+        "side": "short",
+        "entryPrice": 220.146,
+        "stopPrice": 223.9985,
+        "barTime": 1786716000,
+        "patternTier": "shelf_short",
+        "tf": "30m",
+        "source": "CORE",
+        "qual": null,
+        "shelfTouches": 5,
+        "sizeMult": 1,
+        "resolved": false,
+        "rMultiple": null,
+        "liveR": -0.44,
         "gapped": false
       },
       {
@@ -20375,10 +20493,46 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": -0.44,
+        "liveR": -0.21,
+        "gapped": false
+      },
+      {
+        "symbol": "CVX",
+        "side": "long",
+        "entryPrice": 197.554,
+        "stopPrice": 194.0968,
+        "barTime": 1786717800,
+        "patternTier": "shelf_long",
+        "tf": "30m",
+        "source": "CORE",
+        "qual": null,
+        "shelfTouches": 5,
+        "sizeMult": 1,
+        "resolved": false,
+        "rMultiple": null,
+        "liveR": 0.78,
         "gapped": false
       }
     ],
-    "rejected": []
+    "rejected": [
+      {
+        "symbol": "SPG",
+        "side": "short",
+        "entryPrice": 221.4285,
+        "stopPrice": 225.3034,
+        "barTime": 1786717800,
+        "patternTier": "shelf_short",
+        "tf": "30m",
+        "source": "CORE",
+        "qual": null,
+        "shelfTouches": 6,
+        "sizeMult": 1,
+        "resolved": false,
+        "rMultiple": null,
+        "liveR": 0.41,
+        "gapped": false,
+        "rejectReason": "max positions (10) -- caught by post-hoc cap guard"
+      }
+    ]
   }
 }
