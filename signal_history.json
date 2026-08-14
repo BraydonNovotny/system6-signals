@@ -20454,6 +20454,32 @@
         "qual": null,
         "shelfTouches": 5,
         "sizeMult": 1
+      },
+      {
+        "symbol": "GOOGL",
+        "side": "short",
+        "entryPrice": 345.6875,
+        "stopPrice": 353.0517,
+        "barTime": 1786721400,
+        "patternTier": "shelf_short",
+        "tf": "30m",
+        "source": "CORE",
+        "qual": null,
+        "shelfTouches": 6,
+        "sizeMult": 1
+      },
+      {
+        "symbol": "GE",
+        "side": "long",
+        "entryPrice": 365.2104,
+        "stopPrice": 358.7344,
+        "barTime": 1786725000,
+        "patternTier": "shelf_long",
+        "tf": "30m",
+        "source": "CORE",
+        "qual": null,
+        "shelfTouches": 5,
+        "sizeMult": 1
       }
     ],
     "taken": [
@@ -20809,6 +20835,42 @@
         "resolved": false,
         "rMultiple": null,
         "liveR": -0.01,
+        "gapped": false,
+        "rejectReason": "max positions (10) -- caught by post-hoc cap guard"
+      },
+      {
+        "symbol": "GOOGL",
+        "side": "short",
+        "entryPrice": 345.6875,
+        "stopPrice": 353.0517,
+        "barTime": 1786721400,
+        "patternTier": "shelf_short",
+        "tf": "30m",
+        "source": "CORE",
+        "qual": null,
+        "shelfTouches": 6,
+        "sizeMult": 1,
+        "resolved": false,
+        "rMultiple": null,
+        "liveR": 0.11,
+        "gapped": false,
+        "rejectReason": "max positions (10) -- caught by post-hoc cap guard"
+      },
+      {
+        "symbol": "GE",
+        "side": "long",
+        "entryPrice": 365.2104,
+        "stopPrice": 358.7344,
+        "barTime": 1786725000,
+        "patternTier": "shelf_long",
+        "tf": "30m",
+        "source": "CORE",
+        "qual": null,
+        "shelfTouches": 5,
+        "sizeMult": 1,
+        "resolved": false,
+        "rMultiple": null,
+        "liveR": 0.08,
         "gapped": false,
         "rejectReason": "max positions (10) -- caught by post-hoc cap guard"
       }
