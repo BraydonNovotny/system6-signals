@@ -21573,6 +21573,19 @@
         "qual": null,
         "shelfTouches": 5,
         "sizeMult": 1
+      },
+      {
+        "symbol": "USB",
+        "side": "short",
+        "entryPrice": 65.375,
+        "stopPrice": 66.5191,
+        "barTime": 1786987800,
+        "patternTier": "shelf_short",
+        "tf": "30m",
+        "source": "CORE",
+        "qual": null,
+        "shelfTouches": 5,
+        "sizeMult": 1
       }
     ],
     "taken": [
@@ -21590,7 +21603,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": 0.15,
+        "liveR": 0.17,
         "gapped": false
       },
       {
@@ -21641,7 +21654,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": 1.51,
+        "liveR": 1.49,
         "gapped": false
       },
       {
@@ -21658,7 +21671,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": 0.9,
+        "liveR": 0.87,
         "gapped": false
       },
       {
@@ -21675,7 +21688,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": 0.27,
+        "liveR": 0.03,
         "gapped": false
       },
       {
@@ -21692,7 +21705,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": -0.36,
+        "liveR": -0.12,
         "gapped": false
       },
       {
@@ -21709,7 +21722,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": 0.04,
+        "liveR": -0.08,
         "gapped": false
       },
       {
@@ -21726,7 +21739,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": -0.65,
+        "liveR": -0.81,
         "gapped": false
       },
       {
@@ -21743,7 +21756,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": 0.47,
+        "liveR": 0.63,
         "gapped": false
       }
     ],
@@ -22211,6 +22224,24 @@
         "resolved": false,
         "rMultiple": null,
         "liveR": 0.13,
+        "gapped": false,
+        "rejectReason": "max positions (10) -- caught by post-hoc cap guard"
+      },
+      {
+        "symbol": "USB",
+        "side": "short",
+        "entryPrice": 65.375,
+        "stopPrice": 66.5191,
+        "barTime": 1786987800,
+        "patternTier": "shelf_short",
+        "tf": "30m",
+        "source": "CORE",
+        "qual": null,
+        "shelfTouches": 5,
+        "sizeMult": 1,
+        "resolved": false,
+        "rMultiple": null,
+        "liveR": 0.14,
         "gapped": false,
         "rejectReason": "max positions (10) -- caught by post-hoc cap guard"
       }
