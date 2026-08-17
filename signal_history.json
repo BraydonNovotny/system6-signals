@@ -21521,6 +21521,19 @@
         "qual": null,
         "shelfTouches": 5,
         "sizeMult": 1
+      },
+      {
+        "symbol": "PFE",
+        "side": "long",
+        "entryPrice": 26.896,
+        "stopPrice": 26.4253,
+        "barTime": 1786982400,
+        "patternTier": "shelf_long",
+        "tf": "30m",
+        "source": "CORE",
+        "qual": null,
+        "shelfTouches": 5,
+        "sizeMult": 1
       }
     ],
     "taken": [
@@ -21538,7 +21551,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": 0.38,
+        "liveR": 0.31,
         "gapped": false
       },
       {
@@ -21555,7 +21568,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": 0,
+        "liveR": -0.02,
         "gapped": false
       },
       {
@@ -21572,7 +21585,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": -0.04,
+        "liveR": -0.02,
         "gapped": false
       },
       {
@@ -21606,7 +21619,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": 0.41,
+        "liveR": 0.52,
         "gapped": false
       },
       {
@@ -21623,7 +21636,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": 0.16,
+        "liveR": 0.36,
         "gapped": false
       },
       {
@@ -21640,7 +21653,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": -0.26,
+        "liveR": -0.46,
         "gapped": false
       },
       {
@@ -21657,7 +21670,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": 0.15,
+        "liveR": -0.16,
         "gapped": false
       },
       {
@@ -21674,7 +21687,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": -0.14,
+        "liveR": -0.33,
         "gapped": false
       },
       {
@@ -21691,7 +21704,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": -0.04,
+        "liveR": 0.15,
         "gapped": false
       }
     ],
@@ -22087,6 +22100,24 @@
         "resolved": false,
         "rMultiple": null,
         "liveR": -0.26,
+        "gapped": false,
+        "rejectReason": "max positions (10) -- caught by post-hoc cap guard"
+      },
+      {
+        "symbol": "PFE",
+        "side": "long",
+        "entryPrice": 26.896,
+        "stopPrice": 26.4253,
+        "barTime": 1786982400,
+        "patternTier": "shelf_long",
+        "tf": "30m",
+        "source": "CORE",
+        "qual": null,
+        "shelfTouches": 5,
+        "sizeMult": 1,
+        "resolved": false,
+        "rMultiple": null,
+        "liveR": 0.13,
         "gapped": false,
         "rejectReason": "max positions (10) -- caught by post-hoc cap guard"
       }
