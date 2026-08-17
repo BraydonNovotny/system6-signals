@@ -21586,6 +21586,19 @@
         "qual": null,
         "shelfTouches": 5,
         "sizeMult": 1
+      },
+      {
+        "symbol": "KVUE",
+        "side": "short",
+        "entryPrice": 18.7592,
+        "stopPrice": 19.0948,
+        "barTime": 1786993200,
+        "patternTier": "shelf_short",
+        "tf": "30m",
+        "source": "CORE",
+        "qual": null,
+        "shelfTouches": 6,
+        "sizeMult": 1
       }
     ],
     "taken": [
@@ -21603,7 +21616,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": -0.09,
+        "liveR": -0.17,
         "gapped": false
       },
       {
@@ -21620,7 +21633,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": 0,
+        "liveR": -0.02,
         "gapped": false
       },
       {
@@ -21637,7 +21650,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": -0.04,
+        "liveR": -0.02,
         "gapped": false
       },
       {
@@ -21654,7 +21667,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": 1.64,
+        "liveR": 1.47,
         "gapped": false
       },
       {
@@ -21671,7 +21684,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": 0.64,
+        "liveR": 0.51,
         "gapped": false
       },
       {
@@ -21688,7 +21701,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": -0.12,
+        "liveR": -0.13,
         "gapped": false
       },
       {
@@ -21722,7 +21735,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": -0.18,
+        "liveR": -0.1,
         "gapped": false
       },
       {
@@ -21739,7 +21752,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": -0.83,
+        "liveR": -0.85,
         "gapped": false
       },
       {
@@ -21756,7 +21769,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": 0.65,
+        "liveR": 0.67,
         "gapped": false
       }
     ],
@@ -22242,6 +22255,24 @@
         "resolved": false,
         "rMultiple": null,
         "liveR": 0.14,
+        "gapped": false,
+        "rejectReason": "max positions (10) -- caught by post-hoc cap guard"
+      },
+      {
+        "symbol": "KVUE",
+        "side": "short",
+        "entryPrice": 18.7592,
+        "stopPrice": 19.0948,
+        "barTime": 1786993200,
+        "patternTier": "shelf_short",
+        "tf": "30m",
+        "source": "CORE",
+        "qual": null,
+        "shelfTouches": 6,
+        "sizeMult": 1,
+        "resolved": false,
+        "rMultiple": null,
+        "liveR": -0.11,
         "gapped": false,
         "rejectReason": "max positions (10) -- caught by post-hoc cap guard"
       }
