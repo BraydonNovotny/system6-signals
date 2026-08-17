@@ -20592,9 +20592,9 @@
         "rVsAdr": 0.354,
         "volSurge": 0.71,
         "sizeMult": 1,
-        "resolved": false,
-        "rMultiple": null,
-        "liveR": 0.45,
+        "resolved": true,
+        "rMultiple": 0.455,
+        "liveR": -1.7,
         "gapped": false
       },
       {
@@ -20610,9 +20610,9 @@
         "rVsAdr": 0.374,
         "volSurge": 1.11,
         "sizeMult": 1,
-        "resolved": false,
-        "rMultiple": null,
-        "liveR": 0.95,
+        "resolved": true,
+        "rMultiple": 0.951,
+        "liveR": -0.34,
         "gapped": false
       },
       {
@@ -20628,9 +20628,9 @@
         "rVsAdr": 0.378,
         "volSurge": 2.47,
         "sizeMult": 1,
-        "resolved": false,
-        "rMultiple": null,
-        "liveR": -0.69,
+        "resolved": true,
+        "rMultiple": -0.687,
+        "liveR": -2.88,
         "gapped": false
       },
       {
@@ -20645,9 +20645,9 @@
         "qual": null,
         "shelfTouches": 7,
         "sizeMult": 1,
-        "resolved": false,
-        "rMultiple": null,
-        "liveR": 0.7,
+        "resolved": true,
+        "rMultiple": 0.7,
+        "liveR": 0.97,
         "gapped": false
       },
       {
@@ -20662,9 +20662,9 @@
         "qual": null,
         "shelfTouches": 6,
         "sizeMult": 1,
-        "resolved": false,
-        "rMultiple": null,
-        "liveR": 0.64,
+        "resolved": true,
+        "rMultiple": 0.638,
+        "liveR": 0.86,
         "gapped": false
       },
       {
@@ -20679,9 +20679,9 @@
         "qual": null,
         "shelfTouches": 5,
         "sizeMult": 1,
-        "resolved": false,
-        "rMultiple": null,
-        "liveR": 1.61,
+        "resolved": true,
+        "rMultiple": 1.61,
+        "liveR": 1.76,
         "gapped": false
       },
       {
@@ -20696,9 +20696,9 @@
         "qual": null,
         "shelfTouches": 7,
         "sizeMult": 1,
-        "resolved": false,
-        "rMultiple": null,
-        "liveR": 0.58,
+        "resolved": true,
+        "rMultiple": 0.58,
+        "liveR": 0.67,
         "gapped": false
       },
       {
@@ -20713,9 +20713,9 @@
         "qual": null,
         "shelfTouches": 5,
         "sizeMult": 1,
-        "resolved": false,
-        "rMultiple": null,
-        "liveR": -0.73,
+        "resolved": true,
+        "rMultiple": -0.728,
+        "liveR": -0.82,
         "gapped": false
       },
       {
@@ -20730,9 +20730,9 @@
         "qual": null,
         "shelfTouches": 5,
         "sizeMult": 1,
-        "resolved": false,
-        "rMultiple": null,
-        "liveR": -0.55,
+        "resolved": true,
+        "rMultiple": -0.547,
+        "liveR": -0.78,
         "gapped": false
       },
       {
@@ -20747,9 +20747,9 @@
         "qual": null,
         "shelfTouches": 5,
         "sizeMult": 1,
-        "resolved": false,
-        "rMultiple": null,
-        "liveR": 0.12,
+        "resolved": true,
+        "rMultiple": 0.125,
+        "liveR": -0.1,
         "gapped": false
       }
     ],
