@@ -21891,21 +21891,6 @@
         "rejectReason": "max positions"
       },
       {
-        "symbol": "XOM",
-        "side": "long",
-        "qual": 1,
-        "entryPrice": 160.8699,
-        "stopPrice": 159.919,
-        "barTime": 1786977000,
-        "patternTier": "base_4h_reclaim",
-        "tf": "30m",
-        "source": "CORE",
-        "rVsAdr": 0.249,
-        "volSurge": 0.76,
-        "sizeMult": 1,
-        "rejectReason": "max positions"
-      },
-      {
         "symbol": "DASH",
         "side": "short",
         "entryPrice": 217.085,
@@ -21940,6 +21925,21 @@
         "liveR": 1.79,
         "gapped": false,
         "rejectReason": "max positions (10) -- caught by post-hoc cap guard"
+      },
+      {
+        "symbol": "XOM",
+        "side": "long",
+        "qual": 1,
+        "entryPrice": 160.8699,
+        "stopPrice": 159.919,
+        "barTime": 1786977000,
+        "patternTier": "base_4h_reclaim",
+        "tf": "30m",
+        "source": "CORE",
+        "rVsAdr": 0.249,
+        "volSurge": 0.76,
+        "sizeMult": 1,
+        "rejectReason": "max positions"
       }
     ]
   }
