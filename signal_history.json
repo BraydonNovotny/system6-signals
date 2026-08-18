@@ -22738,6 +22738,19 @@
         "qual": null,
         "shelfTouches": 6,
         "sizeMult": 1
+      },
+      {
+        "symbol": "AES",
+        "side": "short",
+        "entryPrice": 14.7507,
+        "stopPrice": 15.0088,
+        "barTime": 1787070600,
+        "patternTier": "shelf_short",
+        "tf": "30m",
+        "source": "CORE",
+        "qual": null,
+        "shelfTouches": 7,
+        "sizeMult": 1
       }
     ],
     "taken": [
@@ -22840,7 +22853,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": -0.11,
+        "liveR": -0.09,
         "gapped": false
       },
       {
@@ -23253,6 +23266,24 @@
         "rejectReason": "max positions"
       },
       {
+        "symbol": "IP",
+        "side": "short",
+        "entryPrice": 40.1825,
+        "stopPrice": 41.1027,
+        "barTime": 1787067000,
+        "patternTier": "shelf_short",
+        "tf": "30m",
+        "source": "CORE",
+        "qual": null,
+        "shelfTouches": 6,
+        "sizeMult": 1,
+        "resolved": false,
+        "rMultiple": null,
+        "liveR": -0.19,
+        "gapped": false,
+        "rejectReason": "max positions (10) -- caught by post-hoc cap guard"
+      },
+      {
         "symbol": "CDE",
         "side": "long",
         "qual": 1,
@@ -23298,20 +23329,20 @@
         "rejectReason": "max positions"
       },
       {
-        "symbol": "IP",
+        "symbol": "AES",
         "side": "short",
-        "entryPrice": 40.1825,
-        "stopPrice": 41.1027,
-        "barTime": 1787067000,
+        "entryPrice": 14.7507,
+        "stopPrice": 15.0088,
+        "barTime": 1787070600,
         "patternTier": "shelf_short",
         "tf": "30m",
         "source": "CORE",
         "qual": null,
-        "shelfTouches": 6,
+        "shelfTouches": 7,
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": -0.19,
+        "liveR": 0.02,
         "gapped": false,
         "rejectReason": "max positions (10) -- caught by post-hoc cap guard"
       }
