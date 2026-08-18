@@ -21701,7 +21701,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": -0.29,
+        "liveR": -0.28,
         "gapped": false
       },
       {
@@ -22277,5 +22277,10 @@
         "rejectReason": "max positions (10) -- caught by post-hoc cap guard"
       }
     ]
+  },
+  "2026-08-18": {
+    "candidates": [],
+    "taken": [],
+    "rejected": []
   }
 }
