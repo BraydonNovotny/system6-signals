@@ -22764,6 +22764,19 @@
         "qual": null,
         "shelfTouches": 5,
         "sizeMult": 1
+      },
+      {
+        "symbol": "MGM",
+        "side": "short",
+        "entryPrice": 43.517,
+        "stopPrice": 44.2785,
+        "barTime": 1787076000,
+        "patternTier": "shelf_short",
+        "tf": "30m",
+        "source": "CORE",
+        "qual": null,
+        "shelfTouches": 5,
+        "sizeMult": 1
       }
     ],
     "taken": [
@@ -22798,7 +22811,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": 0.28,
+        "liveR": 0.23,
         "gapped": false
       },
       {
@@ -22815,7 +22828,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": 1.4,
+        "liveR": 1.53,
         "gapped": false
       },
       {
@@ -22832,7 +22845,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": 1.3,
+        "liveR": 1.37,
         "gapped": false
       },
       {
@@ -22866,7 +22879,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": -0.4,
+        "liveR": -0.49,
         "gapped": false
       },
       {
@@ -22883,7 +22896,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": 0.23,
+        "liveR": 0.18,
         "gapped": false
       },
       {
@@ -22900,7 +22913,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": 0.68,
+        "liveR": 0.61,
         "gapped": false
       },
       {
@@ -22917,7 +22930,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": -0.38,
+        "liveR": -0.22,
         "gapped": false
       },
       {
@@ -22934,7 +22947,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": 1.58,
+        "liveR": 1.66,
         "gapped": false
       }
     ],
@@ -23374,6 +23387,24 @@
         "resolved": false,
         "rMultiple": null,
         "liveR": -0.37,
+        "gapped": false,
+        "rejectReason": "max positions (10) -- caught by post-hoc cap guard"
+      },
+      {
+        "symbol": "MGM",
+        "side": "short",
+        "entryPrice": 43.517,
+        "stopPrice": 44.2785,
+        "barTime": 1787076000,
+        "patternTier": "shelf_short",
+        "tf": "30m",
+        "source": "CORE",
+        "qual": null,
+        "shelfTouches": 5,
+        "sizeMult": 1,
+        "resolved": false,
+        "rMultiple": null,
+        "liveR": -0.04,
         "gapped": false,
         "rejectReason": "max positions (10) -- caught by post-hoc cap guard"
       }
