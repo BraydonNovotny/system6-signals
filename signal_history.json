@@ -22711,6 +22711,20 @@
         "rVsAdr": 0.197,
         "volSurge": 0.73,
         "sizeMult": 1
+      },
+      {
+        "symbol": "MRVL",
+        "side": "long",
+        "qual": 1,
+        "entryPrice": 216.32,
+        "stopPrice": 212.9151,
+        "barTime": 1787068800,
+        "patternTier": "base_4h_reclaim",
+        "tf": "30m",
+        "source": "CORE",
+        "rVsAdr": 0.187,
+        "volSurge": 0.9,
+        "sizeMult": 1
       }
     ],
     "taken": [
@@ -22745,7 +22759,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": 0.07,
+        "liveR": 0.08,
         "gapped": false
       },
       {
@@ -23252,6 +23266,21 @@
         "source": "CORE",
         "rVsAdr": 0.197,
         "volSurge": 0.73,
+        "sizeMult": 1,
+        "rejectReason": "max positions"
+      },
+      {
+        "symbol": "MRVL",
+        "side": "long",
+        "qual": 1,
+        "entryPrice": 216.32,
+        "stopPrice": 212.9151,
+        "barTime": 1787068800,
+        "patternTier": "base_4h_reclaim",
+        "tf": "30m",
+        "source": "CORE",
+        "rVsAdr": 0.187,
+        "volSurge": 0.9,
         "sizeMult": 1,
         "rejectReason": "max positions"
       }
