@@ -22777,6 +22777,19 @@
         "qual": null,
         "shelfTouches": 5,
         "sizeMult": 1
+      },
+      {
+        "symbol": "CVX",
+        "side": "long",
+        "entryPrice": 204.776,
+        "stopPrice": 201.1924,
+        "barTime": 1787079600,
+        "patternTier": "shelf_long",
+        "tf": "30m",
+        "source": "CORE",
+        "qual": null,
+        "shelfTouches": 5,
+        "sizeMult": 1
       }
     ],
     "taken": [
@@ -22811,7 +22824,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": 0.39,
+        "liveR": 0.48,
         "gapped": false
       },
       {
@@ -22828,7 +22841,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": 1.63,
+        "liveR": 1.67,
         "gapped": false
       },
       {
@@ -22845,7 +22858,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": 1.35,
+        "liveR": 1.21,
         "gapped": false
       },
       {
@@ -22879,7 +22892,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": -0.49,
+        "liveR": -0.33,
         "gapped": false
       },
       {
@@ -22913,7 +22926,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": 0.7,
+        "liveR": 0.54,
         "gapped": false
       },
       {
@@ -22930,7 +22943,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": -0.14,
+        "liveR": -0.09,
         "gapped": false
       },
       {
@@ -22947,7 +22960,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": 1.59,
+        "liveR": 1.48,
         "gapped": false
       }
     ],
@@ -23405,6 +23418,24 @@
         "resolved": false,
         "rMultiple": null,
         "liveR": -0.04,
+        "gapped": false,
+        "rejectReason": "max positions (10) -- caught by post-hoc cap guard"
+      },
+      {
+        "symbol": "CVX",
+        "side": "long",
+        "entryPrice": 204.776,
+        "stopPrice": 201.1924,
+        "barTime": 1787079600,
+        "patternTier": "shelf_long",
+        "tf": "30m",
+        "source": "CORE",
+        "qual": null,
+        "shelfTouches": 5,
+        "sizeMult": 1,
+        "resolved": false,
+        "rMultiple": null,
+        "liveR": 0.18,
         "gapped": false,
         "rejectReason": "max positions (10) -- caught by post-hoc cap guard"
       }
