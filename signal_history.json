@@ -23984,6 +23984,24 @@
     ],
     "rejected": [
       {
+        "symbol": "INTC",
+        "side": "short",
+        "entryPrice": 95.7933,
+        "stopPrice": 99.0522,
+        "barTime": 1787148000,
+        "patternTier": "shelf_short",
+        "tf": "30m",
+        "source": "CORE",
+        "qual": null,
+        "shelfTouches": 6,
+        "sizeMult": 1,
+        "resolved": false,
+        "rMultiple": null,
+        "liveR": 1,
+        "gapped": false,
+        "rejectReason": "max positions (10) -- caught by post-hoc cap guard"
+      },
+      {
         "symbol": "LVS",
         "side": "short",
         "entryPrice": 45.735,
@@ -24186,24 +24204,6 @@
         "shelfTouches": 7,
         "sizeMult": 1,
         "rejectReason": "max positions"
-      },
-      {
-        "symbol": "INTC",
-        "side": "short",
-        "entryPrice": 95.7933,
-        "stopPrice": 99.0522,
-        "barTime": 1787148000,
-        "patternTier": "shelf_short",
-        "tf": "30m",
-        "source": "CORE",
-        "qual": null,
-        "shelfTouches": 6,
-        "sizeMult": 1,
-        "resolved": false,
-        "rMultiple": null,
-        "liveR": 1,
-        "gapped": false,
-        "rejectReason": "max positions (10) -- caught by post-hoc cap guard"
       },
       {
         "symbol": "BMY",
