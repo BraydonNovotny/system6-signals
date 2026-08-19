@@ -24043,6 +24043,19 @@
         "qual": null,
         "shelfTouches": 7,
         "sizeMult": 1
+      },
+      {
+        "symbol": "BAC",
+        "side": "short",
+        "entryPrice": 63.254,
+        "stopPrice": 64.3609,
+        "barTime": 1787166000,
+        "patternTier": "shelf_short",
+        "tf": "30m",
+        "source": "CORE",
+        "qual": null,
+        "shelfTouches": 5,
+        "sizeMult": 1
       }
     ],
     "taken": [
@@ -24834,6 +24847,24 @@
         "resolved": false,
         "rMultiple": null,
         "liveR": 0.04,
+        "gapped": false,
+        "rejectReason": "max positions (10) -- caught by post-hoc cap guard"
+      },
+      {
+        "symbol": "BAC",
+        "side": "short",
+        "entryPrice": 63.254,
+        "stopPrice": 64.3609,
+        "barTime": 1787166000,
+        "patternTier": "shelf_short",
+        "tf": "30m",
+        "source": "CORE",
+        "qual": null,
+        "shelfTouches": 5,
+        "sizeMult": 1,
+        "resolved": false,
+        "rMultiple": null,
+        "liveR": 0.15,
         "gapped": false,
         "rejectReason": "max positions (10) -- caught by post-hoc cap guard"
       }
