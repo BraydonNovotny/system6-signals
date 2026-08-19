@@ -23966,6 +23966,20 @@
         "qual": null,
         "shelfTouches": 5,
         "sizeMult": 1
+      },
+      {
+        "symbol": "BKR",
+        "side": "long",
+        "qual": 1,
+        "entryPrice": 64.37,
+        "stopPrice": 63.9837,
+        "barTime": 1787158800,
+        "patternTier": "base_4h_reclaim",
+        "tf": "30m",
+        "source": "CORE",
+        "rVsAdr": 0.2,
+        "volSurge": 0.99,
+        "sizeMult": 1
       }
     ],
     "taken": [
@@ -23984,7 +23998,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": 0.52,
+        "liveR": 0.65,
         "gapped": false
       },
       {
@@ -24001,7 +24015,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": 0.82,
+        "liveR": 0.81,
         "gapped": false
       },
       {
@@ -24018,7 +24032,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": -0.09,
+        "liveR": -0.13,
         "gapped": false
       },
       {
@@ -24035,7 +24049,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": 0.33,
+        "liveR": 0.36,
         "gapped": false
       },
       {
@@ -24052,7 +24066,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": 0.61,
+        "liveR": 0.76,
         "gapped": false
       },
       {
@@ -24069,7 +24083,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": 1.14,
+        "liveR": 1.25,
         "gapped": false
       },
       {
@@ -24086,7 +24100,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": 0.81,
+        "liveR": 0.69,
         "gapped": false
       },
       {
@@ -24103,7 +24117,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": -0.12,
+        "liveR": -0.08,
         "gapped": false
       },
       {
@@ -24120,7 +24134,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": -0.17,
+        "liveR": -0.14,
         "gapped": false
       },
       {
@@ -24137,7 +24151,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": 0.85,
+        "liveR": 0.6,
         "gapped": false
       }
     ],
@@ -24656,6 +24670,21 @@
         "liveR": -0.28,
         "gapped": false,
         "rejectReason": "max positions (10) -- caught by post-hoc cap guard"
+      },
+      {
+        "symbol": "BKR",
+        "side": "long",
+        "qual": 1,
+        "entryPrice": 64.37,
+        "stopPrice": 63.9837,
+        "barTime": 1787158800,
+        "patternTier": "base_4h_reclaim",
+        "tf": "30m",
+        "source": "CORE",
+        "rVsAdr": 0.2,
+        "volSurge": 0.99,
+        "sizeMult": 1,
+        "rejectReason": "max positions"
       }
     ]
   }
