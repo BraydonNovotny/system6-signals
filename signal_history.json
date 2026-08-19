@@ -24017,6 +24017,19 @@
         "qual": null,
         "shelfTouches": 8,
         "sizeMult": 1
+      },
+      {
+        "symbol": "SLB",
+        "side": "short",
+        "entryPrice": 53.357,
+        "stopPrice": 54.3823,
+        "barTime": 1787164200,
+        "patternTier": "shelf_short",
+        "tf": "30m",
+        "source": "CORE",
+        "qual": null,
+        "shelfTouches": 5,
+        "sizeMult": 1
       }
     ],
     "taken": [
@@ -24035,7 +24048,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": 1.26,
+        "liveR": 0.96,
         "gapped": false
       },
       {
@@ -24052,7 +24065,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": 0.77,
+        "liveR": 0.78,
         "gapped": false
       },
       {
@@ -24069,7 +24082,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": -0.15,
+        "liveR": -0.13,
         "gapped": false
       },
       {
@@ -24086,7 +24099,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": 0.41,
+        "liveR": 0.47,
         "gapped": false
       },
       {
@@ -24103,7 +24116,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": 1.07,
+        "liveR": 1.31,
         "gapped": false
       },
       {
@@ -24120,7 +24133,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": 1.41,
+        "liveR": 1.46,
         "gapped": false
       },
       {
@@ -24137,7 +24150,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": 0.57,
+        "liveR": 0.38,
         "gapped": false
       },
       {
@@ -24154,7 +24167,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": -0.04,
+        "liveR": -0.13,
         "gapped": false
       },
       {
@@ -24171,7 +24184,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": -0.1,
+        "liveR": -0.2,
         "gapped": false
       },
       {
@@ -24188,7 +24201,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": 0.35,
+        "liveR": 0.39,
         "gapped": false
       }
     ],
@@ -24772,6 +24785,24 @@
         "resolved": false,
         "rMultiple": null,
         "liveR": 0.23,
+        "gapped": false,
+        "rejectReason": "max positions (10) -- caught by post-hoc cap guard"
+      },
+      {
+        "symbol": "SLB",
+        "side": "short",
+        "entryPrice": 53.357,
+        "stopPrice": 54.3823,
+        "barTime": 1787164200,
+        "patternTier": "shelf_short",
+        "tf": "30m",
+        "source": "CORE",
+        "qual": null,
+        "shelfTouches": 5,
+        "sizeMult": 1,
+        "resolved": false,
+        "rMultiple": null,
+        "liveR": 0,
         "gapped": false,
         "rejectReason": "max positions (10) -- caught by post-hoc cap guard"
       }
