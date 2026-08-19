@@ -23953,6 +23953,19 @@
         "qual": null,
         "shelfTouches": 5,
         "sizeMult": 1
+      },
+      {
+        "symbol": "NVDA",
+        "side": "long",
+        "entryPrice": 220.008,
+        "stopPrice": 216.1578,
+        "barTime": 1787157000,
+        "patternTier": "shelf_long",
+        "tf": "30m",
+        "source": "CORE",
+        "qual": null,
+        "shelfTouches": 5,
+        "sizeMult": 1
       }
     ],
     "taken": [
@@ -23971,7 +23984,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": 0.51,
+        "liveR": 0.52,
         "gapped": false
       },
       {
@@ -23988,7 +24001,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": 1.09,
+        "liveR": 0.82,
         "gapped": false
       },
       {
@@ -24022,7 +24035,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": 0.28,
+        "liveR": 0.33,
         "gapped": false
       },
       {
@@ -24039,7 +24052,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": 0.52,
+        "liveR": 0.61,
         "gapped": false
       },
       {
@@ -24056,7 +24069,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": 0.95,
+        "liveR": 1.14,
         "gapped": false
       },
       {
@@ -24073,7 +24086,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": 0.82,
+        "liveR": 0.81,
         "gapped": false
       },
       {
@@ -24090,7 +24103,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": -0.32,
+        "liveR": -0.12,
         "gapped": false
       },
       {
@@ -24107,7 +24120,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": -0.4,
+        "liveR": -0.17,
         "gapped": false
       },
       {
@@ -24124,7 +24137,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": 0.65,
+        "liveR": 0.85,
         "gapped": false
       }
     ],
@@ -24623,6 +24636,24 @@
         "resolved": false,
         "rMultiple": null,
         "liveR": 0.09,
+        "gapped": false,
+        "rejectReason": "max positions (10) -- caught by post-hoc cap guard"
+      },
+      {
+        "symbol": "NVDA",
+        "side": "long",
+        "entryPrice": 220.008,
+        "stopPrice": 216.1578,
+        "barTime": 1787157000,
+        "patternTier": "shelf_long",
+        "tf": "30m",
+        "source": "CORE",
+        "qual": null,
+        "shelfTouches": 5,
+        "sizeMult": 1,
+        "resolved": false,
+        "rMultiple": null,
+        "liveR": -0.28,
         "gapped": false,
         "rejectReason": "max positions (10) -- caught by post-hoc cap guard"
       }
