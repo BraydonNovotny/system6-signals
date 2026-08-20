@@ -25267,7 +25267,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": -0.06,
+        "liveR": -0.05,
         "gapped": false
       },
       {
@@ -25410,6 +25410,24 @@
     ],
     "rejected": [
       {
+        "symbol": "TSM",
+        "side": "short",
+        "entryPrice": 412.066,
+        "stopPrice": 419.2781,
+        "barTime": 1787234400,
+        "patternTier": "shelf_short",
+        "tf": "30m",
+        "source": "CORE",
+        "qual": null,
+        "shelfTouches": 5,
+        "sizeMult": 1,
+        "resolved": false,
+        "rMultiple": null,
+        "liveR": -0.35,
+        "gapped": false,
+        "rejectReason": "max positions (10) -- caught by post-hoc cap guard"
+      },
+      {
         "symbol": "WDAY",
         "side": "long",
         "entryPrice": 199.799,
@@ -25510,6 +25528,24 @@
         "volSurge": 0.83,
         "sizeMult": 1,
         "rejectReason": "max positions"
+      },
+      {
+        "symbol": "MSFT",
+        "side": "short",
+        "entryPrice": 483.262,
+        "stopPrice": 491.7191,
+        "barTime": 1787238000,
+        "patternTier": "shelf_short",
+        "tf": "30m",
+        "source": "CORE",
+        "qual": null,
+        "shelfTouches": 5,
+        "sizeMult": 1,
+        "resolved": false,
+        "rMultiple": null,
+        "liveR": 0.31,
+        "gapped": false,
+        "rejectReason": "max positions (10) -- caught by post-hoc cap guard"
       },
       {
         "symbol": "PATH",
@@ -25624,42 +25660,6 @@
         "volSurge": 1.47,
         "sizeMult": 1,
         "rejectReason": "max positions"
-      },
-      {
-        "symbol": "TSM",
-        "side": "short",
-        "entryPrice": 412.066,
-        "stopPrice": 419.2781,
-        "barTime": 1787234400,
-        "patternTier": "shelf_short",
-        "tf": "30m",
-        "source": "CORE",
-        "qual": null,
-        "shelfTouches": 5,
-        "sizeMult": 1,
-        "resolved": false,
-        "rMultiple": null,
-        "liveR": -0.35,
-        "gapped": false,
-        "rejectReason": "max positions (10) -- caught by post-hoc cap guard"
-      },
-      {
-        "symbol": "MSFT",
-        "side": "short",
-        "entryPrice": 483.262,
-        "stopPrice": 491.7191,
-        "barTime": 1787238000,
-        "patternTier": "shelf_short",
-        "tf": "30m",
-        "source": "CORE",
-        "qual": null,
-        "shelfTouches": 5,
-        "sizeMult": 1,
-        "resolved": false,
-        "rMultiple": null,
-        "liveR": 0.31,
-        "gapped": false,
-        "rejectReason": "max positions (10) -- caught by post-hoc cap guard"
       }
     ]
   }
