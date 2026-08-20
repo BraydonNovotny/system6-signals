@@ -25247,7 +25247,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": 0.42,
+        "liveR": 0.41,
         "gapped": false
       },
       {
@@ -25458,36 +25458,6 @@
         "rejectReason": "max positions"
       },
       {
-        "symbol": "PDD",
-        "side": "long",
-        "qual": 1,
-        "entryPrice": 88.86,
-        "stopPrice": 87.66,
-        "barTime": 1787238000,
-        "patternTier": "base_4h_reclaim",
-        "tf": "30m",
-        "source": "CORE",
-        "rVsAdr": 0.615,
-        "volSurge": 0.84,
-        "sizeMult": 1,
-        "rejectReason": "max positions"
-      },
-      {
-        "symbol": "SYF",
-        "side": "long",
-        "qual": 1,
-        "entryPrice": 77.345,
-        "stopPrice": 76.645,
-        "barTime": 1787238000,
-        "patternTier": "base_4h_reclaim",
-        "tf": "30m",
-        "source": "CORE",
-        "rVsAdr": 0.466,
-        "volSurge": 1.47,
-        "sizeMult": 1,
-        "rejectReason": "max positions"
-      },
-      {
         "symbol": "PCG",
         "side": "long",
         "entryPrice": 17.71,
@@ -25504,6 +25474,21 @@
         "liveR": 1.32,
         "gapped": false,
         "rejectReason": "max positions (10) -- caught by post-hoc cap guard"
+      },
+      {
+        "symbol": "PDD",
+        "side": "long",
+        "qual": 1,
+        "entryPrice": 88.86,
+        "stopPrice": 87.66,
+        "barTime": 1787238000,
+        "patternTier": "base_4h_reclaim",
+        "tf": "30m",
+        "source": "CORE",
+        "rVsAdr": 0.615,
+        "volSurge": 0.84,
+        "sizeMult": 1,
+        "rejectReason": "max positions"
       },
       {
         "symbol": "RCL",
@@ -25540,6 +25525,21 @@
         "liveR": 0.06,
         "gapped": false,
         "rejectReason": "max positions (10) -- caught by post-hoc cap guard"
+      },
+      {
+        "symbol": "SYF",
+        "side": "long",
+        "qual": 1,
+        "entryPrice": 77.345,
+        "stopPrice": 76.645,
+        "barTime": 1787238000,
+        "patternTier": "base_4h_reclaim",
+        "tf": "30m",
+        "source": "CORE",
+        "rVsAdr": 0.466,
+        "volSurge": 1.47,
+        "sizeMult": 1,
+        "rejectReason": "max positions"
       }
     ]
   }
