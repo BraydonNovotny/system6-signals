@@ -25216,6 +25216,19 @@
         "qual": null,
         "shelfTouches": 5,
         "sizeMult": 1
+      },
+      {
+        "symbol": "NIO",
+        "side": "short",
+        "entryPrice": 4.53,
+        "stopPrice": 4.63,
+        "barTime": 1787248800,
+        "patternTier": "shelf_short",
+        "tf": "30m",
+        "source": "CORE",
+        "qual": null,
+        "shelfTouches": 6,
+        "sizeMult": 1
       }
     ],
     "taken": [
@@ -25250,7 +25263,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": 0.99,
+        "liveR": 0.96,
         "gapped": false
       },
       {
@@ -25267,7 +25280,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": -0.62,
+        "liveR": -0.53,
         "gapped": false
       },
       {
@@ -25284,7 +25297,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": 0.11,
+        "liveR": 0.32,
         "gapped": false
       },
       {
@@ -25301,7 +25314,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": 0.22,
+        "liveR": 0.21,
         "gapped": false
       },
       {
@@ -25318,7 +25331,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": 0.32,
+        "liveR": 0.26,
         "gapped": false
       },
       {
@@ -25335,7 +25348,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": 1.25,
+        "liveR": 1.53,
         "gapped": false
       },
       {
@@ -25352,7 +25365,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": 1.91,
+        "liveR": 1.74,
         "gapped": false
       },
       {
@@ -25405,6 +25418,23 @@
         "resolved": true,
         "rMultiple": -1.148,
         "liveR": -2.03,
+        "gapped": false
+      },
+      {
+        "symbol": "NIO",
+        "side": "short",
+        "entryPrice": 4.53,
+        "stopPrice": 4.63,
+        "barTime": 1787248800,
+        "patternTier": "shelf_short",
+        "tf": "30m",
+        "source": "CORE",
+        "qual": null,
+        "shelfTouches": 6,
+        "sizeMult": 1,
+        "resolved": false,
+        "rMultiple": null,
+        "liveR": 0,
         "gapped": false
       }
     ],
