@@ -26264,6 +26264,19 @@
         "qual": null,
         "shelfTouches": 5,
         "sizeMult": 1
+      },
+      {
+        "symbol": "TJX",
+        "side": "short",
+        "entryPrice": 140.616,
+        "stopPrice": 143.0768,
+        "barTime": 1787338800,
+        "patternTier": "shelf_short",
+        "tf": "30m",
+        "source": "CORE",
+        "qual": null,
+        "shelfTouches": 5,
+        "sizeMult": 1
       }
     ],
     "taken": [
@@ -26281,7 +26294,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": -0.29,
+        "liveR": -0.28,
         "gapped": false
       },
       {
@@ -26298,7 +26311,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": 0.82,
+        "liveR": 0.73,
         "gapped": false
       },
       {
@@ -26315,7 +26328,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": 0,
+        "liveR": -0.04,
         "gapped": false
       },
       {
@@ -26332,7 +26345,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": -0.07,
+        "liveR": -0.03,
         "gapped": false
       },
       {
@@ -26349,7 +26362,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": -0.57,
+        "liveR": -0.59,
         "gapped": false
       },
       {
@@ -26366,7 +26379,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": 0.19,
+        "liveR": 0.27,
         "gapped": false
       },
       {
@@ -26383,7 +26396,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": 0,
+        "liveR": 0.01,
         "gapped": false
       },
       {
@@ -26400,7 +26413,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": -0.19,
+        "liveR": -0.2,
         "gapped": false
       },
       {
@@ -26417,7 +26430,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": 1.59,
+        "liveR": 1.62,
         "gapped": false
       },
       {
@@ -26434,7 +26447,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": 0.27,
+        "liveR": 0.38,
         "gapped": false
       }
     ],
@@ -26853,6 +26866,24 @@
         "resolved": false,
         "rMultiple": null,
         "liveR": 0.07,
+        "gapped": false,
+        "rejectReason": "max positions (10) -- caught by post-hoc cap guard"
+      },
+      {
+        "symbol": "TJX",
+        "side": "short",
+        "entryPrice": 140.616,
+        "stopPrice": 143.0768,
+        "barTime": 1787338800,
+        "patternTier": "shelf_short",
+        "tf": "30m",
+        "source": "CORE",
+        "qual": null,
+        "shelfTouches": 5,
+        "sizeMult": 1,
+        "resolved": false,
+        "rMultiple": null,
+        "liveR": 0.11,
         "gapped": false,
         "rejectReason": "max positions (10) -- caught by post-hoc cap guard"
       }
