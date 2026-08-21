@@ -25815,5 +25815,10 @@
         "rejectReason": "max positions (10) -- caught by post-hoc cap guard"
       }
     ]
+  },
+  "2026-08-21": {
+    "candidates": [],
+    "taken": [],
+    "rejected": []
   }
 }
