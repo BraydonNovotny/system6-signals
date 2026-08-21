@@ -26186,6 +26186,19 @@
         "qual": null,
         "shelfTouches": 5,
         "sizeMult": 1
+      },
+      {
+        "symbol": "NVDA",
+        "side": "short",
+        "entryPrice": 216.377,
+        "stopPrice": 220.1636,
+        "barTime": 1787326200,
+        "patternTier": "shelf_short",
+        "tf": "30m",
+        "source": "CORE",
+        "qual": null,
+        "shelfTouches": 5,
+        "sizeMult": 1
       }
     ],
     "taken": [
@@ -26203,7 +26216,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": -0.27,
+        "liveR": -0.24,
         "gapped": false
       },
       {
@@ -26220,7 +26233,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": 0.7,
+        "liveR": 0.89,
         "gapped": false
       },
       {
@@ -26271,7 +26284,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": -0.68,
+        "liveR": -0.51,
         "gapped": false
       },
       {
@@ -26288,7 +26301,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": 0.02,
+        "liveR": -0.01,
         "gapped": false
       },
       {
@@ -26305,7 +26318,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": 0.12,
+        "liveR": 0.04,
         "gapped": false
       },
       {
@@ -26322,7 +26335,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": -0.31,
+        "liveR": -0.23,
         "gapped": false
       },
       {
@@ -26339,7 +26352,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": 1.72,
+        "liveR": 1.53,
         "gapped": false
       },
       {
@@ -26356,7 +26369,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": 0.13,
+        "liveR": 0.04,
         "gapped": false
       }
     ],
@@ -26536,6 +26549,24 @@
         "rejectReason": "max positions"
       },
       {
+        "symbol": "DVN",
+        "side": "short",
+        "entryPrice": 49.1495,
+        "stopPrice": 50.0097,
+        "barTime": 1787322600,
+        "patternTier": "shelf_short",
+        "tf": "30m",
+        "source": "CORE",
+        "qual": null,
+        "shelfTouches": 5,
+        "sizeMult": 1,
+        "resolved": false,
+        "rMultiple": null,
+        "liveR": 0.05,
+        "gapped": false,
+        "rejectReason": "max positions (10) -- caught by post-hoc cap guard"
+      },
+      {
         "symbol": "MPC",
         "side": "long",
         "qual": 1,
@@ -26579,24 +26610,6 @@
         "volSurge": 1.75,
         "sizeMult": 1,
         "rejectReason": "max positions"
-      },
-      {
-        "symbol": "DVN",
-        "side": "short",
-        "entryPrice": 49.1495,
-        "stopPrice": 50.0097,
-        "barTime": 1787322600,
-        "patternTier": "shelf_short",
-        "tf": "30m",
-        "source": "CORE",
-        "qual": null,
-        "shelfTouches": 5,
-        "sizeMult": 1,
-        "resolved": false,
-        "rMultiple": null,
-        "liveR": 0.05,
-        "gapped": false,
-        "rejectReason": "max positions (10) -- caught by post-hoc cap guard"
       },
       {
         "symbol": "ABT",
@@ -26667,6 +26680,24 @@
         "resolved": false,
         "rMultiple": null,
         "liveR": -0.23,
+        "gapped": false,
+        "rejectReason": "max positions (10) -- caught by post-hoc cap guard"
+      },
+      {
+        "symbol": "NVDA",
+        "side": "short",
+        "entryPrice": 216.377,
+        "stopPrice": 220.1636,
+        "barTime": 1787326200,
+        "patternTier": "shelf_short",
+        "tf": "30m",
+        "source": "CORE",
+        "qual": null,
+        "shelfTouches": 5,
+        "sizeMult": 1,
+        "resolved": false,
+        "rMultiple": null,
+        "liveR": 0.05,
         "gapped": false,
         "rejectReason": "max positions (10) -- caught by post-hoc cap guard"
       }
