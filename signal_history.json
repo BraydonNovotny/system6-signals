@@ -26294,7 +26294,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": -0.08,
+        "liveR": -0.09,
         "gapped": false
       },
       {
@@ -26379,7 +26379,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": 0.07,
+        "liveR": 0.06,
         "gapped": false
       },
       {
@@ -26430,7 +26430,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": 1.55,
+        "liveR": 1.54,
         "gapped": false
       },
       {
