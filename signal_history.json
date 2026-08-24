@@ -26292,9 +26292,9 @@
         "qual": null,
         "shelfTouches": 5,
         "sizeMult": 1,
-        "resolved": false,
-        "rMultiple": null,
-        "liveR": -0.09,
+        "resolved": true,
+        "rMultiple": -0.087,
+        "liveR": -0.02,
         "gapped": false
       },
       {
@@ -26309,9 +26309,9 @@
         "qual": null,
         "shelfTouches": 6,
         "sizeMult": 1,
-        "resolved": false,
-        "rMultiple": null,
-        "liveR": 0.93,
+        "resolved": true,
+        "rMultiple": 0.931,
+        "liveR": 1.13,
         "gapped": false
       },
       {
@@ -26326,9 +26326,9 @@
         "qual": null,
         "shelfTouches": 6,
         "sizeMult": 1,
-        "resolved": false,
-        "rMultiple": null,
-        "liveR": -0.02,
+        "resolved": true,
+        "rMultiple": -0.016,
+        "liveR": -0.03,
         "gapped": false
       },
       {
@@ -26343,9 +26343,9 @@
         "qual": null,
         "shelfTouches": 5,
         "sizeMult": 1,
-        "resolved": false,
-        "rMultiple": null,
-        "liveR": -0.05,
+        "resolved": true,
+        "rMultiple": -0.048,
+        "liveR": -0.04,
         "gapped": false
       },
       {
@@ -26360,9 +26360,9 @@
         "qual": null,
         "shelfTouches": 6,
         "sizeMult": 1,
-        "resolved": false,
-        "rMultiple": null,
-        "liveR": -0.76,
+        "resolved": true,
+        "rMultiple": -0.761,
+        "liveR": -1.67,
         "gapped": false
       },
       {
@@ -26377,9 +26377,9 @@
         "qual": null,
         "shelfTouches": 5,
         "sizeMult": 1,
-        "resolved": false,
-        "rMultiple": null,
-        "liveR": 0.06,
+        "resolved": true,
+        "rMultiple": 0.059,
+        "liveR": 0.04,
         "gapped": false
       },
       {
@@ -26394,9 +26394,9 @@
         "qual": null,
         "shelfTouches": 5,
         "sizeMult": 1,
-        "resolved": false,
-        "rMultiple": null,
-        "liveR": 0.12,
+        "resolved": true,
+        "rMultiple": 0.12,
+        "liveR": 1.81,
         "gapped": false
       },
       {
@@ -26411,9 +26411,9 @@
         "qual": null,
         "shelfTouches": 6,
         "sizeMult": 1,
-        "resolved": false,
-        "rMultiple": null,
-        "liveR": -0.31,
+        "resolved": true,
+        "rMultiple": -0.314,
+        "liveR": -2.01,
         "gapped": false
       },
       {
@@ -26428,9 +26428,9 @@
         "qual": null,
         "shelfTouches": 5,
         "sizeMult": 1,
-        "resolved": false,
-        "rMultiple": null,
-        "liveR": 1.54,
+        "resolved": true,
+        "rMultiple": 1.54,
+        "liveR": 1.64,
         "gapped": false
       },
       {
@@ -26445,9 +26445,9 @@
         "qual": null,
         "shelfTouches": 7,
         "sizeMult": 1,
-        "resolved": false,
-        "rMultiple": null,
-        "liveR": 0.42,
+        "resolved": true,
+        "rMultiple": 0.418,
+        "liveR": 1.76,
         "gapped": false
       }
     ],
@@ -26888,5 +26888,10 @@
         "rejectReason": "max positions (10) -- caught by post-hoc cap guard"
       }
     ]
+  },
+  "2026-08-24": {
+    "candidates": [],
+    "taken": [],
+    "rejected": []
   }
 }
