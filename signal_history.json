@@ -27193,6 +27193,18 @@
         "qual": null,
         "shelfTouches": 5,
         "sizeMult": 1
+      },
+      {
+        "symbol": "HAL",
+        "side": "long",
+        "qual": 2,
+        "entryPrice": 34.535,
+        "stopPrice": 34.3064,
+        "barTime": 1787596200,
+        "patternTier": "three_x_inside",
+        "tf": "1h",
+        "source": "CORE",
+        "sizeMult": 1
       }
     ],
     "taken": [
@@ -27211,7 +27223,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": -0.08,
+        "liveR": -0.05,
         "gapped": false
       },
       {
@@ -27229,7 +27241,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": -0.32,
+        "liveR": -0.21,
         "gapped": false
       },
       {
@@ -27247,7 +27259,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": 1.09,
+        "liveR": 1.28,
         "gapped": false
       },
       {
@@ -27281,7 +27293,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": 0.52,
+        "liveR": 0.58,
         "gapped": false
       },
       {
@@ -27298,7 +27310,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": 0.5,
+        "liveR": 0.48,
         "gapped": false
       },
       {
@@ -27349,7 +27361,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": 3.14,
+        "liveR": 2.94,
         "gapped": false
       },
       {
@@ -27383,7 +27395,23 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": 0.54,
+        "liveR": 0.59,
+        "gapped": false
+      },
+      {
+        "symbol": "HAL",
+        "side": "long",
+        "qual": 2,
+        "entryPrice": 34.535,
+        "stopPrice": 34.3064,
+        "barTime": 1787596200,
+        "patternTier": "three_x_inside",
+        "tf": "1h",
+        "source": "CORE",
+        "sizeMult": 1,
+        "resolved": false,
+        "rMultiple": null,
+        "liveR": 0.31,
         "gapped": false
       }
     ],
