@@ -31488,9 +31488,9 @@
         "qual": null,
         "shelfTouches": 5,
         "sizeMult": 1,
-        "resolved": false,
-        "rMultiple": null,
-        "liveR": -0.48,
+        "resolved": true,
+        "rMultiple": -1,
+        "liveR": -0.86,
         "gapped": false
       },
       {
@@ -31507,7 +31507,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": 1.33,
+        "liveR": 1.18,
         "gapped": false
       },
       {
@@ -31524,7 +31524,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": 1.06,
+        "liveR": 0.65,
         "gapped": false
       },
       {
@@ -31541,7 +31541,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": 0.11,
+        "liveR": -0.05,
         "gapped": false
       },
       {
@@ -31558,7 +31558,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": 0.18,
+        "liveR": 0.19,
         "gapped": false
       },
       {
@@ -31575,7 +31575,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": 0.23,
+        "liveR": 0.31,
         "gapped": false
       },
       {
@@ -31592,7 +31592,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": -0.19,
+        "liveR": -0.36,
         "gapped": false
       },
       {
@@ -31609,7 +31609,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": 0.53,
+        "liveR": 0.56,
         "gapped": false
       },
       {
@@ -31626,7 +31626,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": 0.56,
+        "liveR": 0.45,
         "gapped": false
       },
       {
@@ -31643,7 +31643,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": 0.64,
+        "liveR": 0.51,
         "gapped": false
       }
     ],
