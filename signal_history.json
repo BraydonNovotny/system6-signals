@@ -31433,6 +31433,46 @@
         "qual": null,
         "shelfTouches": 5,
         "sizeMult": 1
+      },
+      {
+        "symbol": "CHWY",
+        "side": "long",
+        "qual": 1,
+        "entryPrice": 23.855,
+        "stopPrice": 23.53,
+        "barTime": 1788273000,
+        "patternTier": "base_4h_reclaim",
+        "tf": "30m",
+        "source": "CORE",
+        "rVsAdr": 0.362,
+        "volSurge": 0.89,
+        "sizeMult": 1
+      },
+      {
+        "symbol": "GEN",
+        "side": "long",
+        "qual": 1,
+        "entryPrice": 30.95,
+        "stopPrice": 30.42,
+        "barTime": 1788273000,
+        "patternTier": "base_4h_reclaim",
+        "tf": "30m",
+        "source": "CORE",
+        "rVsAdr": 0.599,
+        "volSurge": 1.08,
+        "sizeMult": 1
+      },
+      {
+        "symbol": "APH",
+        "side": "long",
+        "qual": 2,
+        "entryPrice": 159,
+        "stopPrice": 157.7378,
+        "barTime": 1788278400,
+        "patternTier": "three_x_inside",
+        "tf": "30m",
+        "source": "CORE",
+        "sizeMult": 1
       }
     ],
     "taken": [
@@ -31450,7 +31490,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": -0.63,
+        "liveR": -0.48,
         "gapped": false
       },
       {
@@ -31467,7 +31507,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": 0.83,
+        "liveR": 1.33,
         "gapped": false
       },
       {
@@ -31484,7 +31524,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": 0.86,
+        "liveR": 1.06,
         "gapped": false
       },
       {
@@ -31501,7 +31541,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": 0.33,
+        "liveR": 0.11,
         "gapped": false
       },
       {
@@ -31518,7 +31558,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": 0.41,
+        "liveR": 0.18,
         "gapped": false
       },
       {
@@ -31535,7 +31575,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": 0.39,
+        "liveR": 0.23,
         "gapped": false
       },
       {
@@ -31552,7 +31592,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": 0.06,
+        "liveR": -0.19,
         "gapped": false
       },
       {
@@ -31569,7 +31609,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": 0.19,
+        "liveR": 0.53,
         "gapped": false
       },
       {
@@ -31586,7 +31626,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": 0.22,
+        "liveR": 0.56,
         "gapped": false
       },
       {
@@ -31603,7 +31643,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": 0.28,
+        "liveR": 0.64,
         "gapped": false
       }
     ],
@@ -31948,6 +31988,53 @@
         "shelfTouches": 5,
         "sizeMult": 1,
         "rejectReason": "max positions"
+      },
+      {
+        "symbol": "CHWY",
+        "side": "long",
+        "qual": 1,
+        "entryPrice": 23.855,
+        "stopPrice": 23.53,
+        "barTime": 1788273000,
+        "patternTier": "base_4h_reclaim",
+        "tf": "30m",
+        "source": "CORE",
+        "rVsAdr": 0.362,
+        "volSurge": 0.89,
+        "sizeMult": 1,
+        "rejectReason": "max positions"
+      },
+      {
+        "symbol": "GEN",
+        "side": "long",
+        "qual": 1,
+        "entryPrice": 30.95,
+        "stopPrice": 30.42,
+        "barTime": 1788273000,
+        "patternTier": "base_4h_reclaim",
+        "tf": "30m",
+        "source": "CORE",
+        "rVsAdr": 0.599,
+        "volSurge": 1.08,
+        "sizeMult": 1,
+        "rejectReason": "max positions"
+      },
+      {
+        "symbol": "APH",
+        "side": "long",
+        "qual": 2,
+        "entryPrice": 159,
+        "stopPrice": 157.7378,
+        "barTime": 1788278400,
+        "patternTier": "three_x_inside",
+        "tf": "30m",
+        "source": "CORE",
+        "sizeMult": 1,
+        "resolved": false,
+        "rMultiple": null,
+        "liveR": 2.55,
+        "gapped": false,
+        "rejectReason": "max positions (10) -- caught by post-hoc cap guard"
       }
     ]
   }
