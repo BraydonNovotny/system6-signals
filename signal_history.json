@@ -32186,6 +32186,85 @@
         "qual": null,
         "shelfTouches": 5,
         "sizeMult": 1
+      },
+      {
+        "symbol": "BKR",
+        "side": "long",
+        "qual": 1,
+        "entryPrice": 63.62,
+        "stopPrice": 62.785,
+        "barTime": 1788359400,
+        "patternTier": "base_4h_reclaim",
+        "tf": "30m",
+        "source": "CORE",
+        "rVsAdr": 0.565,
+        "volSurge": 0.96,
+        "sizeMult": 1
+      },
+      {
+        "symbol": "AES",
+        "side": "short",
+        "entryPrice": 14.7679,
+        "stopPrice": 15.0263,
+        "barTime": 1788359400,
+        "patternTier": "shelf_short",
+        "tf": "30m",
+        "source": "CORE",
+        "qual": null,
+        "shelfTouches": 7,
+        "sizeMult": 1
+      },
+      {
+        "symbol": "AES",
+        "side": "long",
+        "entryPrice": 14.7775,
+        "stopPrice": 14.5189,
+        "barTime": 1788359400,
+        "patternTier": "shelf_long",
+        "tf": "30m",
+        "source": "CORE",
+        "qual": null,
+        "shelfTouches": 6,
+        "sizeMult": 1
+      },
+      {
+        "symbol": "AES",
+        "side": "long",
+        "entryPrice": 14.795,
+        "stopPrice": 14.5361,
+        "barTime": 1788366600,
+        "patternTier": "shelf_long",
+        "tf": "30m",
+        "source": "CORE",
+        "qual": null,
+        "shelfTouches": 7,
+        "sizeMult": 1
+      },
+      {
+        "symbol": "AES",
+        "side": "short",
+        "entryPrice": 14.784,
+        "stopPrice": 15.0427,
+        "barTime": 1788368400,
+        "patternTier": "shelf_short",
+        "tf": "30m",
+        "source": "CORE",
+        "qual": null,
+        "shelfTouches": 5,
+        "sizeMult": 1
+      },
+      {
+        "symbol": "AES",
+        "side": "long",
+        "entryPrice": 14.7942,
+        "stopPrice": 14.5353,
+        "barTime": 1788368400,
+        "patternTier": "shelf_long",
+        "tf": "30m",
+        "source": "CORE",
+        "qual": null,
+        "shelfTouches": 6,
+        "sizeMult": 1
       }
     ],
     "taken": [
@@ -32203,7 +32282,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": -0.23,
+        "liveR": 0.01,
         "gapped": false
       },
       {
@@ -32220,7 +32299,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": -0.03,
+        "liveR": -0.28,
         "gapped": false
       },
       {
@@ -32237,7 +32316,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": -0.19,
+        "liveR": 0.17,
         "gapped": false
       },
       {
@@ -32254,7 +32333,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": -0.25,
+        "liveR": -0.48,
         "gapped": false
       },
       {
@@ -32271,7 +32350,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": -0.24,
+        "liveR": 0.38,
         "gapped": false
       },
       {
@@ -32289,6 +32368,75 @@
         "resolved": false,
         "rMultiple": null,
         "liveR": 0.9,
+        "gapped": false
+      },
+      {
+        "symbol": "BKR",
+        "side": "long",
+        "qual": 1,
+        "entryPrice": 63.62,
+        "stopPrice": 62.785,
+        "barTime": 1788359400,
+        "patternTier": "base_4h_reclaim",
+        "tf": "30m",
+        "source": "CORE",
+        "rVsAdr": 0.565,
+        "volSurge": 0.96,
+        "sizeMult": 1,
+        "resolved": false,
+        "rMultiple": null,
+        "liveR": 0.73,
+        "gapped": false
+      },
+      {
+        "symbol": "AES",
+        "side": "long",
+        "entryPrice": 14.7775,
+        "stopPrice": 14.5189,
+        "barTime": 1788359400,
+        "patternTier": "shelf_long",
+        "tf": "30m",
+        "source": "CORE",
+        "qual": null,
+        "shelfTouches": 6,
+        "sizeMult": 1,
+        "resolved": false,
+        "rMultiple": null,
+        "liveR": 0.01,
+        "gapped": false
+      },
+      {
+        "symbol": "AES",
+        "side": "short",
+        "entryPrice": 14.7679,
+        "stopPrice": 15.0263,
+        "barTime": 1788359400,
+        "patternTier": "shelf_short",
+        "tf": "30m",
+        "source": "CORE",
+        "qual": null,
+        "shelfTouches": 7,
+        "sizeMult": 1,
+        "resolved": false,
+        "rMultiple": null,
+        "liveR": -0.05,
+        "gapped": false
+      },
+      {
+        "symbol": "AES",
+        "side": "long",
+        "entryPrice": 14.795,
+        "stopPrice": 14.5361,
+        "barTime": 1788366600,
+        "patternTier": "shelf_long",
+        "tf": "30m",
+        "source": "CORE",
+        "qual": null,
+        "shelfTouches": 7,
+        "sizeMult": 1,
+        "resolved": false,
+        "rMultiple": null,
+        "liveR": -0.06,
         "gapped": false
       }
     ],
@@ -32366,6 +32514,42 @@
         "volSurge": 0.85,
         "sizeMult": 1,
         "rejectReason": "max positions"
+      },
+      {
+        "symbol": "AES",
+        "side": "long",
+        "entryPrice": 14.7942,
+        "stopPrice": 14.5353,
+        "barTime": 1788368400,
+        "patternTier": "shelf_long",
+        "tf": "30m",
+        "source": "CORE",
+        "qual": null,
+        "shelfTouches": 6,
+        "sizeMult": 1,
+        "resolved": false,
+        "rMultiple": null,
+        "liveR": -0.05,
+        "gapped": false,
+        "rejectReason": "max positions (10) -- caught by post-hoc cap guard"
+      },
+      {
+        "symbol": "AES",
+        "side": "short",
+        "entryPrice": 14.784,
+        "stopPrice": 15.0427,
+        "barTime": 1788368400,
+        "patternTier": "shelf_short",
+        "tf": "30m",
+        "source": "CORE",
+        "qual": null,
+        "shelfTouches": 5,
+        "sizeMult": 1,
+        "resolved": false,
+        "rMultiple": null,
+        "liveR": 0.02,
+        "gapped": false,
+        "rejectReason": "max positions (10) -- caught by post-hoc cap guard"
       }
     ]
   }
