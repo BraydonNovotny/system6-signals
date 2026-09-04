@@ -33187,7 +33187,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": 0.86,
+        "liveR": 1.18,
         "gapped": false
       },
       {
@@ -33204,7 +33204,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": 0.2,
+        "liveR": -0.06,
         "gapped": false
       },
       {
@@ -33221,7 +33221,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": 0.98,
+        "liveR": 1.5,
         "gapped": false
       },
       {
@@ -33238,7 +33238,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": 0.21,
+        "liveR": 0.29,
         "gapped": false
       },
       {
@@ -33255,7 +33255,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": 0.73,
+        "liveR": 0.99,
         "gapped": false
       },
       {
@@ -33272,7 +33272,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": 0.36,
+        "liveR": 0.19,
         "gapped": false
       },
       {
@@ -33290,7 +33290,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": 0.38,
+        "liveR": 0.11,
         "gapped": false
       },
       {
@@ -33304,9 +33304,9 @@
         "tf": "30m",
         "source": "CORE",
         "sizeMult": 1,
-        "resolved": false,
-        "rMultiple": null,
-        "liveR": -0.53,
+        "resolved": true,
+        "rMultiple": -1,
+        "liveR": -0.87,
         "gapped": false
       },
       {
@@ -33323,7 +33323,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": 0.05,
+        "liveR": -0.08,
         "gapped": false
       },
       {
@@ -33337,9 +33337,9 @@
         "tf": "1h",
         "source": "CORE",
         "sizeMult": 1,
-        "resolved": false,
-        "rMultiple": null,
-        "liveR": -0.42,
+        "resolved": true,
+        "rMultiple": -1,
+        "liveR": -1.1,
         "gapped": false
       }
     ],
