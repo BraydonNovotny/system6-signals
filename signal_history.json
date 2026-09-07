@@ -33405,5 +33405,10 @@
         "rejectReason": "max positions"
       }
     ]
+  },
+  "2026-09-07": {
+    "candidates": [],
+    "taken": [],
+    "rejected": []
   }
 }
