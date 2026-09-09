@@ -33730,9 +33730,9 @@
         "qual": null,
         "shelfTouches": 5,
         "sizeMult": 1,
-        "resolved": false,
-        "rMultiple": null,
-        "liveR": 0.79,
+        "resolved": true,
+        "rMultiple": 0.786,
+        "liveR": 0.51,
         "gapped": false
       },
       {
@@ -33747,9 +33747,9 @@
         "qual": null,
         "shelfTouches": 5,
         "sizeMult": 1,
-        "resolved": false,
-        "rMultiple": null,
-        "liveR": -0.08,
+        "resolved": true,
+        "rMultiple": -0.077,
+        "liveR": -1.08,
         "gapped": false
       },
       {
@@ -33764,9 +33764,9 @@
         "qual": null,
         "shelfTouches": 5,
         "sizeMult": 1,
-        "resolved": false,
-        "rMultiple": null,
-        "liveR": 1.65,
+        "resolved": true,
+        "rMultiple": 1.65,
+        "liveR": 1.62,
         "gapped": false
       },
       {
@@ -33781,9 +33781,9 @@
         "qual": null,
         "shelfTouches": 6,
         "sizeMult": 1,
-        "resolved": false,
-        "rMultiple": null,
-        "liveR": 1.09,
+        "resolved": true,
+        "rMultiple": 1.094,
+        "liveR": 1.79,
         "gapped": false
       },
       {
@@ -33798,9 +33798,9 @@
         "qual": null,
         "shelfTouches": 5,
         "sizeMult": 1,
-        "resolved": false,
-        "rMultiple": null,
-        "liveR": -0.06,
+        "resolved": true,
+        "rMultiple": -0.064,
+        "liveR": 1.35,
         "gapped": false
       },
       {
@@ -33815,9 +33815,9 @@
         "qual": null,
         "shelfTouches": 5,
         "sizeMult": 1,
-        "resolved": false,
-        "rMultiple": null,
-        "liveR": -0.02,
+        "resolved": true,
+        "rMultiple": -0.023,
+        "liveR": 1.51,
         "gapped": false
       },
       {
@@ -33832,9 +33832,9 @@
         "qual": null,
         "shelfTouches": 5,
         "sizeMult": 1,
-        "resolved": false,
-        "rMultiple": null,
-        "liveR": 0.54,
+        "resolved": true,
+        "rMultiple": 0.536,
+        "liveR": 0.66,
         "gapped": false
       }
     ],
@@ -34068,5 +34068,10 @@
         "rejectReason": "max positions"
       }
     ]
+  },
+  "2026-09-09": {
+    "candidates": [],
+    "taken": [],
+    "rejected": []
   }
 }
