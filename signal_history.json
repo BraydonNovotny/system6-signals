@@ -35045,6 +35045,19 @@
         "qual": null,
         "shelfTouches": 7,
         "sizeMult": 1
+      },
+      {
+        "symbol": "AES",
+        "side": "long",
+        "entryPrice": 14.8343,
+        "stopPrice": 14.5747,
+        "barTime": 1789061400,
+        "patternTier": "shelf_long",
+        "tf": "30m",
+        "source": "CORE",
+        "qual": null,
+        "shelfTouches": 7,
+        "sizeMult": 1
       }
     ],
     "taken": [
@@ -35062,7 +35075,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": 0.14,
+        "liveR": 0.23,
         "gapped": false
       },
       {
@@ -35079,7 +35092,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": 0.18,
+        "liveR": 0.22,
         "gapped": false
       },
       {
@@ -35096,7 +35109,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": 1,
+        "liveR": 1.06,
         "gapped": false
       },
       {
@@ -35113,7 +35126,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": -0.45,
+        "liveR": -0.34,
         "gapped": false
       },
       {
@@ -35130,7 +35143,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": 0.32,
+        "liveR": 0.21,
         "gapped": false
       },
       {
@@ -35147,7 +35160,24 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": -0.58,
+        "liveR": -0.4,
+        "gapped": false
+      },
+      {
+        "symbol": "AES",
+        "side": "long",
+        "entryPrice": 14.8343,
+        "stopPrice": 14.5747,
+        "barTime": 1789061400,
+        "patternTier": "shelf_long",
+        "tf": "30m",
+        "source": "CORE",
+        "qual": null,
+        "shelfTouches": 7,
+        "sizeMult": 1,
+        "resolved": false,
+        "rMultiple": null,
+        "liveR": -0.11,
         "gapped": false
       }
     ],
