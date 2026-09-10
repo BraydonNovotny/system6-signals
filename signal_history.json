@@ -34351,7 +34351,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": 0.99,
+        "liveR": 0.94,
         "gapped": false
       },
       {
@@ -34368,7 +34368,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": 0.14,
+        "liveR": -0.6,
         "gapped": false
       },
       {
@@ -34385,7 +34385,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": 0.39,
+        "liveR": 0.54,
         "gapped": false
       },
       {
@@ -34402,7 +34402,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": -0.17,
+        "liveR": -0.25,
         "gapped": false
       },
       {
@@ -34417,9 +34417,9 @@
         "qual": null,
         "shelfTouches": 5,
         "sizeMult": 1,
-        "resolved": false,
-        "rMultiple": null,
-        "liveR": -0.88,
+        "resolved": true,
+        "rMultiple": -1,
+        "liveR": -1.44,
         "gapped": false
       },
       {
@@ -34436,7 +34436,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": -0.03,
+        "liveR": 0.08,
         "gapped": false
       },
       {
@@ -34453,7 +34453,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": -0.31,
+        "liveR": -0.48,
         "gapped": false
       },
       {
@@ -34470,7 +34470,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": 0.12,
+        "liveR": 0.29,
         "gapped": false
       },
       {
@@ -34487,7 +34487,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": 0.57,
+        "liveR": 0.75,
         "gapped": false
       },
       {
@@ -34504,7 +34504,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": 2.66,
+        "liveR": 3.8,
         "gapped": false
       }
     ],
@@ -34674,5 +34674,10 @@
         "rejectReason": "max positions (10) -- caught by post-hoc cap guard"
       }
     ]
+  },
+  "2026-09-10": {
+    "candidates": [],
+    "taken": [],
+    "rejected": []
   }
 }
