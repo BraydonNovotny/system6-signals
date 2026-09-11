@@ -35685,6 +35685,18 @@
         "qual": null,
         "shelfTouches": 6,
         "sizeMult": 1
+      },
+      {
+        "symbol": "AI",
+        "side": "long",
+        "qual": 2,
+        "entryPrice": 10.56,
+        "stopPrice": 10.4335,
+        "barTime": 1789151400,
+        "patternTier": "three_x_inside",
+        "tf": "1h",
+        "source": "CORE",
+        "sizeMult": 1
       }
     ],
     "taken": [
@@ -35703,7 +35715,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": -0.21,
+        "liveR": 0.04,
         "gapped": false
       },
       {
@@ -35720,7 +35732,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": 1.78,
+        "liveR": 2.01,
         "gapped": false
       },
       {
@@ -35737,7 +35749,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": 2.28,
+        "liveR": 2.76,
         "gapped": false
       },
       {
@@ -35754,7 +35766,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": 0.52,
+        "liveR": 0.43,
         "gapped": false
       },
       {
@@ -35771,7 +35783,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": 0.74,
+        "liveR": 0.57,
         "gapped": false
       },
       {
@@ -35788,7 +35800,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": 1,
+        "liveR": 0.79,
         "gapped": false
       },
       {
@@ -35805,7 +35817,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": -0.27,
+        "liveR": -0.33,
         "gapped": false
       },
       {
@@ -35822,7 +35834,23 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": -0.02,
+        "liveR": -0.06,
+        "gapped": false
+      },
+      {
+        "symbol": "AI",
+        "side": "long",
+        "qual": 2,
+        "entryPrice": 10.56,
+        "stopPrice": 10.4335,
+        "barTime": 1789151400,
+        "patternTier": "three_x_inside",
+        "tf": "1h",
+        "source": "CORE",
+        "sizeMult": 1,
+        "resolved": false,
+        "rMultiple": null,
+        "liveR": 0.08,
         "gapped": false
       }
     ],
