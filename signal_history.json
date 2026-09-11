@@ -35075,7 +35075,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": 0.23,
+        "liveR": 0.07,
         "gapped": false
       },
       {
@@ -35092,7 +35092,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": 0.22,
+        "liveR": 0.24,
         "gapped": false
       },
       {
@@ -35109,7 +35109,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": 1.06,
+        "liveR": 1.34,
         "gapped": false
       },
       {
@@ -35126,7 +35126,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": -0.34,
+        "liveR": -0.21,
         "gapped": false
       },
       {
@@ -35143,7 +35143,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": 0.21,
+        "liveR": 0.07,
         "gapped": false
       },
       {
@@ -35160,7 +35160,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": -0.4,
+        "liveR": -0.69,
         "gapped": false
       },
       {
@@ -35496,5 +35496,10 @@
         "rejectReason": "max positions"
       }
     ]
+  },
+  "2026-09-11": {
+    "candidates": [],
+    "taken": [],
+    "rejected": []
   }
 }
