@@ -36316,9 +36316,9 @@
         "qual": null,
         "shelfTouches": 5,
         "sizeMult": 1,
-        "resolved": false,
-        "rMultiple": null,
-        "liveR": 0.19,
+        "resolved": true,
+        "rMultiple": 0.341,
+        "liveR": -0.79,
         "gapped": false
       },
       {
@@ -36333,9 +36333,9 @@
         "qual": null,
         "shelfTouches": 5,
         "sizeMult": 1,
-        "resolved": false,
-        "rMultiple": null,
-        "liveR": 2.93,
+        "resolved": true,
+        "rMultiple": 3.037,
+        "liveR": 3.68,
         "gapped": false
       },
       {
@@ -36350,9 +36350,9 @@
         "qual": null,
         "shelfTouches": 5,
         "sizeMult": 1,
-        "resolved": false,
-        "rMultiple": null,
-        "liveR": 3.31,
+        "resolved": true,
+        "rMultiple": 3.85,
+        "liveR": 3.05,
         "gapped": false
       },
       {
@@ -36367,9 +36367,9 @@
         "qual": null,
         "shelfTouches": 6,
         "sizeMult": 1,
-        "resolved": false,
-        "rMultiple": null,
-        "liveR": 1.51,
+        "resolved": true,
+        "rMultiple": 1.546,
+        "liveR": 1.21,
         "gapped": false
       },
       {
@@ -36384,9 +36384,9 @@
         "qual": null,
         "shelfTouches": 5,
         "sizeMult": 1,
-        "resolved": false,
-        "rMultiple": null,
-        "liveR": 0.2,
+        "resolved": true,
+        "rMultiple": 0.711,
+        "liveR": 0.46,
         "gapped": false
       },
       {
@@ -36401,9 +36401,9 @@
         "qual": null,
         "shelfTouches": 5,
         "sizeMult": 1,
-        "resolved": false,
-        "rMultiple": null,
-        "liveR": 0.74,
+        "resolved": true,
+        "rMultiple": 1.036,
+        "liveR": 1.71,
         "gapped": false
       }
     ],
@@ -36707,5 +36707,136 @@
         "rejectReason": "max positions"
       }
     ]
+  },
+  "2026-09-15": {
+    "candidates": [
+      {
+        "symbol": "HPQ",
+        "side": "long",
+        "qual": 1,
+        "entryPrice": 34.55,
+        "stopPrice": 33.37,
+        "barTime": 1789480800,
+        "patternTier": "base_4h_reclaim",
+        "tf": "30m",
+        "source": "CORE",
+        "rVsAdr": 0.692,
+        "volSurge": 0.94,
+        "sizeMult": 1
+      },
+      {
+        "symbol": "ABBV",
+        "side": "long",
+        "qual": 1,
+        "entryPrice": 260.72,
+        "stopPrice": 259.31,
+        "barTime": 1789482600,
+        "patternTier": "base_4h_reclaim",
+        "tf": "30m",
+        "source": "CORE",
+        "rVsAdr": 0.282,
+        "volSurge": 0.91,
+        "sizeMult": 1
+      },
+      {
+        "symbol": "PFE",
+        "side": "short",
+        "entryPrice": 27.7242,
+        "stopPrice": 28.2093,
+        "barTime": 1789480800,
+        "patternTier": "shelf_short",
+        "tf": "30m",
+        "source": "CORE",
+        "qual": null,
+        "shelfTouches": 6,
+        "sizeMult": 1
+      },
+      {
+        "symbol": "USB",
+        "side": "long",
+        "entryPrice": 62.658,
+        "stopPrice": 61.5615,
+        "barTime": 1789480800,
+        "patternTier": "shelf_long",
+        "tf": "30m",
+        "source": "CORE",
+        "qual": null,
+        "shelfTouches": 5,
+        "sizeMult": 1
+      }
+    ],
+    "taken": [
+      {
+        "symbol": "HPQ",
+        "side": "long",
+        "qual": 1,
+        "entryPrice": 34.55,
+        "stopPrice": 33.37,
+        "barTime": 1789480800,
+        "patternTier": "base_4h_reclaim",
+        "tf": "30m",
+        "source": "CORE",
+        "rVsAdr": 0.692,
+        "volSurge": 0.94,
+        "sizeMult": 1,
+        "resolved": false,
+        "rMultiple": null,
+        "liveR": -0.23,
+        "gapped": false
+      },
+      {
+        "symbol": "PFE",
+        "side": "short",
+        "entryPrice": 27.7242,
+        "stopPrice": 28.2093,
+        "barTime": 1789480800,
+        "patternTier": "shelf_short",
+        "tf": "30m",
+        "source": "CORE",
+        "qual": null,
+        "shelfTouches": 6,
+        "sizeMult": 1,
+        "resolved": false,
+        "rMultiple": null,
+        "liveR": 0.45,
+        "gapped": false
+      },
+      {
+        "symbol": "USB",
+        "side": "long",
+        "entryPrice": 62.658,
+        "stopPrice": 61.5615,
+        "barTime": 1789480800,
+        "patternTier": "shelf_long",
+        "tf": "30m",
+        "source": "CORE",
+        "qual": null,
+        "shelfTouches": 5,
+        "sizeMult": 1,
+        "resolved": false,
+        "rMultiple": null,
+        "liveR": -0.07,
+        "gapped": false
+      },
+      {
+        "symbol": "ABBV",
+        "side": "long",
+        "qual": 1,
+        "entryPrice": 260.72,
+        "stopPrice": 259.31,
+        "barTime": 1789482600,
+        "patternTier": "base_4h_reclaim",
+        "tf": "30m",
+        "source": "CORE",
+        "rVsAdr": 0.282,
+        "volSurge": 0.91,
+        "sizeMult": 1,
+        "resolved": false,
+        "rMultiple": null,
+        "liveR": 0.39,
+        "gapped": false
+      }
+    ],
+    "rejected": []
   }
 }
