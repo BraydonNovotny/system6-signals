@@ -36763,6 +36763,46 @@
         "qual": null,
         "shelfTouches": 5,
         "sizeMult": 1
+      },
+      {
+        "symbol": "COP",
+        "side": "long",
+        "qual": 1,
+        "entryPrice": 140.25,
+        "stopPrice": 139.1,
+        "barTime": 1789486200,
+        "patternTier": "base_4h_reclaim",
+        "tf": "30m",
+        "source": "CORE",
+        "rVsAdr": 0.431,
+        "volSurge": 1.35,
+        "sizeMult": 1
+      },
+      {
+        "symbol": "AES",
+        "side": "short",
+        "entryPrice": 14.8131,
+        "stopPrice": 15.0724,
+        "barTime": 1789484400,
+        "patternTier": "shelf_short",
+        "tf": "30m",
+        "source": "CORE",
+        "qual": null,
+        "shelfTouches": 8,
+        "sizeMult": 1
+      },
+      {
+        "symbol": "WBD",
+        "side": "long",
+        "entryPrice": 27.907,
+        "stopPrice": 27.4186,
+        "barTime": 1789497000,
+        "patternTier": "shelf_long",
+        "tf": "30m",
+        "source": "CORE",
+        "qual": null,
+        "shelfTouches": 5,
+        "sizeMult": 1
       }
     ],
     "taken": [
@@ -36781,7 +36821,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": -0.23,
+        "liveR": -0.54,
         "gapped": false
       },
       {
@@ -36798,7 +36838,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": 0.45,
+        "liveR": 0.41,
         "gapped": false
       },
       {
@@ -36815,7 +36855,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": -0.07,
+        "liveR": -0.09,
         "gapped": false
       },
       {
@@ -36833,7 +36873,59 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": 0.39,
+        "liveR": 1.13,
+        "gapped": false
+      },
+      {
+        "symbol": "AES",
+        "side": "short",
+        "entryPrice": 14.8131,
+        "stopPrice": 15.0724,
+        "barTime": 1789484400,
+        "patternTier": "shelf_short",
+        "tf": "30m",
+        "source": "CORE",
+        "qual": null,
+        "shelfTouches": 8,
+        "sizeMult": 1,
+        "resolved": false,
+        "rMultiple": null,
+        "liveR": -0.01,
+        "gapped": false
+      },
+      {
+        "symbol": "COP",
+        "side": "long",
+        "qual": 1,
+        "entryPrice": 140.25,
+        "stopPrice": 139.1,
+        "barTime": 1789486200,
+        "patternTier": "base_4h_reclaim",
+        "tf": "30m",
+        "source": "CORE",
+        "rVsAdr": 0.431,
+        "volSurge": 1.35,
+        "sizeMult": 1,
+        "resolved": false,
+        "rMultiple": null,
+        "liveR": 0.41,
+        "gapped": false
+      },
+      {
+        "symbol": "WBD",
+        "side": "long",
+        "entryPrice": 27.907,
+        "stopPrice": 27.4186,
+        "barTime": 1789497000,
+        "patternTier": "shelf_long",
+        "tf": "30m",
+        "source": "CORE",
+        "qual": null,
+        "shelfTouches": 5,
+        "sizeMult": 1,
+        "resolved": false,
+        "rMultiple": null,
+        "liveR": 0.19,
         "gapped": false
       }
     ],
