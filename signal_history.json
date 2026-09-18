@@ -38527,7 +38527,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": -0.01,
+        "liveR": -0.12,
         "gapped": false
       },
       {
@@ -38544,7 +38544,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": -0.14,
+        "liveR": -0.03,
         "gapped": false
       },
       {
@@ -38561,7 +38561,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": -0.41,
+        "liveR": -0.11,
         "gapped": false
       },
       {
@@ -38578,7 +38578,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": 0.03,
+        "liveR": 0.14,
         "gapped": false
       },
       {
@@ -38595,7 +38595,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": -0.21,
+        "liveR": -0.04,
         "gapped": false
       },
       {
@@ -38612,7 +38612,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": 0.54,
+        "liveR": -0.08,
         "gapped": false
       },
       {
@@ -38646,7 +38646,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": 0.63,
+        "liveR": 0.29,
         "gapped": false
       },
       {
@@ -38661,9 +38661,9 @@
         "qual": null,
         "shelfTouches": 5,
         "sizeMult": 1,
-        "resolved": false,
-        "rMultiple": null,
-        "liveR": -0.76,
+        "resolved": true,
+        "rMultiple": -1,
+        "liveR": -0.59,
         "gapped": false
       },
       {
@@ -38699,7 +38699,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": 0.68,
+        "liveR": 1.35,
         "gapped": false
       },
       {
@@ -38715,7 +38715,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": 0.5,
+        "liveR": 1.63,
         "gapped": false
       }
     ],
