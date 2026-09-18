@@ -38473,6 +38473,43 @@
         "qual": null,
         "shelfTouches": 7,
         "sizeMult": 1
+      },
+      {
+        "symbol": "ECHO",
+        "side": "long",
+        "qual": 2,
+        "entryPrice": 92.86,
+        "stopPrice": 92.1126,
+        "barTime": 1789752600,
+        "patternTier": "three_x_inside",
+        "tf": "1h",
+        "source": "CORE",
+        "sizeMult": 1
+      },
+      {
+        "symbol": "BTBT",
+        "side": "long",
+        "qual": 2,
+        "entryPrice": 1.66,
+        "stopPrice": 1.62,
+        "barTime": 1789749000,
+        "patternTier": "three_x_inside",
+        "tf": "30m",
+        "source": "CORE",
+        "sizeMult": 1
+      },
+      {
+        "symbol": "CMG",
+        "side": "short",
+        "entryPrice": 32.955,
+        "stopPrice": 33.7059,
+        "barTime": 1789750800,
+        "patternTier": "shelf_short",
+        "tf": "30m",
+        "source": "CORE",
+        "qual": null,
+        "shelfTouches": 5,
+        "sizeMult": 1
       }
     ],
     "taken": [
@@ -38490,7 +38527,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": -0.29,
+        "liveR": -0.01,
         "gapped": false
       },
       {
@@ -38507,7 +38544,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": 0.14,
+        "liveR": -0.14,
         "gapped": false
       },
       {
@@ -38524,7 +38561,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": -0.12,
+        "liveR": -0.41,
         "gapped": false
       },
       {
@@ -38541,7 +38578,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": 0.05,
+        "liveR": 0.03,
         "gapped": false
       },
       {
@@ -38558,7 +38595,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": -0.42,
+        "liveR": -0.21,
         "gapped": false
       },
       {
@@ -38575,7 +38612,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": 0.19,
+        "liveR": 0.54,
         "gapped": false
       },
       {
@@ -38609,7 +38646,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": 0.75,
+        "liveR": 0.63,
         "gapped": false
       },
       {
@@ -38626,7 +38663,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": -0.21,
+        "liveR": -0.76,
         "gapped": false
       },
       {
@@ -38662,7 +38699,23 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": 0.04,
+        "liveR": 0.68,
+        "gapped": false
+      },
+      {
+        "symbol": "BTBT",
+        "side": "long",
+        "qual": 2,
+        "entryPrice": 1.66,
+        "stopPrice": 1.62,
+        "barTime": 1789749000,
+        "patternTier": "three_x_inside",
+        "tf": "30m",
+        "source": "CORE",
+        "sizeMult": 1,
+        "resolved": false,
+        "rMultiple": null,
+        "liveR": 0.5,
         "gapped": false
       }
     ],
@@ -39285,6 +39338,41 @@
         "volSurge": 0.94,
         "sizeMult": 1,
         "rejectReason": "max positions"
+      },
+      {
+        "symbol": "CMG",
+        "side": "short",
+        "entryPrice": 32.955,
+        "stopPrice": 33.7059,
+        "barTime": 1789750800,
+        "patternTier": "shelf_short",
+        "tf": "30m",
+        "source": "CORE",
+        "qual": null,
+        "shelfTouches": 5,
+        "sizeMult": 1,
+        "resolved": false,
+        "rMultiple": null,
+        "liveR": -0.33,
+        "gapped": false,
+        "rejectReason": "max positions (10) -- caught by post-hoc cap guard"
+      },
+      {
+        "symbol": "ECHO",
+        "side": "long",
+        "qual": 2,
+        "entryPrice": 92.86,
+        "stopPrice": 92.1126,
+        "barTime": 1789752600,
+        "patternTier": "three_x_inside",
+        "tf": "1h",
+        "source": "CORE",
+        "sizeMult": 1,
+        "resolved": false,
+        "rMultiple": null,
+        "liveR": 0.56,
+        "gapped": false,
+        "rejectReason": "max positions (10) -- caught by post-hoc cap guard"
       }
     ]
   }
