@@ -38525,9 +38525,9 @@
         "qual": null,
         "shelfTouches": 6,
         "sizeMult": 1,
-        "resolved": false,
-        "rMultiple": null,
-        "liveR": -0.12,
+        "resolved": true,
+        "rMultiple": -0.119,
+        "liveR": -0.08,
         "gapped": false
       },
       {
@@ -38542,9 +38542,9 @@
         "qual": null,
         "shelfTouches": 5,
         "sizeMult": 1,
-        "resolved": false,
-        "rMultiple": null,
-        "liveR": -0.03,
+        "resolved": true,
+        "rMultiple": -0.031,
+        "liveR": -0.07,
         "gapped": false
       },
       {
@@ -38559,9 +38559,9 @@
         "qual": null,
         "shelfTouches": 5,
         "sizeMult": 1,
-        "resolved": false,
-        "rMultiple": null,
-        "liveR": -0.11,
+        "resolved": true,
+        "rMultiple": -0.114,
+        "liveR": 0.01,
         "gapped": false
       },
       {
@@ -38576,8 +38576,8 @@
         "qual": null,
         "shelfTouches": 8,
         "sizeMult": 1,
-        "resolved": false,
-        "rMultiple": null,
+        "resolved": true,
+        "rMultiple": 0.142,
         "liveR": 0.14,
         "gapped": false
       },
@@ -38593,9 +38593,9 @@
         "qual": null,
         "shelfTouches": 5,
         "sizeMult": 1,
-        "resolved": false,
-        "rMultiple": null,
-        "liveR": -0.04,
+        "resolved": true,
+        "rMultiple": -0.036,
+        "liveR": 0.26,
         "gapped": false
       },
       {
@@ -38610,9 +38610,9 @@
         "qual": null,
         "shelfTouches": 5,
         "sizeMult": 1,
-        "resolved": false,
-        "rMultiple": null,
-        "liveR": -0.08,
+        "resolved": true,
+        "rMultiple": -0.076,
+        "liveR": -0.32,
         "gapped": false
       },
       {
@@ -38644,9 +38644,9 @@
         "qual": null,
         "shelfTouches": 5,
         "sizeMult": 1,
-        "resolved": false,
-        "rMultiple": null,
-        "liveR": 0.29,
+        "resolved": true,
+        "rMultiple": 0.294,
+        "liveR": 0.23,
         "gapped": false
       },
       {
@@ -38697,9 +38697,9 @@
         "rVsAdr": 0.274,
         "volSurge": 0.85,
         "sizeMult": 1,
-        "resolved": false,
-        "rMultiple": null,
-        "liveR": 1.35,
+        "resolved": true,
+        "rMultiple": 1.355,
+        "liveR": 5.08,
         "gapped": false
       },
       {
@@ -38713,9 +38713,9 @@
         "tf": "30m",
         "source": "CORE",
         "sizeMult": 1,
-        "resolved": false,
-        "rMultiple": null,
-        "liveR": 1.63,
+        "resolved": true,
+        "rMultiple": 1.625,
+        "liveR": 2.77,
         "gapped": false
       }
     ],
@@ -39375,5 +39375,10 @@
         "rejectReason": "max positions (10) -- caught by post-hoc cap guard"
       }
     ]
+  },
+  "2026-09-21": {
+    "candidates": [],
+    "taken": [],
+    "rejected": []
   }
 }
