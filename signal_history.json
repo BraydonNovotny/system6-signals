@@ -43371,7 +43371,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": 0.28,
+        "liveR": 0.63,
         "gapped": false
       },
       {
@@ -43388,7 +43388,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": 0.84,
+        "liveR": 1.03,
         "gapped": false
       },
       {
@@ -43405,7 +43405,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": 0.54,
+        "liveR": 0.32,
         "gapped": false
       },
       {
@@ -43422,7 +43422,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": 2.79,
+        "liveR": 2.71,
         "gapped": false
       },
       {
@@ -43439,7 +43439,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": 0.99,
+        "liveR": 0.5,
         "gapped": false
       },
       {
@@ -43456,7 +43456,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": 0.42,
+        "liveR": 0.11,
         "gapped": false
       },
       {
@@ -43473,7 +43473,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": -0.1,
+        "liveR": 0.19,
         "gapped": false
       },
       {
@@ -43490,7 +43490,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": 1.35,
+        "liveR": 0.93,
         "gapped": false
       },
       {
@@ -43506,9 +43506,9 @@
         "rVsAdr": 0.271,
         "volSurge": 1.13,
         "sizeMult": 1,
-        "resolved": false,
-        "rMultiple": null,
-        "liveR": -0.58,
+        "resolved": true,
+        "rMultiple": -1,
+        "liveR": -0.93,
         "gapped": false
       },
       {
@@ -43525,7 +43525,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": -0.03,
+        "liveR": 0,
         "gapped": false
       }
     ],
