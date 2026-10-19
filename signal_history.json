@@ -51635,7 +51635,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": -0.67,
+        "liveR": -0.46,
         "gapped": false
       },
       {
@@ -51652,7 +51652,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": 0.46,
+        "liveR": 0.25,
         "gapped": false
       },
       {
@@ -51686,7 +51686,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": 0.32,
+        "liveR": -0.48,
         "gapped": false
       },
       {
@@ -51703,7 +51703,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": -0.29,
+        "liveR": -0.61,
         "gapped": false
       }
     ],
