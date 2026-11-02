@@ -56845,9 +56845,9 @@
         "qual": null,
         "shelfTouches": 6,
         "sizeMult": 1,
-        "resolved": false,
-        "rMultiple": null,
-        "liveR": 0.91,
+        "resolved": true,
+        "rMultiple": 0.908,
+        "liveR": 1.97,
         "gapped": false
       },
       {
@@ -56862,9 +56862,9 @@
         "qual": null,
         "shelfTouches": 5,
         "sizeMult": 1,
-        "resolved": false,
-        "rMultiple": null,
-        "liveR": 3.26,
+        "resolved": true,
+        "rMultiple": 3.258,
+        "liveR": 3.11,
         "gapped": false
       },
       {
@@ -56879,9 +56879,9 @@
         "qual": null,
         "shelfTouches": 6,
         "sizeMult": 1,
-        "resolved": false,
-        "rMultiple": null,
-        "liveR": 1,
+        "resolved": true,
+        "rMultiple": 0.996,
+        "liveR": 0.39,
         "gapped": false
       },
       {
@@ -56896,9 +56896,9 @@
         "qual": null,
         "shelfTouches": 5,
         "sizeMult": 1,
-        "resolved": false,
-        "rMultiple": null,
-        "liveR": 1.19,
+        "resolved": true,
+        "rMultiple": 1.188,
+        "liveR": -1.81,
         "gapped": false
       },
       {
@@ -56913,9 +56913,9 @@
         "qual": null,
         "shelfTouches": 5,
         "sizeMult": 1,
-        "resolved": false,
-        "rMultiple": null,
-        "liveR": 4.37,
+        "resolved": true,
+        "rMultiple": 4.374,
+        "liveR": 5.09,
         "gapped": false
       },
       {
@@ -56930,9 +56930,9 @@
         "qual": null,
         "shelfTouches": 5,
         "sizeMult": 1,
-        "resolved": false,
-        "rMultiple": null,
-        "liveR": 1.79,
+        "resolved": true,
+        "rMultiple": 1.789,
+        "liveR": 2,
         "gapped": false
       }
     ],
