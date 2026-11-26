@@ -63333,7 +63333,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": 0.67,
+        "liveR": 0.27,
         "gapped": false
       },
       {
@@ -63351,7 +63351,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": 2.53,
+        "liveR": 2.81,
         "gapped": false
       },
       {
@@ -63369,7 +63369,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": 1.06,
+        "liveR": 0.23,
         "gapped": false
       },
       {
@@ -63386,7 +63386,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": -0.75,
+        "liveR": -0.54,
         "gapped": false
       },
       {
@@ -63403,7 +63403,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": -0.03,
+        "liveR": -0.02,
         "gapped": false
       },
       {
@@ -63420,7 +63420,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": 0.42,
+        "liveR": 0.49,
         "gapped": false
       },
       {
@@ -63437,7 +63437,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": -0.19,
+        "liveR": 0.15,
         "gapped": false
       },
       {
@@ -63454,7 +63454,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": -0.09,
+        "liveR": -0.11,
         "gapped": false
       },
       {
@@ -63471,7 +63471,7 @@
         "sizeMult": 1,
         "resolved": false,
         "rMultiple": null,
-        "liveR": -0.92,
+        "liveR": -0.74,
         "gapped": false
       },
       {
@@ -63666,5 +63666,10 @@
         "rejectReason": "max positions (10) -- caught by post-hoc cap guard"
       }
     ]
+  },
+  "2026-11-26": {
+    "candidates": [],
+    "taken": [],
+    "rejected": []
   }
 }
